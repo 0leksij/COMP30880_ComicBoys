@@ -2,7 +2,7 @@
     "COMPLETIONS_URL": "https://api.openai.com/v1/chat/completions",
     "EMBEDDINGS_URL": "https://api.openai.com/v1/embeddings",
     "MODELS_URL": "https://api.openai.com/v1/models",
-    "ORG_KEY": "org-gZ7peQP5XmIRVhs78U8WH",
-    "API_KEY": "sk-gol4pk1m5BwUEtSTJeS568ktKVDNeTXmyJ66T3BlbkF",
+    "ORG_KEY": "",
+    "API_KEY": "",
     "MODEL": "gpt-4o-mini"
 }
