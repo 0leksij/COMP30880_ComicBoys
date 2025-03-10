@@ -7,7 +7,7 @@ public class Main {
         System.out.println("Hello world!");
 
         try {
-            URL myURL = new URL("https://example.com/");
+            URL myURL = new URL("https://www.scrapethissite.com/pages/");
             URLConnection myURLConnection = myURL.openConnection();
             BufferedReader in = new BufferedReader(new InputStreamReader(
                     myURLConnection.getInputStream()));
@@ -20,7 +20,7 @@ public class Main {
             System.out.println("new URL() failed");
         }
         catch (IOException e) {
-            System.out.println("openConnection() failed");
+            System.out.println("openConnection() failed - server may be down or not exist");
         }
     }
 }
