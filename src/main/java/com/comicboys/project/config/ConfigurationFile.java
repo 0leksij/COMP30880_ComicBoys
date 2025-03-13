@@ -1,27 +1,9 @@
 package com.comicboys.project.config;
 
-import java.net.*;
 import java.io.*;
 import java.util.*;
 
-import com.fasterxml.jackson.databind.*;
-
-
-
 public class ConfigurationFile {
-//    Map<String,String> config;
-//    public ConfigurationFile() {
-//        File myJson = new File("../../../../../../../config.json");
-//        try {
-//            config = new ObjectMapper().readValue(myJson, HashMap.class);
-//        } catch (IOException e) {
-//            System.out.println("Error loading JSON file");
-//        }
-//    }
-//    public Map<String, String> getConfig() {
-//        return config;
-//    }
-
     // create properties object
     Properties properties = new Properties();
     public ConfigurationFile() {
