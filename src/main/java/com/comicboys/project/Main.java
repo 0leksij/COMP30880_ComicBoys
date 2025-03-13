@@ -3,7 +3,7 @@ package com.comicboys.project;
 import com.comicboys.project.config.ConfigurationFile;
 
 
-public class MainClass {
+public class Main {
     public static void main(String[] args) {
         ConfigurationFile configFile = new ConfigurationFile();
 
