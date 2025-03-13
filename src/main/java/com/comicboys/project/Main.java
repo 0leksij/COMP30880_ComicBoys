@@ -1,27 +1,15 @@
 package com.comicboys.project;
 
-import java.net.*;
-import java.io.*;
+import com.comicboys.project.config.ConfigurationFile;
 
 
-public class Main {
+public class MainClass {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
-        try {
-            URL myURL = new URL("https://www.scrapethissite.com/pages/");
-            URLConnection myURLConnection = myURL.openConnection();
-            BufferedReader in = new BufferedReader(new InputStreamReader(
-                    myURLConnection.getInputStream()));
-            String inputLine;
-            while ((inputLine = in.readLine()) != null)
-                System.out.println(inputLine);
-            in.close();
-        }
-        catch (MalformedURLException e) {
-            System.out.println("new URL() failed");
-        }
-        catch (IOException e) {
-            System.out.println("openConnection() failed - server may be down or not exist");
-        }
+        ConfigurationFile configFile = new ConfigurationFile();
+
+        APIClient client = new APIClient(configFile);
+
+        System.out.println(client.sendPrompt("Hello"));
+
     }
 }
