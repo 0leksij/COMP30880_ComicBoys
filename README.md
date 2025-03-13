@@ -1,9 +1,15 @@
 # COMP30880_ComicBoys
 
 
-## How to run Maven file
+## How to update dependencies in Maven project
 #### Go to project directory (same directory as pom.xml)
 ```bash
-mvn package
-java -cp target/COMP30880_ComicBoys-1.0-SNAPSHOT.jar com.comicboys.project.Main
+mvn clean install
+```
+
+## How to run Maven project
+#### Go to project directory (same directory as pom.xml)
+```bash
+mvn clean package
+java -jar target/COMP30880_ComicBoys-1.0-SNAPSHOT.jar
 ```
