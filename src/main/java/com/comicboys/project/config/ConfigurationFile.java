@@ -20,7 +20,11 @@ public class ConfigurationFile {
     public Properties getProperties() {
         return properties;
     }
-    public String get(String key) {
-        return properties.get(key).toString();
+    public String getProperty(String key) {
+        return properties.getProperty(key);
+    }
+
+    public void setProperties(String key, String value) {
+        properties.setProperty(key, value);
     }
 }
