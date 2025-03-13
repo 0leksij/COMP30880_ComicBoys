@@ -14,9 +14,9 @@ public class APIClient {
     private String completionsUrl;
 
     public APIClient(ConfigurationFile config) {
-        this.apiKey = config.getProperty("API_KEY");
-        this.model = config.getProperty("MODEL");
-        this.completionsUrl = config.getProperty("COMPLETIONS_URL");
+        this.apiKey = config.get("API_KEY");
+        this.model = config.get("MODEL");
+        this.completionsUrl = config.get("COMPLETIONS_URL");
     }
 
     public String sendPrompt(String prompt) {
