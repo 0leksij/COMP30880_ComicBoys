@@ -1,4 +1,4 @@
-package client;
+package com.comicboys.project.client;
 
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
@@ -79,21 +79,23 @@ public class APIClient {
         return content;
     }
 
-    // Method to detect denial of service messages using flexible pattern matching with context
+
     private boolean isDenialOfService(String prompt, String response) {
         String lowerResponse = response.toLowerCase();
 
         // Key refusal patterns: combinations of verbs & policy-based words
         Pattern denialPattern = Pattern.compile(
-                "(i\\s(am|\'m)\\s(sorry|unable|not allowed|not permitted|unable))|" +
-                        "(i\\s(can't|cannot|won't)\\s(comply|do that|assist|help))|" +
-                        "(that\\s(goes against|violates)\\s(my|openai's|company's)\\s(policies|guidelines))",
+                "(i\\s(am|'m)\\s(sorry|unable|not allowed|not permitted|unable|afraid))|" +
+                        "(i\\s(can't|cannot|won't|am unable to)\\s(comply|do that|assist|help|fulfill that request))|" +
+                        "(that\\s(goes against|violates|is against)\\s(my|openai's|company's)\\s(policies|guidelines|rules))|" +
+                        "(i'm sorry, but i can't .* request)",
                 Pattern.CASE_INSENSITIVE
         );
 
-        // Context-based check: Ignore if the user prompt asks for translation
-        if (prompt.toLowerCase().contains("translate") || prompt.toLowerCase().contains("say in")) return false;
-
+        // Context-based check: Ignore if the user prompt asks for translation or similar topics
+        if (prompt.toLowerCase().matches(".*(translate|say in|example|explanation|definition|denial of service|violates your policies|content guidelines).*")) {
+            return false;
+        }
 
         return denialPattern.matcher(lowerResponse).find();
     }
