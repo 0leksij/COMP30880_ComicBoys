@@ -18,17 +18,13 @@ public class ConfigurationFile {
             System.out.println("Failed to read config file from path: " + configFilePath + "Check if config.properties is missing");
         }
     }
+    // getters
     public Properties getProperties() {
         return properties;
     }
     public String getProperty(String key) {
         return properties.getProperty(key);
     }
-    public void setProperties(Properties newProperties) {
-        this.properties = new Properties();
-        for (Object key : newProperties.keySet()) {
-            this.properties.setProperty(key.toString(), newProperties.getProperty(key.toString()));
-        }
-    };
+    // setters
     public void setProperty(String key, String value) { properties.setProperty(key, value); }
 }

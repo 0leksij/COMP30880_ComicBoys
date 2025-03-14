@@ -22,12 +22,12 @@ public class ConfigurationFileTest {
     @Test
     public void gettingNullProperties() {
         ConfigurationFile testConfig = new ConfigurationFile();
-        Properties newProperties = new Properties();
-        String expectedKey = "API_KEY";
-        // new properties will be our empty properties
-        testConfig.setProperties(newProperties);
-        // expects null because we are accessing a key not in our properties (because its empty)
-        assertNull(testConfig.getProperty(expectedKey));
+        String expectedKey = "NON_EXISTING_PROPERTY";
+        // check for a property not in config file
+        if (!testConfig.getProperties().contains(expectedKey)) {
+            // expects null because we are accessing a key not in our properties (because its empty)
+            assertNull(testConfig.getProperty(expectedKey));
+        }
     }
     // if a property does exist, should not return null
     @Test
