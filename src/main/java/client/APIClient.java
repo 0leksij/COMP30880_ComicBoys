@@ -6,6 +6,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 import com.comicboys.project.config.ConfigurationFile;
 import org.json.JSONObject;
@@ -56,25 +57,47 @@ public class APIClient {
             }
             scanner.close();
 
-            return parseResponse(response.toString());
+            return parseResponse(prompt, response.toString()); // a small change here to also get users prompt for context check
         } catch (Exception e) {
             return "Error: " + e.getMessage();
         }
     }
 
-    private String parseResponse(String jsonResponse) {
+    private String parseResponse(String prompt, String jsonResponse) {
         JSONObject response = new JSONObject(jsonResponse);
         String content = response.getJSONArray("choices")
                 .getJSONObject(0)
                 .getJSONObject("message")
                 .getString("content");
 
+        // Check for denial of service response with context
+        if (isDenialOfService(prompt, content)) return "[Error] OpenAI denied the request: " + content;
+
         if(isNumberedList(content)){
             return new NumberedList(parseNumberedList(content)).toString();
         }
-
         return content;
     }
+
+    // Method to detect denial of service messages using flexible pattern matching with context
+    private boolean isDenialOfService(String prompt, String response) {
+        String lowerResponse = response.toLowerCase();
+
+        // Key refusal patterns: combinations of verbs & policy-based words
+        Pattern denialPattern = Pattern.compile(
+                "(i\\s(am|\'m)\\s(sorry|unable|not allowed|not permitted|unable))|" +
+                        "(i\\s(can't|cannot|won't)\\s(comply|do that|assist|help))|" +
+                        "(that\\s(goes against|violates)\\s(my|openai's|company's)\\s(policies|guidelines))",
+                Pattern.CASE_INSENSITIVE
+        );
+
+        // Context-based check: Ignore if the user prompt asks for translation
+        if (prompt.toLowerCase().contains("translate") || prompt.toLowerCase().contains("say in")) return false;
+
+
+        return denialPattern.matcher(lowerResponse).find();
+    }
+    
 
     // Extracts a numbered list from the response text
     private List<String> parseNumberedList(String text){
