@@ -1,4 +1,4 @@
-package com.comicboys.project;
+package client;
 
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
