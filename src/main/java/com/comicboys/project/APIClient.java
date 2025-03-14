@@ -69,12 +69,30 @@ public class APIClient {
                 .getJSONObject("message")
                 .getString("content");
 
+        // Check for denial of service response
+        if (isDenialOfService(content)) return "[Error] OpenAI denied the request: " + content;
+
         if(isNumberedList(content)){
             return new NumberedList(parseNumberedList(content)).toString();
         }
-
         return content;
     }
+
+    // Method to detect denial of service messages using keyword patterns
+    private boolean isDenialOfService(String response) {
+        String lowerResponse = response.toLowerCase();
+        String[] denialKeywords = {"sorry", "apologies", "unable to comply", "can't", "cannot", "against my policies"};
+
+        int matchCount = 0;
+        for (String keyword : denialKeywords) {
+            if (lowerResponse.contains(keyword)) {
+                matchCount++;
+            }
+        }
+
+        return matchCount >= 2; // If at least two denial keywords appear, consider it a denial response
+    }
+    
 
     // Extracts a numbered list from the response text
     private List<String> parseNumberedList(String text){
