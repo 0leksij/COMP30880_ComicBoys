@@ -34,3 +34,5 @@ gradlew*
 # Ignore personal run configurations
 *.iws
 *.ipr
+
+config.properties
