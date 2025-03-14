@@ -1,4 +1,4 @@
-package com.comicboys.config;
+package com.comicboys.project.config;
 
 //import static org.junit.jupiter.api.Assertions.assertTrue;
 
