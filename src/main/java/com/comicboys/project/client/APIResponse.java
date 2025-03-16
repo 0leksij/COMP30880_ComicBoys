@@ -18,11 +18,6 @@ public class APIResponse {
         }
     }
 
-    public APIResponse(NumberedList numberedList) {
-        this.numberedList = numberedList;
-        this.textResponse = null;
-    }
-
     public boolean isNumberedList() {
         return numberedList != null;
     }
