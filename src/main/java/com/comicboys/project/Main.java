@@ -10,7 +10,7 @@ public class Main {
         APIClient client = new APIClient(configFile);
 
 
-        System.out.println(client.sendPrompt(""));
+        System.out.println(client.sendPrompt("whats up my dude"));
 
     }
 }
