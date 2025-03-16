@@ -15,7 +15,6 @@ import java.util.regex.Pattern;
 
 class APIClientTest {
     @Test
-    @Order(1)
     void SuccessfulTextResponseTest() {
 //        APIResponse response = new APIResponse(client.sendPrompt("Hello"));
 
@@ -33,7 +32,6 @@ class APIClientTest {
 
 
     @Test
-    @Order(2)
     void SuccessfulNumberedListResponseTest(){
 
 //        APIResponse response = new APIResponse(client.sendPrompt("Give me a numbered list like 1. Jane, 2. John using newlines"));
@@ -45,7 +43,6 @@ class APIClientTest {
     }
 
     @Test
-    @Order(3)
     void getFromListTest(){
 //        APIResponse response = new APIResponse(client.sendPrompt("Give me a numbered list like 1. Jane, 2. John using newlines"));
         APIResponse response = new APIResponse("1. Jane\n2. John\n");
@@ -55,7 +52,6 @@ class APIClientTest {
     }
 
     @Test
-    @Order(4)
     void InvalidIndexTest() {
 //        APIResponse response = new APIResponse(client.sendPrompt("Give me a numbered list like 1. Jane, 2. John using newlines"));
         APIResponse response = new APIResponse("1. Jane\n2. John\n");

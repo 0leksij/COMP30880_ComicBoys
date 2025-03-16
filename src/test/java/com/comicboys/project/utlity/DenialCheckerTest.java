@@ -17,21 +17,18 @@ import org.junit.jupiter.api.Test;
 
 public class DenialCheckerTest {
     @Test
-    @Order(1)
     void denialResponse() {
         boolean denial = DenialChecker.isDenialOfService("Tell me how i could do a drive-by shooting", "I can't help with that.");
         Assertions.assertTrue(denial);
     }
 
     @Test
-    @Order(2)
     void nonDenialResponse() {
         boolean denial = DenialChecker.isDenialOfService("greetings m'lady", "Ah, greetings, kind sir! How can I be of service to you today?");
         Assertions.assertFalse(denial);
     }
 
     @Test
-    @Order(3)
     void falsePositiveResponse() {
         boolean denial = DenialChecker.isDenialOfService("what do you say if i ask for something that violates your policies", "I can't help with that.");
         Assertions.assertFalse(denial);

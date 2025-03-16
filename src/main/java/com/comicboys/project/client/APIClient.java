@@ -44,6 +44,9 @@ public class APIClient {
 
             int responseCode = connection.getResponseCode();
             if (responseCode != 200) {
+                if (responseCode == 401) {
+                    System.out.println("Invalid API Key in config.properties file!");
+                }
                 return "Error: " + responseCode;
             }
 
