@@ -77,5 +77,24 @@ public class APIClient {
         return content;
     }
 
+    public String sendTranslationRequest(String sourceText, String targetLanguage){
+        try{
+            String prompt = String.format("Translate the following text into %s: %s",targetLanguage,sourceText);
+
+            String response = sendPrompt(prompt);
+
+            JSONObject jsonResponse = new JSONObject(response);
+            String translation = jsonResponse.getJSONArray("choices")
+                    .getJSONObject(0)
+                    .getJSONObject("message")
+                    .getString("content");
+
+            return translation.trim(); // Remove any leading/trailing whitespace
+
+        } catch (Exception e) {
+            return "Error: " + e.getMessage();
+        }
+    }
+
 }
 
