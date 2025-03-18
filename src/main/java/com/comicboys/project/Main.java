@@ -23,11 +23,14 @@ public class Main {
         TSVReader myReader = new TSVReader(5);
         // get mappings data structure
         Mappings mappings = myReader.getMappings();
+
+        // printing mappings data for reference
+        System.out.println(mappings);
+        System.out.println();
         // find match given certain word (finds FIRST row where this word appears)
         // returns a hashmap with key-value pairs for leftPose,combinedText, etc.
         System.out.println(mappings.findMatch("charm"));
 
-        System.out.println(mappings.toString());
 
 
 
