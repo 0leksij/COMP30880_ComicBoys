@@ -21,7 +21,7 @@ public class APIClient {
     }
 
 
-    public String sendPrompt(String prompt) {
+    public APIResponse sendPrompt(String prompt) {
         try {
             URL url = new URL(completionsUrl);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -47,7 +47,7 @@ public class APIClient {
                 if (responseCode == 401) {
                     System.out.println("Invalid API Key in config.properties file!");
                 }
-                return "Error: " + responseCode;
+                return new APIResponse("Error: " + responseCode);
             }
 
             // Reads response from OpenAI API
@@ -60,11 +60,11 @@ public class APIClient {
 
             return parseResponse(prompt, response.toString()); // a small change here to also get users prompt for context check
         } catch (Exception e) {
-            return "Error: " + e.getMessage();
+            return new APIResponse("Error: " + e.getMessage());
         }
     }
 
-    private String parseResponse(String prompt, String jsonResponse) {
+    private APIResponse parseResponse(String prompt, String jsonResponse) {
         JSONObject response = new JSONObject(jsonResponse);
         String content = response.getJSONArray("choices")
                 .getJSONObject(0)
@@ -73,26 +73,21 @@ public class APIClient {
 
 
         // Check for denial of service response with context
-        if (DenialChecker.isDenialOfService(prompt, content)) return "[Error] OpenAI denied the request: " + content;
-        return content;
+        if (DenialChecker.isDenialOfService(prompt, content)) return new APIResponse("[Error] OpenAI denied the request: " + content);
+        return new APIResponse(content);
     }
 
-    public String sendTranslationRequest(String sourceText, String targetLanguage){
+    public APIResponse sendTranslationRequest(String sourceText, String targetLanguage){
         try{
-            String prompt = String.format("Translate the following text into %s: %s",targetLanguage,sourceText);
+            String prompt = String.format("Translate the following text into %s: %s. Use only one translation/word and use no quotation marks.",targetLanguage,sourceText);
 
-            String response = sendPrompt(prompt);
+            APIResponse response = sendPrompt(prompt);
 
-            JSONObject jsonResponse = new JSONObject(response);
-            String translation = jsonResponse.getJSONArray("choices")
-                    .getJSONObject(0)
-                    .getJSONObject("message")
-                    .getString("content");
 
-            return translation.trim(); // Remove any leading/trailing whitespace
+            return new APIResponse(response.toString().trim()); // Remove any leading/trailing whitespac
 
         } catch (Exception e) {
-            return "Error: " + e.getMessage();
+            return new APIResponse("Error: " + e.getMessage());
         }
     }
 
