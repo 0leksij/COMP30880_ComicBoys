@@ -7,10 +7,13 @@ import java.util.*;
 public class Mappings {
     // will represent our mapping tsv file, where each index is row index, and each Entry is the row
     private ArrayList<Entry> mappings = new ArrayList<>();
-    // add a new mapping row
+    // add a new mapping row, input row of tsv file with columns: leftPose, combinedText, leftText, rightPose, backgrounds
     public void addEntry(String rowData) {
         String[] parsedRow = rowData.split("\t");
         mappings.add(new Entry(parsedRow));
+    }
+    public boolean isEmpty() {
+        return mappings.isEmpty();
     }
     // finds FIRST match where either leftText or combinedText contains word
     // returns a hashmap with key-value pairs for leftPose, combinedText, etc.
@@ -41,8 +44,8 @@ public class Mappings {
     }
     public String toString() {
         String result = "";
-        for (Entry mapping : mappings) {
-            result += mapping.toString();
+        for (Entry entry : mappings) {
+            result += entry.toString();
         }
         return result;
     }
@@ -54,11 +57,18 @@ public class Mappings {
         final List<String> rightPose;
         final List<String> backgrounds;
         public Entry(String[] row) {
-            leftPose = processColumn(row[0]);
-            combinedText = processColumn(row[1]);
-            leftText = processColumn(row[2]);
-            rightPose = processColumn(row[3]);
-            backgrounds = processColumn(row[4]);
+            // this needs to be done in the case that a row has less than required number of columns,
+            // to avoid IndexOutOfBounds when accessing row[i]
+            String[] fullRow = {"", "", "", "", ""};
+            for (int i = 0; i < row.length; i++) {
+                fullRow[i] = row[i];
+            }
+            // fullRow has all 5 columns, so can safely access all indices
+            leftPose = processColumn(fullRow[0]);
+            combinedText = processColumn(fullRow[1]);
+            leftText = processColumn(fullRow[2]);
+            rightPose = processColumn(fullRow[3]);
+            backgrounds = processColumn(fullRow[4]);
         }
         // each column passed into here is in string format, so:
         //      "to fall in love, love"
@@ -68,8 +78,8 @@ public class Mappings {
             return List.of(column.toLowerCase().replace(", ", ",").split(","));
         }
         public String toString() {
-            return "\n[" + leftPose.toString() + "], [" + combinedText.toString() + "], [" +
-                           leftText.toString() + "], [" + rightPose.toString() + "], [" +
+            return "\n[" + leftPose.toString() + ", " + combinedText.toString() + ", " +
+                           leftText.toString() + ", " + rightPose.toString() + ", " +
                            backgrounds.toString() + "]";
         }
     }

@@ -8,11 +8,11 @@ import java.io.IOException;
 import java.util.Random;
 
 public class TSVReader {
-    private Mappings mappings = new Mappings();
+    // default values (mappings is null if file fails to be read)
+    private final String filePath = "src/main/resources/pose_pairings_with_backgrounds.tsv";
+    private Mappings mappings;
     // if no lines passed in, will read entire file
-    public TSVReader() {
-        readFile(-1);
-    }
+    public TSVReader() { readFile(-1); }
     // specify number of lines to read
     public TSVReader(int numOfLines) {
         readFile(numOfLines);
@@ -22,7 +22,8 @@ public class TSVReader {
         BufferedReader reader;
         int currentLine = 0;
         try {
-            reader = new BufferedReader(new FileReader("src/main/resources/pose_pairings_with_backgrounds.tsv"));
+            reader = new BufferedReader(new FileReader(filePath));
+            mappings = new Mappings(); // initialise mappings (once this reached we know file was read successfully)
             String line = reader.readLine();
             line = reader.readLine(); // skips header
             // reading entire file or specified num of lines
@@ -35,7 +36,7 @@ public class TSVReader {
             }
             reader.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("\nFailed to read file in path: " + filePath);
         }
     }
     // getter for mappings

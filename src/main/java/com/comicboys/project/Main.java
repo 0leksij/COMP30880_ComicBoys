@@ -27,6 +27,8 @@ public class Main {
         // returns a hashmap with key-value pairs for leftPose,combinedText, etc.
         System.out.println(mappings.findMatch("charm"));
 
+        System.out.println(mappings.toString());
+
 
 
     }

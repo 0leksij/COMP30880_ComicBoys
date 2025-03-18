@@ -1,27 +1,28 @@
 package com.comicboys.project.config;
 
-//import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
-import org.junit.*;
-
-import java.util.Properties;
-
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ConfigurationFileTest {
+    private ConfigurationFile testConfig;
+
+    @BeforeEach
+    public void setUp() {
+        testConfig = new ConfigurationFile();
+    }
 
     // if fails to read config, exception will be caught in constructor and properties remains null
     @Test
     public void readingConfigFileSuccessfully() {
-        ConfigurationFile testConfig = new ConfigurationFile();
         // if fails, properties are still null meaning config file was not read successfully
         assertFalse(testConfig.getProperties().isEmpty());
     }
     // if a property does not exist, should return null
     @Test
     public void gettingNullProperties() {
-        ConfigurationFile testConfig = new ConfigurationFile();
         String expectedKey = "NON_EXISTING_PROPERTY";
         // check for a property not in config file
         if (!testConfig.getProperties().contains(expectedKey)) {
@@ -32,7 +33,6 @@ public class ConfigurationFileTest {
     // if a property does exist, should not return null
     @Test
     public void gettingExistingProperties() {
-        ConfigurationFile testConfig = new ConfigurationFile();
         String expectedKey = "API_KEY";
         // setting as non null
         testConfig.setProperty(expectedKey, "");
@@ -42,7 +42,6 @@ public class ConfigurationFileTest {
     // should be able to set properties and read them back successfully
     @Test
     public void updatingProperties() {
-        ConfigurationFile testConfig = new ConfigurationFile();
         String expectedKey = "API_KEY";
         String expectedValue = "1";
         // setting out desired property
