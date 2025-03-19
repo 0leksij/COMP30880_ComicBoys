@@ -1,13 +1,13 @@
 package com.comicboys.project.client;
 
 
-import com.comicboys.project.Main;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.comicboys.project.client.MappingsColumn.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class MappingsTest {
@@ -44,15 +44,17 @@ class MappingsTest {
     void findMatchingExistingText(){
         mappings.addEntry("a1, a2\tb1\tc1\td1, d2\te1");
         mappings.addEntry("x1\ty1\tsecret\tw1\tv1");
-        Map<String, String> expectedMatch = new HashMap<>() {{
-            put("leftPose", "x1");
-            put("combinedText", "y1");
-            put("leftText", "secret");
-            put("rightPose", "w1");
-            put("backgrounds", "v1");
+        Map<MappingsColumn, String> expectedMatch = new HashMap<>() {{
+            put(LEFT_POSE, "x1");
+            put(COMBINED_TEXT, "y1");
+            put(LEFT_TEXT, "secret");
+            put(RIGHT_POSE, "w1");
+            put(BACKGROUNDS, "v1");
         }};
         assertEquals(expectedMatch.toString(), mappings.findMatch("secret").toString());
         assertFalse(mappings.isEmpty());
+
+
     }
     // will pass if an empty map is returned since text not in map we provided
     @Test

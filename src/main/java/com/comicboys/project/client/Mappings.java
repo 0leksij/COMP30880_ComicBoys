@@ -1,12 +1,14 @@
 package com.comicboys.project.client;
 
 import com.comicboys.project.Main;
+import static com.comicboys.project.client.MappingsColumn.*;
 
 import java.util.*;
 
+
 public class Mappings {
     // will represent our mapping tsv file, where each index is row index, and each Entry is the row
-    private ArrayList<Entry> mappings = new ArrayList<>();
+    private final ArrayList<Entry> mappings = new ArrayList<>();
     // add a new mapping row, input row of tsv file with columns: leftPose, combinedText, leftText, rightPose, backgrounds
     public void addEntry(String rowData) {
         String[] parsedRow = rowData.split("\t");
@@ -19,7 +21,7 @@ public class Mappings {
     // returns a hashmap with key-value pairs for leftPose, combinedText, etc.
     // (since ONLY finds first match, will not check any row after that may match, so may need to also add randomness
     //  for it to pick out of all possible row options, but this is a decent start)
-    public Map<String, String> findMatch(String text) {
+    public Map<MappingsColumn, String> findMatch(String text) {
         for (Entry entry : mappings) {
             // assigning entry variables shorter names for readability
             List<String> leftPose = entry.leftPose;
@@ -31,11 +33,11 @@ public class Mappings {
             if(combinedText.contains(text) || leftText.contains(text)) {
                 // return a hashmap with 1:1 values, for each column picks a random word from column list
                 return new HashMap<>() {{
-                    put("leftPose", leftPose.get(Main.random.nextInt(leftPose.size())));
-                    put("combinedText", combinedText.get(Main.random.nextInt(combinedText.size())));
-                    put("leftText", leftText.get(Main.random.nextInt(leftText.size())));
-                    put("rightPose", rightPose.get(Main.random.nextInt(rightPose.size())));
-                    put("backgrounds", backgrounds.get(Main.random.nextInt(backgrounds.size())));
+                    put(LEFT_POSE, leftPose.get(Main.random.nextInt(leftPose.size())));
+                    put(COMBINED_TEXT, combinedText.get(Main.random.nextInt(combinedText.size())));
+                    put(LEFT_TEXT, leftText.get(Main.random.nextInt(leftText.size())));
+                    put(RIGHT_POSE, rightPose.get(Main.random.nextInt(rightPose.size())));
+                    put(BACKGROUNDS, backgrounds.get(Main.random.nextInt(backgrounds.size())));
                 }};
 
             }

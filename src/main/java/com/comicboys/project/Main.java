@@ -29,7 +29,7 @@ public class Main {
         System.out.println();
         // find match given certain word (finds FIRST row where this word appears)
         // returns a hashmap with key-value pairs for leftPose,combinedText, etc.
-        System.out.println(mappings.findMatch("charm"));
+        System.out.println(mappings.findMatch("to bow"));
 
 
 
