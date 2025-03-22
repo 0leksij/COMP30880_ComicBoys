@@ -1,4 +1,4 @@
-package com.comicboys.project.utlity;
+package com.comicboys.project.utility;
 
 import com.comicboys.project.client.APIClient;
 import com.comicboys.project.client.APIResponse;

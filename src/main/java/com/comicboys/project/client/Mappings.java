@@ -57,4 +57,28 @@ public class Mappings {
         }
         return result;
     }
+
+    public List<String> getAllTextFragments() {
+        List<String> allTexts = new ArrayList<>();
+        for (Entry entry : mappings) {
+            allTexts.addAll(entry.combinedText); // Collect all unique text fragments
+        }
+        return new ArrayList<>(new HashSet<>(allTexts)); // Remove duplicates
+    }
+
+    String getAllTextFragmentsAsString(boolean includeCombinedText) {
+        Set<String> uniqueTexts = new HashSet<>();
+
+        for (Entry entry : mappings) {
+            if (includeCombinedText) uniqueTexts.addAll(entry.combinedText);
+            else uniqueTexts.addAll(entry.leftText);
+        }
+
+        return String.join(",", uniqueTexts); // Convert set to a comma-separated string
+    }
+    public String getCombinedText(){return getAllTextFragmentsAsString(true);}
+    public String getLeftText(){return getAllTextFragmentsAsString(false);}
+
+
+
 }
