@@ -29,18 +29,24 @@ public class Mappings {
             List<String> leftText = entry.leftText;
             List<String> rightPose = entry.rightPose;
             List<String> backgrounds = entry.backgrounds;
+            HashMap<MappingsColumn, String> result = new HashMap<>();
             // if word we are looking for is in either text columns is a match
-            if(combinedText.contains(text) || leftText.contains(text)) {
+            if(leftText.contains(text) || combinedText.contains(text)) {
+                // if you find text within a certain column, you would expect that text back, and not another text
+                // from that column, so does not pick random string for that
+                if(leftText.contains(text)) {
+                    result.put(LEFT_TEXT, text);
+                    result.put(COMBINED_TEXT, combinedText.get(Main.random.nextInt(combinedText.size())));
+                } else {
+                    result.put(COMBINED_TEXT, text);
+                    result.put(LEFT_TEXT, leftText.get(Main.random.nextInt(leftText.size())));
+                }
                 // return a hashmap with 1:1 values, for each column picks a random word from column list
-                return new HashMap<>() {{
-                    put(LEFT_POSE, leftPose.get(Main.random.nextInt(leftPose.size())));
-                    put(COMBINED_TEXT, combinedText.get(Main.random.nextInt(combinedText.size())));
-                    put(LEFT_TEXT, leftText.get(Main.random.nextInt(leftText.size())));
-                    put(RIGHT_POSE, rightPose.get(Main.random.nextInt(rightPose.size())));
-                    put(BACKGROUNDS, backgrounds.get(Main.random.nextInt(backgrounds.size())));
-                }};
-
+                result.put(LEFT_POSE, leftPose.get(Main.random.nextInt(leftPose.size())));
+                result.put(RIGHT_POSE, rightPose.get(Main.random.nextInt(rightPose.size())));
+                result.put(BACKGROUNDS, backgrounds.get(Main.random.nextInt(backgrounds.size())));
             }
+            return result;
         }
         return Map.of();
     }
