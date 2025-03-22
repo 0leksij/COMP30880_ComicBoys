@@ -10,16 +10,17 @@ import java.util.concurrent.TimeUnit;
 
 public class VignetteGenerator {
     private APIClient apiClient;
+    private String translationFilePath = "src/main/resources/translations.tsv";
     private TranslationFileManager translationFileManager;
     private Mappings mappings;
 
-    public VignetteGenerator(ConfigurationFile config, String translationFilePath) {
+    public VignetteGenerator(ConfigurationFile config, Mappings mappings) {
         this.apiClient = new APIClient(config);
         this.translationFileManager = new TranslationFileManager(translationFilePath);
-        this.mappings = new TSVReader().getMappings();
+        this.mappings = mappings;
     }
 
-    public void generateTranslations(String targetLanguage) {
+    public void generateTranslations() {
         List<String> batch = new ArrayList<>();
 
         for (Entry entry : mappings.getEntries()) {
@@ -73,25 +74,5 @@ public class VignetteGenerator {
 
     public Map<String, String> getTranslations() {
         return translationFileManager.loadTranslations();
-    }
-
-    public static void main(String[] args) {
-        ConfigurationFile config = new ConfigurationFile();
-        VignetteGenerator vignetteGenerator = new VignetteGenerator(config, "src/main/resources/translations.tsv");
-
-        TSVReader reader = new TSVReader();
-
-        //System.out.println(reader.getMappings());
-
-        vignetteGenerator.generateTranslations("Italian");
-
-        System.out.println();
-        // Load and print translations
-        Map<String, String> translations = vignetteGenerator.getTranslations();
-
-        translations.forEach((source, target) -> System.out.println(source + " -> " + target));
-
-
-
     }
 }
