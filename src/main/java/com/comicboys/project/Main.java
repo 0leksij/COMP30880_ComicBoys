@@ -17,7 +17,9 @@ public class Main {
         ConfigurationFile config = new ConfigurationFile();
 
         // read tsv file with specified number of lines
-        TSVReader myReader = new TSVReader(5);
+        int rows = 3;
+        System.out.println("\nReading first " + rows + " rows");
+        TSVReader myReader = new TSVReader(rows);
         // get mappings data structure
         Mappings mappings = myReader.getMappings();
         // using mappings to create vignette generator
@@ -28,15 +30,26 @@ public class Main {
         System.out.println();
         // find match given certain word (finds FIRST row where this word appears)
         // returns a hashmap with key-value pairs for leftPose,combinedText, etc.
-        System.out.println(mappings.findMatch("to bow"));
+        String word1 = "to bow";
+        System.out.println("\nFinding word: " + word1);
+        System.out.println(mappings.findMatch(word1));
+        word1 = "";
+        System.out.println("\nFinding word: " + word1);
+        System.out.println(mappings.findMatch(word1));
+        word1 = "poo";
+        System.out.println("\nFinding word: " + word1);
+        System.out.println(mappings.findMatch(word1));
         System.out.println();
 
         // generate translations for words
+        System.out.println("\nGenerating translations...");
         vignetteGenerator.generateTranslations();
         System.out.println();
         // Load and print translations
         Map<String, String> translations = vignetteGenerator.getTranslations();
 
+
+        System.out.println("\nPrinting translations for combinedText and leftText (2nd and 3rd columns):\n");
         translations.forEach((source, target) -> System.out.println(source + " -> " + target));
 
 

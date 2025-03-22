@@ -5,7 +5,7 @@ import java.util.*;
 
 public class ConfigurationFile {
     // file path
-    String configFilePath = "src/main/java/com/comicboys/project/config/config.properties";
+    String configFilePath = "assets/config/config.properties";
     // create properties object
     Properties properties = new Properties();
     public ConfigurationFile() {
@@ -15,7 +15,7 @@ public class ConfigurationFile {
             // Add a wrapper around reader object
             properties.load(reader);
         } catch (IOException e) {
-            System.out.println("Failed to read config file from path: " + configFilePath + "Check if config.properties is missing");
+            System.out.println("\nFailed to read config file from path: " + configFilePath + "\nCheck if config.properties is missing");
         }
     }
     // getters

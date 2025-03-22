@@ -9,7 +9,7 @@ import java.util.Random;
 
 public class TSVReader {
     // default values (mappings is null if file fails to be read)
-    private final String filePath = "src/main/resources/test.tsv";
+    private final String filePath = "assets/mappings/pose_pairings_with_backgrounds.tsv";
     private Mappings mappings;
     // if no lines passed in, will read entire file
     public TSVReader() { readFile(-1); }

@@ -2,15 +2,12 @@ package com.comicboys.project.client;
 
 import com.comicboys.project.config.ConfigurationFile;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 public class VignetteGenerator {
     private APIClient apiClient;
-    private String translationFilePath = "src/main/resources/translations.tsv";
+    private String translationFilePath = "assets/translations/translations.tsv";
     private TranslationFileManager translationFileManager;
     private Mappings mappings;
 
@@ -20,38 +17,28 @@ public class VignetteGenerator {
         this.mappings = mappings;
     }
 
+    // translate all words in either text column
     public void generateTranslations() {
         List<String> batch = new ArrayList<>();
-
+        // need to change this to use set oleksii made instead, duplicates area already being handled,
+        // but wondering if changing it here would make it more efficient?
         for (Entry entry : mappings.getEntries()) {
-
-            batch.addAll(entry.combinedText);
-
-            batch.removeAll(List.of(""));
-
-            // If batch reaches 5-10 items (adjustable), send it for translation
-            if (batch.size() >= 5) {
-                processBatch(batch);
-                System.out.println(batch);
-                batch.clear(); // Clear batch after processing
-            }
-
-            batch.addAll(entry.leftText);
-
-            batch.removeAll(List.of(""));
-
-            if (batch.size() >= 5) {
-                processBatch(batch);
-                System.out.println(batch);
-                batch.clear(); // Clear batch after processing
-
-            }
-
+            addToBatch(batch, entry.combinedText);
+            addToBatch(batch, entry.leftText);
         }
-
         // Send any remaining items in the batch
         if (!batch.isEmpty()) {
             processBatch(batch);
+        }
+    }
+
+    private void addToBatch(List<String> batch, List<String> textColumn) {
+        batch.addAll(textColumn);
+        batch.removeAll(List.of(""));
+        // If batch reaches 5-10 items (adjustable), send it for translation
+        if (batch.size() >= 5) {
+            processBatch(batch);
+            batch.clear(); // Clear batch after processing
         }
     }
 

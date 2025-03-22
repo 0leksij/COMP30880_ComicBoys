@@ -22,6 +22,8 @@ public class Mappings {
     // (since ONLY finds first match, will not check any row after that may match, so may need to also add randomness
     //  for it to pick out of all possible row options, but this is a decent start)
     public Map<MappingsColumn, String> findMatch(String text) {
+        HashMap<MappingsColumn, String> result = new HashMap<>();
+        if (text.isEmpty()) { return result; }
         for (Entry entry : mappings) {
             // assigning entry variables shorter names for readability
             List<String> leftPose = entry.leftPose;
@@ -29,7 +31,6 @@ public class Mappings {
             List<String> leftText = entry.leftText;
             List<String> rightPose = entry.rightPose;
             List<String> backgrounds = entry.backgrounds;
-            HashMap<MappingsColumn, String> result = new HashMap<>();
             // if word we are looking for is in either text columns is a match
             if(leftText.contains(text) || combinedText.contains(text)) {
                 // if you find text within a certain column, you would expect that text back, and not another text
@@ -46,9 +47,8 @@ public class Mappings {
                 result.put(RIGHT_POSE, rightPose.get(Main.random.nextInt(rightPose.size())));
                 result.put(BACKGROUNDS, backgrounds.get(Main.random.nextInt(backgrounds.size())));
             }
-            return result;
         }
-        return Map.of();
+        return result;
     }
 
 
@@ -72,7 +72,7 @@ public class Mappings {
         return new ArrayList<>(new HashSet<>(allTexts)); // Remove duplicates
     }
 
-    String getAllTextFragmentsAsString(boolean includeCombinedText) {
+    Set<String> getAllTextFragments(boolean includeCombinedText) {
         Set<String> uniqueTexts = new HashSet<>();
 
         for (Entry entry : mappings) {
@@ -80,9 +80,9 @@ public class Mappings {
             else uniqueTexts.addAll(entry.leftText);
         }
 
-        return String.join(",", uniqueTexts); // Convert set to a comma-separated string
+        return uniqueTexts; // Convert set to a comma-separated string
     }
-    public String getCombinedText(){return getAllTextFragmentsAsString(true);}
-    public String getLeftText(){return getAllTextFragmentsAsString(false);}
+    public Set<String> getCombinedText(){return getAllTextFragments(true);}
+    public Set<String> getLeftText(){return getAllTextFragments(false);}
 
 }
