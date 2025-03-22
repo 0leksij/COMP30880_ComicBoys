@@ -79,6 +79,4 @@ public class Mappings {
     public String getCombinedText(){return getAllTextFragmentsAsString(true);}
     public String getLeftText(){return getAllTextFragmentsAsString(false);}
 
-
-
 }
