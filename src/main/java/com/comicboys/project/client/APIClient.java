@@ -3,7 +3,9 @@ package com.comicboys.project.client;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.List;
 
 import com.comicboys.project.config.ConfigurationFile;
 import com.comicboys.project.utility.DenialChecker;
@@ -13,11 +15,15 @@ public class APIClient {
     private String apiKey;
     private String model;
     private String completionsUrl;
+    private String sourceLanguage;
+    private String targetLanguage;
 
     public APIClient(ConfigurationFile config) {
         this.apiKey = config.getProperty("API_KEY");
         this.model = config.getProperty("MODEL");
         this.completionsUrl = config.getProperty("COMPLETIONS_URL");
+        this.sourceLanguage = config.getProperty("SOURCE_LANGUAGE");
+        this.targetLanguage = config.getProperty("TARGET_LANGUAGE");
     }
 
 
@@ -73,23 +79,67 @@ public class APIClient {
 
 
         // Check for denial of service response with context
-        if (DenialChecker.isDenialOfService(prompt, content)) return new APIResponse("[Error] OpenAI denied the request: " + content);
+        if (DenialChecker.isDenialOfService(prompt, content))
+            return new APIResponse("[Error] OpenAI denied the request: " + content);
         return new APIResponse(content);
     }
 
-    public APIResponse sendTranslationRequest(String sourceText, String targetLanguage){
-        try{
-            String prompt = String.format("Translate the following text into %s: %s. Use only one translation/word and use no quotation marks.",targetLanguage,sourceText);
+    public APIResponse sendTranslationRequest(String sourceText) {
+        try {
+            String prompt = String.format("Translate the following text into %s: %s. Use only one translation/word and use no quotation marks. Send it back as a numbered list if needed.", targetLanguage, sourceText);
 
             APIResponse response = sendPrompt(prompt);
 
-
-            return new APIResponse(response.toString().trim()); // Remove any leading/trailing whitespac
+            return new APIResponse(response.toString().trim()); // Remove any leading/trailing whitespace
 
         } catch (Exception e) {
             return new APIResponse("Error: " + e.getMessage());
         }
     }
 
+    public List<String> sendBatchTranslationRequest(List<String> sourceTexts) {
+        List<String> translations = new ArrayList<>();
+
+        try {
+            // Build the prompt with numbered format
+            StringBuilder promptBuilder = new StringBuilder();
+            promptBuilder.append(String.format("Translate the following words/phrases into %s:", targetLanguage));
+
+            for (int i = 0; i < sourceTexts.size(); i++) {
+                promptBuilder.append(String.format("\n%d. %s", i + 1, sourceTexts.get(i))); // Numbered list input
+            }
+
+            promptBuilder.append("\nRespond with a numbered list matching the input order.");
+
+            APIResponse response = sendPrompt(promptBuilder.toString());
+
+            if (response.toString().startsWith("Error")) {
+                System.err.println("Translation API error: " + response);
+                return translations; // Return empty list on error
+            }
+
+            // Check if response is a numbered list and extract translations
+            if (response.isNumberedList()) {
+                translations = response.getNumberedList().getItems();
+            } else {
+                System.err.println("Unexpected response format: " + response);
+                return translations; // Return empty list if format is incorrect
+            }
+
+            // Ensure output list size matches input size (fallback: placeholder text)
+            while (translations.size() < sourceTexts.size()) {
+                translations.add("[Translation missing]");
+            }
+
+        } catch (Exception e) {
+            System.err.println("Error in batch translation: " + e.getMessage());
+        }
+
+        return translations;
+    }
+
+
 }
+
+
 

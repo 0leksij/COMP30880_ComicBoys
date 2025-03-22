@@ -17,6 +17,10 @@ public class NumberedList{
         return items.get(index - 1);
     }
 
+    public List<String> getItems(){
+        return items;
+    }
+
     @Override
     public String toString(){
         StringBuilder sb = new StringBuilder();
