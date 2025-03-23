@@ -9,8 +9,8 @@ import java.util.concurrent.TimeUnit;
 
 public class VignetteGenerator {
     private APIClient apiClient;
-    private String translationFilePath = "assets/translations/translations.tsv";
-    private TranslationFileManager translationFileManager;
+    String translationFilePath = "assets/translations/translations.tsv";
+    TranslationFileManager translationFileManager;
     private Mappings mappings;
 
     public VignetteGenerator(ConfigurationFile config, Mappings mappings) {
@@ -21,6 +21,7 @@ public class VignetteGenerator {
         String sourceLanguage = config.getProperty("SOURCE_LANGUAGE").toLowerCase();
         String targetLanguage = config.getProperty("TARGET_LANGUAGE").toLowerCase();
         this.translationFilePath = "assets/translations/" + sourceLanguage + "-to-" + targetLanguage + "-translations.tsv";
+
 
         // Create the translations file if it doesn't exist
         ensureFileExists(translationFilePath);
@@ -44,6 +45,7 @@ public class VignetteGenerator {
         }
     }
 
+
     // translate all words in either text column
     public void generateTranslations() {
         List<String> batch = new ArrayList<>();
@@ -59,7 +61,7 @@ public class VignetteGenerator {
         }
     }
 
-    private void addToBatch(List<String> batch, List<String> textColumn) {
+    void addToBatch(List<String> batch, List<String> textColumn) {
         batch.addAll(textColumn);
         batch.removeAll(List.of(""));
         // If batch reaches 5-10 items (adjustable), send it for translation
@@ -69,7 +71,7 @@ public class VignetteGenerator {
         }
     }
 
-    private void processBatch(List<String> batch) {
+    void processBatch(List<String> batch) {
         try {
             List<String> translations = apiClient.sendBatchTranslationRequest(batch);
 

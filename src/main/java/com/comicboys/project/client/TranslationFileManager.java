@@ -13,6 +13,8 @@ public class TranslationFileManager {
 
     // Append a translation to the file
     public void appendTranslation(String sourceText, String targetText) {
+        // Ensure the file exists
+        ensureFileExists();
 
         if (translationExists(sourceText)) {
             System.out.println("Translation already exists for: " + sourceText);
@@ -26,7 +28,8 @@ public class TranslationFileManager {
         }
     }
 
-    private boolean translationExists(String sourceText){
+    boolean translationExists(String sourceText) {
+        ensureFileExists(); // Ensure the file exists before reading
         try (BufferedReader reader = new BufferedReader(new FileReader(translationFilePath))) {
             String line;
             while ((line = reader.readLine()) != null) {
@@ -43,6 +46,7 @@ public class TranslationFileManager {
 
     // Load translations into memory
     public Map<String, String> loadTranslations() {
+        ensureFileExists(); // Ensure the file exists before reading
         Map<String, String> translations = new HashMap<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(translationFilePath))) {
             String line;
@@ -56,5 +60,21 @@ public class TranslationFileManager {
             e.printStackTrace();
         }
         return translations;
+    }
+
+    // Ensure the file exists
+    private void ensureFileExists() {
+        File file = new File(translationFilePath);
+        if (!file.exists()) {
+            try {
+                if (file.createNewFile()) {
+                    System.out.println("Created file: " + translationFilePath);
+                } else {
+                    System.err.println("Failed to create file: " + translationFilePath);
+                }
+            } catch (IOException e) {
+                System.err.println("Error creating file: " + e.getMessage());
+            }
+        }
     }
 }
