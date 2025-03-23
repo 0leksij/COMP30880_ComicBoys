@@ -2,6 +2,8 @@ package com.comicboys.project.client;
 
 import com.comicboys.project.config.ConfigurationFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
@@ -13,8 +15,33 @@ public class VignetteGenerator {
 
     public VignetteGenerator(ConfigurationFile config, Mappings mappings) {
         this.apiClient = new APIClient(config);
-        this.translationFileManager = new TranslationFileManager(translationFilePath);
         this.mappings = mappings;
+
+        // Generate the translations file path dynamically
+        String sourceLanguage = config.getProperty("SOURCE_LANGUAGE").toLowerCase();
+        String targetLanguage = config.getProperty("TARGET_LANGUAGE").toLowerCase();
+        this.translationFilePath = "assets/translations/" + sourceLanguage + "-to-" + targetLanguage + "-translations.tsv";
+
+        // Create the translations file if it doesn't exist
+        ensureFileExists(translationFilePath);
+
+        // Initialize the TranslationFileManager
+        this.translationFileManager = new TranslationFileManager(translationFilePath);
+    }
+
+    private void ensureFileExists(String filePath) {
+        File file = new File(filePath);
+        if (!file.exists()) {
+            try {
+                if (file.createNewFile()) {
+                    System.out.println("Created file: " + filePath);
+                } else {
+                    System.err.println("Failed to create file: " + filePath);
+                }
+            } catch (IOException e) {
+                System.err.println("Error creating file: " + e.getMessage());
+            }
+        }
     }
 
     // translate all words in either text column

@@ -17,7 +17,7 @@ public class Main {
         ConfigurationFile config = new ConfigurationFile();
 
         // read tsv file with specified number of lines
-        int rows = 3;
+        int rows = 4;
         System.out.println("\nReading first " + rows + " rows");
         TSVReader myReader = new TSVReader(rows);
         // get mappings data structure
