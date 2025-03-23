@@ -1,9 +1,18 @@
 package com.comicboys.project.utility;
 
 import java.util.regex.Pattern;
+import java.util.logging.Logger;
 
 public class DenialChecker {
+    private static final Logger logger = Logger.getLogger(DenialChecker.class.getName());
+
     public static boolean isDenialOfService(String prompt, String response) {
+        // Handle null response
+        if (response == null) {
+            logger.warning("Response is null for prompt: " + prompt);
+            return false; // or throw an exception if null is not allowed
+        }
+
         String lowerResponse = response.toLowerCase();
 
         // Key refusal patterns: combinations of verbs & policy-based words
@@ -19,21 +28,19 @@ public class DenialChecker {
                 Pattern.CASE_INSENSITIVE
         );
 
-
-        if (prompt.toLowerCase().matches(".*(translate|say in|example|explanation|definition|denial of service|violates your policies|content guidelines).*")) {
-            return false;
+        // Contextual keywords for ignoring specific prompts
+        String[] contextKeywords = {"translate", "say in", "example", "explanation", "definition",
+                "denial of service", "violates your policies", "content guidelines"};
+        for (String keyword : contextKeywords) {
+            if (prompt != null && prompt.toLowerCase().contains(keyword)) {
+                return false;
+            }
         }
-        /*
-        // Context-based check: Ignore if the user prompt asks for translation or similar topics
-        Pattern contextPattern = Pattern.compile(
-                "(translate|say in|example|explanation|definition|denial of service|violates your policies|content guidelines|interpret|rephrase|summarize)",
-                Pattern.CASE_INSENSITIVE
-        );
 
-        if (contextPattern.matcher(prompt).find()) {
-            return false;
-        }*/
-
-        return denialPattern.matcher(lowerResponse).find();
+        boolean isDenial = denialPattern.matcher(lowerResponse).find();
+        if (isDenial) {
+            logger.warning("Denial detected for prompt: " + prompt);
+        }
+        return isDenial;
     }
 }
