@@ -66,7 +66,7 @@ class VignetteGeneratorTest {
 
                 // Simulate translation storage
                 for (String text : batch) {
-                    translationFileManager.appendTranslation(text, "Translated: " + text);
+                    this.getTranslationFileManager().appendTranslation(text, "Translated: " + text);
                     testTranslations.put(text, "Translated: " + text);
                 }
             }
@@ -77,11 +77,11 @@ class VignetteGeneratorTest {
     void testConstructorCreatesCorrectFiles() {
         // Check that translation file path is correctly constructed
         String expectedPath = "assets/translations/english-to-spanish-translations.tsv";
-        assertTrue(generator.translationFilePath.endsWith(expectedPath),
+        assertTrue(generator.getTranslationFilePath().endsWith(expectedPath),
                 "Translation file path should use language configuration");
 
         // Verify file exists
-        File translationFile = new File(generator.translationFilePath);
+        File translationFile = new File(generator.getTranslationFilePath());
         assertTrue(translationFile.exists(), "Translation file should be created");
     }
 
@@ -146,7 +146,7 @@ class VignetteGeneratorTest {
     @Test
     void testGetTranslationsReturnsCorrectData() throws Exception {
         // Pre-populate the translation file
-        Path translationFile = Path.of(generator.translationFilePath);
+        Path translationFile = Path.of(generator.getTranslationFilePath());
         Files.writeString(translationFile, "test1\tTranslated1\ntest2\tTranslated2\n");
 
         // Get translations

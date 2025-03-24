@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 
 public class VignetteGenerator {
     private final APIClient apiClient;
-    private String translationFilePath;
+    private final String translationFilePath;
     private final TranslationFileManager translationFileManager;
     private final Mappings mappings;
 
@@ -91,4 +91,6 @@ public class VignetteGenerator {
     public Map<String, String> getTranslations() {
         return translationFileManager.loadTranslations();
     }
+    public String getTranslationFilePath() { return translationFilePath; }
+    public TranslationFileManager getTranslationFileManager() { return translationFileManager; }
 }
