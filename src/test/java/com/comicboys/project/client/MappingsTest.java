@@ -44,24 +44,16 @@ class MappingsTest {
     void findMatchingExistingText(){
         mappings.addEntry("a1, a2\tb1\tc1\td1, d2\te1");
         mappings.addEntry("x1\ty1\tsecret\tw1\tv1");
-        Map<MappingsColumn, String> expectedMatch = new HashMap<>() {{
-            put(LEFT_POSE, "x1");
-            put(COMBINED_TEXT, "y1");
-            put(LEFT_TEXT, "secret");
-            put(RIGHT_POSE, "w1");
-            put(BACKGROUNDS, "v1");
-        }};
+        StringEntry expectedMatch = new StringEntry("x1", "y1", "secret", "w1", "v1");
         assertEquals(expectedMatch.toString(), mappings.findMatch("secret").toString());
         assertFalse(mappings.isEmpty());
-
-
     }
     // will pass if an empty map is returned since text not in map we provided
     @Test
     void findMatchingNonExistingText(){
         mappings.addEntry("a1, a2\tb1\tc1\td1, d2\te1");
         mappings.addEntry("x1\ty1\tz1\tw1\tv1");
-        assertEquals(Map.of().toString(), mappings.findMatch("secret").toString());
+        assertNull(mappings.findMatch("secret"));
         assertFalse(mappings.isEmpty());
     }
 }

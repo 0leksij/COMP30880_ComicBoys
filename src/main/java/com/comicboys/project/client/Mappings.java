@@ -7,12 +7,29 @@ import java.util.*;
 
 
 public class Mappings {
-    // will represent our mapping tsv file, where each index is row index, and each Entry is the row
-    private final ArrayList<Entry> mappings = new ArrayList<>();
+    // will represent our mapping tsv file, where each index is row index, and each ListEntry is the row
+    private final ArrayList<ListEntry> mappings = new ArrayList<>();
     // add a new mapping row, input row of tsv file with columns: leftPose, combinedText, leftText, rightPose, backgrounds
     public void addEntry(String rowData) {
-        String[] parsedRow = rowData.split("\t");
-        mappings.add(new Entry(parsedRow));
+        String[] row = rowData.split("\t");
+        // this needs to be done in the case that a row has less than required number of columns,
+        // to avoid IndexOutOfBounds when accessing row[i]
+        String[] fullRow = {"", "", "", "", ""};
+        for (int i = 0; i < row.length; i++) { fullRow[i] = row[i]; }
+        mappings.add(new ListEntry(
+                processColumn(fullRow[0]),
+                processColumn(fullRow[1]),
+                processColumn(fullRow[2]),
+                processColumn(fullRow[3]),
+                processColumn(fullRow[4])
+        ));
+    }
+    // each column passed into here is in string format, so:
+    //      "to fall in love, love"
+    // and this method processes it to a list:
+    //      ["to fall in love", "love"]
+    private List<String> processColumn(String column) {
+        return List.of(column.toLowerCase().replace(", ", ",").split(","));
     }
     public boolean isEmpty() {
         return mappings.isEmpty();
@@ -21,44 +38,51 @@ public class Mappings {
     // returns a hashmap with key-value pairs for leftPose, combinedText, etc.
     // (since ONLY finds first match, will not check any row after that may match, so may need to also add randomness
     //  for it to pick out of all possible row options, but this is a decent start)
-    public Map<MappingsColumn, String> findMatch(String text) {
-        HashMap<MappingsColumn, String> result = new HashMap<>();
-        if (text.isEmpty()) { return result; }
-        for (Entry entry : mappings) {
-            // assigning entry variables shorter names for readability
-            List<String> leftPose = entry.leftPose;
-            List<String> combinedText = entry.combinedText;
-            List<String> leftText = entry.leftText;
-            List<String> rightPose = entry.rightPose;
-            List<String> backgrounds = entry.backgrounds;
+    public StringEntry findMatch(String text) {
+        if (text.isEmpty()) { return null; }
+        for (ListEntry entry : mappings) {
+            // assigning entry variables shorter names for readability, and needed for Entry of strings constructor
+            String leftPose;
+            String combinedText;
+            String leftText;
+            String rightPose;
+            String backgrounds;
+            List<String> entryLeftPose = entry.getLeftPose();
+            List<String> entryCombinedText = entry.getCombinedText();
+            List<String> entryLeftText = entry.getLeftText();
+            List<String> entryRightPose = entry.getRightPose();
+            List<String> entryBackgrounds = entry.getBackgrounds();
             // if word we are looking for is in either text columns is a match
-            if(leftText.contains(text) || combinedText.contains(text)) {
+            if(entryLeftText.contains(text) || entryCombinedText.contains(text)) {
                 // if you find text within a certain column, you would expect that text back, and not another text
                 // from that column, so does not pick random string for that
-                if(leftText.contains(text)) {
-                    result.put(LEFT_TEXT, text);
-                    result.put(COMBINED_TEXT, combinedText.get(Main.random.nextInt(combinedText.size())));
+                if(entryLeftText.contains(text)) {
+                    leftText = text;
+                    combinedText = entryCombinedText.get(Main.random.nextInt(entryCombinedText.size()));
                 } else {
-                    result.put(COMBINED_TEXT, text);
-                    result.put(LEFT_TEXT, leftText.get(Main.random.nextInt(leftText.size())));
+                    combinedText = text;
+                    leftText = entryLeftText.get(Main.random.nextInt(entryLeftText.size()));
                 }
                 // return a hashmap with 1:1 values, for each column picks a random word from column list
-                result.put(LEFT_POSE, leftPose.get(Main.random.nextInt(leftPose.size())));
-                result.put(RIGHT_POSE, rightPose.get(Main.random.nextInt(rightPose.size())));
-                result.put(BACKGROUNDS, backgrounds.get(Main.random.nextInt(backgrounds.size())));
+                leftPose = entryLeftPose.get(Main.random.nextInt(entryLeftPose.size()));
+                rightPose = entryRightPose.get(Main.random.nextInt(entryRightPose.size()));
+                backgrounds = entryBackgrounds.get(Main.random.nextInt(entryBackgrounds.size()));
+                // return a new entry of single strings instead of lists of strings
+                return new StringEntry(leftPose, combinedText, leftText, rightPose, backgrounds);
             }
         }
-        return result;
+        return null;
     }
 
 
-    public ArrayList<Entry> getEntries(){
+
+    public ArrayList<ListEntry> getEntries(){
         return mappings;
     }
 
     public String toString() {
         String result = "";
-        for (Entry entry : mappings) {
+        for (ListEntry entry : mappings) {
             result += entry.toString();
         }
         return result;
@@ -66,8 +90,8 @@ public class Mappings {
 
     public List<String> getAllTextFragments() {
         List<String> allTexts = new ArrayList<>();
-        for (Entry entry : mappings) {
-            allTexts.addAll(entry.combinedText); // Collect all unique text fragments
+        for (ListEntry entry : mappings) {
+            allTexts.addAll(entry.getCombinedText()); // Collect all unique text fragments
         }
         return new ArrayList<>(new HashSet<>(allTexts)); // Remove duplicates
     }
@@ -75,9 +99,9 @@ public class Mappings {
     Set<String> getAllTextFragments(boolean includeCombinedText) {
         Set<String> uniqueTexts = new HashSet<>();
 
-        for (Entry entry : mappings) {
-            if (includeCombinedText) uniqueTexts.addAll(entry.combinedText);
-            else uniqueTexts.addAll(entry.leftText);
+        for (ListEntry entry : mappings) {
+            if (includeCombinedText) uniqueTexts.addAll(entry.getCombinedText());
+            else uniqueTexts.addAll(entry.getLeftText());
         }
 
         return uniqueTexts; // Convert set to a comma-separated string

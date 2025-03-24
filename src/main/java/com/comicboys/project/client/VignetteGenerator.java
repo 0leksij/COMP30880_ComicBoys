@@ -8,10 +8,10 @@ import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 public class VignetteGenerator {
-    private APIClient apiClient;
-    String translationFilePath = "assets/translations/translations.tsv";
-    TranslationFileManager translationFileManager;
-    private Mappings mappings;
+    private final APIClient apiClient;
+    private String translationFilePath;
+    private final TranslationFileManager translationFileManager;
+    private final Mappings mappings;
 
     public VignetteGenerator(ConfigurationFile config, Mappings mappings) {
         this.apiClient = new APIClient(config);
@@ -51,9 +51,9 @@ public class VignetteGenerator {
         List<String> batch = new ArrayList<>();
         // need to change this to use set oleksii made instead, duplicates area already being handled,
         // but wondering if changing it here would make it more efficient?
-        for (Entry entry : mappings.getEntries()) {
-            addToBatch(batch, entry.combinedText);
-            addToBatch(batch, entry.leftText);
+        for (ListEntry entry : mappings.getEntries()) {
+            addToBatch(batch, entry.getCombinedText());
+            addToBatch(batch, entry.getLeftText());
         }
         // Send any remaining items in the batch
         if (!batch.isEmpty()) {
