@@ -3,7 +3,7 @@ package com.comicboys.project.client;
 import java.util.List;
 
 // each row has 5 columns, all of which can contain a list of strings (hence the array String[] for each)
-public class Entry {
+public class ListEntry {
     final List<String> leftPose;
     final List<String> combinedText;
     final List<String> leftText;
