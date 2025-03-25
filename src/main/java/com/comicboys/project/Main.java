@@ -3,7 +3,7 @@ package com.comicboys.project;
 import com.comicboys.project.client.APIClient;
 import com.comicboys.project.client.Mappings;
 import com.comicboys.project.client.TSVReader;
-import com.comicboys.project.client.VignetteGenerator;
+import com.comicboys.project.client.TranslationGenerator;
 import com.comicboys.project.config.ConfigurationFile;
 
 import java.util.Map;
@@ -23,7 +23,7 @@ public class Main {
         // get mappings data structure
         Mappings mappings = myReader.getMappings();
         // using mappings to create vignette generator
-        VignetteGenerator vignetteGenerator = new VignetteGenerator(config, mappings);
+        TranslationGenerator translationGenerator = new TranslationGenerator(config, mappings);
 
         // printing mappings data for reference
         System.out.println(mappings);
@@ -43,10 +43,10 @@ public class Main {
 
         // generate translations for words
         System.out.println("\nGenerating translations...");
-        vignetteGenerator.generateTranslations();
+        translationGenerator.generateTranslations();
         System.out.println();
         // Load and print translations
-        Map<String, String> translations = vignetteGenerator.getTranslations();
+        Map<String, String> translations = translationGenerator.getTranslations();
 
 
         System.out.println("\nPrinting translations for combinedText and leftText (2nd and 3rd columns):\n");

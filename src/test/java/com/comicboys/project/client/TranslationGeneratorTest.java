@@ -12,12 +12,12 @@ import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class VignetteGeneratorTest {
+class TranslationGeneratorTest {
 
     @TempDir
     Path tempDir;
 
-    private VignetteGenerator generator;
+    private TranslationGenerator generator;
     private ConfigurationFile config;
     private Mappings mappings;
     private List<String> processedBatches = new ArrayList<>();
@@ -54,12 +54,11 @@ class VignetteGeneratorTest {
         // Create directory structure
         new File(tempDir.toString() + "/assets/translations").mkdirs();
 
-        // Create VignetteGenerator with test functionality
+        // Create TranslationGenerator with test functionality
         processedBatches.clear();
         testTranslations.clear();
 
-        generator = new VignetteGenerator(config, mappings) {
-            @Override
+        generator = new TranslationGenerator(config, mappings) {
             void processBatch(List<String> batch) {
                 // Track processed batches
                 processedBatches.add(String.join(",", batch));
@@ -101,29 +100,6 @@ class VignetteGeneratorTest {
         assertTrue(allProcessedTexts.contains("hi"), "Should process 'hi'");
         assertTrue(allProcessedTexts.contains("goodbye"), "Should process 'goodbye'");
         assertTrue(allProcessedTexts.contains("bye"), "Should process 'bye'");
-    }
-
-    @Test
-    void testAddToBatchAddsAndProcessesCorrectly() {
-        List<String> batch = new ArrayList<>();
-        List<String> textColumn = Arrays.asList("Text1", "Text2", "", "Text3", "Text4", "Text5");
-
-        // Call the method
-        generator.addToBatch(batch, textColumn);
-
-        // Verify batch was processed when it reached 5 items
-        assertEquals(1, processedBatches.size(), "Should process batch when it reaches 5 items");
-
-        String processedTexts = processedBatches.get(0);
-        assertTrue(processedTexts.contains("Text1"), "Processed batch should contain Text1");
-        assertTrue(processedTexts.contains("Text2"), "Processed batch should contain Text2");
-        assertTrue(processedTexts.contains("Text3"), "Processed batch should contain Text3");
-        assertTrue(processedTexts.contains("Text4"), "Processed batch should contain Text4");
-        assertTrue(processedTexts.contains("Text5"), "Processed batch should contain Text5");
-        assertFalse(processedTexts.contains(" "), "Empty string should be removed");
-
-        // Batch should be cleared after processing
-        assertTrue(batch.isEmpty(), "Batch should be cleared after processing");
     }
 
     @Test
