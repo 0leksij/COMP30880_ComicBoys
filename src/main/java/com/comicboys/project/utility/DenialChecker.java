@@ -38,9 +38,7 @@ public class DenialChecker {
         }
 
         boolean isDenial = denialPattern.matcher(lowerResponse).find();
-        if (isDenial) {
-            logger.warning("Denial detected for prompt: " + prompt);
-        }
+        if (isDenial) logger.warning("Denial detected for prompt: " + prompt);
         return isDenial;
     }
 }
