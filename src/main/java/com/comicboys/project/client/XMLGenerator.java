@@ -1,6 +1,5 @@
 package com.comicboys.project.client;
 
-import com.comicboys.project.client.IVignetteSchema;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
@@ -12,12 +11,10 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.StringWriter;
-import java.util.List;
-
 
 public class XMLGenerator {
 
-    public static String generateXML(VignetteSchemaPlaceholder schema) {
+    public static String generateXML(StringEntry entry) {
         try {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
@@ -33,26 +30,25 @@ public class XMLGenerator {
 
             // Left character pose
             Element leftPose = doc.createElement("leftPose");
-            leftPose.appendChild(doc.createTextNode(String.join(", ", schema.getLeftPoses())));
+            leftPose.appendChild(doc.createTextNode(entry.getLeftPose()));
             sceneElement.appendChild(leftPose);
 
             // Right character pose (optional)
-            if (!schema.getRightPoses().isEmpty()) {
+            if (entry.getRightPose() != null && !entry.getRightPose().isEmpty()) {
                 Element rightPose = doc.createElement("rightPose");
-                rightPose.appendChild(doc.createTextNode(String.join(", ", schema.getRightPoses())));
+                rightPose.appendChild(doc.createTextNode(entry.getRightPose()));
                 sceneElement.appendChild(rightPose);
             }
 
             // Text (either combined or left text)
             Element textElement = doc.createElement("text");
-            textElement.appendChild(doc.createTextNode(String.join(", ", schema.getCombinedText().isEmpty() ?
-                    schema.getLeftText() : schema.getCombinedText())));
+            textElement.appendChild(doc.createTextNode(entry.getCombinedText().isEmpty() ? entry.getLeftText() : entry.getCombinedText()));
             sceneElement.appendChild(textElement);
 
-            // Setting suggestion
-            Element setting = doc.createElement("setting");
-            setting.appendChild(doc.createTextNode(String.join(", ", schema.getSettingSuggestions())));
-            sceneElement.appendChild(setting);
+            // Background suggestion
+            Element background = doc.createElement("background");
+            background.appendChild(doc.createTextNode(entry.getBackgrounds()));
+            sceneElement.appendChild(background);
 
             // Convert to String
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
@@ -67,5 +63,11 @@ public class XMLGenerator {
             e.printStackTrace();
             return "<error>XML Generation Failed</error>";
         }
+    }
+
+    public static void main(String[] args) {
+        // Example usage:
+        StringEntry exampleEntry = new StringEntry("standing", "Hello there!", "Hi!", "waving", "park");
+        System.out.println(generateXML(exampleEntry));
     }
 }
