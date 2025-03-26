@@ -1,4 +1,4 @@
-package com.comicboys.project.config;
+package com.comicboys.project.io;
 
 import java.io.*;
 import java.util.*;

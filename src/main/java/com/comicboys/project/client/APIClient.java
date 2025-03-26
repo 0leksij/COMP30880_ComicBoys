@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.List;
 
-import com.comicboys.project.config.ConfigurationFile;
+import com.comicboys.project.io.ConfigurationFile;
 import com.comicboys.project.utility.DenialChecker;
 import org.json.JSONObject;
 

@@ -1,10 +1,9 @@
 package com.comicboys.project;
 
-import com.comicboys.project.client.APIClient;
-import com.comicboys.project.client.Mappings;
-import com.comicboys.project.client.TSVReader;
-import com.comicboys.project.client.TranslationGenerator;
-import com.comicboys.project.config.ConfigurationFile;
+import com.comicboys.project.data.Mappings;
+import com.comicboys.project.io.MappingsFileReader;
+import com.comicboys.project.io.ConfigurationFile;
+import com.comicboys.project.io.TranslationFileManager;
 
 import java.util.Map;
 import java.util.Random;
@@ -19,11 +18,11 @@ public class Main {
         // read tsv file with specified number of lines
         int rows = 4;
         System.out.println("\nReading first " + rows + " rows");
-        TSVReader myReader = new TSVReader(rows);
+        MappingsFileReader myReader = new MappingsFileReader(rows);
         // get mappings data structure
         Mappings mappings = myReader.getMappings();
         // using mappings to create vignette generator
-        TranslationGenerator translationGenerator = new TranslationGenerator(config, mappings);
+        TranslationFileManager.TranslationGenerator translationGenerator = new TranslationFileManager.TranslationGenerator(config, mappings);
 
         // printing mappings data for reference
         System.out.println(mappings);

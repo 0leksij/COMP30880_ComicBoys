@@ -1,15 +1,16 @@
-package com.comicboys.project.client;
+package com.comicboys.project.io;
 
 
+import com.comicboys.project.data.Mappings;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import static org.junit.jupiter.api.Assertions.*;
 
-class TSVReaderTest {
-    TSVReader reader;
+class MappingsFileReaderTest {
+    MappingsFileReader reader;
     @BeforeEach
     public void setUp() {
-        reader = new TSVReader();
+        reader = new MappingsFileReader();
     }
     // will read successfully if file exists
     @Test

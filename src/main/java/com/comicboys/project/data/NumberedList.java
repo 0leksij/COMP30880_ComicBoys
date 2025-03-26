@@ -1,4 +1,4 @@
-package com.comicboys.project.client;
+package com.comicboys.project.data;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.comicboys.project.client;
+package com.comicboys.project.data;
 
 
 // need abstract class for entry, two implementations: list of string for each column or picking 1 string per column

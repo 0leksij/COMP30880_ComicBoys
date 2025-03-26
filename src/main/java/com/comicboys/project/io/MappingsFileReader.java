@@ -1,20 +1,19 @@
-package com.comicboys.project.client;
+package com.comicboys.project.io;
 
-import com.comicboys.project.Main;
+import com.comicboys.project.data.Mappings;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Random;
 
-public class TSVReader {
+public class MappingsFileReader {
     // default values (mappings is null if file fails to be read)
     private final String filePath = "assets/mappings/pose_pairings_with_backgrounds.tsv";
     private Mappings mappings;
     // if no lines passed in, will read entire file
-    public TSVReader() { readFile(-1); }
+    public MappingsFileReader() { readFile(-1); }
     // specify number of lines to read
-    public TSVReader(int numOfLines) {
+    public MappingsFileReader(int numOfLines) {
         readFile(numOfLines);
     }
     // function to read file based on number of lines (-1 for whole file)

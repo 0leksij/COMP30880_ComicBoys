@@ -1,5 +1,7 @@
 package com.comicboys.project.client;
 
+import com.comicboys.project.data.NumberedList;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;

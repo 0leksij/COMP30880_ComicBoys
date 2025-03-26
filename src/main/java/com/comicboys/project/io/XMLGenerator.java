@@ -1,5 +1,6 @@
-package com.comicboys.project.client;
+package com.comicboys.project.io;
 
+import com.comicboys.project.data.StringEntry;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 

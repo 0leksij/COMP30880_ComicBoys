@@ -1,4 +1,4 @@
-package com.comicboys.project.client;
+package com.comicboys.project.data;
 
 // each row has 5 columns, but these will be the single strings picked from each column which may have multiple
 public class StringEntry extends Entry<String> {
