@@ -1,8 +1,6 @@
-package com.comicboys.project.client;
+package com.comicboys.project.data;
 
 
-import com.comicboys.project.data.Mappings;
-import com.comicboys.project.data.StringEntry;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 

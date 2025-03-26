@@ -20,7 +20,9 @@ public class ListEntry extends Entry<List<String>> {
         } else if (getLeftText().contains(word)) {
             combinedText = getRandomWord(getCombinedText());
             leftText = word;
-        } else {
+        }
+        // this should never be called but if the word doesn't exist it will result in same as random
+        else {
             combinedText = getRandomWord(getCombinedText());
             leftText = getRandomWord(getLeftText());
         }
