@@ -60,6 +60,7 @@ public class TranslationFileManager {
             e.printStackTrace();
         }
         return translations;
+
     }
 
     // Ensure the file exists

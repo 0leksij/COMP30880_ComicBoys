@@ -42,33 +42,11 @@ public class Mappings {
         if (text.isEmpty()) { return null; }
         for (ListEntry entry : mappings) {
             // assigning entry variables shorter names for readability, and needed for Entry of strings constructor
-            String leftPose;
-            String combinedText;
-            String leftText;
-            String rightPose;
-            String backgrounds;
-            List<String> entryLeftPose = entry.getLeftPose();
             List<String> entryCombinedText = entry.getCombinedText();
             List<String> entryLeftText = entry.getLeftText();
-            List<String> entryRightPose = entry.getRightPose();
-            List<String> entryBackgrounds = entry.getBackgrounds();
             // if word we are looking for is in either text columns is a match
             if(entryLeftText.contains(text) || entryCombinedText.contains(text)) {
-                // if you find text within a certain column, you would expect that text back, and not another text
-                // from that column, so does not pick random string for that
-                if(entryLeftText.contains(text)) {
-                    leftText = text;
-                    combinedText = entryCombinedText.get(Main.random.nextInt(entryCombinedText.size()));
-                } else {
-                    combinedText = text;
-                    leftText = entryLeftText.get(Main.random.nextInt(entryLeftText.size()));
-                }
-                // return a hashmap with 1:1 values, for each column picks a random word from column list
-                leftPose = entryLeftPose.get(Main.random.nextInt(entryLeftPose.size()));
-                rightPose = entryRightPose.get(Main.random.nextInt(entryRightPose.size()));
-                backgrounds = entryBackgrounds.get(Main.random.nextInt(entryBackgrounds.size()));
-                // return a new entry of single strings instead of lists of strings
-                return new StringEntry(leftPose, combinedText, leftText, rightPose, backgrounds);
+                return entry.toStringEntry(text);
             }
         }
         return null;
