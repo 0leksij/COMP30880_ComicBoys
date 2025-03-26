@@ -4,10 +4,6 @@ package com.comicboys.project.client;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import static com.comicboys.project.client.MappingsColumn.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class MappingsTest {

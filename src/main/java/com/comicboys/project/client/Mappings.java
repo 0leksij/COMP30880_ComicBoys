@@ -1,8 +1,5 @@
 package com.comicboys.project.client;
 
-import com.comicboys.project.Main;
-import static com.comicboys.project.client.MappingsColumn.*;
-
 import java.util.*;
 
 
@@ -34,17 +31,14 @@ public class Mappings {
     public boolean isEmpty() {
         return mappings.isEmpty();
     }
-    // finds FIRST match where either leftText or combinedText contains word
-    // returns a hashmap with key-value pairs for leftPose, combinedText, etc.
-    // (since ONLY finds first match, will not check any row after that may match, so may need to also add randomness
-    //  for it to pick out of all possible row options, but this is a decent start)
+    // finds FIRST match where either leftText or combinedText contains word using method in ListEntry class
     public StringEntry findMatch(String text) {
         if (text.isEmpty()) { return null; }
         for (ListEntry entry : mappings) {
             // assigning entry variables shorter names for readability, and needed for Entry of strings constructor
             List<String> entryCombinedText = entry.getCombinedText();
             List<String> entryLeftText = entry.getLeftText();
-            // if word we are looking for is in either text columns is a match
+            // if word we are looking for is in either text columns is a match, so can call method to construct it
             if(entryLeftText.contains(text) || entryCombinedText.contains(text)) {
                 return entry.toStringEntry(text);
             }

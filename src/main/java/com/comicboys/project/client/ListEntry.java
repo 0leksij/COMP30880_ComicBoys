@@ -13,13 +13,18 @@ public class ListEntry extends Entry<List<String>> {
     public StringEntry toStringEntry(String word) {
         String combinedText;
         String leftText;
+        // check if word is in combined text or left text, otherwise random
         if (getCombinedText().contains(word)) {
             combinedText = word;
             leftText = getRandomWord(getLeftText());
-        } else {
+        } else if (getLeftText().contains(word)) {
             combinedText = getRandomWord(getCombinedText());
             leftText = word;
+        } else {
+            combinedText = getRandomWord(getCombinedText());
+            leftText = getRandomWord(getLeftText());
         }
+        // new StringEntry instance
         return new StringEntry(
                 getRandomWord(getLeftPose()),
                 combinedText,
@@ -38,6 +43,7 @@ public class ListEntry extends Entry<List<String>> {
                 getRandomWord(getBackgrounds())
         );
     }
+    // get random word from list of possible words
     private String getRandomWord(List<String> wordList) {
         return wordList.get(Main.random.nextInt(wordList.size()));
     }
