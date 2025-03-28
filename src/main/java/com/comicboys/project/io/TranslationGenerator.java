@@ -59,52 +59,90 @@ public class TranslationGenerator {
      * Generates translations for all text fragments in the mappings
      */
     public void generateTranslations() {
-        // Get all unique text fragments from both columns
-        List<String> allTexts = mappings.getAllTextFragments();
-        allTexts.remove(""); // Remove empty strings
+        int maxRetries = 3;
+        int retryDelaySeconds = 30;
+        int attempt = 0;
+        boolean success = false;
 
+        while (attempt <= maxRetries && !success) {
+            attempt++;
+            System.out.println("Starting translation attempt " + attempt);
 
-        // Process in batches
-        List<String> batch = new ArrayList<>();
+            try {
+                List<String> allTexts = mappings.getAllTextFragments();
+                allTexts.remove("");
+                boolean hadErrors = false;
 
-        for (String text : allTexts) {
-            batch.add(text);
+                List<String> batch = new ArrayList<>();
+                for (String text : allTexts) {
+                    if (translationFileManager.translationExists(text)) {
+                        continue;
+                    }
 
+                    batch.add(text);
+                    if (batch.size() >= 20) {
+                        if (!processBatchWithRetry(batch)) {
+                            hadErrors = true;
+                            break; // Exit batch processing on error
+                        }
+                        batch.clear();
+                    }
+                }
 
-            if (batch.size() >= 20) { // Batch size of 10
+                // Process final batch if no errors occurred
+                if (!hadErrors && !batch.isEmpty()) {
+                    if (!processBatchWithRetry(batch)) {
+                        hadErrors = true;
+                    }
+                }
 
-                processBatch(batch);
-                batch.clear();
-
+                if (!hadErrors) {
+                    success = true;
+                    System.out.println("Translation completed successfully");
+                } else if (attempt <= maxRetries) {
+                    System.out.println("Errors detected, retrying in " + retryDelaySeconds + "s...");
+                    TimeUnit.SECONDS.sleep(retryDelaySeconds);
+                }
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                throw new RuntimeException("Translation interrupted", e);
             }
         }
 
-        // Process any remaining items
-        if (!batch.isEmpty()) {
-            processBatch(batch);
+        if (!success) {
+            System.err.println("Failed after " + maxRetries + " attempts");
         }
     }
 
-    /**
-     * Processes a batch of texts for translation
-     * @param batch List of texts to translate
-     */
-    void processBatch(List<String> batch) {
+    private boolean processBatchWithRetry(List<String> batch) {
+        List<String> translations = apiClient.sendBatchTranslationRequest(batch);
+
+        // Check for empty list or error responses
+        if (translations.isEmpty() || translations.stream().anyMatch(t -> t.startsWith("Error"))) {
+            System.err.println("API Error - Empty or invalid response for batch");
+            return false;
+        }
+
+        // Verify all translations were received
+        if (translations.size() != batch.size()) {
+            System.err.println("API Error - Missing translations (expected " +
+                    batch.size() + ", got " + translations.size() + ")");
+            return false;
+        }
+
+        // Store translations
+        for (int i = 0; i < batch.size(); i++) {
+            translationFileManager.appendTranslation(batch.get(i), translations.get(i));
+        }
+
         try {
-
-            List<String> translations = apiClient.sendBatchTranslationRequest(batch);
-
-            // Store the translations
-            for (int i = 0; i < batch.size(); i++) {
-                translationFileManager.appendTranslation(batch.get(i), translations.get(i));
-            }
-
-            // Respect API rate limits
-            TimeUnit.SECONDS.sleep(5);
+            TimeUnit.SECONDS.sleep(5); // Rate limiting
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
-            System.err.println("Translation batch processing was interrupted");
+            return false;
         }
+
+        return true;
     }
 
     public Map<String, String> getTranslations() {

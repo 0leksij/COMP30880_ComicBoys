@@ -109,7 +109,7 @@ public class APIClient {
                 promptBuilder.append(String.format("\n%d. %s", i + 1, sourceTexts.get(i))); // Numbered list input
             }
 
-            promptBuilder.append("\nRespond with a numbered list matching the input order.");
+            promptBuilder.append("\nRespond with a numbered list matching the input order. Give me just the translations");
 
             APIResponse response = sendPrompt(promptBuilder.toString());
 
