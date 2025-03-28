@@ -60,18 +60,22 @@ public class TranslationGenerator {
      */
     public void generateTranslations() {
         // Get all unique text fragments from both columns
-        Set<String> allTexts = new HashSet<>();
-        allTexts.addAll(mappings.getCombinedText());
-        allTexts.addAll(mappings.getLeftText());
+        List<String> allTexts = mappings.getAllTextFragments();
         allTexts.remove(""); // Remove empty strings
+
 
         // Process in batches
         List<String> batch = new ArrayList<>();
+
         for (String text : allTexts) {
             batch.add(text);
-            if (batch.size() >= 5) { // Batch size of 5
+
+
+            if (batch.size() >= 20) { // Batch size of 10
+
                 processBatch(batch);
                 batch.clear();
+
             }
         }
 
@@ -87,6 +91,7 @@ public class TranslationGenerator {
      */
     void processBatch(List<String> batch) {
         try {
+
             List<String> translations = apiClient.sendBatchTranslationRequest(batch);
 
             // Store the translations
@@ -95,7 +100,7 @@ public class TranslationGenerator {
             }
 
             // Respect API rate limits
-            TimeUnit.SECONDS.sleep(3);
+            TimeUnit.SECONDS.sleep(5);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
             System.err.println("Translation batch processing was interrupted");
@@ -112,5 +117,14 @@ public class TranslationGenerator {
 
     public TranslationFileManager getTranslationFileManager() {
         return translationFileManager;
+    }
+
+    public static void main(String[] args) {
+        ConfigurationFile configurationFile = new ConfigurationFile();
+        Mappings mappings1 = new Mappings();
+
+        TranslationGenerator translationGenerator = new TranslationGenerator(configurationFile,mappings1);
+
+
     }
 }

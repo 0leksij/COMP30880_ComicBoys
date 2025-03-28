@@ -18,7 +18,7 @@ public class TranslationGeneratorTest {
     @TempDir
     Path tempDir;
 
-    private TranslationFileManager.TranslationGenerator generator;
+    private TranslationGenerator generator;
     private ConfigurationFile config;
     private Mappings mappings;
     private List<String> processedBatches = new ArrayList<>();
@@ -59,7 +59,7 @@ public class TranslationGeneratorTest {
         processedBatches.clear();
         testTranslations.clear();
 
-        generator = new TranslationFileManager.TranslationGenerator(config, mappings) {
+        generator = new TranslationGenerator(config, mappings) {
             void processBatch(List<String> batch) {
                 // Track processed batches
                 processedBatches.add(String.join(",", batch));
