@@ -1,5 +1,6 @@
 package com.comicboys.project.io;
 
+import com.comicboys.project.Main;
 import com.comicboys.project.data.StringEntry;
 import com.comicboys.project.data.Mappings;
 import org.w3c.dom.Document;
@@ -18,17 +19,17 @@ import java.util.Random;
 
 public class XMLGenerator {
 
-    private static final Random RANDOM = new Random();
-    private static Mappings mappings;
-    private static String consistentBackground = null;
+    private final Mappings mappings;
+    private String consistentBackground = null;
 
-    // Load mappings from the TSV file
-    static {
-        MappingsFileReader mappingsFileReader = new MappingsFileReader();
-        mappings = mappingsFileReader.getMappings();
+    // Constructor that initializes mappings
+    public XMLGenerator(Mappings mappings) {
+        this.mappings = mappings;
     }
 
-    public static String generateXML(StringEntry entry) {
+
+
+    public String generateXML(StringEntry entry) {
         try {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
@@ -58,7 +59,7 @@ public class XMLGenerator {
         }
     }
 
-    private static Element createScene(Document doc, StringEntry entry, int sceneNumber) {
+    private Element createScene(Document doc, StringEntry entry, int sceneNumber) {
         Element scene = doc.createElement("scene");
 
 
@@ -67,7 +68,7 @@ public class XMLGenerator {
 
 
         //boolean leftGetsBalloon =true;
-        boolean leftGetsBalloon = RANDOM.nextBoolean();// Randomly decide if left or right gets the speech balloon
+        boolean leftGetsBalloon = Main.random.nextBoolean();// Randomly decide if left or right gets the speech balloon
 
         // Left character
         Element left = doc.createElement("left");
@@ -123,38 +124,39 @@ public class XMLGenerator {
         return balloon;
     }
 
-    private static String getValidPose(String pose) {
+    private String getValidPose(String pose) {
         if (mappings.isEmpty()) return pose;
         return mappings.getAllLeftPoses().contains(pose) ? pose : getRandomPose();
     }
 
-    private static String getValidBackground(String background) {
+    private String getValidBackground(String background) {
         if (mappings.isEmpty()) return background;
         return mappings.getAllBackgrounds().contains(background) ? background : getRandomBackground();
     }
 
-    private static String getRandomPose() {
+    private String getRandomPose() {
         List<String> poses = mappings.getAllLeftPoses();
-        return poses.get(RANDOM.nextInt(poses.size()));
+        return poses.get(Main.random.nextInt(poses.size()));
     }
 
-    private static String getRandomBackground() {
+    private String getRandomBackground() {
         List<String> backgrounds = mappings.getAllBackgrounds();
-        return backgrounds.get(RANDOM.nextInt(backgrounds.size()));
+        return backgrounds.get(Main.random.nextInt(backgrounds.size()));
     }
 
 
-    private static String getConsistentBackground(String background, int sceneNumber) {
+    private String getConsistentBackground(String background, int sceneNumber) {
         if (sceneNumber == 1) consistentBackground = getValidBackground(background);
         return consistentBackground;
     }
 
-    public static void main(String[] args) {
-        //StringEntry exampleEntry = new StringEntry("standing", "", "Let's go!", "waving", "park");
-        StringEntry exampleEntry = new StringEntry();
-        System.out.println(generateXML(exampleEntry));
+    //public static void main(String[] args) {
+      //      //StringEntry exampleEntry = new StringEntry("standing", "", "Let's go!", "waving", "park");
+        //    StringEntry exampleEntry = new StringEntry();
+         //   System.out.println(generateXML(exampleEntry));
+        //}
     }
-}
+
 
 
 

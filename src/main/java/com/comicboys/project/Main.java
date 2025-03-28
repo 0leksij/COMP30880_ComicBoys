@@ -1,9 +1,11 @@
 package com.comicboys.project;
 
 import com.comicboys.project.data.Mappings;
+import com.comicboys.project.data.StringEntry;
 import com.comicboys.project.io.MappingsFileReader;
 import com.comicboys.project.io.ConfigurationFile;
 import com.comicboys.project.io.TranslationFileManager;
+import com.comicboys.project.io.XMLGenerator;
 
 import java.util.Map;
 import java.util.Random;
@@ -23,6 +25,8 @@ public class Main {
         Mappings mappings = myReader.getMappings();
         // using mappings to create vignette generator
         TranslationFileManager.TranslationGenerator translationGenerator = new TranslationFileManager.TranslationGenerator(config, mappings);
+
+        XMLGenerator xmlGenerator = new XMLGenerator(mappings);
 
         // printing mappings data for reference
         System.out.println(mappings);
@@ -52,7 +56,8 @@ public class Main {
         translations.forEach((source, target) -> System.out.println(source + " -> " + target));
 
 
-
+       // StringEntry exampleEntry = new StringEntry();
+       // System.out.println(xmlGenerator.generateXML(exampleEntry));
 
     }
 }
