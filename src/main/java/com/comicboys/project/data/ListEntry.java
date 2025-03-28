@@ -9,6 +9,12 @@ public class ListEntry extends Entry<List<String>> {
     public ListEntry(List<String> leftPose, List<String> combinedText, List<String> leftText, List<String> rightPose, List<String> backgrounds) {
         super(leftPose, combinedText, leftText, rightPose, backgrounds);
     }
+
+    ////////////////////
+    public List<String> getLeftPose() { return super.getLeftPose(); }
+    public List<String> getBackgrounds() { return super.getBackgrounds(); }
+    ///////////////
+
     // pass in a word to pick that (so not random) from is respective column
     public StringEntry toStringEntry(String word) {
         String combinedText;

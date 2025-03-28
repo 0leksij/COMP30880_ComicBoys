@@ -81,4 +81,22 @@ public class Mappings {
     public Set<String> getCombinedText(){return getAllTextFragments(true);}
     public Set<String> getLeftText(){return getAllTextFragments(false);}
 
+    ///////////////
+    public List<String> getAllLeftPoses() {
+        Set<String> leftPoses = new HashSet<>();
+        for (ListEntry entry : mappings) {
+            leftPoses.addAll(entry.getLeftPose());
+        }
+        return new ArrayList<>(leftPoses);
+    }
+
+    public List<String> getAllBackgrounds() {
+        Set<String> backgrounds = new HashSet<>();
+        for (ListEntry entry : mappings) {
+            backgrounds.addAll(entry.getBackgrounds());
+        }
+        return new ArrayList<>(backgrounds);
+    }
+    //////////////////////
+
 }
