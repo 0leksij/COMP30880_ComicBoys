@@ -124,12 +124,12 @@ public class XMLGenerator {
         return balloon;
     }
 
-    private String getValidPose(String pose) {
+    String getValidPose(String pose) {
         if (mappings.isEmpty()) return pose;
         return mappings.getAllLeftPoses().contains(pose) ? pose : getRandomPose();
     }
 
-    private String getValidBackground(String background) {
+    String getValidBackground(String background) {
         if (mappings.isEmpty()) return background;
         return mappings.getAllBackgrounds().contains(background) ? background : getRandomBackground();
     }

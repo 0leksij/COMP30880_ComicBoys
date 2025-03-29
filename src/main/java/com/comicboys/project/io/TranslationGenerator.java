@@ -13,10 +13,16 @@ public class TranslationGenerator {
     private String translationFilePath;
     private final TranslationFileManager translationFileManager;
     private final Mappings mappings;
+    private int maxRetries;
+    private int retryDelaySeconds ;
+    private int batchSizeLimit;
 
     public TranslationGenerator(ConfigurationFile config, Mappings mappings) {
         this.apiClient = new APIClient(config);
         this.mappings = mappings;
+        this.maxRetries = 1;
+        this.retryDelaySeconds = 30;
+        this.batchSizeLimit = 5;
 
         // Generate the translations file path dynamically
         String sourceLanguage = config.getProperty("SOURCE_LANGUAGE").toLowerCase();
@@ -59,8 +65,7 @@ public class TranslationGenerator {
      * Generates translations for all text fragments in the mappings
      */
     public void generateTranslations() {
-        int maxRetries = 3;
-        int retryDelaySeconds = 30;
+
         int attempt = 0;
         boolean success = false;
 
@@ -80,7 +85,7 @@ public class TranslationGenerator {
                     }
 
                     batch.add(text);
-                    if (batch.size() >= 20) {
+                    if (batch.size() >= batchSizeLimit) {
                         if (!processBatchWithRetry(batch)) {
                             hadErrors = true;
                             break; // Exit batch processing on error
@@ -156,6 +161,32 @@ public class TranslationGenerator {
     public TranslationFileManager getTranslationFileManager() {
         return translationFileManager;
     }
+
+    public void setMaxRetries(int num){
+        maxRetries = num;
+    }
+
+    public void setRetryDelaySeconds(int num){
+        retryDelaySeconds = num;
+    }
+
+    public void setBatchSizeLimit(int num){
+        batchSizeLimit = num;
+    }
+
+    public int getMaxRetries(){
+        return maxRetries;
+    }
+
+    public int getRetryDelaySeconds(){
+        return retryDelaySeconds;
+    }
+
+    public int getBatchSizeLimit(){
+        return batchSizeLimit;
+    }
+
+
 
     public static void main(String[] args) {
         ConfigurationFile configurationFile = new ConfigurationFile();

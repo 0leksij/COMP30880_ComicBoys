@@ -17,7 +17,7 @@ public class Main {
         // read tsv file with specified number of lines
         int rows = 4;
         System.out.println("\nReading first " + rows + " rows");
-        MappingsFileReader myReader = new MappingsFileReader(500);
+        MappingsFileReader myReader = new MappingsFileReader(1000);
         // get mappings data structure
         Mappings mappings = myReader.getMappings();
         // using mappings to create vignette generator
