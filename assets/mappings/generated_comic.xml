@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<comic>
+    <scene>
+        <panel>
+            <left>
+                <figure>
+                    <pose>attracted</pose>
+                    <facing>right</facing>
+                </figure>
+            </left>
+            <setting>red carpet event</setting>
+        </panel>
+        <panel>
+            <left>
+                <figure>
+                    <pose>default</pose>
+                    <facing>right</facing>
+                </figure>
+            </left>
+            <left_balloon status="speech">
+                <content>to fall in love</content>
+            </left_balloon>
+            <setting>red carpet event</setting>
+        </panel>
+        <panel>
+            <right>
+                <figure>
+                    <pose>nude</pose>
+                    <facing>left</facing>
+                </figure>
+            </right>
+            <setting>red carpet event</setting>
+        </panel>
+        <panel>
+            <right>
+                <figure>
+                    <pose>default</pose>
+                    <facing>left</facing>
+                </figure>
+            </right>
+            <right_balloon status="speech">
+                <content>translation ()</content>
+            </right_balloon>
+            <setting>red carpet event</setting>
+        </panel>
+        <panel>
+            <both>
+                <left>
+                    <figure>
+                        <pose>default</pose>
+                        <facing>right</facing>
+                    </figure>
+                </left>
+                <right>
+                    <figure>
+                        <pose>default</pose>
+                        <facing>left</facing>
+                    </figure>
+                </right>
+                <left_balloon status="speech">
+                    <content>to fall in love</content>
+                </left_balloon>
+                <right_balloon status="speech">
+                    <content>translation ()</content>
+                </right_balloon>
+            </both>
+            <setting>red carpet event</setting>
+        </panel>
+    </scene>
+    <scene>
+        <panel>
+            <left>
+                <figure>
+                    <pose>attracted</pose>
+                    <facing>right</facing>
+                </figure>
+            </left>
+            <setting>red carpet event</setting>
+        </panel>
+        <panel>
+            <left>
+                <figure>
+                    <pose>default</pose>
+                    <facing>right</facing>
+                </figure>
+            </left>
+            <left_balloon status="speech">
+                <content>love</content>
+            </left_balloon>
+            <setting>red carpet event</setting>
+        </panel>
+        <panel>
+            <right>
+                <figure>
+                    <pose>nude</pose>
+                    <facing>left</facing>
+                </figure>
+            </right>
+            <setting>red carpet event</setting>
+        </panel>
+        <panel>
+            <right>
+                <figure>
+                    <pose>default</pose>
+                    <facing>left</facing>
+                </figure>
+            </right>
+            <right_balloon status="speech">
+                <content>translation ()</content>
+            </right_balloon>
+            <setting>red carpet event</setting>
+        </panel>
+        <panel>
+            <both>
+                <left>
+                    <figure>
+                        <pose>default</pose>
+                        <facing>right</facing>
+                    </figure>
+                </left>
+                <right>
+                    <figure>
+                        <pose>default</pose>
+                        <facing>left</facing>
+                    </figure>
+                </right>
+                <left_balloon status="speech">
+                    <content>love</content>
+                </left_balloon>
+                <right_balloon status="speech">
+                    <content>translation ()</content>
+                </right_balloon>
+            </both>
+            <setting>red carpet event</setting>
+        </panel>
+    </scene>
+    <scene>
+        <panel>
+            <left>
+                <figure>
+                    <pose>attracted</pose>
+                    <facing>right</facing>
+                </figure>
+            </left>
+            <setting>red carpet event</setting>
+        </panel>
+        <panel>
+            <left>
+                <figure>
+                    <pose>default</pose>
+                    <facing>right</facing>
+                </figure>
+            </left>
+            <left_balloon status="speech">
+                <content>love</content>
+            </left_balloon>
+            <setting>red carpet event</setting>
+        </panel>
+        <panel>
+            <right>
+                <figure>
+                    <pose>nude</pose>
+                    <facing>left</facing>
+                </figure>
+            </right>
+            <setting>red carpet event</setting>
+        </panel>
+        <panel>
+            <right>
+                <figure>
+                    <pose>default</pose>
+                    <facing>left</facing>
+                </figure>
+            </right>
+            <right_balloon status="speech">
+                <content>translation ()</content>
+            </right_balloon>
+            <setting>red carpet event</setting>
+        </panel>
+        <panel>
+            <both>
+                <left>
+                    <figure>
+                        <pose>default</pose>
+                        <facing>right</facing>
+                    </figure>
+                </left>
+                <right>
+                    <figure>
+                        <pose>default</pose>
+                        <facing>left</facing>
+                    </figure>
+                </right>
+                <left_balloon status="speech">
+                    <content>love</content>
+                </left_balloon>
+                <right_balloon status="speech">
+                    <content>translation ()</content>
+                </right_balloon>
+            </both>
+            <setting>red carpet event</setting>
+        </panel>
+    </scene>
+    <scene>
+        <panel>
+            <left>
+                <figure>
+                    <pose>attracted</pose>
+                    <facing>right</facing>
+                </figure>
+            </left>
+            <setting>red carpet event</setting>
+        </panel>
+        <panel>
+            <left>
+                <figure>
+                    <pose>default</pose>
+                    <facing>right</facing>
+                </figure>
+            </left>
+            <left_balloon status="speech">
+                <content>love</content>
+            </left_balloon>
+            <setting>red carpet event</setting>
+        </panel>
+        <panel>
+            <right>
+                <figure>
+                    <pose>nude</pose>
+                    <facing>left</facing>
+                </figure>
+            </right>
+            <setting>red carpet event</setting>
+        </panel>
+        <panel>
+            <right>
+                <figure>
+                    <pose>default</pose>
+                    <facing>left</facing>
+                </figure>
+            </right>
+            <right_balloon status="speech">
+                <content>translation ()</content>
+            </right_balloon>
+            <setting>red carpet event</setting>
+        </panel>
+        <panel>
+            <both>
+                <left>
+                    <figure>
+                        <pose>default</pose>
+                        <facing>right</facing>
+                    </figure>
+                </left>
+                <right>
+                    <figure>
+                        <pose>default</pose>
+                        <facing>left</facing>
+                    </figure>
+                </right>
+                <left_balloon status="speech">
+                    <content>love</content>
+                </left_balloon>
+                <right_balloon status="speech">
+                    <content>translation ()</content>
+                </right_balloon>
+            </both>
+            <setting>red carpet event</setting>
+        </panel>
+    </scene>
+    <scene>
+        <panel>
+            <left>
+                <figure>
+                    <pose>attracted</pose>
+                    <facing>right</facing>
+                </figure>
+            </left>
+            <setting>red carpet event</setting>
+        </panel>
+        <panel>
+            <left>
+                <figure>
+                    <pose>default</pose>
+                    <facing>right</facing>
+                </figure>
+            </left>
+            <left_balloon status="speech">
+                <content>to fall in love</content>
+            </left_balloon>
+            <setting>red carpet event</setting>
+        </panel>
+        <panel>
+            <right>
+                <figure>
+                    <pose>nude</pose>
+                    <facing>left</facing>
+                </figure>
+            </right>
+            <setting>red carpet event</setting>
+        </panel>
+        <panel>
+            <right>
+                <figure>
+                    <pose>default</pose>
+                    <facing>left</facing>
+                </figure>
+            </right>
+            <right_balloon status="speech">
+                <content>translation ()</content>
+            </right_balloon>
+            <setting>red carpet event</setting>
+        </panel>
+        <panel>
+            <both>
+                <left>
+                    <figure>
+                        <pose>default</pose>
+                        <facing>right</facing>
+                    </figure>
+                </left>
+                <right>
+                    <figure>
+                        <pose>default</pose>
+                        <facing>left</facing>
+                    </figure>
+                </right>
+                <left_balloon status="speech">
+                    <content>to fall in love</content>
+                </left_balloon>
+                <right_balloon status="speech">
+                    <content>translation ()</content>
+                </right_balloon>
+            </both>
+            <setting>red carpet event</setting>
+        </panel>
+    </scene>
+</comic>

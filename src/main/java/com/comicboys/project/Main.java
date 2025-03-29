@@ -7,6 +7,7 @@ import com.comicboys.project.io.ConfigurationFile;
 import com.comicboys.project.io.TranslationFileManager;
 import com.comicboys.project.io.XMLGenerator;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -28,7 +29,7 @@ public class Main {
 
         XMLGenerator xmlGenerator = new XMLGenerator(mappings);
 
-        // printing mappings data for reference
+       // printing mappings data for reference
         System.out.println(mappings);
         System.out.println();
         // find match given certain word (finds FIRST row where this word appears)
@@ -51,13 +52,8 @@ public class Main {
         // Load and print translations
         Map<String, String> translations = translationGenerator.getTranslations();
 
-
         System.out.println("\nPrinting translations for combinedText and leftText (2nd and 3rd columns):\n");
         translations.forEach((source, target) -> System.out.println(source + " -> " + target));
-
-
-       // StringEntry exampleEntry = new StringEntry();
-       // System.out.println(xmlGenerator.generateXML(exampleEntry));
 
     }
 }
