@@ -2,10 +2,7 @@ package com.comicboys.project;
 
 import com.comicboys.project.data.Mappings;
 import com.comicboys.project.data.StringEntry;
-import com.comicboys.project.io.MappingsFileReader;
-import com.comicboys.project.io.ConfigurationFile;
-import com.comicboys.project.io.TranslationFileManager;
-import com.comicboys.project.io.XMLGenerator;
+import com.comicboys.project.io.*;
 
 import java.util.List;
 import java.util.Map;
@@ -14,18 +11,18 @@ import java.util.Random;
 
 public class Main {
     public static Random random = new Random();
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         // creating config file object
         ConfigurationFile config = new ConfigurationFile();
 
         // read tsv file with specified number of lines
         int rows = 4;
         System.out.println("\nReading first " + rows + " rows");
-        MappingsFileReader myReader = new MappingsFileReader(rows);
+        MappingsFileReader myReader = new MappingsFileReader(1000);
         // get mappings data structure
         Mappings mappings = myReader.getMappings();
         // using mappings to create vignette generator
-        TranslationFileManager.TranslationGenerator translationGenerator = new TranslationFileManager.TranslationGenerator(config, mappings);
+        TranslationGenerator translationGenerator = new TranslationGenerator(config, mappings);
 
         XMLGenerator xmlGenerator = new XMLGenerator(mappings);
 
@@ -55,9 +52,9 @@ public class Main {
         System.out.println("\nPrinting translations for combinedText and leftText (2nd and 3rd columns):\n");
         translations.forEach((source, target) -> System.out.println(source + " -> " + target));
 
-        /*XMLGenerator generator = new XMLGenerator(mappings);
+        XMLGenerator generator = new XMLGenerator(mappings);
         String filePath = "assets/mappings/generated_comic.xml";
-        generator.generateXML(0, filePath);*/
+        generator.generateXML(0, filePath);
 
     }
 }

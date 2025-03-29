@@ -13,10 +13,16 @@ public class TranslationGenerator {
     private String translationFilePath;
     private final TranslationFileManager translationFileManager;
     private final Mappings mappings;
+    private int maxRetries;
+    private int retryDelaySeconds ;
+    private int batchSizeLimit;
 
     public TranslationGenerator(ConfigurationFile config, Mappings mappings) {
         this.apiClient = new APIClient(config);
         this.mappings = mappings;
+        this.maxRetries = 1;
+        this.retryDelaySeconds = 30;
+        this.batchSizeLimit = 5;
 
         // Generate the translations file path dynamically
         String sourceLanguage = config.getProperty("SOURCE_LANGUAGE").toLowerCase();
@@ -59,47 +65,89 @@ public class TranslationGenerator {
      * Generates translations for all text fragments in the mappings
      */
     public void generateTranslations() {
-        // Get all unique text fragments from both columns
-        Set<String> allTexts = new HashSet<>();
-        allTexts.addAll(mappings.getCombinedText());
-        allTexts.addAll(mappings.getLeftText());
-        allTexts.remove(""); // Remove empty strings
 
-        // Process in batches
-        List<String> batch = new ArrayList<>();
-        for (String text : allTexts) {
-            batch.add(text);
-            if (batch.size() >= 5) { // Batch size of 5
-                processBatch(batch);
-                batch.clear();
+        int attempt = 0;
+        boolean success = false;
+
+        while (attempt <= maxRetries && !success) {
+            attempt++;
+            System.out.println("Starting translation attempt " + attempt);
+
+            try {
+                List<String> allTexts = mappings.getAllTextFragments();
+                allTexts.remove("");
+                boolean hadErrors = false;
+
+                List<String> batch = new ArrayList<>();
+                for (String text : allTexts) {
+                    if (translationFileManager.translationExists(text)) {
+                        continue;
+                    }
+
+                    batch.add(text);
+                    if (batch.size() >= batchSizeLimit) {
+                        if (!processBatchWithRetry(batch)) {
+                            hadErrors = true;
+                            break; // Exit batch processing on error
+                        }
+                        batch.clear();
+                    }
+                }
+
+                // Process final batch if no errors occurred
+                if (!hadErrors && !batch.isEmpty()) {
+                    if (!processBatchWithRetry(batch)) {
+                        hadErrors = true;
+                    }
+                }
+
+                if (!hadErrors) {
+                    success = true;
+                    System.out.println("Translation completed successfully");
+                } else if (attempt <= maxRetries) {
+                    System.out.println("Errors detected, retrying in " + retryDelaySeconds + "s...");
+                    TimeUnit.SECONDS.sleep(retryDelaySeconds);
+                }
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                throw new RuntimeException("Translation interrupted", e);
             }
         }
 
-        // Process any remaining items
-        if (!batch.isEmpty()) {
-            processBatch(batch);
+        if (!success) {
+            System.err.println("Failed after " + maxRetries + " attempts");
         }
     }
 
-    /**
-     * Processes a batch of texts for translation
-     * @param batch List of texts to translate
-     */
-    void processBatch(List<String> batch) {
+    private boolean processBatchWithRetry(List<String> batch) {
+        List<String> translations = apiClient.sendBatchTranslationRequest(batch);
+
+        // Check for empty list or error responses
+        if (translations.isEmpty() || translations.stream().anyMatch(t -> t.startsWith("Error"))) {
+            System.err.println("API Error - Empty or invalid response for batch");
+            return false;
+        }
+
+        // Verify all translations were received
+        if (translations.size() != batch.size()) {
+            System.err.println("API Error - Missing translations (expected " +
+                    batch.size() + ", got " + translations.size() + ")");
+            return false;
+        }
+
+        // Store translations
+        for (int i = 0; i < batch.size(); i++) {
+            translationFileManager.appendTranslation(batch.get(i), translations.get(i));
+        }
+
         try {
-            List<String> translations = apiClient.sendBatchTranslationRequest(batch);
-
-            // Store the translations
-            for (int i = 0; i < batch.size(); i++) {
-                translationFileManager.appendTranslation(batch.get(i), translations.get(i));
-            }
-
-            // Respect API rate limits
-            TimeUnit.SECONDS.sleep(3);
+            TimeUnit.SECONDS.sleep(5); // Rate limiting
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
-            System.err.println("Translation batch processing was interrupted");
+            return false;
         }
+
+        return true;
     }
 
     public Map<String, String> getTranslations() {
@@ -112,5 +160,40 @@ public class TranslationGenerator {
 
     public TranslationFileManager getTranslationFileManager() {
         return translationFileManager;
+    }
+
+    public void setMaxRetries(int num){
+        maxRetries = num;
+    }
+
+    public void setRetryDelaySeconds(int num){
+        retryDelaySeconds = num;
+    }
+
+    public void setBatchSizeLimit(int num){
+        batchSizeLimit = num;
+    }
+
+    public int getMaxRetries(){
+        return maxRetries;
+    }
+
+    public int getRetryDelaySeconds(){
+        return retryDelaySeconds;
+    }
+
+    public int getBatchSizeLimit(){
+        return batchSizeLimit;
+    }
+
+
+
+    public static void main(String[] args) {
+        ConfigurationFile configurationFile = new ConfigurationFile();
+        Mappings mappings1 = new Mappings();
+
+        TranslationGenerator translationGenerator = new TranslationGenerator(configurationFile,mappings1);
+
+
     }
 }

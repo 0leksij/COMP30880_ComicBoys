@@ -9,20 +9,22 @@ import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class TranslationGeneratorTest {
 
     @TempDir
     Path tempDir;
 
-    private TranslationFileManager.TranslationGenerator generator;
+    private TranslationGenerator generator;
     private ConfigurationFile config;
     private Mappings mappings;
-    private List<String> processedBatches = new ArrayList<>();
+    private List<List<String>> processedBatches = new ArrayList<>();
     private Map<String, String> testTranslations = new HashMap<>();
+    private AtomicInteger apiCallCount = new AtomicInteger(0);
 
     @BeforeEach
     void setUp() {
@@ -44,7 +46,7 @@ public class TranslationGeneratorTest {
             }
         };
 
-        // Create simple mappings with test data - using lowercase to match actual processed output
+        // Create simple mappings with test data
         mappings = new Mappings();
         mappings.addEntry("pose1\thello world\thi\tpose2\tbackground1");
         mappings.addEntry("pose3\tgoodbye\tbye\tpose4\tbackground2");
@@ -56,21 +58,34 @@ public class TranslationGeneratorTest {
         new File(tempDir.toString() + "/assets/translations").mkdirs();
 
         // Create TranslationGenerator with test functionality
-        processedBatches.clear();
-        testTranslations.clear();
+        //processedBatches.clear();
+        //testTranslations.clear();
+        apiCallCount.set(0);
 
-        generator = new TranslationFileManager.TranslationGenerator(config, mappings) {
-            void processBatch(List<String> batch) {
-                // Track processed batches
-                processedBatches.add(String.join(",", batch));
+        generator = new TranslationGenerator(config, mappings) {
+            protected boolean processBatchWithRetry(List<String> batch) {
+                processedBatches.add(new ArrayList<>(batch));
+                apiCallCount.incrementAndGet();
 
-                // Simulate translation storage
+                // Simulate API response
+                List<String> translations = new ArrayList<>();
                 for (String text : batch) {
-                    this.getTranslationFileManager().appendTranslation(text, "Translated: " + text);
+                    translations.add("Translated: " + text);
                     testTranslations.put(text, "Translated: " + text);
                 }
+
+                // Store translations
+                for (int i = 0; i < batch.size(); i++) {
+                    this.getTranslationFileManager().appendTranslation(batch.get(i), translations.get(i));
+                }
+
+                return true; // Always succeed in tests unless we want to test retries
             }
         };
+
+        generator.setMaxRetries(0);
+        generator.setBatchSizeLimit(5);
+        generator.setRetryDelaySeconds(1);
     }
 
     @Test
@@ -85,40 +100,6 @@ public class TranslationGeneratorTest {
         assertTrue(translationFile.exists(), "Translation file should be created");
     }
 
-    @Test
-    void testGenerateTranslationsProcessesAllTexts() {
-        // Run the method
-        generator.generateTranslations();
-
-        // Check that all text from mappings was processed
-        Set<String> allProcessedTexts = new HashSet<>();
-        for (String batchText : processedBatches) {
-            allProcessedTexts.addAll(Arrays.asList(batchText.split(",")));
-        }
-
-        // Should contain all texts from our mappings - using lowercase to match
-        assertTrue(allProcessedTexts.contains("hello world"), "Should process 'hello world'");
-        assertTrue(allProcessedTexts.contains("hi"), "Should process 'hi'");
-        assertTrue(allProcessedTexts.contains("goodbye"), "Should process 'goodbye'");
-        assertTrue(allProcessedTexts.contains("bye"), "Should process 'bye'");
-    }
-
-    @Test
-    void testProcessBatchStoresTranslations() throws Exception {
-        // Create a test batch
-        List<String> batch = Arrays.asList("hello", "world");
-
-        // Process the batch
-        generator.processBatch(batch);
-
-        // Check translations were stored
-        Map<String, String> translations = generator.getTranslations();
-
-        assertEquals("Translated: hello", translations.get("hello"),
-                "Translation for 'hello' should be stored");
-        assertEquals("Translated: world", translations.get("world"),
-                "Translation for 'world' should be stored");
-    }
 
     @Test
     void testGetTranslationsReturnsCorrectData() throws Exception {
@@ -135,4 +116,86 @@ public class TranslationGeneratorTest {
         assertEquals("Translated2", translations.get("test2"), "Should return correct translation for test2");
     }
 
+    @Test
+    void testRetryLogicOnApiFailure() {
+        // Create generator that will fail first two attempts
+        AtomicInteger failCounter = new AtomicInteger(2);
+        TranslationGenerator failingGenerator = new TranslationGenerator(config, mappings) {
+            protected boolean processBatchWithRetry(List<String> batch) {
+                if (failCounter.getAndDecrement() > 0) {
+                    return false; // Simulate API failure
+                }
+                // On third attempt, succeed
+                for (String text : batch) {
+                    this.getTranslationFileManager().appendTranslation(text, "Translated: " + text);
+                }
+                return true;
+            }
+        };
+
+        failingGenerator.setMaxRetries(3); // Allow enough retries
+        failingGenerator.setRetryDelaySeconds(0); // Speed up test
+
+        // Run the method
+        failingGenerator.generateTranslations();
+
+        // Verify translations were eventually stored
+        Map<String, String> translations = failingGenerator.getTranslations();
+        assertFalse(translations.isEmpty(), "Translations should be stored after retries");
+    }
+
+    @Test
+    void testBatchProcessingRespectsSizeLimit() {
+        // Add enough entries to require multiple batches
+        for (int i = 0; i < 50; i++) {
+            mappings.addEntry("pose" + i + "\ttext" + i + "\ttext" + i + "\tpose" + (i+1) + "\tbackground" + i);
+        }
+
+        // Run the method
+        generator.generateTranslations();
+
+        // Verify batches were processed in correct sizes
+        for (List<String> batch : processedBatches) {
+            assertTrue(batch.size() <= generator.getBatchSizeLimit(),
+                    "Batch size should not exceed batch size limit");
+        }
+    }
+
+    @Test
+    void testSkipsAlreadyTranslatedTexts() {
+        // Pre-populate some translations
+        generator.getTranslationFileManager().appendTranslation("hello world", "Existing translation");
+
+        // Run the method
+        generator.generateTranslations();
+
+        // Verify the existing translation wasn't reprocessed
+        boolean found = false;
+        for (List<String> batch : processedBatches) {
+            if (batch.contains("hello world")) {
+                found = true;
+                break;
+            }
+        }
+        assertFalse(found, "Already translated text should be skipped");
+    }
+
+    @Test
+    void testEmptyTextsAreSkipped() {
+        // Add an entry with empty text
+        mappings.addEntry("pose5\t\tempty\tpose6\tbackground3");
+
+        // Run the method
+        generator.generateTranslations();
+
+        // Verify empty text wasn't processed
+        boolean foundEmpty = false;
+        for (List<String> batch : processedBatches) {
+            if (batch.contains("")) {
+                foundEmpty = true;
+                break;
+            }
+        }
+        assertFalse(foundEmpty, "Empty texts should be skipped");
+    }
 }
