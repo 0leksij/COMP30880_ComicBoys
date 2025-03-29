@@ -82,4 +82,32 @@ class XMLGeneratorTest {
         assertTrue(Files.exists(path));
         assertEquals(testContent, Files.readString(path).trim());
     }
+
+    @Test
+    void testGetValidPose() {
+        String validPose = "pose1";
+        assertEquals(validPose, xmlGenerator.getValidPose(validPose));
+        assertNotNull(xmlGenerator.getValidPose("invalid_pose"));
+    }
+
+    @Test
+    void testCreateBackgroundSettingElement() throws Exception {
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder builder = factory.newDocumentBuilder();
+        Document doc = builder.newDocument();
+
+        Element settingElement = xmlGenerator.createBackgroundSettingElement(doc);
+        assertEquals("setting", settingElement.getNodeName());
+    }
+
+    @Test
+    void testCreateBalloon() throws Exception {
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder builder = factory.newDocumentBuilder();
+        Document doc = builder.newDocument();
+
+        Element balloon = xmlGenerator.createBalloon(doc, "left_balloon", "Hello");
+        assertEquals("left_balloon", balloon.getNodeName());
+        assertEquals("speech", balloon.getAttribute("status"));
+    }
 }

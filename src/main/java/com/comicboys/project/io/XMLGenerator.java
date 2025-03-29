@@ -182,7 +182,7 @@ public class XMLGenerator {
         return right;
     }
 
-    private Element createBalloon(Document doc, String type, String text) {
+    Element createBalloon(Document doc, String type, String text) {
         Element balloon = doc.createElement(type);
         balloon.setAttribute("status", "speech");
         Element content = doc.createElement("content");
@@ -191,7 +191,7 @@ public class XMLGenerator {
         return balloon;
     }
 
-    private Element createBackgroundSettingElement(Document doc) {
+    Element createBackgroundSettingElement(Document doc) {
         Element setting = doc.createElement("setting");
         setting.appendChild(doc.createTextNode(consistentBackground));
         return setting;
