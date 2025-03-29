@@ -72,7 +72,7 @@ public class XMLGenerator {
         }
     }
 
-    private void saveXMLToFile(String xmlContent, String filePath) {
+    void saveXMLToFile(String xmlContent, String filePath) {
         try {
             File file = new File(filePath);
 
@@ -90,13 +90,13 @@ public class XMLGenerator {
         }
     }
 
-    private void createSingleCharacterPanels(Document doc, Element sceneElement, ListEntry selectedRow) {
+    void createSingleCharacterPanels(Document doc, Element sceneElement, ListEntry selectedRow) {
         sceneElement.appendChild(createPanelWithLeftCharacter(doc, selectedRow));
         sceneElement.appendChild(createPanelWithLeftCharacterAndBalloon(doc, selectedRow.getLeftText().getFirst()));
         sceneElement.appendChild(createPanelWithLeftCharacterAndBalloon(doc, "translation (" + selectedRow.getLeftText().getFirst() + ")"));
     }
 
-    private void createMultipleCharacterPanels(Document doc, Element sceneElement, ListEntry selectedRow) {
+    void createMultipleCharacterPanels(Document doc, Element sceneElement, ListEntry selectedRow) {
         sceneElement.appendChild(createPanelWithLeftCharacter(doc, selectedRow));
 
         String randomCombinedText = selectedRow.getCombinedText().get(Main.random.nextInt(selectedRow.getCombinedText().size()));
@@ -197,7 +197,7 @@ public class XMLGenerator {
         return setting;
     }
 
-    private String getValidPose(String pose) {
+    String getValidPose(String pose) {
         if (mappings.isEmpty()) return pose;
         return mappings.getAllLeftPoses().contains(pose) ? pose : getRandomPose();
     }

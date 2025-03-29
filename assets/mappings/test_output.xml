@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<comic>
+    <scene>
+        <panel>
+            <left>
+                <figure>
+                    <pose>pose1</pose>
+                    <facing>right</facing>
+                </figure>
+            </left>
+            <setting>background1</setting>
+        </panel>
+        <panel>
+            <left>
+                <figure>
+                    <pose>default</pose>
+                    <facing>right</facing>
+                </figure>
+            </left>
+            <left_balloon status="speech">
+                <content>text1</content>
+            </left_balloon>
+            <setting>background1</setting>
+        </panel>
+        <panel>
+            <right>
+                <figure>
+                    <pose>pose1</pose>
+                    <facing>left</facing>
+                </figure>
+            </right>
+            <setting>background1</setting>
+        </panel>
+        <panel>
+            <right>
+                <figure>
+                    <pose>default</pose>
+                    <facing>left</facing>
+                </figure>
+            </right>
+            <right_balloon status="speech">
+                <content>translation (left1)</content>
+            </right_balloon>
+            <setting>background1</setting>
+        </panel>
+        <panel>
+            <both>
+                <left>
+                    <figure>
+                        <pose>default</pose>
+                        <facing>right</facing>
+                    </figure>
+                </left>
+                <right>
+                    <figure>
+                        <pose>default</pose>
+                        <facing>left</facing>
+                    </figure>
+                </right>
+                <left_balloon status="speech">
+                    <content>text1</content>
+                </left_balloon>
+                <right_balloon status="speech">
+                    <content>translation (left1)</content>
+                </right_balloon>
+            </both>
+            <setting>background1</setting>
+        </panel>
+    </scene>
+    <scene>
+        <panel>
+            <left>
+                <figure>
+                    <pose>pose1</pose>
+                    <facing>right</facing>
+                </figure>
+            </left>
+            <setting>background1</setting>
+        </panel>
+        <panel>
+            <left>
+                <figure>
+                    <pose>default</pose>
+                    <facing>right</facing>
+                </figure>
+            </left>
+            <left_balloon status="speech">
+                <content>text1</content>
+            </left_balloon>
+            <setting>background1</setting>
+        </panel>
+        <panel>
+            <right>
+                <figure>
+                    <pose>pose1</pose>
+                    <facing>left</facing>
+                </figure>
+            </right>
+            <setting>background1</setting>
+        </panel>
+        <panel>
+            <right>
+                <figure>
+                    <pose>default</pose>
+                    <facing>left</facing>
+                </figure>
+            </right>
+            <right_balloon status="speech">
+                <content>translation (left1)</content>
+            </right_balloon>
+            <setting>background1</setting>
+        </panel>
+        <panel>
+            <both>
+                <left>
+                    <figure>
+                        <pose>default</pose>
+                        <facing>right</facing>
+                    </figure>
+                </left>
+                <right>
+                    <figure>
+                        <pose>default</pose>
+                        <facing>left</facing>
+                    </figure>
+                </right>
+                <left_balloon status="speech">
+                    <content>text1</content>
+                </left_balloon>
+                <right_balloon status="speech">
+                    <content>translation (left1)</content>
+                </right_balloon>
+            </both>
+            <setting>background1</setting>
+        </panel>
+    </scene>
+    <scene>
+        <panel>
+            <left>
+                <figure>
+                    <pose>pose1</pose>
+                    <facing>right</facing>
+                </figure>
+            </left>
+            <setting>background1</setting>
+        </panel>
+        <panel>
+            <left>
+                <figure>
+                    <pose>default</pose>
+                    <facing>right</facing>
+                </figure>
+            </left>
+            <left_balloon status="speech">
+                <content>text1</content>
+            </left_balloon>
+            <setting>background1</setting>
+        </panel>
+        <panel>
+            <right>
+                <figure>
+                    <pose>pose1</pose>
+                    <facing>left</facing>
+                </figure>
+            </right>
+            <setting>background1</setting>
+        </panel>
+        <panel>
+            <right>
+                <figure>
+                    <pose>default</pose>
+                    <facing>left</facing>
+                </figure>
+            </right>
+            <right_balloon status="speech">
+                <content>translation (left1)</content>
+            </right_balloon>
+            <setting>background1</setting>
+        </panel>
+        <panel>
+            <both>
+                <left>
+                    <figure>
+                        <pose>default</pose>
+                        <facing>right</facing>
+                    </figure>
+                </left>
+                <right>
+                    <figure>
+                        <pose>default</pose>
+                        <facing>left</facing>
+                    </figure>
+                </right>
+                <left_balloon status="speech">
+                    <content>text1</content>
+                </left_balloon>
+                <right_balloon status="speech">
+                    <content>translation (left1)</content>
+                </right_balloon>
+            </both>
+            <setting>background1</setting>
+        </panel>
+    </scene>
+    <scene>
+        <panel>
+            <left>
+                <figure>
+                    <pose>pose1</pose>
+                    <facing>right</facing>
+                </figure>
+            </left>
+            <setting>background1</setting>
+        </panel>
+        <panel>
+            <left>
+                <figure>
+                    <pose>default</pose>
+                    <facing>right</facing>
+                </figure>
+            </left>
+            <left_balloon status="speech">
+                <content>text1</content>
+            </left_balloon>
+            <setting>background1</setting>
+        </panel>
+        <panel>
+            <right>
+                <figure>
+                    <pose>pose1</pose>
+                    <facing>left</facing>
+                </figure>
+            </right>
+            <setting>background1</setting>
+        </panel>
+        <panel>
+            <right>
+                <figure>
+                    <pose>default</pose>
+                    <facing>left</facing>
+                </figure>
+            </right>
+            <right_balloon status="speech">
+                <content>translation (left1)</content>
+            </right_balloon>
+            <setting>background1</setting>
+        </panel>
+        <panel>
+            <both>
+                <left>
+                    <figure>
+                        <pose>default</pose>
+                        <facing>right</facing>
+                    </figure>
+                </left>
+                <right>
+                    <figure>
+                        <pose>default</pose>
+                        <facing>left</facing>
+                    </figure>
+                </right>
+                <left_balloon status="speech">
+                    <content>text1</content>
+                </left_balloon>
+                <right_balloon status="speech">
+                    <content>translation (left1)</content>
+                </right_balloon>
+            </both>
+            <setting>background1</setting>
+        </panel>
+    </scene>
+    <scene>
+        <panel>
+            <left>
+                <figure>
+                    <pose>pose1</pose>
+                    <facing>right</facing>
+                </figure>
+            </left>
+            <setting>background1</setting>
+        </panel>
+        <panel>
+            <left>
+                <figure>
+                    <pose>default</pose>
+                    <facing>right</facing>
+                </figure>
+            </left>
+            <left_balloon status="speech">
+                <content>text1</content>
+            </left_balloon>
+            <setting>background1</setting>
+        </panel>
+        <panel>
+            <right>
+                <figure>
+                    <pose>pose1</pose>
+                    <facing>left</facing>
+                </figure>
+            </right>
+            <setting>background1</setting>
+        </panel>
+        <panel>
+            <right>
+                <figure>
+                    <pose>default</pose>
+                    <facing>left</facing>
+                </figure>
+            </right>
+            <right_balloon status="speech">
+                <content>translation (left1)</content>
+            </right_balloon>
+            <setting>background1</setting>
+        </panel>
+        <panel>
+            <both>
+                <left>
+                    <figure>
+                        <pose>default</pose>
+                        <facing>right</facing>
+                    </figure>
+                </left>
+                <right>
+                    <figure>
+                        <pose>default</pose>
+                        <facing>left</facing>
+                    </figure>
+                </right>
+                <left_balloon status="speech">
+                    <content>text1</content>
+                </left_balloon>
+                <right_balloon status="speech">
+                    <content>translation (left1)</content>
+                </right_balloon>
+            </both>
+            <setting>background1</setting>
+        </panel>
+    </scene>
+</comic>
