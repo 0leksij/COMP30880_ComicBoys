@@ -55,5 +55,9 @@ public class Main {
         System.out.println("\nPrinting translations for combinedText and leftText (2nd and 3rd columns):\n");
         translations.forEach((source, target) -> System.out.println(source + " -> " + target));
 
+        /*XMLGenerator generator = new XMLGenerator(mappings);
+        String filePath = "assets/mappings/generated_comic.xml";
+        generator.generateXML(0, filePath);*/
+
     }
 }
