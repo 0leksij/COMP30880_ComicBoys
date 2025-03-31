@@ -185,15 +185,4 @@ public class TranslationGenerator {
     public int getBatchSizeLimit(){
         return batchSizeLimit;
     }
-
-
-
-    public static void main(String[] args) {
-        ConfigurationFile configurationFile = new ConfigurationFile();
-        Mappings mappings1 = new Mappings();
-
-        TranslationGenerator translationGenerator = new TranslationGenerator(configurationFile,mappings1);
-
-
-    }
 }
