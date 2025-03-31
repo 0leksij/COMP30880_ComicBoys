@@ -34,27 +34,6 @@ public class Blueprint implements XMLFileManager{
             }
         }
         return phrases;
-
-//        // Check if nodeList is empty
-//        if (nodeList.getLength() == 0) {
-//            System.out.println("No <comic> elements found.");
-//        } else {
-//            for (int i = 0; i < nodeList.getLength(); i++) {
-//                Node node = nodeList.item(i);
-//                if (node.getNodeType() == Node.ELEMENT_NODE) {
-//                    Element element = (Element) node;
-//                    System.out.println("Comic: " + element.getTextContent());
-//                }
-//            }
-//        }
-
-
-//        for (int i = 0; i < list.getLength(); i++) {
-//            Node child = list.item(i).getFirstChild();
-//            Node nestedChild = child.getFirstChild();
-//            System.out.println(nestedChild);
-//            System.out.println(nestedChild.getTextContent());
-//        }
     }
 
 
