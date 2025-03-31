@@ -2,6 +2,7 @@ package com.comicboys.project.io;
 
 import com.comicboys.project.data.ListEntry;
 import com.comicboys.project.data.Mappings;
+import com.comicboys.project.utility.XMLFileManager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.w3c.dom.Document;
@@ -77,7 +78,7 @@ class XMLGeneratorTest {
     @Test
     void testSaveXMLToFile() throws Exception {
         String testContent = "<comic><scene></scene></comic>";
-        xmlGenerator.saveXMLToFile(testContent, testFilePath);
+        XMLFileManager.saveXMLToFile(testContent, testFilePath);
         Path path = Path.of(testFilePath);
         assertTrue(Files.exists(path));
         assertEquals(testContent, Files.readString(path).trim());

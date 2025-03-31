@@ -3,6 +3,7 @@ package com.comicboys.project.io;
 import com.comicboys.project.Main;
 import com.comicboys.project.data.ListEntry;
 import com.comicboys.project.data.Mappings;
+import com.comicboys.project.utility.XMLFileManager;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
@@ -64,7 +65,7 @@ public class XMLGenerator {
             String xmlContent = writer.toString();
 
             // Save to file
-            saveXMLToFile(xmlContent, filePath);
+            XMLFileManager.saveXMLToFile(xmlContent, filePath);
             return xmlContent;
         } catch (Exception e) {
             e.printStackTrace();
@@ -72,23 +73,6 @@ public class XMLGenerator {
         }
     }
 
-    void saveXMLToFile(String xmlContent, String filePath) {
-        try {
-            File file = new File(filePath);
-
-            // Ensure the directory exists
-            file.getParentFile().mkdirs();
-
-            FileWriter writer = new FileWriter(file);
-            writer.write(xmlContent);
-            writer.close();
-
-            System.out.println("XML saved successfully to: " + filePath);
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("Error saving XML file.");
-        }
-    }
 
     void createSingleCharacterPanels(Document doc, Element sceneElement, ListEntry selectedRow) {
         sceneElement.appendChild(createPanelWithLeftCharacter(doc, selectedRow));
