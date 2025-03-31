@@ -3,10 +3,10 @@ package com.comicboys.project.utility;
 import java.util.regex.Pattern;
 import java.util.logging.Logger;
 
-public class DenialChecker {
-    private static final Logger logger = Logger.getLogger(DenialChecker.class.getName());
+public interface DenialChecker {
+    Logger logger = Logger.getLogger(DenialChecker.class.getName());
 
-    public static boolean isDenialOfService(String prompt, String response) {
+    static boolean isDenialOfService(String prompt, String response) {
         // Handle null response
         if (response == null) {
             logger.warning("Response is null for prompt: " + prompt);

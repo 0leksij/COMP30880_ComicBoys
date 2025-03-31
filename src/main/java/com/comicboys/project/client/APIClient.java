@@ -11,12 +11,12 @@ import com.comicboys.project.io.ConfigurationFile;
 import com.comicboys.project.utility.DenialChecker;
 import org.json.JSONObject;
 
-public class APIClient {
-    private String apiKey;
-    private String model;
-    private String completionsUrl;
-    private String sourceLanguage;
-    private String targetLanguage;
+public class APIClient implements DenialChecker {
+    private final String apiKey;
+    private final String model;
+    private final String completionsUrl;
+    private final String sourceLanguage;
+    private final String targetLanguage;
 
     public APIClient(ConfigurationFile config) {
         this.apiKey = config.getProperty("API_KEY");
@@ -103,13 +103,13 @@ public class APIClient {
         try {
             // Build the prompt with numbered format
             StringBuilder promptBuilder = new StringBuilder();
-            promptBuilder.append(String.format("Translate the following words/phrases into %s:", targetLanguage));
+            promptBuilder.append(String.format("Translate the following %s words/phrases into %s:", sourceLanguage, targetLanguage));
 
             for (int i = 0; i < sourceTexts.size(); i++) {
                 promptBuilder.append(String.format("\n%d. %s", i + 1, sourceTexts.get(i))); // Numbered list input
             }
 
-            promptBuilder.append("\nRespond with a numbered list matching the input order. Give me just the translations");
+            promptBuilder.append("\nRespond with a numbered list matching the input order. Give just translations");
 
             APIResponse response = sendPrompt(promptBuilder.toString());
 
