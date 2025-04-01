@@ -22,7 +22,7 @@ public class TranslationGenerator {
         this.mappings = mappings;
         this.maxRetries = 1;
         this.retryDelaySeconds = 30;
-        this.batchSizeLimit = 5;
+        this.batchSizeLimit = 10;
 
         // Generate the translations file path dynamically
         String sourceLanguage = config.getProperty("SOURCE_LANGUAGE").toLowerCase();
@@ -119,6 +119,63 @@ public class TranslationGenerator {
         }
     }
 
+    /**
+     * Generates translations for a custom list of text fragments
+     * @param texts List of texts to translate
+     */
+    public void generateTranslations(List<String> texts) {
+        int attempt = 0;
+        boolean success = false;
+
+        while (attempt <= maxRetries && !success) {
+            attempt++;
+            System.out.println("Starting translation attempt " + attempt);
+
+            try {
+                texts.remove(""); // Remove empty strings if any
+                boolean hadErrors = false;
+
+                List<String> batch = new ArrayList<>();
+                for (String text : texts) {
+                    if (translationFileManager.translationExists(text)) {
+                        continue;
+                    }
+
+                    batch.add(text);
+                    if (batch.size() >= batchSizeLimit) {
+                        if (!processBatchWithRetry(batch)) {
+                            hadErrors = true;
+                            break; // Exit batch processing on error
+                        }
+                        batch.clear();
+                    }
+                }
+
+                // Process final batch if no errors occurred
+                if (!hadErrors && !batch.isEmpty()) {
+                    if (!processBatchWithRetry(batch)) {
+                        hadErrors = true;
+                    }
+                }
+
+                if (!hadErrors) {
+                    success = true;
+                    System.out.println("Translation completed successfully");
+                } else if (attempt <= maxRetries) {
+                    System.out.println("Errors detected, retrying in " + retryDelaySeconds + "s...");
+                    TimeUnit.SECONDS.sleep(retryDelaySeconds);
+                }
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                throw new RuntimeException("Translation interrupted", e);
+            }
+        }
+
+        if (!success) {
+            System.err.println("Failed after " + maxRetries + " attempts");
+        }
+    }
+
     private boolean processBatchWithRetry(List<String> batch) {
         List<String> translations = apiClient.sendBatchTranslationRequest(batch);
 
@@ -148,6 +205,12 @@ public class TranslationGenerator {
         }
 
         return true;
+    }
+
+    public void generateTranslationsFromList(List<String> list){
+        list.remove("");
+
+
     }
 
     public Map<String, String> getTranslations() {
