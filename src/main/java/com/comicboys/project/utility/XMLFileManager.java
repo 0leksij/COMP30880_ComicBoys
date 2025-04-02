@@ -19,21 +19,38 @@ import java.io.StringWriter;
 public interface XMLFileManager{
 
 
-    static void saveXMLToFile(String xmlContent, String filePath) {
+    static boolean saveXMLToFile(Document doc, String filePath) {
         try {
+            trimWhitespace(doc.getDocumentElement());
+
             File file = new File(filePath);
 
             // Ensure the directory exists
             file.getParentFile().mkdirs();
+            // Set up the transformer
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+            transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "3");
 
-            FileWriter writer = new FileWriter(file);
-            writer.write(xmlContent);
-            writer.close();
+            StringWriter stringWriter = new StringWriter();
+            transformer.transform(new DOMSource(doc), new StreamResult(stringWriter));
 
-            System.out.println("XML saved successfully to: " + filePath);
+            String xmlContent = stringWriter.toString();
+
+
+
+            FileWriter fileWriter = new FileWriter(file);
+            fileWriter.write(xmlContent);
+            fileWriter.close();
+
+            return true;
+
+//            System.out.println("XML saved successfully to: " + filePath);
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("Error saving XML file.");
+            return false;
         }
     }
     static Document loadXMLFromFile(String filePath) {
@@ -56,5 +73,19 @@ public interface XMLFileManager{
     static NodeList selectElement(Document doc, String element) {
         return doc.getElementsByTagName(element);
     }
+
+
+    private static void trimWhitespace(Node node) {
+        NodeList children = node.getChildNodes();
+        for (int i = 0; i < children.getLength(); i++) {
+            Node child = children.item(i);
+            if (child.getNodeType() == Node.TEXT_NODE) {
+                child.setTextContent(child.getTextContent().trim());
+            } else if (child.getNodeType() == Node.ELEMENT_NODE) {
+                trimWhitespace(child);
+            }
+        }
+    }
+
 
 }

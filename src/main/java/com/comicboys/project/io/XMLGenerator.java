@@ -29,7 +29,7 @@ public class XMLGenerator {
         this.mappings = mappings;
     }
 
-    public String generateXML(int rowIndex, String filePath) {
+    public boolean generateXML(int rowIndex, String filePath) {
         ListEntry selectedRow = mappings.getEntries().get(rowIndex);
 
         List<String> backgrounds = selectedRow.getBackgrounds();
@@ -55,21 +55,11 @@ public class XMLGenerator {
                 }
             }
 
-            TransformerFactory transformerFactory = TransformerFactory.newInstance();
-            Transformer transformer = transformerFactory.newTransformer();
-            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-
-            StringWriter writer = new StringWriter();
-            transformer.transform(new DOMSource(doc), new StreamResult(writer));
-
-            String xmlContent = writer.toString();
-
             // Save to file
-            XMLFileManager.saveXMLToFile(xmlContent, filePath);
-            return xmlContent;
+            return XMLFileManager.saveXMLToFile(doc, filePath);
         } catch (Exception e) {
             e.printStackTrace();
-            return "<error>XML Generation Failed</error>";
+            return false;
         }
     }
 

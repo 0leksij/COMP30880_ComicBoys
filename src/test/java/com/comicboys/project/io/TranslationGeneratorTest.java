@@ -137,7 +137,7 @@ public class TranslationGeneratorTest {
         failingGenerator.setRetryDelaySeconds(0); // Speed up test
 
         // Run the method
-        failingGenerator.generateTranslations();
+        failingGenerator.generateTranslations(mappings.getAllTextFragments());
 
         // Verify translations were eventually stored
         Map<String, String> translations = failingGenerator.getTranslations();
@@ -152,7 +152,7 @@ public class TranslationGeneratorTest {
         }
 
         // Run the method
-        generator.generateTranslations();
+        generator.generateTranslations(mappings.getAllTextFragments());
 
         // Verify batches were processed in correct sizes
         for (List<String> batch : processedBatches) {
@@ -167,7 +167,7 @@ public class TranslationGeneratorTest {
         generator.getTranslationFileManager().appendTranslation("hello world", "Existing translation");
 
         // Run the method
-        generator.generateTranslations();
+        generator.generateTranslations(mappings.getAllTextFragments());
 
         // Verify the existing translation wasn't reprocessed
         boolean found = false;
@@ -186,7 +186,7 @@ public class TranslationGeneratorTest {
         mappings.addEntry("pose5\t\tempty\tpose6\tbackground3");
 
         // Run the method
-        generator.generateTranslations();
+        generator.generateTranslations(mappings.getAllTextFragments());
 
         // Verify empty text wasn't processed
         boolean foundEmpty = false;

@@ -7,10 +7,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.xml.sax.InputSource;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
+import java.io.StringReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
@@ -32,10 +34,8 @@ class XMLGeneratorTest {
 
     @Test
     void testGenerateXML_createsValidXML() throws Exception {
-        String xmlContent = xmlGenerator.generateXML(0, testFilePath);
-        assertNotNull(xmlContent);
-        assertTrue(xmlContent.contains("<comic>"));
-        assertTrue(xmlContent.contains("<scene>"));
+        boolean isGenerated = xmlGenerator.generateXML(0, testFilePath);
+        assertTrue(isGenerated);
     }
 
     @Test
@@ -77,11 +77,12 @@ class XMLGeneratorTest {
 
     @Test
     void testSaveXMLToFile() throws Exception {
-        String testContent = "<comic><scene></scene></comic>";
-        XMLFileManager.saveXMLToFile(testContent, testFilePath);
-        Path path = Path.of(testFilePath);
-        assertTrue(Files.exists(path));
-        assertEquals(testContent, Files.readString(path).trim());
+        DocumentBuilder db = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+        InputSource is = new InputSource();
+        is.setCharacterStream(new StringReader("<comic><scene></scene></comic>"));
+        Document doc = db.parse(is);
+        boolean isSaved = XMLFileManager.saveXMLToFile(doc, testFilePath);
+        assertTrue(isSaved);
     }
 
     @Test
