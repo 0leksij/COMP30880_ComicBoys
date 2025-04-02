@@ -6,6 +6,7 @@ import com.comicboys.project.data.Mappings;
 import com.comicboys.project.utility.XMLFileManager;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -18,6 +19,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.StringWriter;
 import java.util.List;
+import java.util.Map;
 
 public class XMLGenerator {
 
@@ -190,4 +192,51 @@ public class XMLGenerator {
         List<String> poses = mappings.getAllLeftPoses();
         return poses.get(Main.random.nextInt(poses.size()));
     }
+
+    public String generateBilingualXML(Document originalDoc, Map<String, String> translations) {
+        try {
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder builder = factory.newDocumentBuilder();
+            Document newDoc = builder.newDocument();
+
+            Element comicElement = newDoc.createElement("comic");
+            newDoc.appendChild(comicElement);
+
+            NodeList scenes = originalDoc.getElementsByTagName("scene");
+
+            for (int i = 0; i < scenes.getLength(); i++) {
+                Element originalScene = (Element) scenes.item(i);
+                Element newScene = (Element) newDoc.importNode(originalScene, true);
+
+                NodeList balloons = newScene.getElementsByTagName("balloon");
+                for (int j = 0; j < balloons.getLength(); j++) {
+                    Element balloon = (Element) balloons.item(j);
+                    String originalText = balloon.getTextContent().trim();
+
+                    // Get translation, fallback to English if missing
+                    String translatedText = translations.getOrDefault(originalText, "(Translation Missing)");
+
+                    // Create bilingual text
+                    String bilingualText = originalText + " / " + translatedText;
+                    balloon.setTextContent(bilingualText);
+                }
+
+                comicElement.appendChild(newScene);
+            }
+
+            // Convert to String and return
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+
+            StringWriter writer = new StringWriter();
+            transformer.transform(new DOMSource(newDoc), new StreamResult(writer));
+
+            return writer.toString();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "<error>Bilingual XML Generation Failed</error>";
+        }
+    }
+
 }

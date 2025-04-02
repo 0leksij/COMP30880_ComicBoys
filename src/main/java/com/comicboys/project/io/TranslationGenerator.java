@@ -207,6 +207,50 @@ public class TranslationGenerator {
         return true;
     }
 
+    private boolean processBatchWithRetryPLural(List<String> batch) {
+        List<String> processedBatch = new ArrayList<>();
+        for (String text : batch) {
+            if (text.equalsIgnoreCase("You (Plural)")) {
+                processedBatch.add("You (Plural)"); // Mark it for special handling
+            } else {
+                processedBatch.add(text);
+            }
+        }
+
+        List<String> translations = apiClient.sendBatchTranslationRequest(processedBatch);
+
+        // Check for empty list or error responses
+        if (translations.isEmpty() || translations.stream().anyMatch(t -> t.startsWith("Error"))) {
+            System.err.println("API Error - Empty or invalid response for batch");
+            return false;
+        }
+
+        // Verify all translations were received
+        if (translations.size() != batch.size()) {
+            System.err.println("API Error - Missing translations (expected " +
+                    batch.size() + ", got " + translations.size() + ")");
+            return false;
+        }
+
+        // Store translations
+        for (int i = 0; i < batch.size(); i++) {
+            translationFileManager.appendTranslation(batch.get(i), translations.get(i));
+        }
+
+        // Handle "You (Plural)" case explicitly
+        for (int i = 0; i < batch.size(); i++) {
+            String original = batch.get(i);
+            String translated = translations.get(i);
+
+            if (original.equalsIgnoreCase("You (Plural)")) {
+                translated = "Vous" + " (plural)"; // Modify for correct plural form
+            }
+
+            translationFileManager.appendTranslation(original, translated);
+        }
+        return true;
+    }
+
     public void generateTranslationsFromList(List<String> list){
         list.remove("");
 

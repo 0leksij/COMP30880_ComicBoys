@@ -8,7 +8,7 @@
                     <facing>right</facing>
                 </figure>
             </left>
-            <setting>red carpet event</setting>
+            <setting>locker room</setting>
         </panel>
         <panel>
             <left>
@@ -20,7 +20,7 @@
             <left_balloon status="speech">
                 <content>to fall in love</content>
             </left_balloon>
-            <setting>red carpet event</setting>
+            <setting>locker room</setting>
         </panel>
         <panel>
             <right>
@@ -29,7 +29,7 @@
                     <facing>left</facing>
                 </figure>
             </right>
-            <setting>red carpet event</setting>
+            <setting>locker room</setting>
         </panel>
         <panel>
             <right>
@@ -41,7 +41,7 @@
             <right_balloon status="speech">
                 <content>translation ()</content>
             </right_balloon>
-            <setting>red carpet event</setting>
+            <setting>locker room</setting>
         </panel>
         <panel>
             <both>
@@ -64,7 +64,7 @@
                     <content>translation ()</content>
                 </right_balloon>
             </both>
-            <setting>red carpet event</setting>
+            <setting>locker room</setting>
         </panel>
     </scene>
     <scene>
@@ -75,7 +75,7 @@
                     <facing>right</facing>
                 </figure>
             </left>
-            <setting>red carpet event</setting>
+            <setting>locker room</setting>
         </panel>
         <panel>
             <left>
@@ -85,9 +85,9 @@
                 </figure>
             </left>
             <left_balloon status="speech">
-                <content>to fall in love</content>
+                <content>love</content>
             </left_balloon>
-            <setting>red carpet event</setting>
+            <setting>locker room</setting>
         </panel>
         <panel>
             <right>
@@ -96,7 +96,7 @@
                     <facing>left</facing>
                 </figure>
             </right>
-            <setting>red carpet event</setting>
+            <setting>locker room</setting>
         </panel>
         <panel>
             <right>
@@ -108,7 +108,7 @@
             <right_balloon status="speech">
                 <content>translation ()</content>
             </right_balloon>
-            <setting>red carpet event</setting>
+            <setting>locker room</setting>
         </panel>
         <panel>
             <both>
@@ -125,13 +125,13 @@
                     </figure>
                 </right>
                 <left_balloon status="speech">
-                    <content>to fall in love</content>
+                    <content>love</content>
                 </left_balloon>
                 <right_balloon status="speech">
                     <content>translation ()</content>
                 </right_balloon>
             </both>
-            <setting>red carpet event</setting>
+            <setting>locker room</setting>
         </panel>
     </scene>
     <scene>
@@ -142,7 +142,7 @@
                     <facing>right</facing>
                 </figure>
             </left>
-            <setting>red carpet event</setting>
+            <setting>locker room</setting>
         </panel>
         <panel>
             <left>
@@ -152,9 +152,9 @@
                 </figure>
             </left>
             <left_balloon status="speech">
-                <content>to fall in love</content>
+                <content>love</content>
             </left_balloon>
-            <setting>red carpet event</setting>
+            <setting>locker room</setting>
         </panel>
         <panel>
             <right>
@@ -163,7 +163,7 @@
                     <facing>left</facing>
                 </figure>
             </right>
-            <setting>red carpet event</setting>
+            <setting>locker room</setting>
         </panel>
         <panel>
             <right>
@@ -175,7 +175,7 @@
             <right_balloon status="speech">
                 <content>translation ()</content>
             </right_balloon>
-            <setting>red carpet event</setting>
+            <setting>locker room</setting>
         </panel>
         <panel>
             <both>
@@ -192,13 +192,13 @@
                     </figure>
                 </right>
                 <left_balloon status="speech">
-                    <content>to fall in love</content>
+                    <content>love</content>
                 </left_balloon>
                 <right_balloon status="speech">
                     <content>translation ()</content>
                 </right_balloon>
             </both>
-            <setting>red carpet event</setting>
+            <setting>locker room</setting>
         </panel>
     </scene>
     <scene>
@@ -209,7 +209,7 @@
                     <facing>right</facing>
                 </figure>
             </left>
-            <setting>red carpet event</setting>
+            <setting>locker room</setting>
         </panel>
         <panel>
             <left>
@@ -219,9 +219,9 @@
                 </figure>
             </left>
             <left_balloon status="speech">
-                <content>to fall in love</content>
+                <content>love</content>
             </left_balloon>
-            <setting>red carpet event</setting>
+            <setting>locker room</setting>
         </panel>
         <panel>
             <right>
@@ -230,7 +230,7 @@
                     <facing>left</facing>
                 </figure>
             </right>
-            <setting>red carpet event</setting>
+            <setting>locker room</setting>
         </panel>
         <panel>
             <right>
@@ -242,7 +242,7 @@
             <right_balloon status="speech">
                 <content>translation ()</content>
             </right_balloon>
-            <setting>red carpet event</setting>
+            <setting>locker room</setting>
         </panel>
         <panel>
             <both>
@@ -259,13 +259,13 @@
                     </figure>
                 </right>
                 <left_balloon status="speech">
-                    <content>to fall in love</content>
+                    <content>love</content>
                 </left_balloon>
                 <right_balloon status="speech">
                     <content>translation ()</content>
                 </right_balloon>
             </both>
-            <setting>red carpet event</setting>
+            <setting>locker room</setting>
         </panel>
     </scene>
     <scene>
@@ -276,7 +276,7 @@
                     <facing>right</facing>
                 </figure>
             </left>
-            <setting>red carpet event</setting>
+            <setting>locker room</setting>
         </panel>
         <panel>
             <left>
@@ -288,7 +288,7 @@
             <left_balloon status="speech">
                 <content>to fall in love</content>
             </left_balloon>
-            <setting>red carpet event</setting>
+            <setting>locker room</setting>
         </panel>
         <panel>
             <right>
@@ -297,7 +297,7 @@
                     <facing>left</facing>
                 </figure>
             </right>
-            <setting>red carpet event</setting>
+            <setting>locker room</setting>
         </panel>
         <panel>
             <right>
@@ -309,7 +309,7 @@
             <right_balloon status="speech">
                 <content>translation ()</content>
             </right_balloon>
-            <setting>red carpet event</setting>
+            <setting>locker room</setting>
         </panel>
         <panel>
             <both>
@@ -332,7 +332,7 @@
                     <content>translation ()</content>
                 </right_balloon>
             </both>
-            <setting>red carpet event</setting>
+            <setting>locker room</setting>
         </panel>
     </scene>
 </comic>
