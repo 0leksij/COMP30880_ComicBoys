@@ -1,19 +1,8 @@
 package com.comicboys.project.io;
 
-import com.comicboys.project.client.APIClient;
 import com.comicboys.project.data.Mappings;
 import com.comicboys.project.utility.XMLFileManager;
 import org.w3c.dom.*;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.transform.OutputKeys;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-import java.io.File;
-import java.io.StringWriter;
 import java.util.List;
 import java.util.Map;
 
