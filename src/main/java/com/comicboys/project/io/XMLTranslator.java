@@ -2,6 +2,7 @@ package com.comicboys.project.io;
 
 import com.comicboys.project.client.APIClient;
 import com.comicboys.project.data.Mappings;
+import com.comicboys.project.utility.XMLFileManager;
 import org.w3c.dom.*;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -21,21 +22,22 @@ public class XMLTranslator {
     private final TranslationGenerator translationGenerator;
     private final String sourceLanguage;
     private final String targetLanguage;
-    private final String outputFilePath;
+    private final String filePath;
 
     public XMLTranslator(ConfigurationFile config, Mappings mappings) {
         this.config = config;
-        this.translationGenerator = new TranslationGenerator(config, mappings);
-        this.sourceLanguage = config.getProperty("SOURCE_LANGUAGE").toLowerCase();
-        this.targetLanguage = config.getProperty("TARGET_LANGUAGE").toLowerCase();
-        this.outputFilePath = "assets/blueprint/" + sourceLanguage + "-to-" + targetLanguage + "-conjuction-lesson.xml";
+        this.translationGenerator = new TranslationGenerator(this.config, mappings);
+        this.sourceLanguage = this.config.getProperty("SOURCE_LANGUAGE").toLowerCase();
+        this.targetLanguage = this.config.getProperty("TARGET_LANGUAGE").toLowerCase();
+        this.filePath = "assets/blueprint/";
 
         // Ensure translations are generated before proceeding
-        translationGenerator.generateTranslations();
+        translationGenerator.generateTranslations(mappings.getAllTextFragments());
     }
 
-    public void translateXML(String inputFilePath) {
+    public boolean translateXML(String inputFileName) {
         try {
+            String inputFilePath = filePath + inputFileName;
             // First get all speech balloons from the XML
             Blueprint blueprint = new Blueprint(inputFilePath);
             List<String> speechBalloons = blueprint.getSpeechBalloons();
@@ -44,9 +46,7 @@ public class XMLTranslator {
             translationGenerator.generateTranslations(speechBalloons);
 
             // Load the original XML file
-            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder builder = factory.newDocumentBuilder();
-            Document doc = builder.parse(new File(inputFilePath));
+            Document doc = XMLFileManager.loadXMLFromFile(inputFilePath);
 
             // Get all panels that contain speech balloons
             NodeList panels = doc.getElementsByTagName("panel");
@@ -74,10 +74,14 @@ public class XMLTranslator {
             }
 
             // Save the translated XML to a new file
-            saveTranslatedXML(doc);
+            String outputFilePath = filePath + sourceLanguage + "-to-" + targetLanguage + "-conjunction-lesson.xml";
+            return XMLFileManager.saveXMLToFile(doc, outputFilePath);
 
         } catch (Exception e) {
+            // in case file fails to save
+            System.out.println("\nFailed to save XML file\n");
             e.printStackTrace();
+            return false;
         }
     }
 
@@ -102,47 +106,11 @@ public class XMLTranslator {
         }
     }
 
-    private void saveTranslatedXML(Document doc) throws Exception {
-        // Ensure directory exists
-        File directory = new File("assets/blueprint");
-        if (!directory.exists()) {
-            directory.mkdirs();
-        }
-
-        // Normalize the document to remove excessive whitespace
-        doc.getDocumentElement().normalize();
-        trimWhitespace(doc.getDocumentElement());
-
-        // Set up the transformer
-        TransformerFactory transformerFactory = TransformerFactory.newInstance();
-        Transformer transformer = transformerFactory.newTransformer();
-        transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-        transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "3");
-
-        // Write to file
-        DOMSource source = new DOMSource(doc);
-        StreamResult result = new StreamResult(new File(outputFilePath));
-        transformer.transform(source, result);
-
-        System.out.println("Translated XML saved to: " + outputFilePath);
-    }
-
-    private void trimWhitespace(Node node) {
-        NodeList children = node.getChildNodes();
-        for (int i = 0; i < children.getLength(); i++) {
-            Node child = children.item(i);
-            if (child.getNodeType() == Node.TEXT_NODE) {
-                child.setTextContent(child.getTextContent().trim());
-            } else if (child.getNodeType() == Node.ELEMENT_NODE) {
-                trimWhitespace(child);
-            }
-        }
-    }
 
 
 
-    public String getOutputFilePath() {
-        return outputFilePath;
+    public String getFilePath() {
+        return filePath;
     }
 
     public static void main(String[] args) {
@@ -151,8 +119,6 @@ public class XMLTranslator {
         Mappings mappings = mappingsReader.getMappings();
 
         XMLTranslator translator = new XMLTranslator(config, mappings);
-        translator.translateXML("assets/blueprint/specification.xml");
-
-        System.out.println("Translated file saved to: " + translator.getOutputFilePath());
+        translator.translateXML("specification.xml");
     }
 }

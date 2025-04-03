@@ -44,7 +44,7 @@ public class Main {
 
         // generate translations for words
         System.out.println("\nGenerating translations...");
-        translationGenerator.generateTranslations();
+        translationGenerator.generateTranslations(mappings.getAllTextFragments());
         System.out.println();
         // Load and print translations
         Map<String, String> translations = translationGenerator.getTranslations();
