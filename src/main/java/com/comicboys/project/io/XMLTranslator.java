@@ -102,12 +102,5 @@ public class XMLTranslator {
         return filePath;
     }
 
-    public static void main(String[] args) {
-        ConfigurationFile config = new ConfigurationFile();
-        MappingsFileReader mappingsReader = new MappingsFileReader();
-        Mappings mappings = mappingsReader.getMappings();
 
-        XMLTranslator translator = new XMLTranslator(config, mappings);
-        translator.translateXML("specification.xml");
-    }
 }

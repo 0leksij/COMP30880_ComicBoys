@@ -56,5 +56,11 @@ public class Main {
         String filePath = "assets/mappings/generated_comic.xml";
         generator.generateXML(0, filePath);
 
+        XMLTranslator translator = new XMLTranslator(config, mappings);
+        translator.translateXML("specification.xml");
+
+        Blueprint blueprint = new Blueprint("assets/blueprint/specification.xml");
+        System.out.println(blueprint.getSpeechBalloons());
+
     }
 }
