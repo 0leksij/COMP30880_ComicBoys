@@ -1,10 +1,10 @@
 package com.comicboys.project.io;
 
 import com.comicboys.project.data.Mappings;
-import com.comicboys.project.io.ConfigurationFile;
 import com.comicboys.project.utility.XMLFileManager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 
@@ -15,41 +15,54 @@ import static org.junit.jupiter.api.Assertions.*;
 class XMLTranslatorTest {
 
     private XMLTranslator translator;
-    private Mappings mappings;
 
     @BeforeEach
     void setUp() {
         ConfigurationFile config = new ConfigurationFile();
         MappingsFileReader mappingsReader = new MappingsFileReader();
-        mappings = mappingsReader.getMappings();
+        Mappings mappings = mappingsReader.getMappings();
         translator = new XMLTranslator(config, mappings);
     }
 
     @Test
-    void testTranslateXML() {
-        String inputFileName = "specification.xml";
-        boolean result = translator.translateXML(inputFileName);
-        assertTrue(result, "The translation should succeed.");
+    void testTranslateXMLShouldSucceed() {
+        assertTrue(translator.translateXML("specification.xml"),
+                "Expected translation to complete successfully");
     }
 
     @Test
-    void testTranslationOutputFile() {
-        String inputFileName = "specification.xml";
-        translator.translateXML(inputFileName);
-        String outputFilePath = "assets/blueprint/english-to-italian-conjuction-lesson.xml";
-        File outputFile = new File(outputFilePath);
-        assertTrue(outputFile.exists(), "The output XML file should be created.");
+    void testTranslatedFileExists() {
+        translator.translateXML("specification.xml");
+
+        String expectedPath = translator.getFilePath() + "english-to-italian-conjunction-lesson.xml";
+        File file = new File(expectedPath);
+        assertTrue(file.exists(), "Translated XML output file should exist");
     }
 
     @Test
-    void testTranslationContent() {
-        String inputFileName = "specification.xml";
-        translator.translateXML(inputFileName);
-        // Load the translated XML and verify content here
-        Document translatedDoc = XMLFileManager.loadXMLFromFile("assets/blueprint/english-to-italian-conjuction-lesson.xml");
+    void testTranslatedContentContainsExpectedText() {
+        translator.translateXML("specification.xml");
 
-        // Check that translated content exists
-        NodeList translatedBalloons = translatedDoc.getElementsByTagName("balloon");
-        assertTrue(translatedBalloons.getLength() > 0, "There should be translated balloons in the output XML.");
+        Document doc = XMLFileManager.loadXMLFromFile(
+                translator.getFilePath() + "english-to-italian-conjunction-lesson.xml"
+        );
+
+        NodeList balloons = doc.getElementsByTagName("balloon");
+        boolean found = false;
+        for (int i = 0; i < balloons.getLength(); i++) {
+            String content = balloons.item(i).getTextContent();
+            if (content.contains("Io") || content.contains("Noi")) {
+                found = true;
+                break;
+            }
+        }
+
+        assertTrue(found, "Expected translated balloon content to contain Italian pronouns");
+    }
+
+    @Test
+    void testHandlesMissingInputFileGracefully() {
+        boolean result = translator.translateXML("non_existent.xml");
+        assertFalse(result, "Translation should fail for missing input file");
     }
 }

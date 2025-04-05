@@ -14,29 +14,33 @@ class BlueprintTest {
 
     @BeforeEach
     void setUp() {
-        // Set up a valid file path to a sample XML blueprint file
         blueprint = new Blueprint("assets/blueprint/specification.xml");
     }
 
     @Test
-    void testGetFilePath() {
+    void testGetFilePathReturnsCorrectPath() {
         assertEquals("assets/blueprint/specification.xml", blueprint.getFilePath());
     }
 
     @Test
-    void testGetFile() {
+    void testGetFileReturnsValidDocument() {
         Document file = blueprint.getFile();
         assertNotNull(file, "Document should not be null");
         assertEquals("comic", file.getDocumentElement().getNodeName());
     }
 
     @Test
-    void testGetSpeechBalloons() {
-        List<String> speechBalloons = blueprint.getSpeechBalloons();
-        assertNotNull(speechBalloons, "Speech balloons list should not be null");
-        assertFalse(speechBalloons.isEmpty(), "Speech balloons list should not be empty");
+    void testGetSpeechBalloonsNotEmpty() {
+        List<String> balloons = blueprint.getSpeechBalloons();
+        assertNotNull(balloons, "Speech balloons list should not be null");
+        assertFalse(balloons.isEmpty(), "Speech balloons should not be empty");
+    }
 
-        // You may want to check for specific expected phrases here
-        // assertTrue(speechBalloons.contains("Expected Phrase"), "Should contain expected phrase");
+    @Test
+    void testBlueprintWithNoBalloons() {
+        Blueprint emptyBlueprint = new Blueprint("assets/blueprint/no_balloons.xml");
+        List<String> balloons = emptyBlueprint.getSpeechBalloons();
+        assertNotNull(balloons);
+        assertTrue(balloons.isEmpty(), "Should return empty list for no balloon tags");
     }
 }

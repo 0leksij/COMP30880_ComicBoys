@@ -1,6 +1,7 @@
 package com.comicboys.project.utility;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 
@@ -11,27 +12,33 @@ import static org.junit.jupiter.api.Assertions.*;
 class XMLFileManagerTest {
 
     @Test
-    void testLoadXMLFromFile() {
+    void testLoadValidXML() {
         Document doc = XMLFileManager.loadXMLFromFile("assets/blueprint/specification.xml");
-        assertNotNull(doc, "The XML document should be loaded successfully.");
+        assertNotNull(doc, "Document should load from valid XML");
+        assertEquals("comic", doc.getDocumentElement().getNodeName());
     }
 
     @Test
-    void testSaveXMLToFile() {
-        Document doc = XMLFileManager.loadXMLFromFile("assets/blueprint/specification.xml");
-        boolean result = XMLFileManager.saveXMLToFile(doc, "assets/blueprint/test_output.xml");
-        assertTrue(result, "The XML file should be saved successfully.");
-
-        // Verify that the file exists
-        File file = new File("assets/blueprint/test_output.xml");
-        assertTrue(file.exists(), "The output file should exist.");
+    void testLoadMalformedXMLReturnsNull() {
+        Document doc = XMLFileManager.loadXMLFromFile("assets/blueprint/malformed.xml");
+        assertNull(doc, "Should return null for malformed XML");
     }
 
     @Test
-    void testSelectElement() {
+    void testSelectElementReturnsExpectedNodes() {
         Document doc = XMLFileManager.loadXMLFromFile("assets/blueprint/specification.xml");
         NodeList nodes = XMLFileManager.selectElement(doc, "balloon");
-        assertNotNull(nodes, "NodeList should not be null.");
-        assertTrue(nodes.getLength() > 0, "There should be at least one balloon element in the XML.");
+        assertNotNull(nodes);
+        assertTrue(nodes.getLength() > 0, "Should find at least one balloon tag");
+    }
+
+    @Test
+    void testSaveXMLToFileWorks(@TempDir File tempDir) {
+        Document doc = XMLFileManager.loadXMLFromFile("assets/blueprint/specification.xml");
+        File outputFile = new File(tempDir, "test_output.xml");
+        boolean saved = XMLFileManager.saveXMLToFile(doc, outputFile.getAbsolutePath());
+
+        assertTrue(saved, "Expected XML file to be saved successfully");
+        assertTrue(outputFile.exists(), "Output file should exist");
     }
 }
