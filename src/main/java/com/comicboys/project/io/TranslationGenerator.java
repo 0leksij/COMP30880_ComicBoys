@@ -60,65 +60,6 @@ public class TranslationGenerator {
             }
         }
     }
-
-    /**
-     * Generates translations for all text fragments in the mappings
-     */
-//    public void generateTranslations() {
-//
-//        int attempt = 0;
-//        boolean success = false;
-//
-//        while (attempt <= maxRetries && !success) {
-//            attempt++;
-//            System.out.println("Starting translation attempt " + attempt);
-//
-//            try {
-//                List<String> allTexts = mappings.getAllTextFragments();
-//                allTexts.remove("");
-//                boolean hadErrors = false;
-//
-//                List<String> batch = new ArrayList<>();
-//                for (String text : allTexts) {
-//                    if (translationFileManager.translationExists(text)) {
-//                        continue;
-//                    }
-//
-//                    batch.add(text);
-//                    if (batch.size() >= batchSizeLimit) {
-//                        if (!processBatchWithRetry(batch)) {
-//                            hadErrors = true;
-//                            break; // Exit batch processing on error
-//                        }
-//                        batch.clear();
-//                    }
-//                }
-//
-//                // Process final batch if no errors occurred
-//                if (!hadErrors && !batch.isEmpty()) {
-//                    if (!processBatchWithRetry(batch)) {
-//                        hadErrors = true;
-//                    }
-//                }
-//
-//                if (!hadErrors) {
-//                    success = true;
-//                    System.out.println("Translation completed successfully");
-//                } else if (attempt <= maxRetries) {
-//                    System.out.println("Errors detected, retrying in " + retryDelaySeconds + "s...");
-//                    TimeUnit.SECONDS.sleep(retryDelaySeconds);
-//                }
-//            } catch (InterruptedException e) {
-//                Thread.currentThread().interrupt();
-//                throw new RuntimeException("Translation interrupted", e);
-//            }
-//        }
-//
-//        if (!success) {
-//            System.err.println("Failed after " + maxRetries + " attempts");
-//        }
-//    }
-
     /**
      * Generates translations for a custom list of text fragments
      * @param texts List of texts to translate
