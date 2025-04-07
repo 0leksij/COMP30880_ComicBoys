@@ -16,9 +16,12 @@ public class Main {
         ConfigurationFile config = new ConfigurationFile();
 
         // read tsv file with specified number of lines
-        int rows = 4;
+        int rows = 1000;
+        System.out.println("\n------------------------------");
+        System.out.println("\n-----[ PREVIOUS SPRINTS ]-----");
+        System.out.println("\n------------------------------");
         System.out.println("\nReading first " + rows + " rows");
-        MappingsFileReader myReader = new MappingsFileReader(1000);
+        MappingsFileReader myReader = new MappingsFileReader(rows);
         // get mappings data structure
         Mappings mappings = myReader.getMappings();
         // using mappings to create vignette generator
@@ -56,5 +59,19 @@ public class Main {
         String filePath = "assets/mappings/generated_comic.xml";
         generator.generateXML(0, filePath);
 
+        XMLTranslator translator = new XMLTranslator(config, mappings);
+        translator.translateXML("specification.xml");
+
+
+        System.out.println("\n------------------------------");
+        System.out.println("\n------[ CURRENT SPRINT ]------");
+        System.out.println("\n------------------------------");
+
+        String blueprintPath = "assets/blueprint/";
+        Blueprint blueprint = new Blueprint(blueprintPath + "specification.xml");
+        System.out.println("\nSpeech balloons from file: ");
+        System.out.println(blueprint.getSpeechBalloons());
+        System.out.println("\nTranslations in filepath: " + blueprintPath);
+        System.out.println("(in source-to-target-conjunction.xml)");
     }
 }

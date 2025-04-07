@@ -38,9 +38,5 @@ public class Blueprint implements XMLFileManager{
 
 
 
-    public static void main(String[] args) {
-        Blueprint blueprint = new Blueprint("assets/blueprint/specification.xml");
-        System.out.println(blueprint.getSpeechBalloons());
 
-    }
 }
