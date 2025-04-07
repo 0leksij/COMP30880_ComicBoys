@@ -137,9 +137,4 @@ public class APIClient implements DenialChecker {
 
         return translations;
     }
-
-
 }
-
-
-
