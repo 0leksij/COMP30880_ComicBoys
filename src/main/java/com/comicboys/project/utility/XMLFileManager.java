@@ -98,7 +98,7 @@ public interface XMLFileManager{
     }
     // main remove element method, removes all nodes in list from their respective parent
     // if numChildrenToRemove < 0, will remove all children
-    static void removeNChildren(NodeList children, int numChildrenToRemove) {
+    private static void removeNChildren(NodeList children, int numChildrenToRemove) {
         // look through children in ascending order
         int currentLength = children.getLength(); // list size will be changed throughout
         int i = 0; // loop variable
