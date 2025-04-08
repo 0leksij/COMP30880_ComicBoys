@@ -27,7 +27,7 @@ class XMLFileManagerTest {
     @Test
     void testSelectElementReturnsExpectedNodes() {
         Document doc = XMLFileManager.loadXMLFromFile("assets/blueprint/specification.xml");
-        NodeList nodes = XMLFileManager.selectElement(doc, "balloon");
+        NodeList nodes = XMLFileManager.selectElements(doc, "balloon");
         assertNotNull(nodes);
         assertTrue(nodes.getLength() > 0, "Should find at least one balloon tag");
     }
