@@ -250,7 +250,7 @@ public List<List<String>> generateStories() {
         sb.append("Here are the audio descriptions for scene ").append(sceneIndex+1).append(":\n");
         sb.append(generateSceneStory(sceneIndex));
         sb.append("\n\nHere are the characters in each panel:\n");
-        sb.append("\n\nProvide JUST a numbered list of dialogue (with names in the format \"Alfie: *insert dialogue*\", tab-separated if multiple characters). Fill in the blanks for each character in the given order.");
+        sb.append("\n\nProvide JUST a numbered list of dialogue (with names in the format \"Alfie: *insert dialogue*\", tab-separated if multiple characters like \"Alfie: *dialogue*\\tBetty: *dialogue*\"). Fill in the blanks for each character in the given order.");
         sb.append(getCharactersByPanel(sceneIndex));
         sb.append("\nDo not enclose the dialogue in \"\". I just want the plain text");
 
@@ -299,7 +299,7 @@ public List<List<String>> generateStories() {
         StoryGenerator sg = new StoryGenerator(config);
 
         // Example usage:
-        sg.loadXmlDocument("assets/story/specificaton_shorter.xml");
+        sg.loadXmlDocument("assets/story/specification_shorter.xml");
 
         // Print the results
         List<List<String>> stories = sg.generateStories();

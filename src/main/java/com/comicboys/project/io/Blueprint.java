@@ -49,26 +49,6 @@ public class Blueprint{
     public void writeStory(StoryGenerator storyGenerator) {
         // this will select all scenes from file document variable (not the cloned copy the just cleared of scenes)
         NodeList scenes = selectElements("scene");
-//        // set this to number of scenes to test, otherwise set it to scenes.getLength() for ALL scenes
-//        int max = 1;
-//        // doing for all scenes
-//        for (int i = 0; i < max; i++) {
-//            Node currentScene = scenes.item(i);
-//            if (currentScene.getNodeType() == Node.ELEMENT_NODE) {
-//                XMLFileManager.removeFirstChild(currentScene);
-//                List<String> scenesExample = List.of(
-//                        "Alfie: What the heck man. ",
-//                        "Alfie: Frick. \tBetty: Yeaheahea boiii. ",
-//                        "Alfie: Jesus Christ. \tBetty: The almighty. \tBelow is my chimmy chunga. "
-//                );
-////                // how i will actually get the sceneData using Oleksii's code -- storyGenerator will be passed as argument
-////                NumberedList sceneData = storyGenerator.generateStory(scenes.item(i));
-//                NumberedList sceneData = new NumberedList(scenesExample);
-//                // updates in-place the current scene
-//                update(currentScene, sceneData);
-//            }
-//        }
-
 
         // loading XML file into story generator
         storyGenerator.loadXmlDocument(getFilePath());
@@ -78,11 +58,8 @@ public class Blueprint{
         // need to separately keep track of current index in our XML DOM structure AND list of stories
         int currentNode, currentStory;
         currentNode = currentStory = 0;
-
-        // set this to number of scenes to test, otherwise set it to scenes.getLength() for ALL scenes
-        int max = 1;
         // doing for all scenes
-        while (currentStory < max) {
+        while (currentStory < stories.size()) {
             Node currentScene = scenes.item(currentNode);
             if (currentScene.getNodeType() == Node.ELEMENT_NODE) {
                 // updates in-place the current scene
@@ -98,7 +75,6 @@ public class Blueprint{
                 break;
             }
         }
-
         // save to save file path with given file name
         XMLFileManager.saveXMLToFile(getFile(), getBaseFilePath() + "sample_story.xml");
         System.out.println("File written to " + getBaseFilePath());
@@ -120,6 +96,11 @@ public class Blueprint{
             Node child = children.item(currentNode);
             // if is element, i.e. is panel
             if (child.getNodeType() == Node.ELEMENT_NODE) {
+                // skip panel introducing scene
+                if (child.getTextContent().contains("Scene")) {
+                    currentNode++;
+                    continue;
+                }
                 // splitting panel text data for each figure and the below text
                 List<String> panel = List.of(newSceneData.get(currentNewPanel).split("\t"));
                 String belowText = "";
@@ -131,7 +112,7 @@ public class Blueprint{
                     // update character name (if exists, otherwise empty)
                     String charName;
                     if (colonIndex == -1) { charName = ""; }
-                    else { charName = figureText.substring(0, colonIndex); }
+                    else { charName = figureText.trim().substring(0, colonIndex); }
                     // if no dialogue, is a description, so add to below text of panel
                     if (charName == "") {
                         belowText += figureText;
@@ -153,7 +134,9 @@ public class Blueprint{
                                             // get document to create new element
                                             Document doc = figure.getOwnerDocument();
                                             // create new balloon with text as whatever came after the colon, remove trailing spaces
-                                            Node newBalloon = doc.createElement("balloon");
+                                            Element newBalloon = doc.createElement("balloon");
+                                            // set balloon status to be speech and set its text to be dialogue obtained
+                                            newBalloon.setAttribute("status", "speech");
                                             newBalloon.setTextContent(figureText.substring(colonIndex + 1).trim());
                                             // add balloon as child of figure parent (will be either left, middle, right)
                                             figure.getParentNode().appendChild(newBalloon);
@@ -164,12 +147,21 @@ public class Blueprint{
                         }
                     }
                 }
-                // create below element in document
-                Document doc = child.getOwnerDocument();
-                Node newBelow = doc.createElement("below");
-                newBelow.setTextContent(belowText);
-                // add below element to child node
-                child.appendChild(newBelow);
+                // first remove current below tag if exists
+                String belowTag = "below";
+                // remove below element of current panel (so always keeping only one below element)
+                XMLFileManager.removeAllByTag(child, belowTag);
+                // if there is below text to add, add it
+                if (!belowText.isEmpty()) {
+                    // create below element in document
+                    Document doc = child.getOwnerDocument();
+                    Node newBelow = doc.createElement(belowTag);
+                    // set content
+                    newBelow.setTextContent(belowText);
+                    // add below element to child node
+                    child.appendChild(newBelow);
+                }
+                // move to next panel in current scene
                 currentNewPanel++;
 //                break; // for testing if only one panel works at a time
             }
