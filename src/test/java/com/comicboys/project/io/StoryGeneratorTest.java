@@ -1,28 +1,47 @@
 package com.comicboys.project.io;
 
-import com.comicboys.project.data.NumberedList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.w3c.dom.*;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class StoryGeneratorTest {
 
     private StoryGenerator storyGenerator;
+    private String tempXmlFilePath;
 
     @BeforeEach
-    public void setup() {
-        storyGenerator = new StoryGenerator();
-    }
+    public void setup() throws Exception {
+        ConfigurationFile config = new ConfigurationFile();
+        storyGenerator = new StoryGenerator(config);
 
-    @Test
-    public void testGenerateSceneStory_withVariousTags() throws Exception {
-        String xml =
-                "<scene>" +
+        String xmlContent =
+                "<comic>" +
+                        "<scenes>" +
+                        "<scene>" +
+                        "<panel>" +
+                        "<middle>" +
+                        "<figure>" +
+                        "<id>Alfie</id>" +
+                        "<name>Alfie</name>" +
+                        "<appearance>male</appearance>" +
+                        "<skin>light brown</skin>" +
+                        "<hair>dark brown</hair>" +
+                        "<lips>red</lips>" +
+                        "<pose>zero</pose>" +
+                        "<facing>right</facing>" +
+                        "</figure>" +
+                        "</middle>" +
+                        "<below>Scene 0</below>" +
+                        "<border>white</border>" +
+                        "</panel>" +
                         "<panel>" +
                         "<middle>" +
                         "<figure>" +
@@ -34,7 +53,6 @@ public class StoryGeneratorTest {
                         "<setting>bedroom</setting>" +
                         "<below>The day starts</below>" +
                         "</panel>" +
-
                         "<panel>" +
                         "<middle>" +
                         "<figure>" +
@@ -48,7 +66,6 @@ public class StoryGeneratorTest {
                         "</middle>" +
                         "<setting>kitchen</setting>" +
                         "</panel>" +
-
                         "<panel>" +
                         "<left>" +
                         "<figure>" +
@@ -60,20 +77,29 @@ public class StoryGeneratorTest {
                         "<above>outside the house</above>" +
                         "<below>The sun is so bright, it almost blinds him.</below>" +
                         "</panel>" +
-                        "</scene>";
+                        "</scene>" +
+                        "</scenes>" +
+                        "</comic>";
 
-        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder builder = factory.newDocumentBuilder();
-        Document doc = builder.parse(new java.io.ByteArrayInputStream(xml.getBytes()));
+        // Create temp file
+        Path tempPath = Files.createTempFile("test-comic", ".xml");
+        Files.write(tempPath, xmlContent.getBytes());
+        tempXmlFilePath = tempPath.toString();
 
-        Node sceneNode = doc.getElementsByTagName("scene").item(0);
-        NumberedList result = storyGenerator.generateSceneStory(sceneNode);
+        storyGenerator.loadXmlDocument(tempXmlFilePath);
+    }
 
-        assertEquals(3, result.getItems().size());
+    @Test
+    public void testGenerateSceneStory_withVariousTags() {
+        String result = storyGenerator.generateSceneStory(0);
+        String[] panels = result.split("\n");
 
-        // Check expected descriptions
-        assertEquals("Alfie is stretching in the bedroom. The day starts", result.getItem(1));
-        assertEquals("Betty is yawning in the kitchen.", result.getItem(2));
-        assertEquals("Gerry is walking in the outside the house. The sun is so bright, it almost blinds him.", result.getItem(3));
+        assertEquals(3, panels.length);
+        assertEquals("1. Alfie is stretching in the bedroom. The day starts", panels[0]);
+        assertEquals("2. Betty is yawning in the kitchen.", panels[1]);
+        assertEquals("3. Gerry is walking in the outside the house. The sun is so bright, it almost blinds him.", panels[2]);
+
+        // Clean up
+        new File(tempXmlFilePath).delete();
     }
 }

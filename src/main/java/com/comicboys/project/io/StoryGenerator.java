@@ -21,51 +21,77 @@ public class StoryGenerator {
 
     }
 
-    public NumberedList generateSceneStory(Node sceneNode) {
-        List<String> descriptions = new ArrayList<>();
-        NodeList panelNodes = ((Element) sceneNode).getElementsByTagName("panel");
+    public String generateSceneStory(int sceneIndex) {
+        StringBuilder result = new StringBuilder();
 
-        for (int i = 0; i < panelNodes.getLength(); i++) {
+        if (xmlDocument == null) {
+            return "No XML document loaded. Call loadXmlDocument() first.";
+        }
+
+        NodeList scenes = xmlDocument.getElementsByTagName("scene");
+        if (sceneIndex >= scenes.getLength()) {
+            return "Scene index out of bounds.";
+        }
+
+        Element scene = (Element) scenes.item(sceneIndex);
+        NodeList panelNodes = scene.getElementsByTagName("panel");
+
+        for (int i = 1; i < panelNodes.getLength(); i++) {
             Element panel = (Element) panelNodes.item(i);
-            StringBuilder sb = new StringBuilder();
+            StringBuilder panelDescription = new StringBuilder();
 
-            // Use <above> instead of <setting> if available
+            // Get location from <above> or <setting>
             String location = getTextContent(panel, "above");
             if (location == null || location.isEmpty()) location = getTextContent(panel, "setting");
             location = (location != null && !location.isEmpty()) ? " in the " + location : "";
 
-            // Use text from <balloon> instead of <pose> if available
-            boolean hasBalloon = panel.getElementsByTagName("balloon").getLength() > 0;
-            Element balloon = hasBalloon ? (Element) panel.getElementsByTagName("balloon").item(0) : null;
             List<Element> figureElements = getAllFiguresFromPanel(panel);
+            List<String> characterDescriptions = new ArrayList<>();
 
             for (Element figure : figureElements) {
                 String name = getTextContent(figure, "name");
+                if (name == null) continue;
+
+                StringBuilder charDescription = new StringBuilder(name);
+
+                // Get character-specific balloon if exists
+                Element balloon = getBalloonForFigure(panel, figure);
                 String pose = getTextContent(figure, "pose");
 
-                if (name == null) continue;
-                sb.append(name);
-
-                if (hasBalloon && balloon != null) {
+                if (balloon != null) {
                     String balloonText = getTextContent(balloon, "content");
-
                     if (balloonText != null && !balloonText.isEmpty()) {
-                        sb.append(" is ").append(balloonText);
-                        if (!location.isEmpty()) sb.append(location);
+                        charDescription.append(" is ").append(balloonText).append(location);
                     }
                 } else if (pose != null && !pose.isEmpty()) {
-                    sb.append(" is ").append(pose);
-                    if (!location.isEmpty()) sb.append(location);
+                    charDescription.append(" is ").append(pose).append(location);
                 }
+
+                characterDescriptions.add(charDescription.toString());
             }
-            sb.append(".");
+
+            // Combine character descriptions
+            if (!characterDescriptions.isEmpty()) {
+                panelDescription.append(String.join(" ", characterDescriptions));
+                panelDescription.append(".");
+            }
 
             // Append <below> text if it exists
             String below = getTextContent(panel, "below");
-            if (below != null && !below.isEmpty()) sb.append(" ").append(below);
-            descriptions.add(sb.toString().trim());
+            if (below != null && !below.isEmpty()) {
+                panelDescription.append(" ").append(below);
+            }
+
+            // Add to result with panel number
+            result.append(i).append(". ").append(panelDescription.toString().trim());
+
+            // Add newline unless it's the last panel
+            if (i < panelNodes.getLength() - 1) {
+                result.append("\n");
+            }
         }
-        return new NumberedList(descriptions);
+
+        return result.toString();
     }
 
     private List<Element> getAllFiguresFromPanel(Element panel) {
@@ -192,78 +218,6 @@ public class StoryGenerator {
         }
     }
 
-    public String generateSceneStory(int sceneIndex) {
-        StringBuilder result = new StringBuilder();
-
-        if (xmlDocument == null) {
-            return "No XML document loaded. Call loadXmlDocument() first.";
-        }
-
-        NodeList scenes = xmlDocument.getElementsByTagName("scene");
-        if (sceneIndex >= scenes.getLength()) {
-            return "Scene index out of bounds.";
-        }
-
-        Element scene = (Element) scenes.item(sceneIndex);
-        NodeList panelNodes = scene.getElementsByTagName("panel");
-
-        for (int i = 1; i < panelNodes.getLength(); i++) {
-            Element panel = (Element) panelNodes.item(i);
-            StringBuilder panelDescription = new StringBuilder();
-
-            // Get location from <above> or <setting>
-            String location = getTextContent(panel, "above");
-            if (location == null || location.isEmpty()) location = getTextContent(panel, "setting");
-            location = (location != null && !location.isEmpty()) ? " in the " + location : "";
-
-            List<Element> figureElements = getAllFiguresFromPanel(panel);
-            List<String> characterDescriptions = new ArrayList<>();
-
-            for (Element figure : figureElements) {
-                String name = getTextContent(figure, "name");
-                if (name == null) continue;
-
-                StringBuilder charDescription = new StringBuilder(name);
-
-                // Get character-specific balloon if exists
-                Element balloon = getBalloonForFigure(panel, figure);
-                String pose = getTextContent(figure, "pose");
-
-                if (balloon != null) {
-                    String balloonText = getTextContent(balloon, "content");
-                    if (balloonText != null && !balloonText.isEmpty()) {
-                        charDescription.append(" is ").append(balloonText).append(location);
-                    }
-                } else if (pose != null && !pose.isEmpty()) {
-                    charDescription.append(" is ").append(pose).append(location);
-                }
-
-                characterDescriptions.add(charDescription.toString());
-            }
-
-            // Combine character descriptions
-            if (!characterDescriptions.isEmpty()) {
-                panelDescription.append(String.join(" ", characterDescriptions));
-                panelDescription.append(".");
-            }
-
-            // Append <below> text if it exists
-            String below = getTextContent(panel, "below");
-            if (below != null && !below.isEmpty()) {
-                panelDescription.append(" ").append(below);
-            }
-
-            // Add to result with panel number
-            result.append(i).append(". ").append(panelDescription.toString().trim());
-
-            // Add newline unless it's the last panel
-            if (i < panelNodes.getLength() - 1) {
-                result.append("\n");
-            }
-        }
-
-        return result.toString();
-    }
 
     private Element getBalloonForFigure(Element panel, Element figure) {
         // Find the balloon that belongs to this specific figure
@@ -296,7 +250,7 @@ public List<List<String>> generateStories() {
         sb.append("Here are the audio descriptions for scene ").append(sceneIndex+1).append(":\n");
         sb.append(generateSceneStory(sceneIndex));
         sb.append("\n\nHere are the characters in each panel:\n");
-        sb.append("\n\nProvide JUST a numbered list of dialogue (no names, tab-separated if multiple characters). Fill in the blanks for each character in the given order.");
+        sb.append("\n\nProvide JUST a numbered list of dialogue (with names in the format \"Alfie: *insert dialogue*\", tab-separated if multiple characters). Fill in the blanks for each character in the given order.");
         sb.append(getCharactersByPanel(sceneIndex));
         sb.append("\nDo not enclose the dialogue in \"\". I just want the plain text");
 
