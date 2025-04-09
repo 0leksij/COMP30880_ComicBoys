@@ -46,53 +46,82 @@ public class Blueprint{
         return phrases;
     }
 
-    public void generateStory() {
+    public void writeStory(StoryGenerator storyGenerator) {
         // this will select all scenes from file document variable (not the cloned copy the just cleared of scenes)
         NodeList scenes = selectElements("scene");
+//        // set this to number of scenes to test, otherwise set it to scenes.getLength() for ALL scenes
+//        int max = 1;
+//        // doing for all scenes
+//        for (int i = 0; i < max; i++) {
+//            Node currentScene = scenes.item(i);
+//            if (currentScene.getNodeType() == Node.ELEMENT_NODE) {
+//                XMLFileManager.removeFirstChild(currentScene);
+//                List<String> scenesExample = List.of(
+//                        "Alfie: What the heck man. ",
+//                        "Alfie: Frick. \tBetty: Yeaheahea boiii. ",
+//                        "Alfie: Jesus Christ. \tBetty: The almighty. \tBelow is my chimmy chunga. "
+//                );
+////                // how i will actually get the sceneData using Oleksii's code -- storyGenerator will be passed as argument
+////                NumberedList sceneData = storyGenerator.generateStory(scenes.item(i));
+//                NumberedList sceneData = new NumberedList(scenesExample);
+//                // updates in-place the current scene
+//                update(currentScene, sceneData);
+//            }
+//        }
+
+
+        // loading XML file into story generator
+        storyGenerator.loadXmlDocument(getFilePath());
+
+        // get story data generated
+        List<List<String>> stories = storyGenerator.generateStories();
+        // need to separately keep track of current index in our XML DOM structure AND list of stories
+        int currentNode, currentStory;
+        currentNode = currentStory = 0;
+
         // set this to number of scenes to test, otherwise set it to scenes.getLength() for ALL scenes
         int max = 1;
         // doing for all scenes
-        for (int i = 0; i < max; i++) {
-            Node currentScene = scenes.item(i);
+        while (currentStory < max) {
+            Node currentScene = scenes.item(currentNode);
             if (currentScene.getNodeType() == Node.ELEMENT_NODE) {
-                XMLFileManager.removeFirstChild(currentScene);
-                List<String> scenesExample = List.of(
-                        "Alfie: What the heck man. ",
-                        "Alfie: Frick. \tBetty: Yeaheahea boiii. ",
-                        "Alfie: Jesus Christ. \tBetty: The almighty. \tBelow is my chimmy chunga. "
-                );
-//                // how i will actually get the sceneData using Oleksii's code -- storyGenerator will be passed as argument
-//                NumberedList sceneData = storyGenerator.generateStory(scenes.item(i));
-                NumberedList sceneData = new NumberedList(scenesExample);
                 // updates in-place the current scene
-                update(currentScene, sceneData);
+                updateScene(currentScene, stories.get(currentStory));
+                // next story index
+                currentStory++;
+            }
+            currentNode++;
+            // since our while loop is based on our story length, need to prevent out of bounds if nodes do not match
+            // (which they should given the story is generated for the same file)
+            if (currentNode > scenes.getLength()) {
+                System.out.println("EOF for XML reached -- no more nodes in story");
+                break;
             }
         }
+
         // save to save file path with given file name
         XMLFileManager.saveXMLToFile(getFile(), getBaseFilePath() + "sample_story.xml");
         System.out.println("File written to " + getBaseFilePath());
     }
 
     // update current scene
-    public void update(Node scene, NumberedList newSceneData) {
+    public void updateScene(Node scene, List<String> newSceneData) {
         // remove all balloon elements (we will add completely new ones from newSceneData)
         List<String> tagsToRemove = List.of("balloon", "above");
         XMLFileManager.removeAllByTag(scene, tagsToRemove);
         // getting list of child nodes (panels) for this scene
         NodeList children = scene.getChildNodes();
-        // getting new scene as a list of strings from NumberedList data structure
-        List<String> newScene = newSceneData.getItems();
         // loop variables, currentNode is node in our XML structure, currentNewPanel is the new panel data in our list,
         // these can be different sizes (because we have both element nodes and attribute nodes), whereas the new
         // panels we want are only data about new panels, no extra DOM stuff
         int currentNode, currentNewPanel;
         currentNode = currentNewPanel = 0;
-        while (currentNewPanel < newScene.size()) {
+        while (currentNewPanel < newSceneData.size()) {
             Node child = children.item(currentNode);
             // if is element, i.e. is panel
             if (child.getNodeType() == Node.ELEMENT_NODE) {
                 // splitting panel text data for each figure and the below text
-                List<String> panel = List.of(newScene.get(currentNewPanel).split("\t"));
+                List<String> panel = List.of(newSceneData.get(currentNewPanel).split("\t"));
                 String belowText = "";
                 // looking through text for each figure
                 for (String figureText : panel) {
@@ -154,10 +183,12 @@ public class Blueprint{
     }
 
     public static void main(String[] args) {
-        String storyPath = "assets/story/";
-//        Blueprint blueprint = new Blueprint(storyPath + "specification_short.xml");
-        Blueprint blueprint = new Blueprint(storyPath + "specification_test.xml");
-        blueprint.generateStory();
+        ConfigurationFile config = new ConfigurationFile();
+        String storyPath = "assets/story/specification_shorter.xml";
+        Blueprint blueprint = new Blueprint(storyPath);
+
+        StoryGenerator sg = new StoryGenerator(config);
+        blueprint.writeStory(sg);
     }
 
 
