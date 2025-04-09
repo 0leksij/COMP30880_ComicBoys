@@ -36,11 +36,11 @@ class BlueprintTest {
         assertFalse(balloons.isEmpty(), "Speech balloons should not be empty");
     }
 
-  /*  @Test
+    @Test
     void testBlueprintWithNoBalloons() {
-        Blueprint emptyBlueprint = new Blueprint("assets/blueprint/no_balloons.xml");
+        Blueprint emptyBlueprint = new Blueprint("assets/blueprint/test/no_balloons.xml");
         List<String> balloons = emptyBlueprint.getSpeechBalloons();
         assertNotNull(balloons);
         assertTrue(balloons.isEmpty(), "Should return empty list for no balloon tags");
-    }*/
+    }
 }
