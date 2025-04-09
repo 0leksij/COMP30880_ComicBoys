@@ -232,38 +232,69 @@ public class StoryGenerator {
         return null;
     }
 
-public List<List<String>> generateStories() {
-    List<List<String>> result = new ArrayList<>();
+    public List<List<String>> generateStories() {
+        List<List<String>> result = new ArrayList<>();
 
-    if (xmlDocument == null) {
-        System.err.println("No XML document loaded. Call loadXmlDocument() first.");
+        if (xmlDocument == null) {
+            System.err.println("No XML document loaded. Call loadXmlDocument() first.");
+            return result;
+        }
+
+        NodeList scenes = xmlDocument.getElementsByTagName("scene");
+        APIClient client = new APIClient(config);
+
+        for (int sceneIndex = 0; sceneIndex < scenes.getLength(); sceneIndex++) {
+            List<String> sceneResults = new ArrayList<>();
+
+            try {
+                // Build the prompt
+                StringBuilder sb = new StringBuilder();
+                sb.append("Here are the audio descriptions for scene ").append(sceneIndex+1).append(":\n");
+                sb.append(generateSceneStory(sceneIndex));
+                sb.append("\n\nHere are the characters in each panel:\n");
+                sb.append("\n\nProvide JUST a numbered list of dialogue (with names in the format \"Alfie: *insert dialogue*\", tab-separated (do not give \"tab\") if multiple characters like \"Alfie: *dialogue*\\tBetty: *dialogue*\"). Fill in the blanks for each character in the given order.");
+                sb.append(getCharactersByPanel(sceneIndex));
+                sb.append("\nDo not enclose the dialogue in \"\". I just want the plain text");
+                sb.append("\nAlso after the dialogue, provide a very brief description of the panel. It should be separated from the dialogue with a tab. E.g (Alfie: ... \t Betty: ... \t ...)");
+                sb.append("\nDo not return the description in the format \"Description: ...\", just return plain text like \t ... with no brackets. Always include the description");
+
+                // Get API response with rate limiting handling
+                APIResponse response = null;
+                int retryCount = 0;
+                while (retryCount < 3) { // Max 3 retries
+                    try {
+                        response = client.sendPrompt(sb.toString());
+                        break;
+                    } catch (Exception e) {
+                        if (e.getMessage().contains("429") || e.getMessage().contains("Too Many Requests")) {
+                            retryCount++;
+                            if (retryCount >= 3) throw e;
+                            System.out.println("Rate limited, retrying in " + (5000 * retryCount) + "ms...");
+                            Thread.sleep(5000 * retryCount); // Exponential backoff (5s, 10s, 15s)
+                        } else {
+                            throw e; // Re-throw if not a rate limit error
+                        }
+                    }
+                }
+
+                // Process the response
+                List<String> dialogues = processDialogueResponse(response);
+                result.add(dialogues);
+
+                // Add delay between scenes to avoid rate limiting
+                if (sceneIndex < scenes.getLength() - 1) {
+                    Thread.sleep(30000); // 30 second delay between scenes
+                }
+            } catch (Exception e) {
+                System.err.println("Error processing scene " + (sceneIndex + 1) + ": " + e.getMessage());
+                result.add(List.of("Error generating dialogue for this scene: " + e.getMessage()));
+            }
+        }
+
         return result;
     }
 
-    NodeList scenes = xmlDocument.getElementsByTagName("scene");
-    APIClient client = new APIClient(config);
 
-    for (int sceneIndex = 0; sceneIndex < scenes.getLength(); sceneIndex++) {
-
-        // Build the prompt
-        StringBuilder sb = new StringBuilder();
-        sb.append("Here are the audio descriptions for scene ").append(sceneIndex+1).append(":\n");
-        sb.append(generateSceneStory(sceneIndex));
-        sb.append("\n\nHere are the characters in each panel:\n");
-        sb.append("\n\nProvide JUST a numbered list of dialogue (with names in the format \"Alfie: *insert dialogue*\", tab-separated if multiple characters like \"Alfie: *dialogue*\\tBetty: *dialogue*\"). Fill in the blanks for each character in the given order.");
-        sb.append(getCharactersByPanel(sceneIndex));
-        sb.append("\nDo not enclose the dialogue in \"\". I just want the plain text");
-
-        // Get API response
-        APIResponse response = client.sendPrompt(sb.toString());
-
-        // Process the response into clean dialogue strings
-        List<String> dialogues = processDialogueResponse(response);
-        result.add(dialogues);
-    }
-
-    return result;
-}
 
     private List<String> processDialogueResponse(APIResponse response) {
         List<String> dialogues = new ArrayList<>();
@@ -299,7 +330,7 @@ public List<List<String>> generateStories() {
         StoryGenerator sg = new StoryGenerator(config);
 
         // Example usage:
-        sg.loadXmlDocument("assets/story/specification_shorter.xml");
+        sg.loadXmlDocument("assets/story/specification_short.xml");
 
         // Print the results
         List<List<String>> stories = sg.generateStories();

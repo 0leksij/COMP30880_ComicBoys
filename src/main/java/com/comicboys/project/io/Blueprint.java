@@ -76,7 +76,7 @@ public class Blueprint{
             }
         }
         // save to save file path with given file name
-        XMLFileManager.saveXMLToFile(getFile(), getBaseFilePath() + "sample_story.xml");
+        XMLFileManager.saveXMLToFile(getFile(), getBaseFilePath() + "sample_story2.xml");
         System.out.println("File written to " + getBaseFilePath());
     }
 
@@ -176,7 +176,7 @@ public class Blueprint{
 
     public static void main(String[] args) {
         ConfigurationFile config = new ConfigurationFile();
-        String storyPath = "assets/story/specification_shorter.xml";
+        String storyPath = "assets/story/specification_short.xml";
         Blueprint blueprint = new Blueprint(storyPath);
 
         StoryGenerator sg = new StoryGenerator(config);

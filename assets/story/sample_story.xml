@@ -55,9 +55,10 @@
                   <pose>yawning</pose>
                   <facing>right</facing>
                </figure>
-               <balloon status="speech">I could really use some breakfast right now.</balloon>
+               <balloon status="speech">Morning, kitchen! Time for some breakfast!</balloon>
             </middle>
             <setting>kitchen</setting>
+            <below>Alfie is yawning in the kitchen.</below>
          </panel>
          <panel>
             <middle>
@@ -71,9 +72,10 @@
                   <pose>breakfasting</pose>
                   <facing>right</facing>
                </figure>
-               <balloon status="speech">This cereal looks perfect!</balloon>
+               <balloon status="speech">Let's see how much cereal I can fit in this bowl.</balloon>
             </middle>
             <setting>kitchen</setting>
+            <below>Alfie is pouring a bowl of cereal in the kitchen.</below>
          </panel>
          <panel>
             <middle>
@@ -87,9 +89,10 @@
                   <pose>munching</pose>
                   <facing>right</facing>
                </figure>
-               <balloon status="speech">Crunch, crunch, crunch!</balloon>
+               <balloon status="speech">Crunch, crunch! Nothing like cereal to start the day.</balloon>
             </middle>
             <setting>kitchen</setting>
+            <below>Alfie is munching in the kitchen.</below>
          </panel>
          <panel>
             <middle>
@@ -103,9 +106,10 @@
                   <pose>strong</pose>
                   <facing>right</facing>
                </figure>
-               <balloon status="speech">I'm feeling ready to take on the day!</balloon>
+               <balloon status="speech">I'm ready for whatever today brings!</balloon>
             </middle>
             <setting>kitchen</setting>
+            <below>Alfie is feeling ready for anything in the kitchen.</below>
          </panel>
          <panel>
             <left>
@@ -119,9 +123,10 @@
                   <pose>high fiving</pose>
                   <facing>right</facing>
                </figure>
-               <balloon status="speech">Bye! I'll see you later!</balloon>
+               <balloon status="speech">Bye everyone! I'm off!</balloon>
             </left>
             <setting>welcome mat</setting>
+            <below>Alfie is waving goodbye in the outside front door.</below>
          </panel>
       </scene>
       <scene>
@@ -153,9 +158,10 @@
                   <pose>riding</pose>
                   <facing>right</facing>
                </figure>
-               <balloon status="speech">I'm doing it!</balloon>
+               <balloon status="speech">Whoa!</balloon>
             </middle>
             <setting>gravel path</setting>
+            <below>A confident Alfie rides a horse on a gravel path.</below>
          </panel>
          <panel>
             <middle>
@@ -169,9 +175,10 @@
                   <pose>falling off horse</pose>
                   <facing>right</facing>
                </figure>
-               <balloon status="speech">Whoa!</balloon>
+               <balloon status="speech">Ahh!</balloon>
             </middle>
             <setting>gravel path</setting>
+            <below>Alfie falls off the horse in the gravel path.</below>
          </panel>
          <panel>
             <left>
@@ -185,7 +192,7 @@
                   <pose>unconscious</pose>
                   <facing>right</facing>
                </figure>
-               <balloon status="speech">Ouch, that hurts.</balloon>
+               <balloon status="speech">Ouch...</balloon>
             </left>
             <right>
                <figure>
@@ -197,6 +204,7 @@
                </figure>
             </right>
             <setting>gravel path</setting>
+            <below>Alfie lies on the ground as the horse stands nearby.</below>
          </panel>
          <panel>
             <left>
@@ -220,9 +228,9 @@
                   <pose>throwing water</pose>
                   <facing>left</facing>
                </figure>
-               <balloon status="speech">You fell, genius.</balloon>
             </right>
             <setting>gravel path</setting>
+            <below>Alfie regains consciousness while Betty throws water on him.</below>
          </panel>
          <panel>
             <left>
@@ -236,7 +244,7 @@
                   <pose>all wet</pose>
                   <facing>right</facing>
                </figure>
-               <balloon status="speech">Why would you throw water on me?</balloon>
+               <balloon status="speech">I'm soaked!</balloon>
             </left>
             <right>
                <figure>
@@ -246,9 +254,9 @@
                   <pose>slopping</pose>
                   <facing>left</facing>
                </figure>
-               <balloon status="speech">You needed to wake up!</balloon>
             </right>
             <setting>gravel path</setting>
+            <below>Alfie is soaking wet and Betty is unapologetic.</below>
          </panel>
       </scene>
    </scenes>
