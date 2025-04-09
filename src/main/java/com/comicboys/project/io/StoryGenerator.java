@@ -350,7 +350,7 @@ public List<List<String>> generateStories() {
         // Print the results
         List<List<String>> stories = sg.generateStories();
 
-// Print all stories
+        // Print all stories
         for (int i = 0; i < stories.size(); i++) {
             System.out.println("Scene " + (i+1) + ":");
             for (String panel : stories.get(i)) {
@@ -358,6 +358,10 @@ public List<List<String>> generateStories() {
             }
             System.out.println();
         }
+
+        // example:
+        // a scene is accessed by stories.get(i)
+        // a panel of a scene can be accessed by stories.get(i).get(j)
 
         System.out.println(stories.get(1).get(2));
 
