@@ -26,6 +26,7 @@ public class Blueprint{
     }
 
 
+
     public List<String> getSpeechBalloons() {
         // want to translate all balloons
         NodeList nodeList = selectElements("balloon");
