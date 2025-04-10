@@ -1,5 +1,6 @@
 package com.comicboys.project.io;
 
+import com.comicboys.project.client.APIClient;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.w3c.dom.*;
@@ -20,7 +21,8 @@ public class StoryGeneratorTest {
     @BeforeEach
     public void setup() throws Exception {
         ConfigurationFile config = new ConfigurationFile();
-        storyGenerator = new StoryGenerator(config);
+        APIClient client = new APIClient(config);
+        storyGenerator = new StoryGenerator(client);
 
         String xmlContent =
                 "<comic>" +

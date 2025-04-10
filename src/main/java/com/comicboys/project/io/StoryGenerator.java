@@ -3,7 +3,6 @@ package com.comicboys.project.io;
 
 import com.comicboys.project.client.APIClient;
 import com.comicboys.project.client.APIResponse;
-import com.comicboys.project.data.NumberedList;
 import com.comicboys.project.utility.XMLFileManager;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -125,15 +124,13 @@ public class StoryGenerator {
 
 
     /// //////////////// Reys Story Generator
-    private ConfigurationFile config;
     private String filePath;
     private Document xmlDocument;
     private APIClient client;
 
-    public StoryGenerator(ConfigurationFile config) {
-        this.config = config;
+    public StoryGenerator(APIClient client) {
         this.filePath = "assets/story/";
-        this.client = new APIClient(config);
+        this.client = client;
     }
 
     public void loadXmlDocument(String xmlFilePath) {
@@ -241,7 +238,6 @@ public class StoryGenerator {
         }
 
         NodeList scenes = xmlDocument.getElementsByTagName("scene");
-        APIClient client = new APIClient(config);
 
         for (int sceneIndex = 0; sceneIndex < scenes.getLength(); sceneIndex++) {
             List<String> sceneResults = new ArrayList<>();
@@ -327,7 +323,8 @@ public class StoryGenerator {
 
     public static void main(String[] args) {
         ConfigurationFile config = new ConfigurationFile();
-        StoryGenerator sg = new StoryGenerator(config);
+        APIClient client = new APIClient(config);
+        StoryGenerator sg = new StoryGenerator(client);
 
         // Example usage:
         sg.loadXmlDocument("assets/story/specification_short.xml");

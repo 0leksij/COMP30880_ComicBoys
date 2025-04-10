@@ -1,12 +1,8 @@
 package com.comicboys.project.io;
 
-import com.comicboys.project.data.NumberedList;
+import com.comicboys.project.client.APIClient;
 import com.comicboys.project.utility.XMLFileManager;
 import org.w3c.dom.*;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -173,10 +169,11 @@ public class Blueprint{
 
     public static void main(String[] args) {
         ConfigurationFile config = new ConfigurationFile();
+        APIClient client = new APIClient(config);
         String storyPath = "assets/story/specification_shorter.xml";
         Blueprint blueprint = new Blueprint(storyPath);
 
-        StoryGenerator sg = new StoryGenerator(config);
+        StoryGenerator sg = new StoryGenerator(client);
         blueprint.writeStory(sg);
     }
 
