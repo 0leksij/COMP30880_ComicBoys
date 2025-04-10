@@ -25,12 +25,6 @@ public class Blueprint{
         return XMLFileManager.selectElements(file, element);
     }
 
-    // get folder path and not file path of source file for the document
-    private String getBaseFilePath() {
-        String sourceFilePath = getFilePath();
-        int baseFilePathEndIndex = sourceFilePath.lastIndexOf("/");
-        return sourceFilePath.substring(0, baseFilePathEndIndex + 1);
-    }
 
     public List<String> getSpeechBalloons() {
         // want to translate all balloons
@@ -75,9 +69,11 @@ public class Blueprint{
                 break;
             }
         }
+        // used to get rid of "file.xml" from path and get directory of source file
+        String fileDirectory = XMLFileManager.getFileDirectory(getFilePath());
         // save to save file path with given file name
-        XMLFileManager.saveXMLToFile(getFile(), getBaseFilePath() + "sample_story.xml");
-        System.out.println("File written to " + getBaseFilePath());
+        XMLFileManager.saveXMLToFile(getFile(), fileDirectory + "sample_story.xml");
+        System.out.println("File written to " + fileDirectory);
     }
 
     // update current scene

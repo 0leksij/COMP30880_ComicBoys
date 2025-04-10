@@ -20,6 +20,12 @@ import java.util.List;
 public interface XMLFileManager{
 
 
+    // get directory folder is in
+    static String getFileDirectory(String filePath) {
+        int baseFilePathEndIndex = filePath.lastIndexOf("/");
+        return filePath.substring(0, baseFilePathEndIndex + 1);
+    }
+
     static boolean saveXMLToFile(Document doc, String filePath) {
         try {
             trimWhitespace(doc.getDocumentElement());
@@ -62,6 +68,7 @@ public interface XMLFileManager{
             doc.getDocumentElement().normalize();
             return doc;
         } catch (Exception e) {
+            System.out.println("Error: File in path " + filePath + " does not exist or failed to load");
             e.printStackTrace();
             return null;
         }
