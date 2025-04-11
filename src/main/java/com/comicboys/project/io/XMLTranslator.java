@@ -121,5 +121,15 @@ public class XMLTranslator {
         return filePath;
     }
 
+    public static void main(String[] args) {
+
+        ConfigurationFile config = new ConfigurationFile();
+        Mappings mappings = new Mappings();
+
+        XMLTranslator translator = new XMLTranslator(config,mappings,"story");
+
+        translator.translateXML("sample_story2.xml");
+    }
+
 
 }

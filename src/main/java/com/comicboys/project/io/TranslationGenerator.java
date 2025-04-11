@@ -20,9 +20,9 @@ public class TranslationGenerator {
     public TranslationGenerator(ConfigurationFile config, Mappings mappings) {
         this.apiClient = new APIClient(config);
         this.mappings = mappings;
-        this.maxRetries = 1;
+        this.maxRetries = 5;
         this.retryDelaySeconds = 30;
-        this.batchSizeLimit = 10;
+        this.batchSizeLimit = 20;
 
         // Generate the translations file path dynamically
         String sourceLanguage = config.getProperty("SOURCE_LANGUAGE").toLowerCase();

@@ -1833,7 +1833,7 @@
                </balloon>
             </right>
             <setting>boulevard</setting>
-            <below>Betty is reading while cycling in the boulevard.</below>
+            <below>Betty sta leggendo mentre pedala sul boulevard.</below>
          </panel>
          <panel>
             <left>
@@ -1889,7 +1889,7 @@
                </figure>
             </right>
             <setting>boulevard</setting>
-            <below>Alfie is falling on his rollerskates, and Betty is falling off her bicycle in the boulevard.</below>
+            <below>Alfie sta cadendo sui suoi pattini a rotelle, e Betty sta cadendo dalla sua bicicletta sul boulevard.</below>
          </panel>
          <panel>
             <left>
@@ -1945,7 +1945,7 @@
                </figure>
             </right>
             <setting>hospital exterior</setting>
-            <below>Alfie is in a wheelchair with two broken legs, and Betty is on crutches outside the hospital.</below>
+            <below>Alfie è in sedia a rotelle con due gambe rotte, e Betty è con le stampelle fuori dall'ospedale.</below>
          </panel>
       </scene>
       <scene>
@@ -2019,7 +2019,7 @@
                </figure>
             </right>
             <setting>laundrette</setting>
-            <below>Alfie is using a strange device in the laundrette, his eyes locked on Betty, who is entranced.</below>
+            <below>Alfie sta usando un dispositivo strano nella lavanderia, i suoi occhi fissi su Betty, che è incantata.</below>
          </panel>
          <panel>
             <left>
@@ -2075,7 +2075,7 @@
                </figure>
             </right>
             <setting>laundrette</setting>
-            <below>Alfie is speaking intensely, gesturing towards the washing machines, while Betty appears enthralled and focused.</below>
+            <below>Alfie parla intensamente, gesticolando verso le lavatrici, mentre Betty appare rapita e concentrata.</below>
          </panel>
          <panel>
             <left>
@@ -2131,7 +2131,7 @@
                </figure>
             </right>
             <setting>laundrette</setting>
-            <below>Alfie leans closer, whispering passionately, while Betty's expression shifts to determination.</below>
+            <below>Alfie si avvicina, sussurrando appassionatamente, mentre l'espressione di Betty si trasforma in determinazione.</below>
          </panel>
          <panel>
             <left>
@@ -2187,7 +2187,7 @@
                </figure>
             </right>
             <setting>laundrette</setting>
-            <below>Alfie stands in the shadows, a sly smile on his face, while Betty nods eagerly, a sinister glow in her eyes.</below>
+            <below>Alfie sta in ombra, un sorriso astuto sul volto, mentre Betty annuisce con entusiasmo, un bagliore sinistro nei suoi occhi.</below>
          </panel>
       </scene>
       <scene>
@@ -2258,7 +2258,7 @@
                </figure>
             </right>
             <setting>sports field</setting>
-            <below>Alfie throws a baseball while Betty prepares to swing the bat.</below>
+            <below>Alfie lancia una palla da baseball mentre Betty si prepara a colpire con la mazza.</below>
          </panel>
          <panel>
             <left>
@@ -2314,7 +2314,7 @@
                </figure>
             </right>
             <setting>sports field</setting>
-            <below>Alfie drops the bat as the baseball hits Betty in the head.</below>
+            <below>Alfie lascia cadere la mazza mentre la palla da baseball colpisce Betty in testa.</below>
          </panel>
          <panel>
             <left>
@@ -2370,7 +2370,7 @@
                </figure>
             </right>
             <setting>sports field</setting>
-            <below>Alfie shrugs while Betty struggles to regain her balance.</below>
+            <below>Alfie scrolla le spalle mentre Betty cerca di ristabilire il suo equilibrio.</below>
          </panel>
          <panel>
             <left>
@@ -2426,7 +2426,7 @@
                </figure>
             </right>
             <setting>sports field</setting>
-            <below>Alfie runs away as Betty swings the bat angrily above her head.</below>
+            <below>Alfie scappa mentre Betty brandisce la mazza con rabbia sopra la testa.</below>
          </panel>
       </scene>
    </scenes>

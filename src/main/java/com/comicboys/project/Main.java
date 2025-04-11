@@ -62,7 +62,6 @@ public class Main {
         XMLTranslator translator = new XMLTranslator(config, mappings,"story");
         translator.translateXML("sample_story2.xml");
 
-
         System.out.println("\n------------------------------");
         System.out.println("\n------[ CURRENT SPRINT ]------");
         System.out.println("\n------------------------------");
