@@ -37,6 +37,21 @@ public class Blueprint{
         return phrases;
     }
 
+    public List<String> getBelowTexts() {
+        NodeList nodeList = selectElements("below");
+        List<String> texts = new ArrayList<>();
+        for (int i = 0; i < nodeList.getLength(); i++) {
+            Node node = nodeList.item(i);
+            if (node.getNodeType() == Node.ELEMENT_NODE) {
+                String text = node.getTextContent().trim();
+                if (!text.isEmpty()) {
+                    texts.add(text);
+                }
+            }
+        }
+        return texts;
+    }
+
     public void writeStory(StoryGenerator storyGenerator) {
         // this will select all scenes from file document variable (not the cloned copy the just cleared of scenes)
         NodeList scenes = selectElements("scene");

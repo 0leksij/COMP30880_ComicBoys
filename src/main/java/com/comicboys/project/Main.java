@@ -59,15 +59,15 @@ public class Main {
         String filePath = "assets/mappings/generated_comic.xml";
         generator.generateXML(0, filePath);
 
-        XMLTranslator translator = new XMLTranslator(config, mappings);
-        translator.translateXML("specification.xml");
+        XMLTranslator translator = new XMLTranslator(config, mappings,"story");
+        translator.translateXML("sample_story2.xml");
 
 
         System.out.println("\n------------------------------");
         System.out.println("\n------[ CURRENT SPRINT ]------");
         System.out.println("\n------------------------------");
 
-        String blueprintPath = "assets/blueprint/";
+        String blueprintPath = "assets/story/";
         Blueprint blueprint = new Blueprint(blueprintPath + "specification.xml");
         System.out.println("\nSpeech balloons from file: ");
         System.out.println(blueprint.getSpeechBalloons());

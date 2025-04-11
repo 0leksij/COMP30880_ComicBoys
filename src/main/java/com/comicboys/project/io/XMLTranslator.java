@@ -12,13 +12,15 @@ public class XMLTranslator {
     private final String sourceLanguage;
     private final String targetLanguage;
     private final String filePath;
+    private final String lessonType;
 
-    public XMLTranslator(ConfigurationFile config, Mappings mappings) {
+    public XMLTranslator(ConfigurationFile config, Mappings mappings,String lessonType) {
         this.config = config;
         this.translationGenerator = new TranslationGenerator(this.config, mappings);
         this.sourceLanguage = this.config.getProperty("SOURCE_LANGUAGE").toLowerCase();
         this.targetLanguage = this.config.getProperty("TARGET_LANGUAGE").toLowerCase();
-        this.filePath = "assets/blueprint/";
+        this.filePath = "assets/story/";
+        this.lessonType = lessonType;
 
         // Ensure translations are generated before proceeding
         translationGenerator.generateTranslations(mappings.getAllTextFragments());
@@ -30,9 +32,11 @@ public class XMLTranslator {
             // First get all speech balloons from the XML
             Blueprint blueprint = new Blueprint(inputFilePath);
             List<String> speechBalloons = blueprint.getSpeechBalloons();
+            List<String> belowTexts = blueprint.getBelowTexts();
 
             // Generate translations for these balloons
             translationGenerator.generateTranslations(speechBalloons);
+            translationGenerator.generateTranslations(belowTexts);
 
             // Load the original XML file
             Document doc = XMLFileManager.loadXMLFromFile(inputFilePath);
@@ -52,8 +56,8 @@ public class XMLTranslator {
                         // Create a copy of the panel for translation
                         Element translatedPanel = (Element) panelElement.cloneNode(true);
 
-                        // Translate all balloons in the copied panel
-                        translateBalloons(translatedPanel);
+                        // Translate all balloons and below texts in the copied panel
+                        translatePanel(translatedPanel);
 
                         // Insert the translated panel after the original
                         panel.getParentNode().insertBefore(translatedPanel, panel.getNextSibling());
@@ -63,7 +67,7 @@ public class XMLTranslator {
             }
 
             // Save the translated XML to a new file
-            String outputFilePath = filePath + sourceLanguage + "-to-" + targetLanguage + "-conjunction-lesson.xml";
+            String outputFilePath = filePath + sourceLanguage + "-to-" + targetLanguage + "-" + lessonType + ".xml";
             return XMLFileManager.saveXMLToFile(doc, outputFilePath);
 
         } catch (Exception e) {
@@ -74,8 +78,9 @@ public class XMLTranslator {
         }
     }
 
-    private void translateBalloons(Element panel) {
+    private void translatePanel(Element panel) {
         NodeList balloons = panel.getElementsByTagName("balloon");
+        NodeList belowTexts = panel.getElementsByTagName("below");
         Map<String, String> translations = translationGenerator.getTranslations();
 
         for (int i = 0; i < balloons.getLength(); i++) {
@@ -93,10 +98,20 @@ public class XMLTranslator {
                 }
             }
         }
+
+        if (belowTexts.getLength() > 0) {
+            for (int i = 0; i < belowTexts.getLength(); i++){
+                Node belowText = belowTexts.item(i);
+                if (belowText.getNodeType() == Node.ELEMENT_NODE){
+                    String originalText = belowText.getTextContent();
+
+                    String translatedText = translations.getOrDefault(originalText, originalText);
+                    belowText.setTextContent(translatedText);
+                }
+            }
+        }
+
     }
-
-
-
 
     public String getFilePath() {
         return filePath;

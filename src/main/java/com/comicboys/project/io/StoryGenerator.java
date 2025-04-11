@@ -93,7 +93,7 @@ public class StoryGenerator {
         return result.toString();
     }
 
-    private List<Element> getAllFiguresFromPanel(Element panel) {
+    List<Element> getAllFiguresFromPanel(Element panel) {
         List<Element> figures = new ArrayList<>();
 
         // Middle, Left, Right sections may each contain <figure>
@@ -116,7 +116,7 @@ public class StoryGenerator {
         return figures;
     }
 
-    private String getTextContent(Element parent, String tag) {
+    String getTextContent(Element parent, String tag) {
         NodeList nodes = parent.getElementsByTagName(tag);
         if (nodes.getLength() > 0) return nodes.item(0).getTextContent().trim();
         return null;
@@ -216,7 +216,7 @@ public class StoryGenerator {
     }
 
 
-    private Element getBalloonForFigure(Element panel, Element figure) {
+    Element getBalloonForFigure(Element panel, Element figure) {
         // Find the balloon that belongs to this specific figure
         NodeList balloons = panel.getElementsByTagName("balloon");
         for (int i = 0; i < balloons.getLength(); i++) {
@@ -292,7 +292,7 @@ public class StoryGenerator {
 
 
 
-    private List<String> processDialogueResponse(APIResponse response) {
+    List<String> processDialogueResponse(APIResponse response) {
         List<String> dialogues = new ArrayList<>();
 
         if (response.isNumberedList()) {

@@ -21,7 +21,7 @@ class XMLTranslatorTest {
         ConfigurationFile config = new ConfigurationFile();
         MappingsFileReader mappingsReader = new MappingsFileReader();
         Mappings mappings = mappingsReader.getMappings();
-        translator = new XMLTranslator(config, mappings);
+        translator = new XMLTranslator(config, mappings,"");
     }
 
     @Test
