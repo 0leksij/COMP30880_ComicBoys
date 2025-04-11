@@ -113,6 +113,10 @@ public class XMLTranslator {
 
     }
 
+    public String getLessonType(){
+        return lessonType;
+    }
+
     public String getFilePath() {
         return filePath;
     }

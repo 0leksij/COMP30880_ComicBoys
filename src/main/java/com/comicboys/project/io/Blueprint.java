@@ -189,7 +189,7 @@ public class Blueprint{
     public static void main(String[] args) {
         ConfigurationFile config = new ConfigurationFile();
         APIClient client = new APIClient(config);
-        String storyPath = "assets/story/specification_shorter.xml";
+        String storyPath = "assets/story/specification_short.xml";
         Blueprint blueprint = new Blueprint(storyPath);
 
         StoryGenerator sg = new StoryGenerator(client);

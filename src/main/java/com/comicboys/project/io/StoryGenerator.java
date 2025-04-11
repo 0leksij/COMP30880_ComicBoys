@@ -13,11 +13,11 @@ import java.util.*;
 
 public class StoryGenerator {
 
+    private Document xmlDocument;
+    private APIClient client;
 
-    /// //////////////// Oleksiis Story Generator
-
-    public StoryGenerator() {
-
+    public StoryGenerator(APIClient client) {
+        this.client = client;
     }
 
     public String generateSceneStory(int sceneIndex) {
@@ -65,7 +65,6 @@ public class StoryGenerator {
                 } else if (pose != null && !pose.isEmpty()) {
                     charDescription.append(" is ").append(pose).append(location);
                 }
-
                 characterDescriptions.add(charDescription.toString());
             }
 
@@ -89,7 +88,6 @@ public class StoryGenerator {
                 result.append("\n");
             }
         }
-
         return result.toString();
     }
 
@@ -112,7 +110,6 @@ public class StoryGenerator {
                 }
             }
         }
-
         return figures;
     }
 
@@ -120,17 +117,6 @@ public class StoryGenerator {
         NodeList nodes = parent.getElementsByTagName(tag);
         if (nodes.getLength() > 0) return nodes.item(0).getTextContent().trim();
         return null;
-    }
-
-
-    /// //////////////// Reys Story Generator
-    private String filePath;
-    private Document xmlDocument;
-    private APIClient client;
-
-    public StoryGenerator(APIClient client) {
-        this.filePath = "assets/story/";
-        this.client = client;
     }
 
     public void loadXmlDocument(String xmlFilePath) {
@@ -152,6 +138,7 @@ public class StoryGenerator {
         Element scene = (Element) scenes.item(sceneIndex);
         NodeList panels = scene.getElementsByTagName("panel");
 
+        // start at index 1 to skip opening panel
         for (int panelIndex = 1; panelIndex < panels.getLength(); panelIndex++) {
             Element panel = (Element) panels.item(panelIndex);
             result.append((panelIndex)).append(". ");
@@ -272,7 +259,6 @@ public class StoryGenerator {
                         }
                     }
                 }
-
                 // Process the response
                 List<String> dialogues = processDialogueResponse(response);
                 result.add(dialogues);
@@ -286,11 +272,8 @@ public class StoryGenerator {
                 result.add(List.of("Error generating dialogue for this scene: " + e.getMessage()));
             }
         }
-
         return result;
     }
-
-
 
     List<String> processDialogueResponse(APIResponse response) {
         List<String> dialogues = new ArrayList<>();

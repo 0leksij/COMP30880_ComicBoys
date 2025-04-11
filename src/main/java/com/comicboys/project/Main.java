@@ -67,11 +67,11 @@ public class Main {
         System.out.println("\n------[ CURRENT SPRINT ]------");
         System.out.println("\n------------------------------");
 
-        String blueprintPath = "assets/story/";
+        String blueprintPath = "assets/blueprint/";
         Blueprint blueprint = new Blueprint(blueprintPath + "specification.xml");
         System.out.println("\nSpeech balloons from file: ");
         System.out.println(blueprint.getSpeechBalloons());
         System.out.println("\nTranslations in filepath: " + blueprintPath);
-        System.out.println("(in source-to-target-conjunction.xml)");
+
     }
 }
