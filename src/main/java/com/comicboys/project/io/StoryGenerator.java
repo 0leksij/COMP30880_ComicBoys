@@ -248,11 +248,11 @@ public class StoryGenerator {
                 sb.append("Here are the audio descriptions for scene ").append(sceneIndex+1).append(":\n");
                 sb.append(generateSceneStory(sceneIndex));
                 sb.append("\n\nHere are the characters in each panel:\n");
-                sb.append("\n\nProvide JUST a numbered list of dialogue (with names in the format \"Alfie: *insert dialogue*\", tab-separated (do not give \"tab\") if multiple characters like \"Alfie: *dialogue*\\tBetty: *dialogue*\"). Fill in the blanks for each character in the given order.");
+                sb.append("\n\nProvide JUST a numbered list of dialogue (with names in the format \"Alfie: *insert dialogue*\", separated with \"|\" if there are multiple characters do \"Alfie: *dialogue* | Betty: *dialogue*\"). Fill in the blanks for each character in the given order.");
                 sb.append(getCharactersByPanel(sceneIndex));
                 sb.append("\nDo not enclose the dialogue in \"\". I just want the plain text");
-                sb.append("\nAlso after the dialogue, provide a very brief description of the panel. It should be separated from the dialogue with a tab. E.g (Alfie: ... \t Betty: ... \t ...)");
-                sb.append("\nDo not return the description in the format \"Description: ...\", just return plain text like \t ... with no brackets. Always include the description");
+                sb.append("\nAlso after the dialogue, provide a very brief description of the panel. It should be separated from the dialogue with a |. E.g (Alfie: ... | Betty: ... | ...)");
+                sb.append("\nDo not return the description in the format \"Description: ...\", just return plain text like | ... with no brackets. Always include the description");
 
                 // Get API response with rate limiting handling
                 APIResponse response = null;

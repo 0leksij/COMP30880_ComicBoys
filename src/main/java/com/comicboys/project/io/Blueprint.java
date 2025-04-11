@@ -69,7 +69,7 @@ public class Blueprint{
         // used to get rid of "file.xml" from path and get directory of source file
         String fileDirectory = XMLFileManager.getFileDirectory(getFilePath());
         // save to save file path with given file name
-        XMLFileManager.saveXMLToFile(getFile(), fileDirectory + "sample_story.xml");
+        XMLFileManager.saveXMLToFile(getFile(), fileDirectory + "sample_story2.xml");
         System.out.println("File written to " + fileDirectory);
     }
 
@@ -95,7 +95,7 @@ public class Blueprint{
                     continue;
                 }
                 // splitting panel text data for each figure and the below text
-                List<String> panel = List.of(newSceneData.get(currentNewPanel).split("\t"));
+                List<String> panel = List.of(newSceneData.get(currentNewPanel).split("\\|"));
                 String belowText = "";
                 // looking through text for each figure
                 for (String figureText : panel) {
@@ -128,10 +128,14 @@ public class Blueprint{
                                             Document doc = figure.getOwnerDocument();
                                             // create new balloon with text as whatever came after the colon, remove trailing spaces
                                             Element newBalloon = doc.createElement("balloon");
-                                            // set balloon status to be speech and set its text to be dialogue obtained
                                             newBalloon.setAttribute("status", "speech");
-                                            newBalloon.setTextContent(figureText.substring(colonIndex + 1).trim());
-                                            // add balloon as child of figure parent (will be either left, middle, right)
+
+                                            // Create <content> inside <balloon>
+                                            Element content = doc.createElement("content");
+                                            content.setTextContent(figureText.substring(colonIndex + 1).trim());
+                                            newBalloon.appendChild(content);
+
+                                            // Append the new balloon
                                             figure.getParentNode().appendChild(newBalloon);
                                         }
                                     }
