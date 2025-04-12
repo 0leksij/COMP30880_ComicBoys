@@ -1,13 +1,9 @@
 package com.comicboys.project.io;
 
-
 import com.comicboys.project.client.APIClient;
 import com.comicboys.project.client.APIResponse;
 import com.comicboys.project.utility.XMLFileManager;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
+import org.w3c.dom.*;
 
 import java.util.*;
 
@@ -40,38 +36,12 @@ public class StoryGenerator {
             StringBuilder panelDescription = new StringBuilder();
 
             // Get location from <above> or <setting>
-            String location = getTextContent(panel, "above");
-            if (location == null || location.isEmpty()) location = getTextContent(panel, "setting");
-            location = (location != null && !location.isEmpty()) ? " in the " + location : "";
-
-            List<Element> figureElements = getAllFiguresFromPanel(panel);
-            List<String> characterDescriptions = new ArrayList<>();
-
-            for (Element figure : figureElements) {
-                String name = getTextContent(figure, "name");
-                if (name == null) continue;
-
-                StringBuilder charDescription = new StringBuilder(name);
-
-                // Get character-specific balloon if exists
-                Element balloon = getBalloonForFigure(panel, figure);
-                String pose = getTextContent(figure, "pose");
-
-                if (balloon != null) {
-                    String balloonText = getTextContent(balloon, "content");
-                    if (balloonText != null && !balloonText.isEmpty()) {
-                        charDescription.append(" is ").append(balloonText).append(location);
-                    }
-                } else if (pose != null && !pose.isEmpty()) {
-                    charDescription.append(" is ").append(pose).append(location);
-                }
-                characterDescriptions.add(charDescription.toString());
-            }
+            String location = getLocation(panel);
+            List<String> characterDescriptions = getCharacterDescriptions(panel, location);
 
             // Combine character descriptions
             if (!characterDescriptions.isEmpty()) {
-                panelDescription.append(String.join(" ", characterDescriptions));
-                panelDescription.append(".");
+                panelDescription.append(String.join(" ", characterDescriptions)).append(".");
             }
 
             // Append <below> text if it exists
@@ -91,14 +61,47 @@ public class StoryGenerator {
         return result.toString();
     }
 
+    private String getLocation(Element panel) {
+        String location = getTextContent(panel, "above", "setting");
+        return (location != null && !location.isEmpty()) ? " in the " + location : "";
+    }
+
+    private List<String> getCharacterDescriptions(Element panel, String location) {
+        List<Element> figureElements = getAllFiguresFromPanel(panel);
+        List<String> characterDescriptions = new ArrayList<>();
+
+        for (Element figure : figureElements) {
+            String name = getTextContent(figure, "name");
+            if (name == null) continue;
+
+            StringBuilder charDescription = new StringBuilder(name);
+
+            // Get character-specific balloon if exists
+            Element balloon = getBalloonForFigure(panel, figure);
+            String pose = getTextContent(figure, "pose");
+
+            if (balloon != null) {
+                String balloonText = getTextContent(balloon, "content");
+                if (balloonText != null && !balloonText.isEmpty()) {
+                    charDescription.append(" is ").append(balloonText).append(location);
+                }
+            }
+            else if (pose != null && !pose.isEmpty()) {
+                charDescription.append(" is ").append(pose).append(location);
+            }
+            characterDescriptions.add(charDescription.toString());
+        }
+        return characterDescriptions;
+    }
+
     List<Element> getAllFiguresFromPanel(Element panel) {
         List<Element> figures = new ArrayList<>();
+        String[] sections = {"middle", "left", "right"};
 
-        // Middle, Left, Right sections may each contain <figure>
-        for (String section : new String[]{"middle", "left", "right"}) {
-            NodeList sections = panel.getElementsByTagName(section);
-            for (int i = 0; i < sections.getLength(); i++) {
-                Node sectionNode = sections.item(i);
+        for (String section : sections) {
+            NodeList sectionNodes = panel.getElementsByTagName(section);
+            for (int i = 0; i < sectionNodes.getLength(); i++) {
+                Node sectionNode = sectionNodes.item(i);
                 if (sectionNode.getNodeType() == Node.ELEMENT_NODE) {
                     NodeList figureNodes = ((Element) sectionNode).getElementsByTagName("figure");
                     for (int j = 0; j < figureNodes.getLength(); j++) {
@@ -113,9 +116,13 @@ public class StoryGenerator {
         return figures;
     }
 
-    String getTextContent(Element parent, String tag) {
-        NodeList nodes = parent.getElementsByTagName(tag);
-        if (nodes.getLength() > 0) return nodes.item(0).getTextContent().trim();
+    String getTextContent(Element parent, String... tags) {
+        for (String tag : tags) {
+            NodeList nodes = parent.getElementsByTagName(tag);
+            if (nodes.getLength() > 0) {
+                return nodes.item(0).getTextContent().trim();
+            }
+        }
         return null;
     }
 
@@ -138,7 +145,6 @@ public class StoryGenerator {
         Element scene = (Element) scenes.item(sceneIndex);
         NodeList panels = scene.getElementsByTagName("panel");
 
-        // start at index 1 to skip opening panel
         for (int panelIndex = 1; panelIndex < panels.getLength(); panelIndex++) {
             Element panel = (Element) panels.item(panelIndex);
             result.append((panelIndex)).append(". ");
@@ -146,10 +152,8 @@ public class StoryGenerator {
             List<String> characters = findCharactersInPanel(panel);
             formatCharacterEntries(result, characters);
 
-            // Add newline unless it's the last panel
-            if (panelIndex < panels.getLength() - 1) {
-                result.append("\n");
-            }
+            if (panelIndex < panels.getLength() - 1) result.append("\n");
+
         }
 
         return result.toString();
@@ -161,9 +165,8 @@ public class StoryGenerator {
 
         for (String position : positions) {
             NodeList positionElements = panel.getElementsByTagName(position);
-            if (positionElements.getLength() > 0) {
-                Element positionElement = (Element) positionElements.item(0);
-                extractCharactersFromPosition(positionElement, characters);
+            for (int i = 0; i < positionElements.getLength(); i++) {
+                extractCharactersFromPosition((Element) positionElements.item(i), characters);
             }
         }
         return characters;
@@ -174,41 +177,28 @@ public class StoryGenerator {
         for (int i = 0; i < figures.getLength(); i++) {
             Element figure = (Element) figures.item(i);
             String characterName = getCharacterName(figure);
-            if (characterName != null && !characters.contains(characterName)) {
-                characters.add(characterName + "__");
-            }
+            if (characterName != null && !characters.contains(characterName)) characters.add(characterName + "__");
+
         }
     }
 
     private String getCharacterName(Element figure) {
-        String name = getTextContentFromTag(figure, "name");
-        if (name.isEmpty()) {
-            name = getTextContentFromTag(figure, "id");
-        }
-        return name.isEmpty() ? null : name;
-    }
-
-    private String getTextContentFromTag(Element element, String tagName) {
-        NodeList nodes = element.getElementsByTagName(tagName);
-        return nodes.getLength() > 0 ? nodes.item(0).getTextContent().trim() : "";
+        String name = getTextContent(figure, "name", "id");
+        return (name != null && !name.isEmpty()) ? name : null;
     }
 
     private void formatCharacterEntries(StringBuilder builder, List<String> characters) {
         for (int i = 0; i < characters.size(); i++) {
-            if (i > 0) {
-                builder.append("\t");
-            }
+            if (i > 0) builder.append("\t");
+
             builder.append(characters.get(i));
         }
     }
 
-
     Element getBalloonForFigure(Element panel, Element figure) {
-        // Find the balloon that belongs to this specific figure
         NodeList balloons = panel.getElementsByTagName("balloon");
         for (int i = 0; i < balloons.getLength(); i++) {
             Element balloon = (Element) balloons.item(i);
-            // Check if balloon is a direct sibling of the figure
             if (balloon.getParentNode().equals(figure.getParentNode())) {
                 return balloon;
             }
@@ -227,12 +217,10 @@ public class StoryGenerator {
         NodeList scenes = xmlDocument.getElementsByTagName("scene");
         System.out.println("Generating story...");
 
-        // loop below can take a while, so every now and then remind user still generating
         long startTime = System.currentTimeMillis();
 
         for (int sceneIndex = 0; sceneIndex < scenes.getLength(); sceneIndex++) {
             List<String> sceneResults = new ArrayList<>();
-
             long timeElapsed = System.currentTimeMillis() - startTime;
             if (timeElapsed > 30000) {
                 System.out.println("Still generating...");
@@ -240,40 +228,18 @@ public class StoryGenerator {
             }
 
             try {
-                // Build the prompt
                 StringBuilder sb = new StringBuilder();
-                sb.append("Here are the audio descriptions for scene ").append(sceneIndex+1).append(":\n");
+                sb.append("Here are the audio descriptions for scene ").append(sceneIndex + 1).append(":\n");
                 sb.append(generateSceneStory(sceneIndex));
                 sb.append("\n\nHere are the characters in each panel:\n");
-                sb.append("\n\nProvide JUST a numbered list of dialogue (with names in the format \"Alfie: *insert dialogue*\", separated with \"|\" if there are multiple characters do \"Alfie: *dialogue* | Betty: *dialogue*\"). Fill in the blanks for each character in the given order.");
                 sb.append(getCharactersByPanel(sceneIndex));
-                sb.append("\nDo not enclose the dialogue in \"\". I just want the plain text");
-                sb.append("\nAlso after the dialogue, provide a very brief description of the panel. It should be separated from the dialogue with a |. E.g (Alfie: ... | Betty: ... | ...)");
-                sb.append("\nDo not return the description in the format \"Description: ...\", just return plain text like | ... with no brackets. Always include the description");
+                sb.append("\nProvide JUST a numbered list of dialogue with names and descriptions.");
 
-                // Get API response with rate limiting handling
-                APIResponse response = null;
-                int retryCount = 0;
-                while (retryCount < 3) { // Max 3 retries
-                    try {
-                        response = client.sendPrompt(sb.toString());
-                        break;
-                    } catch (Exception e) {
-                        if (e.getMessage().contains("429") || e.getMessage().contains("Too Many Requests")) {
-                            retryCount++;
-                            if (retryCount >= 3) throw e;
-                            System.out.println("Rate limited, retrying in " + (5000 * retryCount) + "ms...");
-                            Thread.sleep(5000 * retryCount); // Exponential backoff (5s, 10s, 15s)
-                        } else {
-                            throw e; // Re-throw if not a rate limit error
-                        }
-                    }
-                }
-                // Process the response
+                APIResponse response = client.sendPrompt(sb.toString());
+
                 List<String> dialogues = processDialogueResponse(response);
                 result.add(dialogues);
 
-                // Add delay between scenes to avoid rate limiting
                 if (sceneIndex < scenes.getLength() - 1) {
                     Thread.sleep(30000); // 30 second delay between scenes
                 }
@@ -281,38 +247,25 @@ public class StoryGenerator {
                 System.err.println("Error processing scene " + (sceneIndex + 1) + ": " + e.getMessage());
                 result.add(List.of("Error generating dialogue for this scene: " + e.getMessage()));
             }
-
-
         }
         return result;
     }
 
     List<String> processDialogueResponse(APIResponse response) {
         List<String> dialogues = new ArrayList<>();
-
         if (response.isNumberedList()) {
-            // Process numbered list response
             for (String item : response.getNumberedList().getItems()) {
-                // Remove the numbering prefix (e.g., "1. ")
-                String dialogue = item.replaceAll("^\\d+\\.\\s*", "").trim();
-                dialogues.add(dialogue);
+                dialogues.add(item.replaceAll("^\\d+\\.\\s*", "").trim());
             }
-        } else {
-            // Process plain text response by splitting lines
+        }
+        else {
             String[] lines = response.getTextResponse().split("\n");
             for (String line : lines) {
                 line = line.trim();
-                if (!line.isEmpty()) {
-                    // Check if line starts with numbering pattern
-                    if (line.matches("^\\d+\\.\\s+.*")) {
-                        dialogues.add(line.replaceAll("^\\d+\\.\\s*", "").trim());
-                    } else {
-                        dialogues.add(line);
-                    }
-                }
+                if (!line.isEmpty() && line.matches("^\\d+\\.\\s+.*")) dialogues.add(line.replaceAll("^\\d+\\.\\s*", "").trim());
+                else dialogues.add(line);
             }
         }
-
         return dialogues;
     }
 }
