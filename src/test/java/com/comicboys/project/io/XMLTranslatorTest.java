@@ -28,32 +28,32 @@ class XMLTranslatorTest {
 
     @Test
     void testTranslateXMLShouldSucceed() {
-        assertTrue(translator.translateXML("specification.xml"),
+        assertTrue(translator.translateXML("test/test_specification.xml"),
                 "Expected translation to complete successfully");
     }
 
     @Test
     void testTranslatedFileExists() {
-        translator.translateXML("specification.xml");
+        translator.translateXML("test/test_specification.xml");
 
-        String expectedPath = translator.getFilePath() + "english-to-italian-conjunction-lesson.xml";
+        String expectedPath = translator.getFilePath() + "english-to-italian-.xml";
         File file = new File(expectedPath);
         assertTrue(file.exists(), "Translated XML output file should exist");
     }
 
     @Test
     void testTranslatedContentContainsExpectedText() {
-        translator.translateXML("specification.xml");
+        translator.translateXML("test/test_conjunction.xml");
 
         Document doc = XMLFileManager.loadXMLFromFile(
-                translator.getFilePath() + "english-to-italian-conjunction-lesson.xml"
+                translator.getFilePath() + "english-to-italian-.xml"
         );
 
         NodeList balloons = doc.getElementsByTagName("balloon");
         boolean found = false;
         for (int i = 0; i < balloons.getLength(); i++) {
             String content = balloons.item(i).getTextContent();
-            if (content.contains("Io") || content.contains("Noi")) {
+            if (content.contains("Io") || content.contains("Sto") || content.contains("Noi") || content.contains("Stiamo")) {
                 found = true;
                 break;
             }

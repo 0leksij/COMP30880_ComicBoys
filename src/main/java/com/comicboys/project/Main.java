@@ -62,9 +62,9 @@ public class Main {
         generator.generateXML(0, filePath);
 
         String blueprintPath = "assets/blueprint/";
-        TextBlueprint blueprint = new TextBlueprint(blueprintPath + "specification.xml");
+        TextBlueprint blueprintText = new TextBlueprint(blueprintPath + "specification.xml");
         System.out.println("\nSpeech balloons from file: ");
-        System.out.println(blueprint.getSpeechBalloons());
+        System.out.println(blueprintText.getSpeechBalloons());
         System.out.println("\nTranslations in filepath: " + blueprintPath);
 
 

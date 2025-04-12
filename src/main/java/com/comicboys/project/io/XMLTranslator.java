@@ -122,16 +122,5 @@ public class XMLTranslator {
         return filePath;
     }
 
-    public static void main(String[] args) {
-
-        ConfigurationFile config = new ConfigurationFile();
-        APIClient client = new APIClient(config);
-        Mappings mappings = new Mappings();
-
-        XMLTranslator translator = new XMLTranslator(config, client, mappings, "story");
-
-        translator.translateXML("sample_story2.xml");
-    }
-
 
 }

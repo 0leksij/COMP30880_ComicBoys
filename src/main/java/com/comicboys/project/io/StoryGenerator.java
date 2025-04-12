@@ -227,8 +227,17 @@ public class StoryGenerator {
         NodeList scenes = xmlDocument.getElementsByTagName("scene");
         System.out.println("Generating story...");
 
+        // loop below can take a while, so every now and then remind user still generating
+        long startTime = System.currentTimeMillis();
+
         for (int sceneIndex = 0; sceneIndex < scenes.getLength(); sceneIndex++) {
             List<String> sceneResults = new ArrayList<>();
+
+            long timeElapsed = System.currentTimeMillis() - startTime;
+            if (timeElapsed > 30000) {
+                System.out.println("Still generating...");
+                startTime = System.currentTimeMillis();
+            }
 
             try {
                 // Build the prompt
@@ -305,33 +314,5 @@ public class StoryGenerator {
         }
 
         return dialogues;
-    }
-
-    public static void main(String[] args) {
-        ConfigurationFile config = new ConfigurationFile();
-        APIClient client = new APIClient(config);
-        StoryGenerator sg = new StoryGenerator(client);
-
-        // Example usage:
-        sg.loadXmlDocument("assets/story/specification_short.xml");
-
-        // Print the results
-        List<List<String>> stories = sg.generateStories();
-
-        // Print all stories
-        for (int i = 0; i < stories.size(); i++) {
-            System.out.println("Scene " + (i+1) + ":");
-            for (String panel : stories.get(i)) {
-                System.out.println(panel);
-            }
-            System.out.println();
-        }
-
-        // example:
-        // a scene is accessed by stories.get(i)
-        // a panel of a scene can be accessed by stories.get(i).get(j)
-
-        System.out.println(stories.get(1).get(2));
-
     }
 }

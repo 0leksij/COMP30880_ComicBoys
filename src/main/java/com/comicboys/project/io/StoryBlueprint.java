@@ -22,7 +22,7 @@ public class StoryBlueprint extends Blueprint {
     public void writeStory(List<List<String>> stories, String fileName) {
         // a reminder for how the strings are supposed to be formatted by AI, to help troubleshooting
         String characterDelimiter = "|";
-        System.out.println("Splitting character dialogue based on " + characterDelimiter + " delimiter");
+        System.out.println("Split character dialogue based on " + characterDelimiter + " delimiter");
         // this will select all scenes from file document variable (not the cloned copy the just cleared of scenes)
         NodeList scenes = selectElements("scene");
         // need to separately keep track of current index in our XML DOM structure AND list of stories
