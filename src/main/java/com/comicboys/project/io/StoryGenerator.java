@@ -257,13 +257,16 @@ public class StoryGenerator {
             for (String item : response.getNumberedList().getItems()) {
                 dialogues.add(item.replaceAll("^\\d+\\.\\s*", "").trim());
             }
-        }
-        else {
+        } else {
             String[] lines = response.getTextResponse().split("\n");
             for (String line : lines) {
                 line = line.trim();
-                if (!line.isEmpty() && line.matches("^\\d+\\.\\s+.*")) dialogues.add(line.replaceAll("^\\d+\\.\\s*", "").trim());
-                else dialogues.add(line);
+                if (!line.isEmpty() && line.matches("^\\d+\\.\\s+.*")) {
+                    dialogues.add(line.replaceAll("^\\d+\\.\\s*", "").trim());
+                }
+                else {
+                    dialogues.add(line);
+                }
             }
         }
         return dialogues;
