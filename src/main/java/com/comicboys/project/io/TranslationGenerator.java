@@ -17,8 +17,8 @@ public class TranslationGenerator {
     private int retryDelaySeconds ;
     private int batchSizeLimit;
 
-    public TranslationGenerator(ConfigurationFile config, Mappings mappings) {
-        this.apiClient = new APIClient(config);
+    public TranslationGenerator(ConfigurationFile config, APIClient client, Mappings mappings) {
+        this.apiClient = client;
         this.mappings = mappings;
         this.maxRetries = 5;
         this.retryDelaySeconds = 30;

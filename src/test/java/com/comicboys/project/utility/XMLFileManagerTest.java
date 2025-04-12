@@ -19,6 +19,17 @@ class XMLFileManagerTest {
         assertEquals("comic", doc.getDocumentElement().getNodeName());
     }
 
+
+    @Test
+    void testGetParent() {
+        Document doc = XMLFileManager.loadXMLFromFile("assets/blueprint/specification.xml");
+        assertNotNull(doc);
+        NodeList nameElement = doc.getElementsByTagName("name");
+        Node name = nameElement.item(0); // first <name>
+        Node figure = XMLFileManager.getParent(name);
+        assertEquals("figure", figure.getNodeName());
+    }
+
     @Test
     void testLoadNonExistingXML() {
         Document doc = XMLFileManager.loadXMLFromFile("assets/blueprint/non_existing.xml");

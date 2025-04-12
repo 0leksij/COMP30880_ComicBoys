@@ -225,6 +225,7 @@ public class StoryGenerator {
         }
 
         NodeList scenes = xmlDocument.getElementsByTagName("scene");
+        System.out.println("Generating story...");
 
         for (int sceneIndex = 0; sceneIndex < scenes.getLength(); sceneIndex++) {
             List<String> sceneResults = new ArrayList<>();
@@ -271,6 +272,8 @@ public class StoryGenerator {
                 System.err.println("Error processing scene " + (sceneIndex + 1) + ": " + e.getMessage());
                 result.add(List.of("Error generating dialogue for this scene: " + e.getMessage()));
             }
+
+
         }
         return result;
     }

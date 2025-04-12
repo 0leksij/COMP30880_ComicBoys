@@ -1,5 +1,6 @@
 package com.comicboys.project.io;
 
+import com.comicboys.project.client.APIClient;
 import com.comicboys.project.data.Mappings;
 import com.comicboys.project.utility.XMLFileManager;
 import org.junit.jupiter.api.BeforeEach;
@@ -21,7 +22,8 @@ class XMLTranslatorTest {
         ConfigurationFile config = new ConfigurationFile();
         MappingsFileReader mappingsReader = new MappingsFileReader();
         Mappings mappings = mappingsReader.getMappings();
-        translator = new XMLTranslator(config, mappings,"");
+        APIClient client = new APIClient(config);
+        translator = new XMLTranslator(config, client, mappings, "");
     }
 
     @Test

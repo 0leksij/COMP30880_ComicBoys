@@ -16,6 +16,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.StringWriter;
 import java.util.List;
+import java.util.Objects;
 
 public interface XMLFileManager{
 
@@ -132,8 +133,14 @@ public interface XMLFileManager{
             i++;
         }
     }
+    // general method to get parent
+    static Node getParent(Node node) {
+        if (node == null) { return null; }
+        if (node.getParentNode() == null) { return null; }
+        return node.getParentNode();
+    }
     // trims excessive whitespace in text content of XML file
-    private static void trimWhitespace(Node node) {
+    static void trimWhitespace(Node node) {
         NodeList children = node.getChildNodes();
         for (int i = 0; i < children.getLength(); i++) {
             Node child = children.item(i);

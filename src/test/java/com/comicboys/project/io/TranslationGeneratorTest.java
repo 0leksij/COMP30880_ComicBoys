@@ -1,6 +1,8 @@
 package com.comicboys.project.io;
 
+import com.comicboys.project.client.APIClient;
 import com.comicboys.project.data.Mappings;
+import org.apiguardian.api.API;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
@@ -21,6 +23,7 @@ public class TranslationGeneratorTest {
 
     private TranslationGenerator generator;
     private ConfigurationFile config;
+    private APIClient client;
     private Mappings mappings;
     private List<List<String>> processedBatches = new ArrayList<>();
     private Map<String, String> testTranslations = new HashMap<>();
@@ -45,6 +48,7 @@ public class TranslationGeneratorTest {
                 return properties.get(key);
             }
         };
+        client = new APIClient(config);
 
         // Create simple mappings with test data
         mappings = new Mappings();
@@ -62,7 +66,7 @@ public class TranslationGeneratorTest {
         //testTranslations.clear();
         apiCallCount.set(0);
 
-        generator = new TranslationGenerator(config, mappings) {
+        generator = new TranslationGenerator(config, client, mappings) {
             protected boolean processBatchWithRetry(List<String> batch) {
                 processedBatches.add(new ArrayList<>(batch));
                 apiCallCount.incrementAndGet();
@@ -120,7 +124,7 @@ public class TranslationGeneratorTest {
     void testRetryLogicOnApiFailure() {
         // Create generator that will fail first two attempts
         AtomicInteger failCounter = new AtomicInteger(2);
-        TranslationGenerator failingGenerator = new TranslationGenerator(config, mappings) {
+        TranslationGenerator failingGenerator = new TranslationGenerator(config, client, mappings) {
             protected boolean processBatchWithRetry(List<String> batch) {
                 if (failCounter.getAndDecrement() > 0) {
                     return false; // Simulate API failure

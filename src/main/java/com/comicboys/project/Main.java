@@ -1,5 +1,6 @@
 package com.comicboys.project;
 
+import com.comicboys.project.client.APIClient;
 import com.comicboys.project.data.Mappings;
 import com.comicboys.project.data.StringEntry;
 import com.comicboys.project.io.*;
@@ -14,6 +15,7 @@ public class Main {
     public static void main(String[] args) throws InterruptedException {
         // creating config file object
         ConfigurationFile config = new ConfigurationFile();
+        APIClient client = new APIClient(config);
 
         // read tsv file with specified number of lines
         int rows = 1000;
@@ -25,7 +27,7 @@ public class Main {
         // get mappings data structure
         Mappings mappings = myReader.getMappings();
         // using mappings to create vignette generator
-        TranslationGenerator translationGenerator = new TranslationGenerator(config, mappings);
+        TranslationGenerator translationGenerator = new TranslationGenerator(config, client, mappings);
 
         XMLGenerator xmlGenerator = new XMLGenerator(mappings);
 
@@ -59,18 +61,28 @@ public class Main {
         String filePath = "assets/mappings/generated_comic.xml";
         generator.generateXML(0, filePath);
 
-        XMLTranslator translator = new XMLTranslator(config, mappings,"story");
-        translator.translateXML("sample_story2.xml");
+        String blueprintPath = "assets/blueprint/";
+        TextBlueprint blueprint = new TextBlueprint(blueprintPath + "specification.xml");
+        System.out.println("\nSpeech balloons from file: ");
+        System.out.println(blueprint.getSpeechBalloons());
+        System.out.println("\nTranslations in filepath: " + blueprintPath);
+
 
         System.out.println("\n------------------------------");
         System.out.println("\n------[ CURRENT SPRINT ]------");
         System.out.println("\n------------------------------");
 
-        String blueprintPath = "assets/blueprint/";
-        Blueprint blueprint = new Blueprint(blueprintPath + "specification.xml");
-        System.out.println("\nSpeech balloons from file: ");
-        System.out.println(blueprint.getSpeechBalloons());
-        System.out.println("\nTranslations in filepath: " + blueprintPath);
+
+        XMLTranslator translator = new XMLTranslator(config, client, mappings, "story");
+        translator.translateXML("sample_story2.xml");
+
+
+
+        String storyPath = "assets/story/specification_short.xml";
+        StoryBlueprint blueprintStory = new StoryBlueprint(storyPath);
+
+        StoryGenerator sg = new StoryGenerator(client);
+        blueprintStory.writeStory(sg, "sample_story2.xml");
 
     }
 }

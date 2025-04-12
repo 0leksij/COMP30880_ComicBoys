@@ -10,11 +10,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BlueprintTest {
 
-    private Blueprint blueprint;
+    // testing superclass abstract methods, since both TextBlueprint and StoryBlueprint inherit these,
+    // no need to test for both concrete classes, one instance of either will give us an idea
+    private TextBlueprint blueprint;
 
     @BeforeEach
     void setUp() {
-        blueprint = new Blueprint("assets/blueprint/specification.xml");
+        blueprint = new TextBlueprint("assets/blueprint/specification.xml");
     }
 
     @Test
@@ -27,20 +29,5 @@ class BlueprintTest {
         Document file = blueprint.getFile();
         assertNotNull(file, "Document should not be null");
         assertEquals("comic", file.getDocumentElement().getNodeName());
-    }
-
-    @Test
-    void testGetSpeechBalloonsNotEmpty() {
-        List<String> balloons = blueprint.getSpeechBalloons();
-        assertNotNull(balloons, "Speech balloons list should not be null");
-        assertFalse(balloons.isEmpty(), "Speech balloons should not be empty");
-    }
-
-    @Test
-    void testBlueprintWithNoBalloons() {
-        Blueprint emptyBlueprint = new Blueprint("assets/blueprint/test/no_balloons.xml");
-        List<String> balloons = emptyBlueprint.getSpeechBalloons();
-        assertNotNull(balloons);
-        assertTrue(balloons.isEmpty(), "Should return empty list for no balloon tags");
     }
 }

@@ -1,5 +1,6 @@
 package com.comicboys.project.io;
 
+import com.comicboys.project.client.APIClient;
 import com.comicboys.project.data.Mappings;
 import com.comicboys.project.utility.XMLFileManager;
 import org.w3c.dom.*;
@@ -14,9 +15,9 @@ public class XMLTranslator {
     private final String filePath;
     private final String lessonType;
 
-    public XMLTranslator(ConfigurationFile config, Mappings mappings,String lessonType) {
+    public XMLTranslator(ConfigurationFile config, APIClient client, Mappings mappings, String lessonType) {
         this.config = config;
-        this.translationGenerator = new TranslationGenerator(this.config, mappings);
+        this.translationGenerator = new TranslationGenerator(this.config, client, mappings);
         this.sourceLanguage = this.config.getProperty("SOURCE_LANGUAGE").toLowerCase();
         this.targetLanguage = this.config.getProperty("TARGET_LANGUAGE").toLowerCase();
         this.filePath = "assets/story/";
@@ -30,7 +31,7 @@ public class XMLTranslator {
         try {
             String inputFilePath = filePath + inputFileName;
             // First get all speech balloons from the XML
-            Blueprint blueprint = new Blueprint(inputFilePath);
+            TextBlueprint blueprint = new TextBlueprint(inputFilePath);
             List<String> speechBalloons = blueprint.getSpeechBalloons();
             List<String> belowTexts = blueprint.getBelowTexts();
 
@@ -124,9 +125,10 @@ public class XMLTranslator {
     public static void main(String[] args) {
 
         ConfigurationFile config = new ConfigurationFile();
+        APIClient client = new APIClient(config);
         Mappings mappings = new Mappings();
 
-        XMLTranslator translator = new XMLTranslator(config,mappings,"story");
+        XMLTranslator translator = new XMLTranslator(config, client, mappings, "story");
 
         translator.translateXML("sample_story2.xml");
     }
