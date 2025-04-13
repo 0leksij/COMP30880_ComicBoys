@@ -232,11 +232,30 @@ public class StoryGenerator {
                 sb.append("Here are the audio descriptions for scene ").append(sceneIndex + 1).append(":\n");
                 sb.append(generateSceneStory(sceneIndex));
                 sb.append("\n\nHere are the characters in each panel:\n");
+                sb.append("\n\nProvide JUST a numbered list of dialogue (with names in the format \"Alfie: *insert dialogue*\", separated with \"|\" if there are multiple characters do \"Alfie: *dialogue* | Betty: *dialogue*\"). Fill in the blanks for each character in the given order.");
                 sb.append(getCharactersByPanel(sceneIndex));
-                sb.append("\nProvide JUST a numbered list of dialogue with names and descriptions.");
-
-                APIResponse response = client.sendPrompt(sb.toString());
-
+                sb.append("\nDo not enclose the dialogue in \"\". I just want the plain text");
+                sb.append("\nAlso after the dialogue, provide a very brief description of the panel. It should be separated from the dialogue with a |. E.g (Alfie: ... | Betty: ... | ...)");
+                sb.append("\nDo not return the description in the format \"Description: ...\", just return plain text like | ... with no brackets. Always include the description");
+                // Get API response with rate limiting handling
+                APIResponse response = null;
+                int retryCount = 0;
+                while (retryCount < 3) { // Max 3 retries
+                    try {
+                        response = client.sendPrompt(sb.toString());
+                        break;
+                    } catch (Exception e) {
+                        if (e.getMessage().contains("429") || e.getMessage().contains("Too Many Requests")) {
+                            retryCount++;
+                            if (retryCount >= 3) throw e;
+                            System.out.println("Rate limited, retrying in " + (5000 * retryCount) + "ms...");
+                            Thread.sleep(5000 * retryCount); // Exponential backoff (5s, 10s, 15s)
+                        } else {
+                            throw e; // Re-throw if not a rate limit error
+                        }
+                    }
+                }
+                // Process the response
                 List<String> dialogues = processDialogueResponse(response);
                 result.add(dialogues);
 

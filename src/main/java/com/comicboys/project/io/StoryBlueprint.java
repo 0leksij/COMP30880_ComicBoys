@@ -66,7 +66,7 @@ public class StoryBlueprint extends Blueprint {
         // doing for all scenes
         while (currentStory < stories.size()) {
             Node currentScene = scenes.item(currentNode);
-            if (currentScene.getNodeType() == Node.ELEMENT_NODE) {
+            if (currentScene != null && currentScene.getNodeType() == Node.ELEMENT_NODE) {
                 // updates in-place the current scene
                 updateScene(currentScene, stories.get(currentStory));
                 // next story index
@@ -101,7 +101,7 @@ public class StoryBlueprint extends Blueprint {
         while (currentNewPanel < newSceneData.size()) {
             Node panel = children.item(currentNode);
             // if is element, i.e. is panel
-            if (panel.getNodeType() == Node.ELEMENT_NODE) {
+            if (panel != null && panel.getNodeType() == Node.ELEMENT_NODE) {
                 // skip panel introducing scene
                 if (panel.getTextContent().contains("Scene")) {
                     currentNode++;
@@ -148,7 +148,7 @@ public class StoryBlueprint extends Blueprint {
         // going through all <name> nodes of current panel
         for (int j = 0; j < names.getLength(); j++) {
             Node name = names.item(j);
-            if (name.getNodeType() == Node.ELEMENT_NODE) {
+            if (name != null && name.getNodeType() == Node.ELEMENT_NODE) {
                 // if name matches one we want to add dialogue for, need to add to its parent's parent
                 if (name.getTextContent().contains(charName)) {
                     // parent of <name> would be <figure>, and parent of <figure> would be <left>, <middle> or <right>
