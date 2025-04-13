@@ -56,7 +56,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>I can't believe it's morning already!</content>
+                  <content>Time for breakfast!</content>
                </balloon>
             </middle>
             <setting>kitchen</setting>
@@ -75,7 +75,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Time for breakfast!</content>
+                  <content>Just a little more cereal...</content>
                </balloon>
             </middle>
             <setting>kitchen</setting>
@@ -94,7 +94,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Yum, this is delicious!</content>
+                  <content>This is delicious!</content>
                </balloon>
             </middle>
             <setting>kitchen</setting>
@@ -113,7 +113,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>I'm ready to take on the day!</content>
+                  <content>I feel like I can take on the world!</content>
                </balloon>
             </middle>
             <setting>kitchen</setting>
@@ -132,11 +132,11 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Bye, see you later!</content>
+                  <content>See you later!</content>
                </balloon>
             </left>
             <setting>welcome mat</setting>
-            <below>Alfie is waving goodbye at the outside front door.</below>
+            <below>Alfie is waving goodbye in the outside front door.</below>
          </panel>
       </scene>
       <scene>
@@ -166,7 +166,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>I really don't want to get up yet</content>
+                  <content>Time to wake up</content>
                </balloon>
             </middle>
             <setting>bedroom</setting>
@@ -185,7 +185,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>This cereal looks good</content>
+                  <content>Just a little more cereal</content>
                </balloon>
             </middle>
             <setting>kitchen</setting>
@@ -204,7 +204,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Ugh, what is that taste?</content>
+                  <content>This tastes weird</content>
                </balloon>
             </middle>
             <setting>kitchen</setting>
@@ -223,7 +223,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>I don't feel so great...</content>
+                  <content>I don’t feel so good</content>
                </balloon>
             </middle>
             <setting>kitchen</setting>
@@ -242,7 +242,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Oh no, not again!</content>
+                  <content>I can’t believe this is happening</content>
                </balloon>
             </middle>
             <setting>kitchen</setting>
@@ -279,11 +279,11 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Whoa!</content>
+                  <content>I'm ready for this!</content>
                </balloon>
             </middle>
             <setting>gravel path</setting>
-            <below>Alfie is riding a horse in the gravel path.</below>
+            <below>Alfie is confidently riding a horse on a gravel path.</below>
          </panel>
          <panel>
             <middle>
@@ -298,11 +298,11 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Ahh!</content>
+                  <content>Whoa!</content>
                </balloon>
             </middle>
             <setting>gravel path</setting>
-            <below>Alfie is falling off horse in the gravel path.</below>
+            <below>Alfie is falling off the horse in the gravel path.</below>
          </panel>
          <panel>
             <left>
@@ -317,7 +317,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Ouch...</content>
+                  <content>Ouch... that hurt.</content>
                </balloon>
             </left>
             <right>
@@ -330,7 +330,7 @@
                </figure>
             </right>
             <setting>gravel path</setting>
-            <below>Alfie is lying on ground in the gravel path. On the right is a riderless horse.</below>
+            <below>Alfie is lying on the ground in the gravel path next to a riderless horse.</below>
          </panel>
          <panel>
             <left>
@@ -356,9 +356,12 @@
                   <pose>throwing water</pose>
                   <facing>left</facing>
                </figure>
+               <balloon status="speech">
+                  <content>You're not getting out of this that easily!</content>
+               </balloon>
             </right>
             <setting>gravel path</setting>
-            <below>Alfie is regaining consciousness in the gravel path. Betty is throwing water in the gravel path.</below>
+            <below>Alfie is regaining consciousness as Betty throws water on him in the gravel path.</below>
          </panel>
          <panel>
             <left>
@@ -373,7 +376,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Why did you do that?</content>
+                  <content>I can't believe you did that!</content>
                </balloon>
             </left>
             <right>
@@ -384,9 +387,12 @@
                   <pose>slopping</pose>
                   <facing>left</facing>
                </figure>
+               <balloon status="speech">
+                  <content>You needed a wake-up call!</content>
+               </balloon>
             </right>
             <setting>gravel path</setting>
-            <below>Alfie is soaking wet in the gravel path. Betty is unapologetic in the gravel path.</below>
+            <below>Alfie is soaking wet in the gravel path while Betty appears unapologetic.</below>
          </panel>
       </scene>
       <scene>
@@ -416,7 +422,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Where is everyone?</content>
+                  <content>Where are you taking me?</content>
                </balloon>
             </left>
             <right>
@@ -427,9 +433,12 @@
                   <pose>evaluating</pose>
                   <facing>left</facing>
                </figure>
+               <balloon status="speech">
+                  <content>Just a little check-up, don't worry!</content>
+               </balloon>
             </right>
             <setting>hospital</setting>
-            <below>Alfie is in a wheelchair in the hospital interior, Betty is evaluating with a checklist.</below>
+            <below>Alfie is in a wheelchair in the hospital interior while Betty evaluates with a checklist.</below>
          </panel>
          <panel>
             <left>
@@ -444,7 +453,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>You can't just leave me here!</content>
+                  <content>I don't trust you!</content>
                </balloon>
             </left>
             <right>
@@ -455,9 +464,12 @@
                   <pose>dispatched</pose>
                   <facing>left</facing>
                </figure>
+               <balloon status="speech">
+                  <content>Trust is overrated, Alfie!</content>
+               </balloon>
             </right>
             <setting>hospital</setting>
-            <below>Alfie is waiting in a wheelchair in the hospital interior, Betty is popping out.</below>
+            <below>Alfie is waiting in a wheelchair, and Betty pops out in the hospital interior.</below>
          </panel>
          <panel>
             <left>
@@ -473,7 +485,7 @@
                   <horizontal>little more</horizontal>
                </figure>
                <balloon status="speech">
-                  <content>Stay away from me!</content>
+                  <content>Stay back!</content>
                </balloon>
             </left>
             <middle>
@@ -494,9 +506,12 @@
                   <facing>left</facing>
                   <horizontal>little less</horizontal>
                </figure>
+               <balloon status="speech">
+                  <content>Don't be scared, I just need a sample!</content>
+               </balloon>
             </right>
             <setting>hospital</setting>
-            <below>Alfie is defensive in the hospital interior, Betty is returning with a knife and a syringe.</below>
+            <below>Alfie is defensive, and Betty returns with a knife and syringe.</below>
          </panel>
          <panel>
             <left>
@@ -512,7 +527,7 @@
                   <horizontal>little more</horizontal>
                </figure>
                <balloon status="speech">
-                  <content>This is insane!</content>
+                  <content>Let me go!</content>
                </balloon>
             </left>
             <middle>
@@ -533,9 +548,12 @@
                   <facing>left</facing>
                   <horizontal>little less</horizontal>
                </figure>
+               <balloon status="speech">
+                  <content>You can't escape me, ha ha!</content>
+               </balloon>
             </right>
             <setting>hospital</setting>
-            <below>Alfie is running away in the hospital interior, Betty is cackling cynically with an empty wheelchair in the middle.</below>
+            <below>Alfie is running away while Betty cackles cynically; an empty wheelchair is in the middle.</below>
          </panel>
       </scene>
       <scene>
@@ -568,11 +586,11 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>This is incredible!</content>
+                  <content>I can do this</content>
                </balloon>
             </left>
             <setting>forest</setting>
-            <below>Alfie rides a horse in the forest, enjoying the moment.</below>
+            <below>Alfie is riding a horse in the forest.</below>
          </panel>
          <panel>
             <left>
@@ -587,7 +605,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>I can do this!</content>
+                  <content>I've got to keep pushing forward</content>
                </balloon>
             </left>
             <right>
@@ -600,7 +618,7 @@
                </figure>
             </right>
             <setting>foothills</setting>
-            <below>Alfie rides with determination in the rocky foothills at dusk, a wild dog nearby.</below>
+            <below>Alfie is riding with determination in the rocky foothills at dusk. On the right is a wild dog.</below>
          </panel>
          <panel>
             <left>
@@ -615,7 +633,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Whoa!</content>
+                  <content>Whoa! No!</content>
                </balloon>
             </left>
             <right>
@@ -628,7 +646,7 @@
                </figure>
             </right>
             <setting>foothills</setting>
-            <below>Alfie is falling off the horse in the rocky foothills at dusk, the dog howling on the right.</below>
+            <below>Alfie is falling off the horse in the rocky foothills at dusk. On the right is a howling dog.</below>
          </panel>
          <panel>
             <middle>
@@ -643,7 +661,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Help!</content>
+                  <content>Get away! Help!</content>
                </balloon>
             </middle>
             <setting>foothills</setting>
@@ -662,11 +680,11 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>I have to keep going.</content>
+                  <content>I won't give up</content>
                </balloon>
             </middle>
             <setting>foothills</setting>
-            <below>Alfie rides with injuries in the rocky foothills at dusk, pushing through the pain.</below>
+            <below>Alfie is riding with injuries in the rocky foothills at dusk.</below>
          </panel>
       </scene>
       <scene>
@@ -696,7 +714,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Time to create something amazing!</content>
+                  <content>I need to find the perfect blend</content>
                </balloon>
             </left>
             <setting>kitchen</setting>
@@ -715,7 +733,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>This will change everything!</content>
+                  <content>This will change everything</content>
                </balloon>
             </left>
             <setting>kitchen</setting>
@@ -734,7 +752,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Rise up and fight for your rights!</content>
+                  <content>Rise up against the oppressors!</content>
                </balloon>
             </left>
             <right>
@@ -745,9 +763,12 @@
                   <pose>plugging ears</pose>
                   <facing>left</facing>
                </figure>
+               <balloon status="speech">
+                  <content>Make it stop!</content>
+               </balloon>
             </right>
             <setting>government</setting>
-            <below>Alfie is preaching revolution in the government plaza; Betty is plugging her ears.</below>
+            <below>Alfie is preaching revolution in the government plaza, and Betty is plugging her ears.</below>
          </panel>
          <panel>
             <left>
@@ -762,7 +783,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Feel the power of rebellion!</content>
+                  <content>For freedom!</content>
                </balloon>
             </left>
             <right>
@@ -773,9 +794,12 @@
                   <pose>running away</pose>
                   <facing>left</facing>
                </figure>
+               <balloon status="speech">
+                  <content>We have to get out of here!</content>
+               </balloon>
             </right>
             <setting>police state</setting>
-            <below>Alfie is throwing a bomb in the government plaza; Betty is running away.</below>
+            <below>Alfie is throwing a bomb in the government plaza, and Betty is running away.</below>
          </panel>
       </scene>
       <scene>
@@ -808,7 +832,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Another day at the plant!</content>
+                  <content>Another day at the plant</content>
                </balloon>
             </left>
             <right>
@@ -819,9 +843,12 @@
                   <pose>cycling</pose>
                   <facing>left</facing>
                </figure>
+               <balloon status="speech">
+                  <content>Can't wait for lunch break</content>
+               </balloon>
             </right>
             <setting>chemical plant</setting>
-            <below>Alfie is riding his motorcycle, while Betty is cycling next to him towards the chemical plant.</below>
+            <below>Alfie is motorcycling to work in the chemical plant Betty is cycling to work in the chemical plant.</below>
          </panel>
          <panel>
             <left>
@@ -837,7 +864,7 @@
                   <horizontal>little more</horizontal>
                </figure>
                <balloon status="speech">
-                  <content>Can't start the day without coffee!</content>
+                  <content>This coffee is amazing</content>
                </balloon>
             </left>
             <middle>
@@ -858,9 +885,12 @@
                   <facing>left</facing>
                   <horizontal>little less</horizontal>
                </figure>
+               <balloon status="speech">
+                  <content>Mind if I light up?</content>
+               </balloon>
             </right>
             <setting>school hallway</setting>
-            <below>Alfie is in the break room drinking coffee, and Betty is lighting a cigar near a vending machine.</below>
+            <below>Alfie is drinking coffee in the break room Betty is lighting cigar in the break room. In the middle is a vending machine</below>
          </panel>
          <panel>
             <left>
@@ -875,7 +905,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Mixing these chemicals requires precision.</content>
+                  <content>These chemicals need to be precise</content>
                </balloon>
             </left>
             <right>
@@ -886,9 +916,12 @@
                   <pose>smoking cigar</pose>
                   <facing>left</facing>
                </figure>
+               <balloon status="speech">
+                  <content>Just enjoying my cigar here</content>
+               </balloon>
             </right>
             <setting>laboratory</setting>
-            <below>Alfie is focused on mixing chemicals, while Betty smokes a cigar in the laboratory.</below>
+            <below>Alfie is mixing chemicals in the laboratory Betty is smoking cigar in the laboratory.</below>
          </panel>
          <panel>
             <left>
@@ -903,7 +936,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Oh no, I need to get out!</content>
+                  <content>Whoa! What just happened?</content>
                </balloon>
             </left>
             <right>
@@ -914,9 +947,12 @@
                   <pose>on fire</pose>
                   <facing>left</facing>
                </figure>
+               <balloon status="speech">
+                  <content>I'm on fire!</content>
+               </balloon>
             </right>
             <setting>laboratory</setting>
-            <below>Alfie is seen blowing up, while Betty is engulfed in flames in the laboratory.</below>
+            <below>Alfie is blowing up in the laboratory Betty is engulfed in flames in the laboratory.</below>
          </panel>
          <panel>
             <left>
@@ -931,7 +967,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>This is a disaster!</content>
+                  <content>I can't believe this happened!</content>
                </balloon>
             </left>
             <right>
@@ -942,9 +978,12 @@
                   <pose>burnt</pose>
                   <facing>left</facing>
                </figure>
+               <balloon status="speech">
+                  <content>Is it too late to quit?</content>
+               </balloon>
             </right>
             <setting>chemical plant</setting>
-            <below>Alfie is all charred, and Betty is still smoldering in the chemical plant.</below>
+            <below>Alfie is all charred in the chemical plant Betty is still smoldering in the chemical plant.</below>
          </panel>
       </scene>
       <scene>
@@ -978,7 +1017,7 @@
                </balloon>
             </left>
             <setting>park bench</setting>
-            <below>Alfie is showboating while rollerskating in the park.</below>
+            <below>Alfie is confidently skating in the park.</below>
          </panel>
          <panel>
             <right>
@@ -990,11 +1029,11 @@
                   <facing>left</facing>
                </figure>
                <balloon status="speech">
-                  <content>This is so relaxing!</content>
+                  <content>This book is so interesting!</content>
                </balloon>
             </right>
             <setting>boulevard</setting>
-            <below>Betty is focused on her book while cycling leisurely in the boulevard.</below>
+            <below>Betty is focused on reading while cycling.</below>
          </panel>
          <panel>
             <left>
@@ -1020,9 +1059,12 @@
                   <pose>falling off bicycle</pose>
                   <facing>left</facing>
                </figure>
+               <balloon status="speech">
+                  <content>Oh no!</content>
+               </balloon>
             </right>
             <setting>boulevard</setting>
-            <below>Alfie is tumbling down on his rollerskates and Betty is falling off her bicycle in the boulevard.</below>
+            <below>Alfie is tumbling on his rollerskates while Betty is falling off her bicycle.</below>
          </panel>
          <panel>
             <left>
@@ -1037,7 +1079,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>I can't believe this happened.</content>
+                  <content>It hurts so much.</content>
                </balloon>
             </left>
             <right>
@@ -1048,9 +1090,12 @@
                   <pose>on crutch</pose>
                   <facing>left</facing>
                </figure>
+               <balloon status="speech">
+                  <content>I can't believe we both ended up here.</content>
+               </balloon>
             </right>
             <setting>hospital exterior</setting>
-            <below>Alfie is in a wheelchair with broken legs, and Betty is using crutches outside the hospital.</below>
+            <below>Alfie is in a wheelchair with broken legs, and Betty is on crutches, both outside the hospital.</below>
          </panel>
       </scene>
       <scene>
@@ -1083,7 +1128,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>You will follow my commands</content>
+                  <content>You will obey my every command</content>
                </balloon>
             </left>
             <right>
@@ -1094,9 +1139,12 @@
                   <pose>charmed</pose>
                   <facing>left</facing>
                </figure>
+               <balloon status="speech">
+                  <content>Yes, Alfie, I will obey</content>
+               </balloon>
             </right>
             <setting>laundrette</setting>
-            <below>Alfie stands over Betty with a sinister smile as she sits in a laundrette chair, eyes glazed over.</below>
+            <below>Alfie is standing confidently over Betty, who looks entranced in the laundrette.</below>
          </panel>
          <panel>
             <left>
@@ -1111,7 +1159,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Your loyalty belongs to me now</content>
+                  <content>Feel the power of my words wash over you</content>
                </balloon>
             </left>
             <right>
@@ -1122,9 +1170,12 @@
                   <pose>brainwashed</pose>
                   <facing>left</facing>
                </figure>
+               <balloon status="speech">
+                  <content>I feel so alive!</content>
+               </balloon>
             </right>
             <setting>laundrette</setting>
-            <below>Alfie leans closer, whispering while Betty looks entranced, surrounded by laundry machines.</below>
+            <below>Alfie gestures dramatically while Betty is caught in a trance, surrounded by washing machines.</below>
          </panel>
          <panel>
             <left>
@@ -1139,7 +1190,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Embrace the truth I reveal</content>
+                  <content>You will join my cause and spread the word</content>
                </balloon>
             </left>
             <right>
@@ -1150,9 +1201,12 @@
                   <pose>brainwashed</pose>
                   <facing>right</facing>
                </figure>
+               <balloon status="speech">
+                  <content>I will spread the message, Alfie!</content>
+               </balloon>
             </right>
             <setting>laundrette</setting>
-            <below>Alfie gestures dramatically with his hands, while Betty nods eagerly, her expression one of fervent belief.</below>
+            <below>Alfie looks focused as he points towards the exit while Betty nods enthusiastically.</below>
          </panel>
          <panel>
             <left>
@@ -1167,7 +1221,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Together, we will change everything</content>
+                  <content>Just trust me, it’s all part of the plan</content>
                </balloon>
             </left>
             <right>
@@ -1178,9 +1232,12 @@
                   <pose>killing for</pose>
                   <facing>left</facing>
                </figure>
+               <balloon status="speech">
+                  <content>I trust you completely</content>
+               </balloon>
             </right>
             <setting>laundrette</setting>
-            <below>Alfie and Betty share a conspiratorial glance, a sense of camaraderie forming as they plot in the laundrette.</below>
+            <below>Alfie smirks slyly, while Betty appears determined, with laundry baskets around them.</below>
          </panel>
       </scene>
       <scene>
@@ -1210,7 +1267,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Nice pitch!</content>
+                  <content>Here it comes!</content>
                </balloon>
             </left>
             <right>
@@ -1221,9 +1278,12 @@
                   <pose>batting</pose>
                   <facing>left</facing>
                </figure>
+               <balloon status="speech">
+                  <content>Swing for the fences!</content>
+               </balloon>
             </right>
             <setting>sports field</setting>
-            <below>Alfie pitches the baseball to Betty while she prepares to swing at the sports field.</below>
+            <below>Alfie pitches the baseball while Betty prepares to swing her bat.</below>
          </panel>
          <panel>
             <left>
@@ -1238,7 +1298,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Oh no!</content>
+                  <content>Oops!</content>
                </balloon>
             </left>
             <right>
@@ -1249,9 +1309,12 @@
                   <pose>hit with ball</pose>
                   <facing>left</facing>
                </figure>
+               <balloon status="speech">
+                  <content>Ah! My head!</content>
+               </balloon>
             </right>
             <setting>sports field</setting>
-            <below>Alfie drops the bat as the baseball accidentally hits Betty in the head.</below>
+            <below>Alfie drops the bat and Betty is hit in the head by the baseball.</below>
          </panel>
          <panel>
             <left>
@@ -1277,9 +1340,12 @@
                   <pose>groggy</pose>
                   <facing>left</facing>
                </figure>
+               <balloon status="speech">
+                  <content>I feel dizzy...</content>
+               </balloon>
             </right>
             <setting>sports field</setting>
-            <below>Alfie shrugs with concern as Betty looks groggy from the impact.</below>
+            <below>Alfie shrugs in confusion while Betty looks groggy after the injury.</below>
          </panel>
          <panel>
             <left>
@@ -1305,9 +1371,12 @@
                   <pose>swinging bat</pose>
                   <facing>left</facing>
                </figure>
+               <balloon status="speech">
+                  <content>You better run!</content>
+               </balloon>
             </right>
             <setting>sports field</setting>
-            <below>Alfie runs away while Betty swings the bat angrily overhead.</below>
+            <below>Alfie runs away while Betty swings her bat angrily overhead.</below>
          </panel>
       </scene>
    </scenes>
