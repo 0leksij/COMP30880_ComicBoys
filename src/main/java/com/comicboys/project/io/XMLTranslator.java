@@ -69,6 +69,7 @@ public class XMLTranslator {
 
             // Save the translated XML to a new file
             String outputFilePath = filePath + sourceLanguage + "-to-" + targetLanguage + "-" + lessonType + ".xml";
+            System.out.println("Translation saved to " + outputFilePath);
             return XMLFileManager.saveXMLToFile(doc, outputFilePath);
 
         } catch (Exception e) {

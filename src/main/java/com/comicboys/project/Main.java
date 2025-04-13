@@ -73,9 +73,6 @@ public class Main {
         System.out.println("\n------------------------------");
 
 
-        XMLTranslator translator = new XMLTranslator(config, client, mappings, "story");
-        translator.translateXML("sample_story2.xml");
-
 
 
         String storyPath = "assets/story/specification_short.xml";
@@ -83,6 +80,9 @@ public class Main {
 
         StoryGenerator sg = new StoryGenerator(client);
         blueprintStory.writeStory(sg, "sample_story2.xml");
+        
+        XMLTranslator translator = new XMLTranslator(config, client, mappings, "story");
+        translator.translateXML("sample_story2.xml");
 
     }
 }
