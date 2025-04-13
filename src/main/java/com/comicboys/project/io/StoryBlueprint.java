@@ -8,6 +8,41 @@ import org.w3c.dom.NodeList;
 
 import java.util.List;
 
+/*
+    --[ EXAMPLE INPUT TO EXPLAIN PROCESS ]--
+
+    // writeStories input example
+    List<List<String>> stories =
+    [
+        [
+            "Alfie: Hello! ",
+            "Alfie: Hello everyone! | Betty: Hello! ",
+            "Alfie: Goodbye. | Betty: Bye. | Some random description. "
+        ],
+        [
+            "Alfie: I am so alone. "
+        ],
+        ...
+    ]
+
+
+
+    // iterating through XML file example for updating nodes in-place
+    XML File:
+
+    <>
+    <>
+    <scene>     --->    ELEMENT node!   --->    Go through each panel String in List<String>, split character dialogue
+                                                at "|" to add balloon content or below text accordingly to string data
+    <>
+    <scene>     --->    ELEMENT node!
+    <>
+
+
+
+
+* */
+
 public class StoryBlueprint extends Blueprint {
     public StoryBlueprint(String filePath) {
         super(filePath);
