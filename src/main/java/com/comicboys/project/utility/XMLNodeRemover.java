@@ -73,7 +73,9 @@ public interface XMLNodeRemover {
         int currentLength = children.getLength(); // list size will be changed throughout
         int i = 0; // loop variable
         int childrenRemoved = 0; // children removed so far
-        if (currentChild < 1) { i = currentLength; } // if not a valid child position remove nothing (prevent while loop)
+        if (nthChild < 1) {
+            System.out.println("nthChild must be at least 1 (indicating first child), you inputted: " + nthChild);
+            i = currentLength; } // if not a valid child position remove nothing (by preventing while loop)
         // since modifying list size, mutable upper bound variable (updated in loop)
         while (i < currentLength) {
             Node child = children.item(i);

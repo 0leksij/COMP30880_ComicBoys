@@ -11,7 +11,7 @@ import com.comicboys.project.io.ConfigurationFile;
 import com.comicboys.project.utility.DenialChecker;
 import org.json.JSONObject;
 
-public class APIClient implements DenialChecker {
+public class APIClient {
     private final String apiKey;
     private final String model;
     private final String completionsUrl;
