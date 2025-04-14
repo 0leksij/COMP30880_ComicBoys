@@ -16,31 +16,75 @@ public interface XMLNodeRemover {
         Element element = (Element) node;
         for (String childTagToRemove : childrenTagsToRemove) {
             NodeList children = element.getElementsByTagName(childTagToRemove);
-            removeAllChildren(children);
+            removeAllChildrenFromList(children);
         }
     }
     // remove first child element of a node
     static void removeFirstChild(Node node) {
-        Element element = (Element) node;
-        NodeList children = element.getChildNodes();
-        removeNChildren(children, 1);
+        // remove up to 1 child of node
+        removeNChildren(node, 1);
+    }
+    // remove first child element from a list of specified children
+    static void removeFirstChildFromList(NodeList children) {
+        removeNChildrenFromList(children, 1);
+    }
+    // remove all children elements from a list of children
+    static void removeAllChildrenFromList(NodeList children) {
+        removeNChildrenFromList(children, -1); // negative numbers means all children removed
     }
     // remove all children elements of a node
-    static void removeAllChildren(NodeList children) {
-        removeNChildren(children, -1); // negative numbers means all children removed
+    static void removeAllChildren(Node node) {
+        removeNChildrenFromList(node.getChildNodes(), -1); // negative numbers means all children removed
     }
-    // main remove element method, removes all nodes in list from their respective parent
+    // remove nth child of a node (i.e. nthChild=2 should remove 2nd child)
+    static void removeNthChild (Node node, int nthChild) {
+        // remove child nodes of node, starting from nth child, remove only 1
+        removeNthChildren(node, nthChild, 1);
+    }
+    // remove nth child from a specified list (i.e. nthChild=2 should remove the second element node in the list from
+    // its respective parent, which may be a different parent to other children in the list)
+    static void removeNthChildFromList (NodeList children, int nthChild) {
+        // remove child nodes of node, starting from nth child, remove only 1
+        removeNthChildrenFromList(children, nthChild, 1);
+    }
+    // can remove N children of particular node
+    static void removeNChildren(Node node, int numChildrenToRemove) {
+        Element element = (Element) node;
+        NodeList children = element.getChildNodes();
+        removeNChildrenFromList(children, numChildrenToRemove);
+    }
+    // remove N children from list of specified children nodes
+    static void removeNChildrenFromList(NodeList children, int numChildrenToRemove) {
+        removeNthChildrenFromList(children, 1, numChildrenToRemove);
+    }
+    // remove children of a node starting from a particular child node (i.e. nthChild=2, numChildrenToRemove=2 should
+    // remove the 2nd and 3rd node, because starting from 2nd node, and removing 2 nodes, so will stop after 3rd)
+    static void removeNthChildren(Node node, int nthChild, int numChildrenToRemove) {
+        Element element = (Element) node;
+        NodeList children = element.getChildNodes();
+        removeNthChildrenFromList(children, nthChild, numChildrenToRemove);
+    }
+    // main remove element method, removes all nodes in list from their respective parent starting from particular child
     // if numChildrenToRemove < 0, will remove all children
-    private static void removeNChildren(NodeList children, int numChildrenToRemove) {
+    static void removeNthChildrenFromList(NodeList children, int nthChild, int numChildrenToRemove) {
+        // keep track of current child position up to nth
+        int currentChild = 1;
         // look through children in ascending order
         int currentLength = children.getLength(); // list size will be changed throughout
         int i = 0; // loop variable
         int childrenRemoved = 0; // children removed so far
+        if (currentChild < 1) { i = currentLength; } // if not a valid child position remove nothing (prevent while loop)
         // since modifying list size, mutable upper bound variable (updated in loop)
         while (i < currentLength) {
             Node child = children.item(i);
             // check is element node
             if (child.getNodeType() == Node.ELEMENT_NODE) {
+                // want to make sure do not remove nodes until reached nth child we start from,
+                // only incrementing current child here as outside of this could potentially not be an element node
+                currentChild++;
+                if (currentChild < nthChild) {
+                    break;
+                }
                 // if number of children to be removed is reached
                 if (childrenRemoved == numChildrenToRemove) break;
                 // check parent exists
