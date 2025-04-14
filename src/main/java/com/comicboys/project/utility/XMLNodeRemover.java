@@ -73,32 +73,35 @@ public interface XMLNodeRemover {
         int currentLength = children.getLength(); // list size will be changed throughout
         int i = 0; // loop variable
         int childrenRemoved = 0; // children removed so far
+        // if not a valid child position remove nothing (by preventing while loop)
         if (nthChild < 1) {
             System.out.println("nthChild must be at least 1 (indicating first child), you inputted: " + nthChild);
-            i = currentLength; } // if not a valid child position remove nothing (by preventing while loop)
+            i = currentLength;
+        }
         // since modifying list size, mutable upper bound variable (updated in loop)
         while (i < currentLength) {
             Node child = children.item(i);
             // check is element node
             if (child.getNodeType() == Node.ELEMENT_NODE) {
-                // want to make sure do not remove nodes until reached nth child we start from,
-                // only incrementing current child here as outside of this could potentially not be an element node
+//                // want to make sure do not remove nodes until reached nth child we start from,
+//                // only incrementing current child here as outside of this could potentially not be an element node
+//                currentChild++;
+                // if not currently at child to start removing skip to next loop iteration
+                if (currentChild >= nthChild) {
+                    // if number of children to be removed is reached
+                    if (childrenRemoved == numChildrenToRemove) break;
+                    // check parent exists
+                    if (child.getParentNode() != null) {
+                        // remove child from parent
+                        child.getParentNode().removeChild(child);
+                        // decrement i so does not skip next element, list length also decremented since item removed
+                        i--;
+                        currentLength--;
+                        // increment children removed
+                        childrenRemoved++;
+                    }
+                }
                 currentChild++;
-                if (currentChild < nthChild) {
-                    break;
-                }
-                // if number of children to be removed is reached
-                if (childrenRemoved == numChildrenToRemove) break;
-                // check parent exists
-                if (child.getParentNode() != null) {
-                    // remove child from parent
-                    child.getParentNode().removeChild(child);
-                    // decrement i so does not skip next element, list length also decremented since item removed
-                    i--;
-                    currentLength--;
-                    // increment children removed
-                    childrenRemoved++;
-                }
             }
             // next child
             i++;
