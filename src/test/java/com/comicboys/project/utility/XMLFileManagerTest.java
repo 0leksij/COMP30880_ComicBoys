@@ -10,6 +10,7 @@ import java.io.File;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+// this by extension also tests XMLNodeRemover
 class XMLFileManagerTest {
 
     @Test
