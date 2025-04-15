@@ -82,6 +82,20 @@ public interface XMLFileManager extends XMLNodeRemover {
     static NodeList selectElements(Document doc, String element) {
         return doc.getElementsByTagName(element);
     }
+    static int countElements(Node node, String elementTag) {
+        NodeList elements = ((Element) node).getElementsByTagName(elementTag);
+        return countElements(elements, elementTag);
+    }
+    static int countElements(NodeList elements, String childTag) {
+        int count = 0;
+        for (int j = 0; j < elements.getLength(); j++) {
+            Node element = elements.item(j);
+            if (element.getNodeType() == Node.ELEMENT_NODE) {
+                count++;
+            }
+        }
+        return count;
+    }
     static void removeAllByTag(Node node, String childTagToRemove) { XMLNodeRemover.removeAllByTag(node, childTagToRemove); }
     static void removeAllByTag(Node node, List<String> childrenTagsToRemove) { XMLNodeRemover.removeAllByTag(node, childrenTagsToRemove); }
     static void removeFirstChild(Node node) { XMLNodeRemover.removeFirstChild(node); }

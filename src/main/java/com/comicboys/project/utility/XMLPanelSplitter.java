@@ -20,8 +20,8 @@ public interface XMLPanelSplitter {
                     Node panel = panels.item(j);
                     // ensure is valid element node
                     if (panel.getNodeType() == Node.ELEMENT_NODE) {
-                        NodeList balloons = ((Element) panel).getElementsByTagName("balloon");
-                        int balloonCount = countBalloonElements(balloons);
+                        // count how many balloon children of panel element
+                        int balloonCount = XMLFileManager.countElements(panel, "balloon");
                         // if more than 1 balloon, must split panel
                         if (balloonCount > 1) {
                             splitPanel(panel);
@@ -33,7 +33,7 @@ public interface XMLPanelSplitter {
         }
     }
 
-    private static void splitPanel(Node secondPanel) {
+    static void splitPanel(Node secondPanel) {
         // cloning what will be second panel, because there is only an insertBefore method
         Node firstPanel = secondPanel.cloneNode(true);
         secondPanel.getParentNode().insertBefore(firstPanel, secondPanel);
@@ -45,27 +45,27 @@ public interface XMLPanelSplitter {
 //        System.out.println(secondPanel.getTextContent());
     }
     // removes first balloon child of node
-    private static void removeFirstBalloon(Node panel) {
+    static void removeFirstBalloon(Node panel) {
         // need to grab balloons again in each remove method because node that is cloned will have different balloon
         // nodes, otherwise would be changing same original balloon nodes and cloned node would remain unchanged
         NodeList balloons = ((Element) panel).getElementsByTagName("balloon");
         XMLFileManager.removeFirstChild(balloons);
     }
     // removes 2nd balloon child of node
-    private static void removeSecondBalloon(Node panel) {
+    static void removeSecondBalloon(Node panel) {
         NodeList balloons = ((Element) panel).getElementsByTagName("balloon");
         XMLFileManager.removeNthChild(balloons, 2);
     }
-    // function to quickly count how many balloon elements in NodeList (because selected ones may not all be valid elements)
-    private static int countBalloonElements(NodeList elements) {
-        int balloons = 0;
-        for (int j = 0; j < elements.getLength(); j++) {
-            Node balloon = elements.item(j);
-            if (balloon.getNodeType() == Node.ELEMENT_NODE) {
-                balloons++;
-            }
-        }
-        return balloons;
-    }
+//    // function to quickly count how many balloon elements in NodeList (because selected ones may not all be valid elements)
+//    static int countBalloonElements(NodeList elements) {
+//        int balloons = 0;
+//        for (int j = 0; j < elements.getLength(); j++) {
+//            Node balloon = elements.item(j);
+//            if (balloon.getNodeType() == Node.ELEMENT_NODE) {
+//                balloons++;
+//            }
+//        }
+//        return balloons;
+//    }
 
 }
