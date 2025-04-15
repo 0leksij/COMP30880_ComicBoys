@@ -14,7 +14,7 @@ public class XMLAudioInserter extends Blueprint {
 
     private final Map<String, String> audioFileMap;
     // default filename for audio panel
-    private String outputFileName = "sample_audio_panel.xml";
+    private String outputFileName = "sample_audio.xml";
 
     public XMLAudioInserter(String filePath, Map<String, String> audioFileMap) {
         super(filePath);
