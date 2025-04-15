@@ -27,6 +27,8 @@ public interface XMLFileManager extends XMLNodeRemover {
         return filePath.substring(0, baseFilePathEndIndex + 1);
     }
 
+    static void separateMultipleSpeechPanels(Document doc) { XMLPanelSplitter.separateMultipleSpeechPanels(doc); }
+
     static boolean saveXMLToFile(Document doc, String filePath) {
         try {
             trimWhitespace(doc.getDocumentElement());
