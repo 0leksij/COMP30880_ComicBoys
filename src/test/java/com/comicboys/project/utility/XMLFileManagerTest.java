@@ -10,7 +10,6 @@ import java.io.File;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-// this by extension also tests some XMLNodeRemover functionality
 class XMLFileManagerTest {
 
     @Test
@@ -56,64 +55,6 @@ class XMLFileManagerTest {
     }
 
 
-    @Test
-    void testRemoveAllByTag() {
-        Document doc = XMLFileManager.loadXMLFromFile("assets/blueprint/test/specification_test.xml");
-        assertNotNull(doc);
-        NodeList children = doc.getChildNodes();
-        for (int i = 0 ; i < children.getLength(); i++) {
-            Node child = children.item(i);
-            XMLFileManager.removeAllByTag(child, "scene");
-            NodeList foundElements = doc.getElementsByTagName("scene");
-            assertEquals(0, foundElements.getLength());
-        }
-    }
-
-    @Test
-    void testRemoveAllChildren() {
-        Document doc = XMLFileManager.loadXMLFromFile("assets/blueprint/test/specification_test.xml");
-        assertNotNull(doc);
-        NodeList children = doc.getChildNodes();
-        XMLFileManager.removeAllChildren(children);
-        assertEquals(0, children.getLength()); // variable updated
-        assertEquals(0, doc.getChildNodes().getLength()); // variable was pointer to original child nodes, also updated
-    }
-
-
-    @Test
-    void testRemoveFirstChild() {
-        Document doc = XMLFileManager.loadXMLFromFile("assets/blueprint/test/specification_test.xml");
-        assertNotNull(doc);
-        NodeList documentChildren = doc.getChildNodes(); // corresponds to <comic>, has children <figures> and <scenes>
-        // looking through and removing its first child, so should remove only <figures>, making its length 2 -> 1
-        for (int i = 0 ; i < documentChildren.getLength(); i++) {
-            Node comic = documentChildren.item(i);
-            NodeList comicChildren = comic.getChildNodes();
-            // some code to remove non-element nodes
-            for (int j = 0; j < comicChildren.getLength(); j++) {
-                Node comicChild = comicChildren.item(j);
-                if (comicChild.getNodeType() != Node.ELEMENT_NODE) {
-                    comicChild.getParentNode().removeChild(comicChild);
-                }
-            }
-            // should be left with JUST <figures> and <scenes>
-            assertEquals(2, comicChildren.getLength());
-            NodeList foundFigures = doc.getElementsByTagName("figures");
-            NodeList foundScenes = doc.getElementsByTagName("scenes");
-            assertEquals(1, foundFigures.getLength());
-            assertEquals(1, foundScenes.getLength());
-
-            // remove first child, which should be <figures>
-            XMLFileManager.removeFirstChild(comic);
-
-            assertEquals(1, comicChildren.getLength());
-            foundFigures = doc.getElementsByTagName("figures");
-            foundScenes = doc.getElementsByTagName("scenes");
-            // should have no <figures> element but still have <scenes> element
-            assertEquals(0, foundFigures.getLength());
-            assertEquals(1, foundScenes.getLength());
-        }
-    }
     @Test
     void testGetFileDirectory() {
         String exampleFilePath = "random/file.xml";

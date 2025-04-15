@@ -85,13 +85,13 @@ public interface XMLFileManager extends XMLNodeRemover {
     static void removeAllByTag(Node node, String childTagToRemove) { XMLNodeRemover.removeAllByTag(node, childTagToRemove); }
     static void removeAllByTag(Node node, List<String> childrenTagsToRemove) { XMLNodeRemover.removeAllByTag(node, childrenTagsToRemove); }
     static void removeFirstChild(Node node) { XMLNodeRemover.removeFirstChild(node); }
-    static void removeFirstChild(NodeList children) { XMLNodeRemover.removeFirstChildFromList(children); }
+    static void removeFirstChild(NodeList children) { XMLNodeRemover.removeFirstChild(children); }
     static void removeNthChild(Node node, int nthChild) { XMLNodeRemover.removeNthChild(node, nthChild); }
-    static void removeNthChild(NodeList children, int nthChild) { XMLNodeRemover.removeNthChildFromList(children, nthChild); }
+    static void removeNthChild(NodeList children, int nthChild) { XMLNodeRemover.removeNthChild(children, nthChild); }
     static void removeAllChildren(Node node) { XMLNodeRemover.removeAllChildren(node); }
-    static void removeAllChildren(NodeList children) { XMLNodeRemover.removeAllChildrenFromList(children); }
+    static void removeAllChildren(NodeList children) { XMLNodeRemover.removeAllChildren(children); }
     static void removeNthChildren(Node node, int numOfChildrenToRemove, int nthChild) { XMLNodeRemover.removeNthChildren(node, numOfChildrenToRemove, nthChild); }
-    static void removeNthChildren(NodeList children, int numOfChildrenToRemove, int nthChild) { XMLNodeRemover.removeNthChildrenFromList(children, numOfChildrenToRemove, nthChild); }
+    static void removeNthChildren(NodeList children, int numOfChildrenToRemove, int nthChild) { XMLNodeRemover.removeNthChildren(children, numOfChildrenToRemove, nthChild); }
     // general method to get parent
     static Node getParent(Node node) {
         if (node == null) { return null; }
