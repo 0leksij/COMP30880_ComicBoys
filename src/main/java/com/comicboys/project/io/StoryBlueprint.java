@@ -84,7 +84,7 @@ public class StoryBlueprint extends Blueprint {
         String filePath = XMLFileManager.getFileDirectory(getFilePath()) + fileName;
         // save to save file path with given file name
         XMLFileManager.saveXMLToFile(getFile(), filePath);
-        System.out.println("File written to " + filePath);
+        System.out.println("\nXML File written to " + filePath);
     }
     // update current scene
     private void updateScene(Node scene, List<String> newSceneData) {

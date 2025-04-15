@@ -13,10 +13,21 @@ import java.util.Map;
 public class XMLAudioInserter extends Blueprint {
 
     private final Map<String, String> audioFileMap;
+    // default filename for audio panel
+    private String outputFileName = "sample_audio_panel.xml";
 
     public XMLAudioInserter(String filePath, Map<String, String> audioFileMap) {
         super(filePath);
         this.audioFileMap = audioFileMap;
+    }
+    public XMLAudioInserter(String filePath, Map<String, String> audioFileMap, String outputFileName) {
+        super(filePath);
+        this.audioFileMap = audioFileMap;
+        // if no extension, add it
+        if (!outputFileName.contains(".xml")) {
+            outputFileName += ".xml";
+        }
+        this.outputFileName = outputFileName;
     }
 
 
@@ -30,9 +41,9 @@ public class XMLAudioInserter extends Blueprint {
         addAudioForScenes(scenes);
         // save edited document to XML file
         String fileDirectory = XMLFileManager.getFileDirectory(getFilePath());
-        String outputFilePath = fileDirectory + "sample_panel_split.xml";
+        String outputFilePath = fileDirectory + outputFileName; // use filename when saving
         XMLFileManager.saveXMLToFile(getFile(), outputFilePath);
-        System.out.println("XML with audio tags saved in: " + outputFilePath);
+        System.out.println("\nXML with audio tags saved in: " + outputFilePath);
     }
     // for each scene
     private void addAudioForScenes(NodeList scenes) {
