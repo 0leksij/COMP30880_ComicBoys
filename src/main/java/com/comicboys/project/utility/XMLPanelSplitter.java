@@ -56,16 +56,4 @@ public interface XMLPanelSplitter {
         NodeList balloons = ((Element) panel).getElementsByTagName("balloon");
         XMLFileManager.removeNthChild(balloons, 2);
     }
-//    // function to quickly count how many balloon elements in NodeList (because selected ones may not all be valid elements)
-//    static int countBalloonElements(NodeList elements) {
-//        int balloons = 0;
-//        for (int j = 0; j < elements.getLength(); j++) {
-//            Node balloon = elements.item(j);
-//            if (balloon.getNodeType() == Node.ELEMENT_NODE) {
-//                balloons++;
-//            }
-//        }
-//        return balloons;
-//    }
-
 }

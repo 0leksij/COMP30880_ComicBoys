@@ -3,9 +3,6 @@ package com.comicboys.project.io;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.w3c.dom.Document;
-
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class BlueprintTest {

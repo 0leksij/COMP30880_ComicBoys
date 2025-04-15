@@ -1,11 +1,6 @@
 package com.comicboys.project.io;
-
-import com.comicboys.project.client.APIClient;
-import com.comicboys.project.data.Mappings;
-
 import java.io.*;
 import java.util.*;
-import java.util.concurrent.TimeUnit;
 
 public class TranslationFileManager {
     private String translationFilePath;

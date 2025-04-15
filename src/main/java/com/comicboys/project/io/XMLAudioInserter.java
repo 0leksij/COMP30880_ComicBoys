@@ -5,9 +5,6 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-
-import javax.print.Doc;
-import java.util.HashMap;
 import java.util.Map;
 
 public class XMLAudioInserter extends Blueprint {

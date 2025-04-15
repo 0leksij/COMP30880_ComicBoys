@@ -16,7 +16,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.StringWriter;
 import java.util.List;
-import java.util.Objects;
 
 public interface XMLFileManager extends XMLNodeRemover {
 
