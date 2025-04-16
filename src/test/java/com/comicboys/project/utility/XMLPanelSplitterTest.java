@@ -152,6 +152,47 @@ class XMLPanelSplitterTest {
             currentNode++;
         }
     }
+
+    @Test
+    void testThreePanelsTwoBalloonsEach() {
+        // two panels, one has 2 balloons, other has 1, should end up with 3 panels, where the first 2 balloons
+        // end up in order for the first 2 out of 3 panels, while the 3rd is just the one that had one balloon
+        String filePath = "assets/story/audio_test/story_three_panels_two_balloons_each.xml";
+        Document doc = XMLFileManager.loadXMLFromFile(filePath);
+        assertNotNull(doc);
+        // since one panel has 2 balloons, we should get an extra panel
+        int panelCountBeforeSplit = XMLFileManager.countElements(doc.getDocumentElement(), "panel");
+        int balloonCountBeforeSplit = XMLFileManager.countElements(doc.getDocumentElement(), "balloon");
+        assertEquals(3, panelCountBeforeSplit);
+        assertEquals(6, balloonCountBeforeSplit);
+        XMLPanelSplitter.separateMultipleSpeechPanels(doc);
+        int panelCountAfterSplit = XMLFileManager.countElements(doc.getDocumentElement(), "panel");
+        int balloonCountAfterSplit = XMLFileManager.countElements(doc.getDocumentElement(), "balloon");
+        // checking if we got the extra panel from splitting the one with 2 balloons
+        assertEquals(6, panelCountAfterSplit);
+        assertEquals(6, balloonCountAfterSplit);
+        List<String> expectedBalloons = List.of(
+                "What happened?",
+                "You fell off!",
+                "What happened? Again?",
+                "You fell off! ...Again!",
+                "What happened? For the last time...",
+                "You fell off! For the last time..."
+        );
+        NodeList actualBalloons = doc.getElementsByTagName("balloon");
+        int currentNode, currentBalloon;
+        currentNode = currentBalloon = 0;
+        while (currentNode < actualBalloons.getLength()) {
+            Node balloon = actualBalloons.item(currentNode);
+            if (balloon.getNodeType() == Node.ELEMENT_NODE) {
+                String balloonContent = balloon.getTextContent().trim();
+                // compare the textual content of each balloon
+                assertEquals(expectedBalloons.get(currentBalloon), balloonContent);
+                currentBalloon++;
+            }
+            currentNode++;
+        }
+    }
     @Test
     void testTwoScenesMixedBalloons() {
         // two scenes, each has two panels, of the two panels, one has 2 balloons, other has 1, should end up with

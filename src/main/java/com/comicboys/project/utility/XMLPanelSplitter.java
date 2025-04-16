@@ -25,7 +25,6 @@ public interface XMLPanelSplitter {
                         // if more than 1 balloon, must split panel
                         if (balloonCount > 1) {
                             splitPanel(panel);
-                            break;
                         }
                     }
                 }
