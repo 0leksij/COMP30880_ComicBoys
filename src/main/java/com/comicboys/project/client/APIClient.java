@@ -137,4 +137,8 @@ public class APIClient {
 
         return translations;
     }
+
+    public String getApiKey(){
+        return apiKey;
+    }
 }
