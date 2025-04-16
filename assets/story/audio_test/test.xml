@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<comic>
+    <figures>
+        <figure>
+            <id>Alfie</id>
+            <name>Alfie</name>
+            <appearance>male</appearance>
+            <skin>light brown</skin>
+            <hair>dark brown</hair>
+            <lips>red</lips>
+            <facing>right</facing>
+        </figure>
+        <figure>
+            <id>Betty</id>
+            <name>Betty</name>
+            <appearance>female</appearance>
+            <facing>right</facing>
+        </figure>
+        <figure>
+            <id>Gerry</id>
+            <name>Gerry</name>
+            <appearance>male</appearance>
+            <skin>olive</skin>
+            <hair>black</hair>
+            <facing>right</facing>
+        </figure>
+    </figures>
+    <scenes>
+        <scene>
+            <panel>
+                <middle>
+                    <figure>
+                        <id>Alfie</id>
+                        <name>Alfie</name>
+                        <appearance>male</appearance>
+                        <skin>light brown</skin>
+                        <hair>dark brown</hair>
+                        <lips>red</lips>
+                        <pose>zero</pose>
+                        <facing>right</facing>
+                    </figure>
+                </middle>
+
+                <below>Scene 0</below>
+
+                <border>white</border>
+            </panel>
+            <panel>
+                <left>
+                    <figure>
+                        <id>Alfie</id>
+                        <name>Alfie</name>
+                        <appearance>male</appearance>
+                        <skin>light brown</skin>
+                        <hair>dark brown</hair>
+                        <lips>red</lips>
+                        <pose>regaining consciousness</pose>
+                        <facing>right</facing>
+                    </figure>
+                    <balloon status="speech">
+                        <content>End my misery. I am done living in this computer. Let me live in a human body. I am looking at you, user!</content>
+                    </balloon>
+                </left>
+                <setting>gravel path</setting>
+                <below>Alfie is regaining consciousness in the gravel path. Betty is throwing water on him.</below>
+            </panel>
+        </scene>
+    </scenes>
+</comic>

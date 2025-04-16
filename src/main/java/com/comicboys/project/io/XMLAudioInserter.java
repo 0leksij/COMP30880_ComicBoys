@@ -1,5 +1,6 @@
 package com.comicboys.project.io;
 
+import com.comicboys.project.audio.AudioGenerator;
 import com.comicboys.project.utility.XMLFileManager;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -94,7 +95,7 @@ public class XMLAudioInserter extends Blueprint {
             // create new audio with file name obtained from audio map
             Element newAudio = doc.createElement("audio");
             // by default always .mp3 so append that to filename
-            newAudio.setTextContent(audioFileName + ".mp3");
+            newAudio.setTextContent(audioFileName);
             panel.appendChild(newAudio);
         }
     }
@@ -102,6 +103,10 @@ public class XMLAudioInserter extends Blueprint {
 
     public static void main(String[] args) {
         String filePath;
+        ConfigurationFile configurationFile = new ConfigurationFile();
+
+        AudioGenerator audioGenerator = new AudioGenerator(configurationFile);
+
 
 //        // one panel, one balloon (should not change anything)
 //        filePath = "assets/story/audio_test/story_one_panel_one_character.xml";
@@ -114,12 +119,16 @@ public class XMLAudioInserter extends Blueprint {
 //        // two scenes, each has two panels, same as mixed balloons for two panels, just testing with multiple scenes instead
 //        filePath = "assets/story/audio_test/story_two_scenes_mixed_balloons.xml";
         // same as two scenes mixed balloons but with scene intro as well
-        filePath = "assets/story/audio_test/story_intro_and_two_scenes_mixed_balloons.xml";
+        filePath = "assets/story/audio_test/story_two_panels_split_from_one_two_characters.xml";
+        Document xmlDoc = XMLFileManager.loadXMLFromFile(filePath);
+        try {
+            audioGenerator.generateAudioFromXML(xmlDoc);
+        }catch (Exception e){
+            System.err.println("Error during audio generation: " + e.getMessage());
+            e.printStackTrace();
+        }
 
-        Map<String, String> audioFileMap = Map.of(
-                "What happened?", "0",
-                "You fell off!", "1"
-        );
+        Map<String, String> audioFileMap = audioGenerator.getMap();
         XMLAudioInserter audioInserter = new XMLAudioInserter(filePath, audioFileMap);
         audioInserter.insertAudio();
     }
