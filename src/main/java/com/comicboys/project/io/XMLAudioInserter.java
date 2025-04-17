@@ -119,7 +119,7 @@ public class XMLAudioInserter extends Blueprint {
 //        // two scenes, each has two panels, same as mixed balloons for two panels, just testing with multiple scenes instead
 //        filePath = "assets/story/audio_test/story_two_scenes_mixed_balloons.xml";
         // same as two scenes mixed balloons but with scene intro as well
-        filePath = "assets/story/audio_test/story_two_panels_split_from_one_two_characters.xml";
+        filePath = "assets/story/audio_test/story_intro_and_two_scenes_mixed_balloons.xml";
         Document xmlDoc = XMLFileManager.loadXMLFromFile(filePath);
         try {
             audioGenerator.generateAudioFromXML(xmlDoc);

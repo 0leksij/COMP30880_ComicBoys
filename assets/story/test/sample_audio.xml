@@ -44,7 +44,7 @@
             <border>white</border>
          </panel>
          <panel>
-            <left>
+            <middle>
                <figure>
                   <id>Alfie</id>
                   <name>Alfie</name>
@@ -52,28 +52,43 @@
                   <skin>light brown</skin>
                   <hair>dark brown</hair>
                   <lips>red</lips>
-                  <pose>regaining consciousness</pose>
+                  <pose>yawning</pose>
+                  <facing>right</facing>
+               </figure>
+               <balloon status="thought">
+                  <content>yawning</content>
+               </balloon>
+            </middle>
+            <setting>kitchen</setting>
+         </panel>
+         <panel>
+            <middle>
+               <figure>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>male</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>breakfasting</pose>
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>What happened?</content>
+                  <content>pouring a bowl of cereal</content>
                </balloon>
-            </left>
+            </middle>
             <right>
                <figure>
                   <id>Betty</id>
                   <name>Betty</name>
                   <appearance>female</appearance>
-                  <pose>throwing water</pose>
-                  <facing>left</facing>
+                  <facing>right</facing>
                </figure>
             </right>
-            <setting>gravel path</setting>
-            <below>Alfie is regaining consciousness in the gravel path. Betty is throwing water on him.</below>
-            <audio>0.mp3</audio>
+            <setting>kitchen</setting>
          </panel>
          <panel>
-            <left>
+            <middle>
                <figure>
                   <id>Alfie</id>
                   <name>Alfie</name>
@@ -81,28 +96,25 @@
                   <skin>light brown</skin>
                   <hair>dark brown</hair>
                   <lips>red</lips>
-                  <pose>regaining consciousness</pose>
+                  <pose>breakfasting</pose>
                   <facing>right</facing>
                </figure>
-            </left>
+            </middle>
             <right>
                <figure>
                   <id>Betty</id>
                   <name>Betty</name>
                   <appearance>female</appearance>
-                  <pose>throwing water</pose>
-                  <facing>left</facing>
+                  <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>You fell off!</content>
+                  <content>pouring a bowl of milk</content>
                </balloon>
             </right>
-            <setting>gravel path</setting>
-            <below>Alfie is regaining consciousness in the gravel path. Betty is throwing water on him.</below>
-            <audio>1.mp3</audio>
+            <setting>kitchen</setting>
          </panel>
          <panel>
-            <left>
+            <middle>
                <figure>
                   <id>Alfie</id>
                   <name>Alfie</name>
@@ -110,15 +122,50 @@
                   <skin>light brown</skin>
                   <hair>dark brown</hair>
                   <lips>red</lips>
-                  <pose>regaining consciousness</pose>
+                  <pose>munching</pose>
+                  <facing>right</facing>
+               </figure>
+               <balloon status="thought">
+                  <content>munching</content>
+               </balloon>
+            </middle>
+            <right>
+               <figure>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
+                  <facing>right</facing>
+               </figure>
+            </right>
+            <setting>kitchen</setting>
+            <below>Both are eating and munching on cereal.</below>
+         </panel>
+         <panel>
+            <middle>
+               <figure>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>male</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>munching</pose>
+                  <facing>right</facing>
+               </figure>
+            </middle>
+            <right>
+               <figure>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Oh I'm so alone my sweet Betty!</content>
+                  <content>pouring a bowl of munch</content>
                </balloon>
-            </left>
-            <setting>gravel path</setting>
-            <below>Alfie is a loner.</below>
+            </right>
+            <setting>kitchen</setting>
+            <below>Both are eating and munching on cereal.</below>
          </panel>
       </scene>
       <scene>
@@ -139,7 +186,7 @@
             <border>white</border>
          </panel>
          <panel>
-            <left>
+            <middle>
                <figure>
                   <id>Alfie</id>
                   <name>Alfie</name>
@@ -147,73 +194,14 @@
                   <skin>light brown</skin>
                   <hair>dark brown</hair>
                   <lips>red</lips>
-                  <pose>regaining consciousness</pose>
+                  <pose>yawning</pose>
                   <facing>right</facing>
                </figure>
-               <balloon status="speech">
-                  <content>What happened? Again?</content>
+               <balloon status="thought">
+                  <content>yawning</content>
                </balloon>
-            </left>
-            <right>
-               <figure>
-                  <id>Betty</id>
-                  <name>Betty</name>
-                  <appearance>female</appearance>
-                  <pose>throwing water</pose>
-                  <facing>left</facing>
-               </figure>
-            </right>
-            <setting>gravel path</setting>
-            <below>Alfie is regaining consciousness in the gravel path. Betty is throwing water on him.</below>
-            <audio>2.mp3</audio>
-         </panel>
-         <panel>
-            <left>
-               <figure>
-                  <id>Alfie</id>
-                  <name>Alfie</name>
-                  <appearance>male</appearance>
-                  <skin>light brown</skin>
-                  <hair>dark brown</hair>
-                  <lips>red</lips>
-                  <pose>regaining consciousness</pose>
-                  <facing>right</facing>
-               </figure>
-            </left>
-            <right>
-               <figure>
-                  <id>Betty</id>
-                  <name>Betty</name>
-                  <appearance>female</appearance>
-                  <pose>throwing water</pose>
-                  <facing>left</facing>
-               </figure>
-               <balloon status="speech">
-                  <content>You fell off! ...Again!</content>
-               </balloon>
-            </right>
-            <setting>gravel path</setting>
-            <below>Alfie is regaining consciousness in the gravel path. Betty is throwing water on him.</below>
-            <audio>3.mp3</audio>
-         </panel>
-         <panel>
-            <left>
-               <figure>
-                  <id>Alfie</id>
-                  <name>Alfie</name>
-                  <appearance>male</appearance>
-                  <skin>light brown</skin>
-                  <hair>dark brown</hair>
-                  <lips>red</lips>
-                  <pose>regaining consciousness</pose>
-                  <facing>right</facing>
-               </figure>
-               <balloon status="speech">
-                  <content>Oh Betty I actually hate you so very much.</content>
-               </balloon>
-            </left>
-            <setting>gravel path</setting>
-            <below>Alfie is a gigachad.</below>
+            </middle>
+            <setting>kitchen</setting>
          </panel>
       </scene>
    </scenes>
