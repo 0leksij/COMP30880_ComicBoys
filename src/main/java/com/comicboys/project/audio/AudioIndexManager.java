@@ -3,6 +3,9 @@ package com.comicboys.project.audio;
 import com.comicboys.project.io.AudioHashmapper;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.HashMap;
 
 public class AudioIndexManager {
@@ -27,21 +30,17 @@ public class AudioIndexManager {
         return indexMap.containsKey(text);
     }
 
-    public String appendEntry(String text) {
-        if (entryExists(text)) {
-            return indexMap.get(text);
-        }
+    public String getNextAvailableFileName() {
+        return nextIndex + ".mp3";
+    }
 
-        String filename = nextIndex + ".mp3";
-        try (FileWriter writer = new FileWriter(indexFilePath, true)) {
-            writer.write(text + "\t" + filename + "\n");
-            indexMap.put(text, filename);
-            nextIndex++;
-            return filename;
-        } catch (IOException e) {
-            System.err.println("Failed to write to index file: " + e.getMessage());
-            return null;
+    public void appendEntry(String text, String fileName) throws IOException {
+        indexMap.put(text, fileName);
+        try (BufferedWriter writer = Files.newBufferedWriter(Paths.get(indexFilePath), StandardOpenOption.APPEND, StandardOpenOption.CREATE)) {
+            writer.write(text + "\t" + fileName);
+            writer.newLine();
         }
+        nextIndex++;
     }
 
     private int calculateNextIndex(HashMap<String, String> index) {

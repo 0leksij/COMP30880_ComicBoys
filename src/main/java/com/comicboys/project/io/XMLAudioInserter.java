@@ -121,14 +121,15 @@ public class XMLAudioInserter extends Blueprint {
         // same as two scenes mixed balloons but with scene intro as well
         filePath = "assets/story/audio_test/story_intro_and_two_scenes_mixed_balloons.xml";
         Document xmlDoc = XMLFileManager.loadXMLFromFile(filePath);
-        try {
-            audioGenerator.generateAudioFromXML(xmlDoc);
-        }catch (Exception e){
-            System.err.println("Error during audio generation: " + e.getMessage());
-            e.printStackTrace();
-        }
+//        try {
+//            audioGenerator.generateAudioFromXML(xmlDoc);
+//        }catch (Exception e){
+//            System.err.println("Error during audio generation: " + e.getMessage());
+//            e.printStackTrace();
+//        }
 
         Map<String, String> audioFileMap = audioGenerator.getMap();
+        System.out.println(audioFileMap);
         XMLAudioInserter audioInserter = new XMLAudioInserter(filePath, audioFileMap);
         audioInserter.insertAudio();
     }

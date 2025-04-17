@@ -26,7 +26,9 @@ public class AudioGenerator {
     private final Map<String, String> audioIndex;
 
     public AudioGenerator(ConfigurationFile config) {
-        this.httpClient = HttpClient.newHttpClient();
+        this.httpClient = HttpClient.newBuilder()
+                .version(HttpClient.Version.HTTP_2)
+                .build();
         this.apiKey = config.getProperty("API_KEY");
         this.voice = config.getProperty("TTS_VOICE");
         this.audioDirectory = "assets/story/audio/";
@@ -56,7 +58,7 @@ public class AudioGenerator {
                 continue;
             }
 
-            String audioFileName = audioIndexManager.appendEntry(text);
+            String audioFileName = audioIndexManager.getNextAvailableFileName();
             if (audioFileName == null) {
                 continue;
             }
@@ -65,6 +67,7 @@ public class AudioGenerator {
 
             try {
                 synthesizeWithRetry(text, audioPath, maxRetries);
+                audioIndexManager.appendEntry(text, audioFileName);  // Write only after success
                 System.out.println("Generated: " + audioFileName);
             } catch (Exception e) {
                 System.err.printf("Failed to generate audio for '%s': %s%n",

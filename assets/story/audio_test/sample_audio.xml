@@ -119,6 +119,7 @@
             </left>
             <setting>gravel path</setting>
             <below>Alfie is a loner.</below>
+            <audio>12.mp3</audio>
          </panel>
       </scene>
       <scene>
@@ -214,6 +215,7 @@
             </left>
             <setting>gravel path</setting>
             <below>Alfie is a gigachad.</below>
+            <audio>13.mp3</audio>
          </panel>
       </scene>
    </scenes>
