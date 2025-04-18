@@ -126,5 +126,15 @@ public interface XMLFileManager extends XMLNodeRemover {
         }
     }
 
+    static Document loadXMLFromString(String xmlContent) {
+        try {
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder builder = factory.newDocumentBuilder();
+            return builder.parse(new java.io.ByteArrayInputStream(xmlContent.getBytes()));
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to parse XML from string", e);
+        }
+    }
+
 
 }

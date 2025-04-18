@@ -19,8 +19,8 @@ public class AudioGenerator {
     private final HttpClient httpClient;
     private final String apiKey;
     private final String voice;
-    private final String audioDirectory;
-    private final AudioIndexManager audioIndexManager;
+    String audioDirectory;
+    private AudioIndexManager audioIndexManager;
     private final int maxRetries;
     private final long retryDelayMs;
     private final Map<String, String> audioIndex;
@@ -76,7 +76,7 @@ public class AudioGenerator {
         }
     }
 
-    private List<String> extractSpeechTexts(Document xmlDocument) {
+    List<String> extractSpeechTexts(Document xmlDocument) {
         List<String> texts = new ArrayList<>();
         NodeList balloons = xmlDocument.getElementsByTagName("balloon");
 
@@ -99,7 +99,7 @@ public class AudioGenerator {
         return texts;
     }
 
-    private void synthesizeWithRetry(String text, Path outputFile, int retriesLeft)
+    void synthesizeWithRetry(String text, Path outputFile, int retriesLeft)
             throws IOException, InterruptedException {
         try {
             synthesizeToFile(text, outputFile);
@@ -113,7 +113,7 @@ public class AudioGenerator {
         }
     }
 
-    private void synthesizeToFile(String text, Path outputFile) throws IOException, InterruptedException {
+    protected void synthesizeToFile(String text, Path outputFile) throws IOException, InterruptedException {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create("https://api.openai.com/v1/audio/speech"))
                 .header("Authorization", "Bearer " + apiKey)
@@ -140,7 +140,7 @@ public class AudioGenerator {
         }
     }
 
-    private String escapeJson(String text) {
+    String escapeJson(String text) {
         return text.replace("\\", "\\\\")
                 .replace("\"", "\\\"")
                 .replace("\n", "\\n")
@@ -154,6 +154,14 @@ public class AudioGenerator {
 
     public Map<String,String> getMap(){
         return audioIndex;
+    }
+
+    public void setAudioIndexManager(String path){
+        this.audioIndexManager = new AudioIndexManager(path);
+    }
+
+    public void setAudioDirectory(String path){
+        this.audioDirectory = path;
     }
 
 

@@ -43,7 +43,7 @@ public class AudioIndexManager {
         nextIndex++;
     }
 
-    private int calculateNextIndex(HashMap<String, String> index) {
+    int calculateNextIndex(HashMap<String, String> index) {
         return index.values().stream()
                 .map(f -> f.replace(".mp3", ""))
                 .filter(s -> s.matches("\\d+"))
