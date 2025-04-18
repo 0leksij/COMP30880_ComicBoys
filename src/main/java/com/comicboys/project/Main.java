@@ -1,9 +1,12 @@
 package com.comicboys.project;
 
+import com.comicboys.project.audio.AudioGenerator;
 import com.comicboys.project.client.APIClient;
 import com.comicboys.project.data.Mappings;
 import com.comicboys.project.data.StringEntry;
 import com.comicboys.project.io.*;
+import com.comicboys.project.utility.XMLFileManager;
+import org.w3c.dom.Document;
 
 import java.util.List;
 import java.util.Map;
@@ -16,73 +19,53 @@ public class Main {
         // creating config file object
         ConfigurationFile config = new ConfigurationFile();
         APIClient client = new APIClient(config);
-
-        // read tsv file with specified number of lines
-        int rows = 1000;
-        System.out.println("\n------------------------------");
-        System.out.println("\n-----[ PREVIOUS SPRINTS ]-----");
-        System.out.println("\n------------------------------");
-        System.out.println("\nReading first " + rows + " rows");
-        MappingsFileReader myReader = new MappingsFileReader(rows);
-        // get mappings data structure
-        Mappings mappings = myReader.getMappings();
-        // using mappings to create vignette generator
-        TranslationGenerator translationGenerator = new TranslationGenerator(config, client, mappings);
-
-        XMLGenerator xmlGenerator = new XMLGenerator(mappings);
-
-       // printing mappings data for reference
-        System.out.println(mappings);
-        System.out.println();
-        // find match given certain word (finds FIRST row where this word appears)
-        // returns a hashmap with key-value pairs for leftPose,combinedText, etc.
-        String word1 = "to bow";
-        System.out.println("\nFinding word: " + word1);
-        System.out.println(mappings.findMatch(word1));
-        word1 = "";
-        System.out.println("\nFinding word: " + word1);
-        System.out.println(mappings.findMatch(word1));
-        word1 = "poo";
-        System.out.println("\nFinding word: " + word1);
-        System.out.println(mappings.findMatch(word1));
-        System.out.println();
-
-        // generate translations for words
-        System.out.println("\nGenerating translations...");
-        translationGenerator.generateTranslations(mappings.getAllTextFragments());
-        System.out.println();
-        // Load and print translations
-        Map<String, String> translations = translationGenerator.getTranslations();
-
-        System.out.println("\nPrinting translations for combinedText and leftText (2nd and 3rd columns):\n");
-        translations.forEach((source, target) -> System.out.println(source + " -> " + target));
-
-        XMLGenerator generator = new XMLGenerator(mappings);
-        String filePath = "assets/mappings/generated_comic.xml";
-        generator.generateXML(0, filePath);
-
-        String blueprintPath = "assets/blueprint/";
-        TextBlueprint blueprintText = new TextBlueprint(blueprintPath + "specification.xml");
-        System.out.println("\nSpeech balloons from file: ");
-        System.out.println(blueprintText.getSpeechBalloons());
-        System.out.println("\nTranslations in filepath: " + blueprintPath);
-
-
         System.out.println("\n------------------------------");
         System.out.println("\n------[ CURRENT SPRINT ]------");
         System.out.println("\n------------------------------");
 
+        ConfigurationFile configurationFile = new ConfigurationFile();
 
+        AudioGenerator audioGenerator = new AudioGenerator(configurationFile);
 
+//        // one panel, one balloon (should not change anything)
+//        filePath = "assets/story/audio_test/story_one_panel_one_character.xml";
+//        // one panel, two balloons (should split into two panels for each balloon respectively)
+//        filePath = "assets/story/audio_test/story_one_panel_two_characters.xml";
+//        // two panels, split from one (should not change anything as already only one balloon per panel)
+//        filePath = "assets/story/audio_test/story_two_panels_split_from_one_two_characters.xml";
+//        // two panels, one has two balloons, another has one, should end up with 3 panels (first two relate to original first)
+//        filePath = "assets/story/audio_test/story_two_panels_mixed_balloons.xml";
+//        // two scenes, each has two panels, same as mixed balloons for two panels, just testing with multiple scenes instead
+//        filePath = "assets/story/audio_test/story_two_scenes_mixed_balloons.xml";
+        // same as two scenes mixed balloons but with scene intro as well
 
-        String storyPath = "assets/story/specification_short.xml";
-        StoryBlueprint blueprintStory = new StoryBlueprint(storyPath);
+        String filePath;
+        Document xmlDoc;
 
-        StoryGenerator sg = new StoryGenerator(client);
-        blueprintStory.writeStory(sg, "sample_story2.xml");
-        
-        XMLTranslator translator = new XMLTranslator(config, client, mappings, "story");
-        translator.translateXML("sample_story2.xml");
+        filePath = "assets/story/audio_test/test.xml";
+        xmlDoc = XMLFileManager.loadXMLFromFile(filePath);
 
+        // audio should be generated from the test xml and saved in the audio folder and also appended to the audio-index.tsv
+        try {
+            audioGenerator.generateAudioFromXML(xmlDoc);
+        }catch (Exception e){
+            System.err.println("Error during audio generation: " + e.getMessage());
+            e.printStackTrace();
+        }
+
+        // audio should already be generated from this xml. Just need to save it in a new xml
+        filePath = "assets/story/audio_test/story_intro_and_two_scenes_mixed_balloons.xml";
+        xmlDoc = XMLFileManager.loadXMLFromFile(filePath);
+        try {
+            audioGenerator.generateAudioFromXML(xmlDoc);
+        }catch (Exception e){
+            System.err.println("Error during audio generation: " + e.getMessage());
+            e.printStackTrace();
+        }
+
+        Map<String, String> audioFileMap = audioGenerator.getMap();
+        System.out.println(audioFileMap);
+        XMLAudioInserter audioInserter = new XMLAudioInserter(filePath, audioFileMap);
+        audioInserter.insertAudio();
     }
 }

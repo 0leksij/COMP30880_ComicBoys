@@ -99,39 +99,4 @@ public class XMLAudioInserter extends Blueprint {
             panel.appendChild(newAudio);
         }
     }
-
-
-    public static void main(String[] args) {
-        String filePath;
-        ConfigurationFile configurationFile = new ConfigurationFile();
-
-        AudioGenerator audioGenerator = new AudioGenerator(configurationFile);
-
-
-//        // one panel, one balloon (should not change anything)
-//        filePath = "assets/story/audio_test/story_one_panel_one_character.xml";
-//        // one panel, two balloons (should split into two panels for each balloon respectively)
-//        filePath = "assets/story/audio_test/story_one_panel_two_characters.xml";
-//        // two panels, split from one (should not change anything as already only one balloon per panel)
-//        filePath = "assets/story/audio_test/story_two_panels_split_from_one_two_characters.xml";
-//        // two panels, one has two balloons, another has one, should end up with 3 panels (first two relate to original first)
-//        filePath = "assets/story/audio_test/story_two_panels_mixed_balloons.xml";
-//        // two scenes, each has two panels, same as mixed balloons for two panels, just testing with multiple scenes instead
-//        filePath = "assets/story/audio_test/story_two_scenes_mixed_balloons.xml";
-        // same as two scenes mixed balloons but with scene intro as well
-        filePath = "assets/story/audio_test/story_intro_and_two_scenes_mixed_balloons.xml";
-        Document xmlDoc = XMLFileManager.loadXMLFromFile(filePath);
-//        try {
-//            audioGenerator.generateAudioFromXML(xmlDoc);
-//        }catch (Exception e){
-//            System.err.println("Error during audio generation: " + e.getMessage());
-//            e.printStackTrace();
-//        }
-
-        Map<String, String> audioFileMap = audioGenerator.getMap();
-        System.out.println(audioFileMap);
-        XMLAudioInserter audioInserter = new XMLAudioInserter(filePath, audioFileMap);
-        audioInserter.insertAudio();
-    }
-
 }

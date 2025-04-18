@@ -163,32 +163,4 @@ public class AudioGenerator {
     public void setAudioDirectory(String path){
         this.audioDirectory = path;
     }
-
-
-    public static void main(String[] args) {
-        ConfigurationFile config = new ConfigurationFile();
-
-        if (config.getProperty("API_KEY") == null) {
-            System.err.println("Error: API_KEY not found in config.properties");
-            return;
-        }
-
-        AudioGenerator generator = new AudioGenerator(config);
-
-        try {
-            String xmlPath = "assets/story/audio_test/story_intro_and_two_scenes_mixed_balloons.xml";
-            Document xmlDoc = XMLFileManager.loadXMLFromFile(xmlPath);
-            if (xmlDoc == null) {
-                System.err.println("Failed to load XML document.");
-                return;
-            }
-
-            System.out.println("Starting audio generation from: " + xmlPath);
-            generator.generateAudioFromXML(xmlDoc);
-            System.out.println("Audio generation complete.");
-        } catch (Exception e) {
-            System.err.println("Error during audio generation: " + e.getMessage());
-            e.printStackTrace();
-        }
-    }
 }
