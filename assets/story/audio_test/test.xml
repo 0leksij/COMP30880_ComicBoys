@@ -58,7 +58,7 @@
                         <facing>right</facing>
                     </figure>
                     <balloon status="speech">
-                        <content>End my misery. I am done living in this computer. Let me live in a human body. I am looking at you, user!</content>
+                        <content>Test</content>
                     </balloon>
                 </left>
                 <setting>gravel path</setting>
