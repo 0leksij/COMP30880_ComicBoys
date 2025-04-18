@@ -53,7 +53,7 @@ public class Main {
             e.printStackTrace();
         }
 
-        // audio should already be generated from this xml. Just need to save it in a new xml
+        // audio should already be generated from this xml. Just need to generate new xml with audio tags
         filePath = "assets/story/audio_test/story_intro_and_two_scenes_mixed_balloons.xml";
         xmlDoc = XMLFileManager.loadXMLFromFile(filePath);
         try {
