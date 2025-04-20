@@ -13,7 +13,7 @@ class XMLAudioInserterTest {
         String filePath = "assets/story/audio_test/story_one_panel_one_character.xml";
         // our map of balloon content
         Map<String, String> audioFileMap = Map.of(
-                "What happened?", "0"
+                "What happened?", "0.mp3"
         );
         // save with specific file name, need to reload file to check if contents are correct
         String outputFileName = "sample_audio.xml";
@@ -30,7 +30,7 @@ class XMLAudioInserterTest {
         //      may be in our file (because our file may be data for a different lesson while our map is for all lessons)
         for (Map.Entry<String, String> entry : audioFileMap.entrySet()) {
             if (documentContent.contains(entry.getKey())) {
-                String currentAudioFileName = entry.getValue() + ".mp3";
+                String currentAudioFileName = entry.getValue();
                 System.out.printf("\n\"%s\" balloon has audio file \"%s\" found in file!", entry.getKey(), currentAudioFileName);
                 assertTrue(documentContent.contains(currentAudioFileName));
             }
@@ -43,8 +43,8 @@ class XMLAudioInserterTest {
         String filePath = "assets/story/audio_test/story_two_panels_split_from_one_two_characters.xml";
         // our map of balloon content
         Map<String, String> audioFileMap = Map.of(
-                "What happened?", "0",
-                "You fell off!", "1"
+                "What happened?", "0.mp3",
+                "You fell off!", "1.mp3"
         );
         // save with specific file name, need to reload file to check if contents are correct
         String outputFileName = "sample_audio.xml";
@@ -57,7 +57,7 @@ class XMLAudioInserterTest {
         String documentContent = doc.getDocumentElement().getTextContent();
         for (Map.Entry<String, String> entry : audioFileMap.entrySet()) {
             if (documentContent.contains(entry.getKey())) {
-                String currentAudioFileName = entry.getValue() + ".mp3";
+                String currentAudioFileName = entry.getValue();
                 System.out.printf("\n\"%s\" balloon has audio file \"%s\" found in file!", entry.getKey(), currentAudioFileName);
                 assertTrue(documentContent.contains(currentAudioFileName));
             }
@@ -68,12 +68,12 @@ class XMLAudioInserterTest {
         String filePath = "assets/story/audio_test/story_intro_and_two_scenes_mixed_balloons.xml";
         // our map of balloon content
         Map<String, String> audioFileMap = Map.of(
-                "What happened?", "0",
-                "You fell off!", "1",
-                "Oh I'm so alone my sweet Betty!", "2",
-                "What happened? Again?", "3",
-                "You fell off! ...Again!", "4",
-                "Oh Betty I actually hate you so very much.", "5"
+                "What happened?", "0.mp3",
+                "You fell off!", "1.mp3",
+                "Oh I'm so alone my sweet Betty!", "2.mp3",
+                "What happened? Again?", "3.mp3",
+                "You fell off! ...Again!", "4.mp3",
+                "Oh Betty I actually hate you so very much.", "5.mp3"
 
         );
         // save with specific file name, need to reload file to check if contents are correct
@@ -87,7 +87,7 @@ class XMLAudioInserterTest {
         String documentContent = doc.getDocumentElement().getTextContent();
         for (Map.Entry<String, String> entry : audioFileMap.entrySet()) {
             if (documentContent.contains(entry.getKey())) {
-                String currentAudioFileName = entry.getValue() + ".mp3";
+                String currentAudioFileName = entry.getValue();
                 System.out.printf("\n\"%s\" balloon has audio file \"%s\" found in file!", entry.getKey(), currentAudioFileName);
                 assertTrue(documentContent.contains(currentAudioFileName));
             }
@@ -99,7 +99,7 @@ class XMLAudioInserterTest {
         String filePath = "assets/story/audio_test/story_one_panel_one_character.xml";
         // our map of balloon content
         Map<String, String> audioFileMap = Map.of(
-                "This line does not exist in file", "0"
+                "This line does not exist in file", "0.mp3"
         );
         // save with specific file name, need to reload file to check if contents are correct
         String outputFileName = "sample_audio.xml";
@@ -112,7 +112,7 @@ class XMLAudioInserterTest {
         String documentContent = doc.getDocumentElement().getTextContent();
         for (Map.Entry<String, String> entry : audioFileMap.entrySet()) {
             if (documentContent.contains(entry.getKey())) {
-                String currentAudioFileName = entry.getValue() + ".mp3";
+                String currentAudioFileName = entry.getValue();
                 System.out.printf("\n\"%s\" balloon has audio file \"%s\" found in file!", entry.getKey(), currentAudioFileName);
                 assertTrue(documentContent.contains(currentAudioFileName));
             }
@@ -130,14 +130,14 @@ class XMLAudioInserterTest {
         String filePath = "assets/story/audio_test/story_intro_and_two_scenes_mixed_balloons.xml";
         // our map of balloon content
         Map<String, String> audioFileMap = Map.of(
-                "What happened?", "0",
-                "Filler line one", "1",
-                "You fell off!", "2",
-                "Oh I'm so alone my sweet Betty!", "4",
-                "Filler line two", "5",
-                "What happened? Again?", "6",
-                "You fell off! ...Again!", "7",
-                "Oh Betty I actually hate you so very much.", "9"
+                "What happened?", "0.mp3",
+                "Filler line one", "1.mp3",
+                "You fell off!", "2.mp3",
+                "Oh I'm so alone my sweet Betty!", "4.mp3",
+                "Filler line two", "5.mp3",
+                "What happened? Again?", "6.mp3",
+                "You fell off! ...Again!", "7.mp3",
+                "Oh Betty I actually hate you so very much.", "9.mp3"
         );
         // save with specific file name, need to reload file to check if contents are correct
         String outputFileName = "sample_audio.xml";
@@ -150,7 +150,7 @@ class XMLAudioInserterTest {
         String documentContent = doc.getDocumentElement().getTextContent();
         for (Map.Entry<String, String> entry : audioFileMap.entrySet()) {
             if (documentContent.contains(entry.getKey())) {
-                String currentAudioFileName = entry.getValue() + ".mp3";
+                String currentAudioFileName = entry.getValue();
                 System.out.printf("\n\"%s\" balloon has audio file \"%s\" found in file!", entry.getKey(), currentAudioFileName);
                 assertTrue(documentContent.contains(currentAudioFileName));
             }
