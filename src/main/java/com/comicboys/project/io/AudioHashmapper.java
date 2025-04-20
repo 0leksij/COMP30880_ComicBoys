@@ -34,7 +34,7 @@ public class AudioHashmapper {
         return audioMap;
     }
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         // Path to your audioindex.tsv file
         String filePath = "assets/story/audio-index.tsv"; // Replace with your actual path
 
@@ -50,5 +50,5 @@ public class AudioHashmapper {
             System.err.println("Error loading audio index:");
             e.printStackTrace();
         }
-    }
+    }*/
 }
