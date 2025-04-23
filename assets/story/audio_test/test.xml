@@ -58,7 +58,7 @@
                         <facing>right</facing>
                     </figure>
                     <balloon status="speech">
-                        <content>Test</content>
+                        <content>Help</content>
                     </balloon>
                 </left>
                 <setting>gravel path</setting>

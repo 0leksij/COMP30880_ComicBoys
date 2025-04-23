@@ -1,29 +1,22 @@
 package com.comicboys.project.audio;
 
-import com.comicboys.project.audio.AudioIndexManager;
-import com.comicboys.project.io.AudioHashmapper;
 import com.comicboys.project.io.ConfigurationFile;
-import com.comicboys.project.utility.XMLFileManager;
 import org.w3c.dom.*;
 
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.*;
 import java.nio.file.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class AudioGenerator {
     private final HttpClient httpClient;
     private final String apiKey;
     private final String voice;
-    String audioDirectory;
+    private String audioDirectory;
     private AudioIndexManager audioIndexManager;
     private final int maxRetries;
     private final long retryDelayMs;
-    private final Map<String, String> audioIndex;
 
     public AudioGenerator(ConfigurationFile config) {
         this.httpClient = HttpClient.newBuilder()
@@ -33,12 +26,6 @@ public class AudioGenerator {
         this.voice = config.getProperty("TTS_VOICE");
         this.audioDirectory = "assets/story/audio/";
         this.audioIndexManager = new AudioIndexManager("assets/story/audio-index.tsv");
-        try {
-            this.audioIndex = AudioHashmapper.loadAudioIndex("assets/story/audio-index.tsv");
-        } catch (IOException e) {
-            throw new RuntimeException("Failed to load audio index: " + e.getMessage());
-        }
-
         this.maxRetries = Integer.parseInt(config.getProperty("TTS_MAX_RETRIES"));
         this.retryDelayMs = Long.parseLong(config.getProperty("TTS_RETRY_DELAY_MS"));
 
@@ -67,7 +54,7 @@ public class AudioGenerator {
 
             try {
                 synthesizeWithRetry(text, audioPath, maxRetries);
-                audioIndexManager.appendEntry(text, audioFileName);  // Write only after success
+                audioIndexManager.appendEntry(text, audioFileName);
                 System.out.println("Generated: " + audioFileName);
             } catch (Exception e) {
                 System.err.printf("Failed to generate audio for '%s': %s%n",
@@ -95,7 +82,6 @@ public class AudioGenerator {
                 }
             }
         }
-
         return texts;
     }
 
@@ -152,15 +138,15 @@ public class AudioGenerator {
         Files.createDirectories(Paths.get(audioDirectory));
     }
 
-    public Map<String,String> getMap(){
-        return audioIndex;
+    public Map<String, String> getMap() {
+        return audioIndexManager.getIndexMap();
     }
 
-    public void setAudioIndexManager(String path){
+    public void setAudioIndexManager(String path) {
         this.audioIndexManager = new AudioIndexManager(path);
     }
 
-    public void setAudioDirectory(String path){
+    public void setAudioDirectory(String path) {
         this.audioDirectory = path;
     }
 }

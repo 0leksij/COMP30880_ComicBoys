@@ -5,7 +5,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.HashMap;
+import java.nio.file.StandardOpenOption;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -25,6 +26,7 @@ class AudioIndexManagerTest {
         Files.deleteIfExists(Path.of(TEST_INDEX_PATH));
     }
 
+    // Existing tests
     @Test
     void testNewIndexManagerCreatesFile() {
         assertTrue(Files.exists(Path.of(TEST_INDEX_PATH)));
@@ -54,13 +56,70 @@ class AudioIndexManagerTest {
     }
 
     @Test
-    void testCalculateNextIndexWithExistingFiles() {
-        HashMap<String, String> testMap = new HashMap<>();
-        testMap.put("Text 1", "0.mp3");
-        testMap.put("Text 2", "1.mp3");
-        testMap.put("Text 3", "5.mp3"); // Gap in numbering
+    void testCalculateNextIndexWithExistingFiles() throws IOException {
+        // Setup test data directly in file
+        String testData = "Text 1\t0.mp3\nText 2\t1.mp3\nText 3\t5.mp3";
+        Files.writeString(Path.of(TEST_INDEX_PATH), testData);
 
-        int nextIndex = indexManager.calculateNextIndex(testMap);
-        assertEquals(6, nextIndex);
+        AudioIndexManager manager = new AudioIndexManager(TEST_INDEX_PATH);
+        assertEquals("6", manager.getNextAvailableFileName().replace(".mp3", ""));
+    }
+
+    // New tests from AudioHashmapperTest
+    @Test
+    void testLoadIndexFileWithValidEntries() throws IOException {
+        // Setup test data
+        String testData = "Hello\t0.mp3\nWorld\t1.mp3";
+        Files.writeString(Path.of(TEST_INDEX_PATH), testData);
+
+        AudioIndexManager manager = new AudioIndexManager(TEST_INDEX_PATH);
+        Map<String, String> index = manager.getIndexMap();
+
+        assertEquals(2, index.size());
+        assertEquals("0.mp3", index.get("Hello"));
+        assertEquals("1.mp3", index.get("World"));
+    }
+
+    @Test
+    void testLoadIndexFileWithMalformedLines() throws IOException {
+        // Setup test data with malformed line
+        String testData = "Hello\t0.mp3\nBadLine\nWorld\t1.mp3";
+        Files.writeString(Path.of(TEST_INDEX_PATH), testData);
+
+        AudioIndexManager manager = new AudioIndexManager(TEST_INDEX_PATH);
+        Map<String, String> index = manager.getIndexMap();
+
+        assertEquals(2, index.size()); // Should skip malformed line
+        assertEquals("0.mp3", index.get("Hello"));
+        assertEquals("1.mp3", index.get("World"));
+    }
+
+    @Test
+    void testLoadIndexFileWithDuplicateKeys() throws IOException {
+        // Setup test data with duplicate keys
+        String testData = "Hello\t0.mp3\nHello\t1.mp3\nWorld\t2.mp3";
+        Files.writeString(Path.of(TEST_INDEX_PATH), testData);
+
+        AudioIndexManager manager = new AudioIndexManager(TEST_INDEX_PATH);
+        Map<String, String> index = manager.getIndexMap();
+
+        // Should keep the last occurrence
+        assertEquals(2, index.size());
+        assertEquals("1.mp3", index.get("Hello"));
+        assertEquals("2.mp3", index.get("World"));
+    }
+
+    @Test
+    void testLoadIndexFileWithTrailingWhitespace() throws IOException {
+        // Setup test data with whitespace
+        String testData = "  Hello  \t  0.mp3  \n  World  \t  1.mp3  ";
+        Files.writeString(Path.of(TEST_INDEX_PATH), testData);
+
+        AudioIndexManager manager = new AudioIndexManager(TEST_INDEX_PATH);
+        Map<String, String> index = manager.getIndexMap();
+
+        assertEquals(2, index.size());
+        assertEquals("0.mp3", index.get("Hello")); // Keys and values should be trimmed
+        assertEquals("1.mp3", index.get("World"));
     }
 }

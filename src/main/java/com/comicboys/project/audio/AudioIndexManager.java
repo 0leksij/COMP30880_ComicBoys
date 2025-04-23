@@ -1,29 +1,40 @@
 package com.comicboys.project.audio;
 
-import com.comicboys.project.io.AudioHashmapper;
-
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
-import java.util.HashMap;
+import java.nio.file.*;
+import java.util.*;
+import java.util.stream.*;
 
 public class AudioIndexManager {
     private final String indexFilePath;
-    private HashMap<String, String> indexMap;
+    private final Map<String, String> indexMap;
     private int nextIndex;
 
     public AudioIndexManager(String indexFilePath) {
         this.indexFilePath = indexFilePath;
-        ensureFileExists();
-        try {
-            this.indexMap = AudioHashmapper.loadAudioIndex(indexFilePath);
-            this.nextIndex = calculateNextIndex(indexMap);
+        this.indexMap = loadIndexFile();
+        this.nextIndex = calculateNextIndex();
+    }
+
+    private Map<String, String> loadIndexFile() {
+        Map<String, String> loadedMap = new HashMap<>();
+        if (!Files.exists(Paths.get(indexFilePath))) {
+            ensureFileExists();
+            return loadedMap;
+        }
+
+        try (BufferedReader reader = Files.newBufferedReader(Paths.get(indexFilePath))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split("\t");
+                if (parts.length == 2) {
+                    loadedMap.put(parts[0].trim(), parts[1].trim());
+                }
+            }
         } catch (IOException e) {
             System.err.println("Error loading audio index: " + e.getMessage());
-            this.indexMap = new HashMap<>();
-            this.nextIndex = 0;
         }
+        return loadedMap;
     }
 
     public boolean entryExists(String text) {
@@ -35,16 +46,23 @@ public class AudioIndexManager {
     }
 
     public void appendEntry(String text, String fileName) throws IOException {
+        if (entryExists(text)) {
+            return;
+        }
+
         indexMap.put(text, fileName);
-        try (BufferedWriter writer = Files.newBufferedWriter(Paths.get(indexFilePath), StandardOpenOption.APPEND, StandardOpenOption.CREATE)) {
+        try (BufferedWriter writer = Files.newBufferedWriter(
+                Paths.get(indexFilePath),
+                StandardOpenOption.APPEND,
+                StandardOpenOption.CREATE)) {
             writer.write(text + "\t" + fileName);
             writer.newLine();
         }
         nextIndex++;
     }
 
-    int calculateNextIndex(HashMap<String, String> index) {
-        return index.values().stream()
+    int calculateNextIndex() {
+        return indexMap.values().stream()
                 .map(f -> f.replace(".mp3", ""))
                 .filter(s -> s.matches("\\d+"))
                 .mapToInt(Integer::parseInt)
@@ -53,16 +71,17 @@ public class AudioIndexManager {
     }
 
     private void ensureFileExists() {
-        File file = new File(indexFilePath);
-        if (!file.exists()) {
-            try {
-                file.getParentFile().mkdirs();
-                if (file.createNewFile()) {
-                    System.out.println("Created new index file: " + indexFilePath);
-                }
-            } catch (IOException e) {
-                System.err.println("Error creating audio index file: " + e.getMessage());
+        try {
+            Files.createDirectories(Paths.get(indexFilePath).getParent());
+            if (Files.notExists(Paths.get(indexFilePath))) {
+                Files.createFile(Paths.get(indexFilePath));
             }
+        } catch (IOException e) {
+            System.err.println("Error creating audio index file: " + e.getMessage());
         }
+    }
+
+    public Map<String, String> getIndexMap() {
+        return Collections.unmodifiableMap(indexMap);
     }
 }
