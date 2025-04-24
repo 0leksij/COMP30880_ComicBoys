@@ -16,6 +16,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.StringWriter;
 import java.util.List;
+import java.util.Random;
 
 public interface XMLFileManager extends XMLNodeRemover {
 
@@ -67,6 +68,11 @@ public interface XMLFileManager extends XMLNodeRemover {
                 break;
             }
         }
+    }
+
+    static void appendScene(Document targetDoc, Node scene) {
+        Node importedScene = targetDoc.importNode(scene, true);
+        targetDoc.getDocumentElement().appendChild(importedScene);
     }
 
     static boolean saveXMLToFile(Document doc, String filePath) {
@@ -136,6 +142,24 @@ public interface XMLFileManager extends XMLNodeRemover {
         }
         return count;
     }
+
+    /**
+     * Extracts a random scene from the given XML document
+     * @param doc The XML document to extract from
+     * @return The randomly selected scene node, or null if no scenes found
+     */
+    static Node extractRandomSceneElement(Document doc) {
+        NodeList scenes = selectElements(doc, "scene");
+        if (scenes.getLength() == 0) {
+            return null;
+        }
+
+        Random random = new Random();
+        int randomIndex = random.nextInt(scenes.getLength());
+        return scenes.item(randomIndex).cloneNode(true);
+    }
+
+
     static void removeAllByTag(Node node, String childTagToRemove) { XMLNodeRemover.removeAllByTag(node, childTagToRemove); }
     static void removeAllByTag(Node node, List<String> childrenTagsToRemove) { XMLNodeRemover.removeAllByTag(node, childrenTagsToRemove); }
     static void removeFirstChild(Node node) { XMLNodeRemover.removeFirstChild(node); }
@@ -174,6 +198,24 @@ public interface XMLFileManager extends XMLNodeRemover {
             return builder.parse(new java.io.ByteArrayInputStream(xmlContent.getBytes()));
         } catch (Exception e) {
             throw new RuntimeException("Failed to parse XML from string", e);
+        }
+    }
+
+    public static void main(String[] args) {
+        String sourceFilePath = "assets/story/audio_test/story_two_scenes_mixed_balloons.xml";
+        Document doc = XMLFileManager.loadXMLFromFile(sourceFilePath);
+        Node randomScene = XMLFileManager.extractRandomSceneElement(doc);
+
+        if (randomScene != null) {
+            System.out.println("Successfully extracted random scene element");
+            // Create a new document to hold just the scene
+            Document newDoc = XMLFileManager.createFile("assets/blueprint/test/temp.xml");
+            appendScene(newDoc, randomScene);
+
+            // Save just the scene
+            XMLFileManager.saveXMLToFile(newDoc, "assets/mappings/test/test_with_random_scene.xml");
+        } else {
+            System.out.println("Failed to extract random scene");
         }
     }
 

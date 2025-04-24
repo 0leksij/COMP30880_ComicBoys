@@ -6,65 +6,100 @@
          <panel>
             <left>
                <figure>
-                  <pose>training</pose>
+                  <pose>judging</pose>
                   <facing>right</facing>
                </figure>
             </left>
-            <setting>gym</setting>
+            <setting/>
          </panel>
          <panel>
             <left>
                <figure>
-                  <pose>training</pose>
+                  <pose>judging</pose>
                   <facing>right</facing>
                </figure>
             </left>
             <balloon status="speech">
-               <content>a workout</content>
+               <content>the judgment is important.</content>
             </balloon>
-            <setting>gym</setting>
-         </panel>
-         <panel>
-            <right>
-               <figure>
-                  <pose>strong</pose>
-                  <facing>left</facing>
-               </figure>
-            </right>
-            <setting>gym</setting>
-         </panel>
-         <panel>
-            <right>
-               <figure>
-                  <pose>strong</pose>
-                  <facing>left</facing>
-               </figure>
-            </right>
-            <balloon status="speech">
-               <content>un allenamento</content>
-            </balloon>
-            <setting>gym</setting>
+            <setting/>
          </panel>
          <panel>
             <left>
                <figure>
-                  <pose>training</pose>
+                  <pose>judging</pose>
+                  <facing>right</facing>
+               </figure>
+            </left>
+            <balloon status="speech">
+               <content>il giudizio è importante.</content>
+            </balloon>
+            <setting/>
+         </panel>
+      </scene>
+      <scene>
+         <panel>
+            <left>
+               <figure>
+                  <pose>brainwashed</pose>
+                  <facing>right</facing>
+               </figure>
+            </left>
+            <setting>laundrette</setting>
+         </panel>
+         <panel>
+            <left>
+               <figure>
+                  <pose>brainwashed</pose>
+                  <facing>right</facing>
+               </figure>
+            </left>
+            <balloon status="speech">
+               <content>mind control</content>
+            </balloon>
+            <setting>laundrette</setting>
+         </panel>
+         <panel>
+            <right>
+               <figure>
+                  <pose>brainwashing</pose>
+                  <facing>left</facing>
+               </figure>
+            </right>
+            <setting>laundrette</setting>
+         </panel>
+         <panel>
+            <right>
+               <figure>
+                  <pose>brainwashing</pose>
+                  <facing>left</facing>
+               </figure>
+            </right>
+            <balloon status="speech">
+               <content>controllo mentale</content>
+            </balloon>
+            <setting>laundrette</setting>
+         </panel>
+         <panel>
+            <left>
+               <figure>
+                  <pose>brainwashed</pose>
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>a workout</content>
+                  <content>mind control</content>
                </balloon>
             </left>
             <right>
                <figure>
-                  <pose>strong</pose>
+                  <pose>brainwashing</pose>
                   <facing>left</facing>
                </figure>
                <balloon status="speech">
-                  <content>un allenamento</content>
+                  <content>controllo mentale</content>
                </balloon>
             </right>
-            <setting>gym</setting>
+            <setting>laundrette</setting>
          </panel>
       </scene>
    </scenes>
