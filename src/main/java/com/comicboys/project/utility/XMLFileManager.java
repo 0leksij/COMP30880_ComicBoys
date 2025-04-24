@@ -28,6 +28,47 @@ public interface XMLFileManager extends XMLNodeRemover {
 
     static void separateMultipleSpeechPanels(Document doc) { XMLPanelSplitter.separateMultipleSpeechPanels(doc); }
 
+    static Document createFile(String filePath) {
+        // create base file
+        try {
+            DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+            Document doc = docBuilder.newDocument();
+
+            Element comicElement = doc.createElement("comic");
+            doc.appendChild(comicElement);
+
+            Element figuresElement = doc.createElement("figures");
+            comicElement.appendChild(figuresElement);
+            Element scenesElement = doc.createElement("scenes");
+            comicElement.appendChild(scenesElement);
+
+            return doc;
+        } catch (Exception e) {
+            System.out.println("Error: File in path " + filePath + " does not exist or failed to load");
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    static void appendScenes(Document doc, NodeList scenes) {
+        trimWhitespace(doc.getDocumentElement());
+        NodeList scenesElements = doc.getDocumentElement().getElementsByTagName("scenes");
+        // go through all scene nodes
+        for (int i = 0; i < scenesElements.getLength(); i++) {
+            Node scene = scenesElements.item(i);
+            // if is valid scene node, append all scenes in list to this document
+            if (scene.getNodeType() == Node.ELEMENT_NODE) {
+                for (int j = 0; j < scenes.getLength(); j++) {
+                    Node currentScene = scenes.item(j);
+                    scene.appendChild(doc.adoptNode(currentScene));
+                }
+                // only one scenes element to add to, so break
+                break;
+            }
+        }
+    }
+
     static boolean saveXMLToFile(Document doc, String filePath) {
         try {
             trimWhitespace(doc.getDocumentElement());

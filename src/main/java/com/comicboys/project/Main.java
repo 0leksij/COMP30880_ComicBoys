@@ -2,11 +2,13 @@ package com.comicboys.project;
 
 import com.comicboys.project.audio.AudioGenerator;
 import com.comicboys.project.client.APIClient;
+import com.comicboys.project.client.APIResponse;
 import com.comicboys.project.data.Mappings;
 import com.comicboys.project.data.StringEntry;
 import com.comicboys.project.io.*;
 import com.comicboys.project.utility.XMLFileManager;
 import org.w3c.dom.Document;
+import org.w3c.dom.NodeList;
 
 import java.util.List;
 import java.util.Map;
@@ -15,57 +17,49 @@ import java.util.Random;
 
 public class Main {
     public static Random random = new Random();
-    public static void main(String[] args) throws InterruptedException {
+    private static String[] LESSON_SCHEDULE;
+    private static final Document doc = XMLFileManager.createFile("assets/mappings/test/base.xml");
+    public static void main(String[] args) {
         // creating config file object
         ConfigurationFile config = new ConfigurationFile();
+        MappingsFileReader mappingsFileReader = new MappingsFileReader();
+        Mappings mappings = mappingsFileReader.getMappings();
         APIClient client = new APIClient(config);
-        System.out.println("\n------------------------------");
-        System.out.println("\n------[ CURRENT SPRINT ]------");
-        System.out.println("\n------------------------------");
-
-        ConfigurationFile configurationFile = new ConfigurationFile();
-
-        AudioGenerator audioGenerator = new AudioGenerator(configurationFile);
-
-//        // one panel, one balloon (should not change anything)
-//        filePath = "assets/story/audio_test/story_one_panel_one_character.xml";
-//        // one panel, two balloons (should split into two panels for each balloon respectively)
-//        filePath = "assets/story/audio_test/story_one_panel_two_characters.xml";
-//        // two panels, split from one (should not change anything as already only one balloon per panel)
-//        filePath = "assets/story/audio_test/story_two_panels_split_from_one_two_characters.xml";
-//        // two panels, one has two balloons, another has one, should end up with 3 panels (first two relate to original first)
-//        filePath = "assets/story/audio_test/story_two_panels_mixed_balloons.xml";
-//        // two scenes, each has two panels, same as mixed balloons for two panels, just testing with multiple scenes instead
-//        filePath = "assets/story/audio_test/story_two_scenes_mixed_balloons.xml";
-        // same as two scenes mixed balloons but with scene intro as well
-
-        String filePath;
-        Document xmlDoc;
-
-        filePath = "assets/story/audio_test/test.xml";
-        xmlDoc = XMLFileManager.loadXMLFromFile(filePath);
-
-        // audio should be generated from the test xml and saved in the audio folder and also appended to the audio-index.tsv
-        try {
-            audioGenerator.generateAudioFromXML(xmlDoc);
-        }catch (Exception e){
-            System.err.println("Error during audio generation: " + e.getMessage());
-            e.printStackTrace();
+        TranslationGenerator translationGenerator = new TranslationGenerator(config, client, mappings);
+        XMLGenerator xmlGenerator = new XMLGenerator(mappings, translationGenerator);
+        System.out.println(config.getProperty("LESSON_SCHEDULE"));
+        LESSON_SCHEDULE = config.getProperty("LESSON_SCHEDULE").split(",");
+        for (int i = 0; i < LESSON_SCHEDULE.length; i++) {
+            final String currentLesson = LESSON_SCHEDULE[i];
+            final String testPath = "assets/mappings/test/test.xml";
+            // different possible lessons user can choose
+            switch (currentLesson){
+                case "left" -> generateLeftTextScene(xmlGenerator, testPath);
+                case "whole", "combined" -> generateCombinedTextScene(xmlGenerator, testPath);
+                case "conjugation" -> System.out.println("CONJUGATION");
+                case "story" -> System.out.println("STORY");
+                default -> System.out.printf("\nLesson %s is not a valid lesson\n", currentLesson);
+            }
         }
-
-        // audio should already be generated from this xml. Just need to generate new xml with audio tags
-        filePath = "assets/story/audio_test/story_intro_and_two_scenes_mixed_balloons.xml";
-        xmlDoc = XMLFileManager.loadXMLFromFile(filePath);
-        try {
-            audioGenerator.generateAudioFromXML(xmlDoc);
-        }catch (Exception e){
-            System.err.println("Error during audio generation: " + e.getMessage());
-            e.printStackTrace();
+    }
+    private static void generateLeftTextScene(XMLGenerator xmlGenerator, String filePath) {
+        NodeList scenes = xmlGenerator.generateLeftTextXML(filePath);
+        if (scenes == null) {
+            System.out.println("Unsuccessful generation of left text scene");
+            return;
         }
-
-        Map<String, String> audioFileMap = audioGenerator.getMap();
-        System.out.println(audioFileMap);
-        XMLAudioInserter audioInserter = new XMLAudioInserter(filePath, audioFileMap);
-        audioInserter.insertAudio();
+        appendScenes(scenes, filePath);
+    }
+    private static void generateCombinedTextScene(XMLGenerator xmlGenerator, String filePath) {
+        NodeList scenes = xmlGenerator.generateCombinedTextXML(filePath);
+        if (scenes == null) {
+            System.out.println("Unsuccessful generation of whole text scene");
+            return;
+        }
+        appendScenes(scenes, filePath);
+    }
+    private static void appendScenes(NodeList scenes, String filePath) {
+        XMLFileManager.appendScenes(doc, scenes);
+        XMLFileManager.saveXMLToFile(doc, filePath);
     }
 }

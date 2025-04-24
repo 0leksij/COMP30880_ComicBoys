@@ -60,9 +60,13 @@ public class TranslationGenerator {
             }
         }
     }
+    // calls the main generateTranslations method below with String input cast to ArrayList<String>
+    public void generateTranslations(String text) {
+        generateTranslations(new ArrayList<>(List.of(text)));
+    }
     /**
      * Generates translations for a custom list of text fragments
-     * @param texts List of texts to translate
+     * @param texts List of text strings to translate
      */
     // for reference, pass input for this as a list of strings, so if translating mappings would
     // pass in mappings.getAllTextFragments

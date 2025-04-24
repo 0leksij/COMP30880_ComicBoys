@@ -39,13 +39,15 @@ public class TranslationGeneratorTest {
                 properties.put("COMPLETIONS_URL", "https://test-url.com");
                 properties.put("SOURCE_LANGUAGE", "English");
                 properties.put("TARGET_LANGUAGE", "Spanish");
+                properties.put("LESSON_SCHEDULE", "left,whole,conjugation,story");
             }
 
             @Override
             public String getProperty(String key) {
-                return properties.get(key);
+                return this.properties.get(key);
             }
         };
+
         client = new APIClient(config);
 
         // Create simple mappings with test data

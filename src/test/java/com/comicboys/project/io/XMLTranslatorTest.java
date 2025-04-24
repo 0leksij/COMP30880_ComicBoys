@@ -35,7 +35,7 @@ class XMLTranslatorTest {
     void testTranslatedFileExists() {
         translator.translateXML("test/test_specification.xml");
 
-        String expectedPath = translator.getFilePath() + "english-to-italian-.xml";
+        String expectedPath = translator.getFileDirectory() + "english-to-italian-.xml";
         File file = new File(expectedPath);
         assertTrue(file.exists(), "Translated XML output file should exist");
     }
@@ -45,7 +45,7 @@ class XMLTranslatorTest {
         translator.translateXML("test/test_conjunction.xml");
 
         Document doc = XMLFileManager.loadXMLFromFile(
-                translator.getFilePath() + "english-to-italian-.xml"
+                translator.getFileDirectory() + "english-to-italian-.xml"
         );
 
         NodeList balloons = doc.getElementsByTagName("balloon");

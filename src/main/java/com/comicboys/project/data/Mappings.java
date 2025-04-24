@@ -45,7 +45,7 @@ public class Mappings {
         }
         return null;
     }
-
+    public int size() { return mappings.size(); }
 
 
     public ArrayList<ListEntry> getEntries(){

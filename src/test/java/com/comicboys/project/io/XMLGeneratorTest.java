@@ -1,12 +1,16 @@
 package com.comicboys.project.io;
 
+import com.comicboys.project.client.APIClient;
 import com.comicboys.project.data.ListEntry;
 import com.comicboys.project.data.Mappings;
+import com.comicboys.project.data.StringEntry;
 import com.comicboys.project.utility.XMLFileManager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -26,13 +30,16 @@ class XMLGeneratorTest {
     void setUp() {
         mappings = new Mappings();
         mappings.addEntry("pose1\ttext1\tleft1\tpose2\tbackground1,background2");
-        xmlGenerator = new XMLGenerator(mappings);
+        ConfigurationFile config = new ConfigurationFile();
+        APIClient client = new APIClient(config);
+        TranslationGenerator translationGenerator = new TranslationGenerator(config, client, mappings);
+        xmlGenerator = new XMLGenerator(mappings, translationGenerator);
     }
 
     @Test
     void testGenerateXML_createsValidXML() throws Exception {
-        boolean isGenerated = xmlGenerator.generateXML(0, testFilePath);
-        assertTrue(isGenerated);
+        NodeList isGenerated = xmlGenerator.generateXML(0, testFilePath);
+        assertNotNull(isGenerated);
     }
 
     @Test
@@ -50,7 +57,7 @@ class XMLGeneratorTest {
         Element sceneElement = doc.createElement("scene");
         doc.appendChild(sceneElement);
 
-        ListEntry selectedRow = mappings.getEntries().get(0);
+        StringEntry selectedRow = mappings.getEntries().getFirst().toStringEntry();
         xmlGenerator.createSingleCharacterPanels(doc, sceneElement, selectedRow);
 
         assertEquals("scene", sceneElement.getNodeName());
@@ -65,7 +72,7 @@ class XMLGeneratorTest {
         Element sceneElement = doc.createElement("scene");
         doc.appendChild(sceneElement);
 
-        ListEntry selectedRow = mappings.getEntries().get(0);
+        StringEntry selectedRow = mappings.getEntries().getFirst().toStringEntry();
         xmlGenerator.createMultipleCharacterPanels(doc, sceneElement, selectedRow);
 
         assertEquals("scene", sceneElement.getNodeName());
@@ -104,9 +111,16 @@ class XMLGeneratorTest {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
         Document doc = builder.newDocument();
+        Element panel = doc.createElement("panel");
+        doc.appendChild(panel);
 
-        Element balloon = xmlGenerator.createBalloon(doc, "left_balloon", "Hello");
-        assertEquals("left_balloon", balloon.getNodeName());
-        assertEquals("speech", balloon.getAttribute("status"));
+        xmlGenerator.createBalloon(doc, panel, "Hello");
+        NodeList balloons = doc.getElementsByTagName("balloon");
+        for (int i = 0; i < balloons.getLength(); i++) {
+            Element balloon = (Element) balloons.item(i);
+            assertEquals("balloon", balloon.getNodeName());
+            assertEquals("speech", balloon.getAttribute("status"));
+        }
+
     }
 }

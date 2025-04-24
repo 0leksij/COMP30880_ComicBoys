@@ -12,15 +12,20 @@ public class XMLTranslator {
     private final TranslationGenerator translationGenerator;
     private final String sourceLanguage;
     private final String targetLanguage;
-    private final String filePath;
+    private final String fileDirectory;
     private final String lessonType;
 
+    // constructor with default filepath
     public XMLTranslator(ConfigurationFile config, APIClient client, Mappings mappings, String lessonType) {
+        this(config, client, mappings, lessonType, "assets/story/");
+    }
+    // constructor with custom file path
+    public XMLTranslator(ConfigurationFile config, APIClient client, Mappings mappings, String lessonType, String fileDirectory) {
         this.config = config;
         this.translationGenerator = new TranslationGenerator(this.config, client, mappings);
         this.sourceLanguage = this.config.getProperty("SOURCE_LANGUAGE").toLowerCase();
         this.targetLanguage = this.config.getProperty("TARGET_LANGUAGE").toLowerCase();
-        this.filePath = "assets/story/";
+        this.fileDirectory = fileDirectory;
         this.lessonType = lessonType;
 
         // Ensure translations are generated before proceeding
@@ -29,7 +34,7 @@ public class XMLTranslator {
 
     public boolean translateXML(String inputFileName) {
         try {
-            String inputFilePath = filePath + inputFileName;
+            String inputFilePath = fileDirectory + inputFileName;
             // First get all speech balloons from the XML
             TextBlueprint blueprint = new TextBlueprint(inputFilePath);
             List<String> speechBalloons = blueprint.getSpeechBalloons();
@@ -68,7 +73,7 @@ public class XMLTranslator {
             }
 
             // Save the translated XML to a new file
-            String outputFilePath = filePath + sourceLanguage + "-to-" + targetLanguage + "-" + lessonType + ".xml";
+            String outputFilePath = fileDirectory + sourceLanguage + "-to-" + targetLanguage + "-" + lessonType + ".xml";
             System.out.println("Translation saved to " + outputFilePath);
             return XMLFileManager.saveXMLToFile(doc, outputFilePath);
 
@@ -119,8 +124,8 @@ public class XMLTranslator {
         return lessonType;
     }
 
-    public String getFilePath() {
-        return filePath;
+    public String getFileDirectory() {
+        return fileDirectory;
     }
 
 
