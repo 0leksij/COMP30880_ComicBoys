@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<comic>
+   <figures/>
+   <scenes>
+      <scene>
+         <panel>
+            <left>
+               <figure>
+                  <pose>training</pose>
+                  <facing>right</facing>
+               </figure>
+            </left>
+            <setting>gym</setting>
+         </panel>
+         <panel>
+            <left>
+               <figure>
+                  <pose>training</pose>
+                  <facing>right</facing>
+               </figure>
+            </left>
+            <balloon status="speech">
+               <content>a workout</content>
+            </balloon>
+            <setting>gym</setting>
+         </panel>
+         <panel>
+            <right>
+               <figure>
+                  <pose>strong</pose>
+                  <facing>left</facing>
+               </figure>
+            </right>
+            <setting>gym</setting>
+         </panel>
+         <panel>
+            <right>
+               <figure>
+                  <pose>strong</pose>
+                  <facing>left</facing>
+               </figure>
+            </right>
+            <balloon status="speech">
+               <content>un allenamento</content>
+            </balloon>
+            <setting>gym</setting>
+         </panel>
+         <panel>
+            <left>
+               <figure>
+                  <pose>training</pose>
+                  <facing>right</facing>
+               </figure>
+               <balloon status="speech">
+                  <content>a workout</content>
+               </balloon>
+            </left>
+            <right>
+               <figure>
+                  <pose>strong</pose>
+                  <facing>left</facing>
+               </figure>
+               <balloon status="speech">
+                  <content>un allenamento</content>
+               </balloon>
+            </right>
+            <setting>gym</setting>
+         </panel>
+      </scene>
+   </scenes>
+</comic>
