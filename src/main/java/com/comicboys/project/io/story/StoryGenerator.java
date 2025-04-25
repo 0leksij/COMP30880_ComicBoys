@@ -2,9 +2,14 @@ package com.comicboys.project.io.story;
 
 import com.comicboys.project.client.APIClient;
 import com.comicboys.project.client.APIResponse;
+import com.comicboys.project.data.Mappings;
+import com.comicboys.project.io.blueprint.StoryBlueprint;
+import com.comicboys.project.io.config.ConfigurationFile;
+import com.comicboys.project.io.translate.XMLTranslator;
 import com.comicboys.project.utility.XMLFileManager;
 import org.w3c.dom.*;
 
+import java.io.File;
 import java.util.*;
 
 public class StoryGenerator {
@@ -260,7 +265,7 @@ public class StoryGenerator {
                 result.add(dialogues);
 
                 if (sceneIndex < scenes.getLength() - 1) {
-                    Thread.sleep(30000); // 30 second delay between scenes
+                    Thread.sleep(5000); // 5 second delay between scenes
                 }
             } catch (Exception e) {
                 System.err.println("Error processing scene " + (sceneIndex + 1) + ": " + e.getMessage());
@@ -291,7 +296,66 @@ public class StoryGenerator {
         return dialogues;
     }
 
-    public static void main(String[] args) {
+    public void generateStoryXML() {
+        ConfigurationFile config = new ConfigurationFile();
+        APIClient client = new APIClient(config);
 
+        // Set up file paths and names
+        String sourceLang = config.getProperty("SOURCE_LANGUAGE").toLowerCase();
+        String targetLang = config.getProperty("TARGET_LANGUAGE").toLowerCase();
+        String inputFilePath = "assets/story/specification_short.xml";
+        String outputFileName = sourceLang + "-to-" + targetLang + "-story.xml";
+        String outputFilePath = "assets/story/" + outputFileName;
+
+        // Check if file already exists
+        File outputFile = new File(outputFilePath);
+        if (outputFile.exists()) {
+            System.out.println("Story XML already exists at: " + outputFilePath);
+            return;
+        }
+
+        try {
+            // Initialize components
+            StoryBlueprint blueprint = new StoryBlueprint(inputFilePath);
+            this.loadXmlDocument(inputFilePath);
+
+            // 1. Generate the story content
+            List<List<String>> generatedStories = this.generateStories();
+
+            // 2. Write the original story to XML file
+            blueprint.writeStory(generatedStories, outputFileName);
+            System.out.println("Original story generated at: " + outputFilePath);
+
+            // 3. Translate the generated story
+            Mappings mappings = new Mappings(); // Create or load your mappings
+            XMLTranslator translator = new XMLTranslator(config, client, mappings, "story");
+
+            // This will create translated version with same base name
+            boolean translationSuccess = translator.translateXML(outputFileName);
+
+            if (translationSuccess) {
+                String translatedFilePath = "assets/story/" + sourceLang + "-to-" + targetLang + "-story-translated.xml";
+                System.out.println("Translated story saved at: " + translatedFilePath);
+            } else {
+                System.out.println("Story translation failed");
+            }
+
+        } catch (Exception e) {
+            System.err.println("Failed to generate story XML: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+
+    public static void main(String[] args) {
+        ConfigurationFile config = new ConfigurationFile();
+        APIClient client = new APIClient(config);
+//        String storyPath = "assets/story/specification_short.xml";
+//        StoryBlueprint blueprintStory = new StoryBlueprint(storyPath);
+//
+//        StoryGenerator sg = new StoryGenerator(client);
+//        blueprintStory.writeStory(sg, "sample_story2.xml");
+        StoryGenerator sg = new StoryGenerator(client);
+        sg.generateStoryXML();
     }
 }

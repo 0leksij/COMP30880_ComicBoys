@@ -27,7 +27,7 @@ public class Main {
         TranslationGenerator translationGenerator = new TranslationGenerator(config, client, mappings);
         XMLGenerator xmlGenerator = new XMLGenerator(mappings, translationGenerator);
         final String testPath = "assets/mappings/test/test.xml";
-        final String storyPath = "assets/story/english-to-italian-story.xml";
+        final String storyPath = "assets/story/english-to-italian-story1.xml";
         final String conjugationPath = "assets/blueprint/english-to-italian-conjugation-lesson.xml";
 
         System.out.println(config.getProperty("LESSON_SCHEDULE"));

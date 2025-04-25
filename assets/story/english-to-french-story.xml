@@ -56,7 +56,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Time to wake up!</content>
+                  <content>Time to start the day!</content>
                </balloon>
             </middle>
             <setting>kitchen</setting>
@@ -75,11 +75,11 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>È ora di svegliarsi!</content>
+                  <content>Il est temps de commencer la journée !</content>
                </balloon>
             </middle>
             <setting>kitchen</setting>
-            <below>Alfie sta sbadigliando in cucina.</below>
+            <below>Alfie bâille dans la cuisine.</below>
          </panel>
          <panel>
             <middle>
@@ -94,7 +94,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Let's get some cereal!</content>
+                  <content>Just a bit of cereal to kick things off!</content>
                </balloon>
             </middle>
             <setting>kitchen</setting>
@@ -113,11 +113,11 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Prendiamo un po' di cereali!</content>
+                  <content>Juste un peu de céréales pour commencer !</content>
                </balloon>
             </middle>
             <setting>kitchen</setting>
-            <below>Alfie sta versando una ciotola di cereali in cucina.</below>
+            <below>Alfie verse un bol de céréales dans la cuisine.</below>
          </panel>
          <panel>
             <middle>
@@ -132,7 +132,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Delicious! Just what I needed.</content>
+                  <content>Mmm, delicious!</content>
                </balloon>
             </middle>
             <setting>kitchen</setting>
@@ -151,11 +151,11 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Delizioso! Proprio quello di cui avevo bisogno.</content>
+                  <content>Mmm, délicieux !</content>
                </balloon>
             </middle>
             <setting>kitchen</setting>
-            <below>Alfie sta masticando in cucina.</below>
+            <below>Alfie grignote dans la cuisine.</below>
          </panel>
          <panel>
             <middle>
@@ -189,11 +189,11 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Sono pronto per qualsiasi cosa oggi!</content>
+                  <content>Je suis prêt pour tout aujourd'hui !</content>
                </balloon>
             </middle>
             <setting>kitchen</setting>
-            <below>Alfie si sente pronto per qualsiasi cosa in cucina.</below>
+            <below>Alfie se sent prêt à tout dans la cuisine.</below>
          </panel>
          <panel>
             <left>
@@ -208,7 +208,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>See you later, Betty!</content>
+                  <content>See you later!</content>
                </balloon>
             </left>
             <setting>welcome mat</setting>
@@ -227,11 +227,11 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>A dopo, Betty!</content>
+                  <content>À plus tard !</content>
                </balloon>
             </left>
             <setting>welcome mat</setting>
-            <below>Alfie sta salutando dall'uscio di casa.</below>
+            <below>Alfie fait un signe d'au revoir à la porte d'entrée.</below>
          </panel>
       </scene>
       <scene>
@@ -261,7 +261,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>I can't believe I slept in</content>
+                  <content>I can't believe I overslept again!</content>
                </balloon>
             </middle>
             <setting>bedroom</setting>
@@ -280,11 +280,11 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Non posso credere di aver dormito troppo!</content>
+                  <content>Je n'arrive pas à croire que je me sois encore réveillé en retard !</content>
                </balloon>
             </middle>
             <setting>bedroom</setting>
-            <below>Alfie si sta svegliando in camera da letto.</below>
+            <below>Alfie se réveille dans la chambre.</below>
          </panel>
          <panel>
             <middle>
@@ -318,11 +318,11 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>È ora di fare colazione!</content>
+                  <content>Il est temps de prendre le petit déjeuner !</content>
                </balloon>
             </middle>
             <setting>kitchen</setting>
-            <below>Alfie sta versando una ciotola di cereali in cucina.</below>
+            <below>Alfie verse un bol de céréales dans la cuisine.</below>
          </panel>
          <panel>
             <middle>
@@ -337,7 +337,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Ugh, what is this?</content>
+                  <content>Ugh, this cereal tastes weird.</content>
                </balloon>
             </middle>
             <setting>kitchen</setting>
@@ -356,11 +356,11 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Ugh, cos'è questo?</content>
+                  <content>Ugh, cette céréale a un goût étrange.</content>
                </balloon>
             </middle>
             <setting>kitchen</setting>
-            <below>Alfie sta assaggiando qualcosa di sgradevole in cucina.</below>
+            <below>Alfie goûte quelque chose de désagréable dans la cuisine.</below>
          </panel>
          <panel>
             <middle>
@@ -375,7 +375,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>I don't feel so good...</content>
+                  <content>I really don't feel well...</content>
                </balloon>
             </middle>
             <setting>kitchen</setting>
@@ -394,11 +394,11 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Non mi sento tanto bene...</content>
+                  <content>Je ne me sens vraiment pas bien...</content>
                </balloon>
             </middle>
             <setting>kitchen</setting>
-            <below>Alfie si sente male in cucina.</below>
+            <below>Alfie ne se sent pas bien dans la cuisine.</below>
          </panel>
          <panel>
             <middle>
@@ -413,7 +413,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>I need to go!</content>
+                  <content>I can't hold it in!</content>
                </balloon>
             </middle>
             <setting>kitchen</setting>
@@ -432,11 +432,11 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Devo andare!</content>
+                  <content>Je ne peux plus le retenir !</content>
                </balloon>
             </middle>
             <setting>kitchen</setting>
-            <below>Alfie sta vomitando in cucina.</below>
+            <below>Alfie vomit dans la cuisine.</below>
          </panel>
       </scene>
       <scene>
@@ -469,11 +469,11 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>This is amazing!</content>
+                  <content>Look at me go!</content>
                </balloon>
             </middle>
             <setting>gravel path</setting>
-            <below>Alfie rides confidently on the horse along the gravel path.</below>
+            <below>Alfie rides confidently on a horse along a gravel path.</below>
          </panel>
          <panel>
             <middle>
@@ -488,11 +488,11 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Questo è incredibile!</content>
+                  <content>Regardez-moi aller !</content>
                </balloon>
             </middle>
             <setting>gravel path</setting>
-            <below>Alfie cavalca con sicurezza il cavallo lungo il sentiero di ghiaia.</below>
+            <below>Alfie monte à cheval avec confiance sur un chemin de gravier.</below>
          </panel>
          <panel>
             <middle>
@@ -511,7 +511,7 @@
                </balloon>
             </middle>
             <setting>gravel path</setting>
-            <below>Alfie loses balance and falls off the horse into the gravel.</below>
+            <below>Alfie loses balance and falls off the horse onto the gravel path.</below>
          </panel>
          <panel>
             <middle>
@@ -526,11 +526,11 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Wow!</content>
+                  <content>Wow !</content>
                </balloon>
             </middle>
             <setting>gravel path</setting>
-            <below>Alfie perde l'equilibrio e cade da cavallo nella ghiaia.</below>
+            <below>Alfie perd l'équilibre et tombe du cheval sur le chemin de gravier.</below>
          </panel>
          <panel>
             <left>
@@ -558,7 +558,7 @@
                </figure>
             </right>
             <setting>gravel path</setting>
-            <below>Alfie lies on the ground, looking disoriented, next to a riderless horse.</below>
+            <below>Alfie lies on the ground in pain, with the riderless horse nearby.</below>
          </panel>
          <panel>
             <left>
@@ -573,7 +573,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Ahi!</content>
+                  <content>Aïe !</content>
                </balloon>
             </left>
             <right>
@@ -586,7 +586,7 @@
                </figure>
             </right>
             <setting>gravel path</setting>
-            <below>Alfie è sdraiato a terra, sembrando disorientato, accanto a un cavallo senza cavaliere.</below>
+            <below>Alfie est allongé sur le sol, en douleur, avec le cheval sans cavalier à proximité.</below>
          </panel>
          <panel>
             <left>
@@ -613,11 +613,11 @@
                   <facing>left</facing>
                </figure>
                <balloon status="speech">
-                  <content>You fell!</content>
+                  <content>You took quite the tumble!</content>
                </balloon>
             </right>
             <setting>gravel path</setting>
-            <below>Alfie regains consciousness as Betty throws water on him in the gravel path.</below>
+            <below>Alfie regains consciousness while Betty throws water on him.</below>
          </panel>
          <panel>
             <left>
@@ -632,7 +632,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Cosa è successo?</content>
+                  <content>Que s'est-il passé ?</content>
                </balloon>
             </left>
             <right>
@@ -644,11 +644,11 @@
                   <facing>left</facing>
                </figure>
                <balloon status="speech">
-                  <content>Sei caduto!</content>
+                  <content>Tu as vraiment fait une chute !</content>
                </balloon>
             </right>
             <setting>gravel path</setting>
-            <below>Alfie riprende conoscenza mentre Betty gli getta dell'acqua sul sentiero di ghiaia.</below>
+            <below>Alfie reprend conscience pendant que Betty lui jette de l'eau.</below>
          </panel>
          <panel>
             <left>
@@ -675,11 +675,11 @@
                   <facing>left</facing>
                </figure>
                <balloon status="speech">
-                  <content>You needed it!</content>
+                  <content>You needed a wake-up call!</content>
                </balloon>
             </right>
             <setting>gravel path</setting>
-            <below>Alfie is drenched, while Betty stands over him, appearing unapologetic.</below>
+            <below>Alfie stands drenched on the gravel path, while Betty appears unapologetic.</below>
          </panel>
          <panel>
             <left>
@@ -694,7 +694,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Sono fradicio!</content>
+                  <content>Je suis trempé !</content>
                </balloon>
             </left>
             <right>
@@ -706,11 +706,11 @@
                   <facing>left</facing>
                </figure>
                <balloon status="speech">
-                  <content>Ne avevi bisogno!</content>
+                  <content>Tu avais besoin d'un coup de fouet !</content>
                </balloon>
             </right>
             <setting>gravel path</setting>
-            <below>Alfie è fradicio, mentre Betty sta sopra di lui, apparendo senza scuse.</below>
+            <below>Alfie se tient mouillé sur le chemin de gravier, tandis que Betty semble imperturbable.</below>
          </panel>
       </scene>
       <scene>
@@ -752,11 +752,11 @@
                   <facing>left</facing>
                </figure>
                <balloon status="speech">
-                  <content>Don't worry, just a little check-up!</content>
+                  <content>Just a little check-up, nothing to worry about!</content>
                </balloon>
             </right>
             <setting>hospital</setting>
-            <below>Alfie is in a wheelchair in the hospital interior, Betty is evaluating with a checklist.</below>
+            <below>Alfie is in a wheelchair in the hospital interior, while Betty evaluates with a checklist.</below>
          </panel>
          <panel>
             <left>
@@ -771,7 +771,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Dove mi porti?</content>
+                  <content>Où m'emmènes-tu ?</content>
                </balloon>
             </left>
             <right>
@@ -783,11 +783,11 @@
                   <facing>left</facing>
                </figure>
                <balloon status="speech">
-                  <content>Non preoccuparti, solo un piccolo controllo!</content>
+                  <content>Juste un petit contrôle, rien d'inquiétant !</content>
                </balloon>
             </right>
             <setting>hospital</setting>
-            <below>Alfie è in sedia a rotelle nell'interno dell'ospedale, Betty sta valutando con una lista di controllo.</below>
+            <below>Alfie est en fauteuil roulant à l'intérieur de l'hôpital, tandis que Betty évalue avec une liste de contrôle.</below>
          </panel>
          <panel>
             <left>
@@ -802,7 +802,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Why are you popping out like that?</content>
+                  <content>I don't like this, Betty!</content>
                </balloon>
             </left>
             <right>
@@ -814,11 +814,11 @@
                   <facing>left</facing>
                </figure>
                <balloon status="speech">
-                  <content>Just making sure everything is in order!</content>
+                  <content>Just trust me, I have everything under control!</content>
                </balloon>
             </right>
             <setting>hospital</setting>
-            <below>Alfie is waiting in his wheelchair, Betty is popping out in the hospital interior.</below>
+            <below>Alfie is waiting in the wheelchair, while Betty pops out in the hospital interior.</below>
          </panel>
          <panel>
             <left>
@@ -833,7 +833,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Perché esci in quel modo?</content>
+                  <content>Je n'aime pas ça, Betty !</content>
                </balloon>
             </left>
             <right>
@@ -845,11 +845,11 @@
                   <facing>left</facing>
                </figure>
                <balloon status="speech">
-                  <content>Sto solo controllando che tutto sia a posto!</content>
+                  <content>Fais-moi confiance, j'ai tout sous contrôle !</content>
                </balloon>
             </right>
             <setting>hospital</setting>
-            <below>Alfie sta aspettando nella sua sedia a rotelle, Betty compare nell'interno dell'ospedale.</below>
+            <below>Alfie attend dans le fauteuil roulant, tandis que Betty surgit à l'intérieur de l'hôpital.</below>
          </panel>
          <panel>
             <left>
@@ -887,11 +887,11 @@
                   <horizontal>little less</horizontal>
                </figure>
                <balloon status="speech">
-                  <content>Trust me, you won't want to run!</content>
+                  <content>Oh, don’t be so dramatic!</content>
                </balloon>
             </right>
             <setting>hospital</setting>
-            <below>Alfie is defensive in the hospital interior, Betty is returning with a knife and syringe.</below>
+            <below>Alfie is defensive in the wheelchair, while Betty returns with a knife and syringe.</below>
          </panel>
          <panel>
             <left>
@@ -907,7 +907,7 @@
                   <horizontal>little more</horizontal>
                </figure>
                <balloon status="speech">
-                  <content>Stai lontano da me!</content>
+                  <content>Reste loin de moi !</content>
                </balloon>
             </left>
             <middle>
@@ -929,11 +929,11 @@
                   <horizontal>little less</horizontal>
                </figure>
                <balloon status="speech">
-                  <content>Fidati, non vorrai correre!</content>
+                  <content>Oh, ne sois pas si dramatique !</content>
                </balloon>
             </right>
             <setting>hospital</setting>
-            <below>Alfie è difensivo nell'interno dell'ospedale, Betty sta tornando con un coltello e una siringa.</below>
+            <below>Alfie est sur la défensive dans le fauteuil roulant, tandis que Betty revient avec un couteau et une seringue.</below>
          </panel>
          <panel>
             <left>
@@ -949,7 +949,7 @@
                   <horizontal>little more</horizontal>
                </figure>
                <balloon status="speech">
-                  <content>I have to get out of here!</content>
+                  <content>Let me go!</content>
                </balloon>
             </left>
             <middle>
@@ -971,11 +971,11 @@
                   <horizontal>little less</horizontal>
                </figure>
                <balloon status="speech">
-                  <content>You can't escape my little games!</content>
+                  <content>You can’t escape this time, Alfie!</content>
                </balloon>
             </right>
             <setting>hospital</setting>
-            <below>Alfie is running away in the hospital interior, Betty is cackling cynically in the background, and there is an empty wheelchair in the middle.</below>
+            <below>Alfie is running away in the hospital interior, while Betty cackles cynically, and there's an empty wheelchair in the middle.</below>
          </panel>
          <panel>
             <left>
@@ -991,7 +991,7 @@
                   <horizontal>little more</horizontal>
                </figure>
                <balloon status="speech">
-                  <content>Devo uscire di qui!</content>
+                  <content>Laisse-moi partir !</content>
                </balloon>
             </left>
             <middle>
@@ -1013,11 +1013,11 @@
                   <horizontal>little less</horizontal>
                </figure>
                <balloon status="speech">
-                  <content>Non puoi scappare dai miei giochini!</content>
+                  <content>Tu ne peux pas échapper cette fois, Alfie !</content>
                </balloon>
             </right>
             <setting>hospital</setting>
-            <below>Alfie sta scappando nell'interno dell'ospedale, Betty ridacchiando cinicamente sullo sfondo, e c'è una sedia a rotelle vuota in mezzo.</below>
+            <below>Alfie s'enfuit à l'intérieur de l'hôpital, tandis que Betty rigole cyniquement, et il y a un fauteuil roulant vide au milieu.</below>
          </panel>
       </scene>
       <scene>
@@ -1050,11 +1050,11 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>I can do this</content>
+                  <content>I can do this!</content>
                </balloon>
             </left>
             <setting>forest</setting>
-            <below>Alfie rides confidently through the forest.</below>
+            <below>Alfie is riding a horse in the forest.</below>
          </panel>
          <panel>
             <left>
@@ -1069,11 +1069,11 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Posso farlo.</content>
+                  <content>Je peux le faire !</content>
                </balloon>
             </left>
             <setting>forest</setting>
-            <below>Alfie cavalca con fiducia attraverso la foresta.</below>
+            <below>Alfie monte à cheval dans la forêt.</below>
          </panel>
          <panel>
             <left>
@@ -1101,7 +1101,7 @@
                </figure>
             </right>
             <setting>foothills</setting>
-            <below>Alfie pushes his horse up the rocky foothills, a wild dog trailing close by.</below>
+            <below>Alfie is riding with determination in the rocky foothills at dusk. On the right is a wild dog.</below>
          </panel>
          <panel>
             <left>
@@ -1116,7 +1116,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Solo un po' più in là!</content>
+                  <content>Juste un peu plus loin !</content>
                </balloon>
             </left>
             <right>
@@ -1129,7 +1129,7 @@
                </figure>
             </right>
             <setting>foothills</setting>
-            <below>Alfie spinge il suo cavallo su per le colline rocciose, un cane selvatico che lo segue da vicino.</below>
+            <below>Alfie chevauche avec détermination dans les contreforts rocheux au crépuscule. À droite se trouve un chien sauvage.</below>
          </panel>
          <panel>
             <left>
@@ -1157,7 +1157,7 @@
                </figure>
             </right>
             <setting>foothills</setting>
-            <below>Alfie loses control and falls off the horse as the dog howls nearby.</below>
+            <below>Alfie is falling off horse in the rocky foothills at dusk. On the right is a howling dog.</below>
          </panel>
          <panel>
             <left>
@@ -1172,7 +1172,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Wow!</content>
+                  <content>Wow !</content>
                </balloon>
             </left>
             <right>
@@ -1185,7 +1185,7 @@
                </figure>
             </right>
             <setting>foothills</setting>
-            <below>Alfie perde il controllo e cade da cavallo mentre il cane ulula nelle vicinanze.</below>
+            <below>Alfie tombe de cheval dans les contreforts rocheux au crépuscule. À droite se trouve un chien hurlant.</below>
          </panel>
          <panel>
             <middle>
@@ -1204,7 +1204,7 @@
                </balloon>
             </middle>
             <setting>foothills</setting>
-            <below>Alfie is attacked by the dog, struggling in the rocky terrain.</below>
+            <below>Alfie is mauled by dog in the rocky foothills at dusk.</below>
          </panel>
          <panel>
             <middle>
@@ -1219,11 +1219,11 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Aiuto!</content>
+                  <content>Au secours !</content>
                </balloon>
             </middle>
             <setting>foothills</setting>
-            <below>Alfie viene attaccato dal cane, lottando nel terreno roccioso.</below>
+            <below>Alfie est attaqué par un chien dans les contreforts rocheux au crépuscule.</below>
          </panel>
          <panel>
             <middle>
@@ -1238,11 +1238,11 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>I won't give up...</content>
+                  <content>I won't give up!</content>
                </balloon>
             </middle>
             <setting>foothills</setting>
-            <below>Injured, Alfie continues to ride through the rocky foothills at dusk.</below>
+            <below>Alfie is riding with injuries in the rocky foothills at dusk.</below>
          </panel>
          <panel>
             <middle>
@@ -1257,11 +1257,11 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Non mi arrenderò...</content>
+                  <content>Je ne renoncerai pas !</content>
                </balloon>
             </middle>
             <setting>foothills</setting>
-            <below>Ferito, Alfie continua a cavalcare attraverso le colline rocciose al crepuscolo.</below>
+            <below>Alfie chevauche avec des blessures dans les contreforts rocheux au crépuscule.</below>
          </panel>
       </scene>
       <scene>
@@ -1291,11 +1291,11 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>We need to combine these elements carefully</content>
+                  <content>I'm adding just the right amount of salt</content>
                </balloon>
             </left>
             <setting>kitchen</setting>
-            <below>Alfie is mixing ingredients in the kitchen.</below>
+            <below>Mixing ingredients in the kitchen.</below>
          </panel>
          <panel>
             <left>
@@ -1310,11 +1310,11 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Dobbiamo combinare questi elementi con attenzione.</content>
+                  <content>J'ajoute juste la bonne quantité de sel.</content>
                </balloon>
             </left>
             <setting>kitchen</setting>
-            <below>Alfie sta mescolando ingredienti in cucina.</below>
+            <below>Mélanger des ingrédients dans la cuisine.</below>
          </panel>
          <panel>
             <left>
@@ -1329,11 +1329,11 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>The right balance will create something powerful</content>
+                  <content>This potion is going to change everything</content>
                </balloon>
             </left>
             <setting>kitchen</setting>
-            <below>Alfie is mixing chemicals in the kitchen.</below>
+            <below>Mixing chemicals in the kitchen.</below>
          </panel>
          <panel>
             <left>
@@ -1348,11 +1348,11 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Il giusto equilibrio creerà qualcosa di potente.</content>
+                  <content>Cette potion va tout changer.</content>
                </balloon>
             </left>
             <setting>kitchen</setting>
-            <below>Alfie sta mescolando sostanze chimiche in cucina.</below>
+            <below>Mélanger des produits chimiques dans la cuisine.</below>
          </panel>
          <panel>
             <left>
@@ -1367,7 +1367,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Rise up against the tyranny!</content>
+                  <content>Rise up and take back your power!</content>
                </balloon>
             </left>
             <right>
@@ -1379,11 +1379,11 @@
                   <facing>left</facing>
                </figure>
                <balloon status="speech">
-                  <content>I can't bear to hear this!</content>
+                  <content>This is too loud!</content>
                </balloon>
             </right>
             <setting>government</setting>
-            <below>Alfie is preaching revolution in the government plaza.</below>
+            <below>Preaching revolution in the government plaza with Betty covering her ears.</below>
          </panel>
          <panel>
             <left>
@@ -1398,7 +1398,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Opponiti alla tirannia!</content>
+                  <content>Lève-toi et reprends ton pouvoir !</content>
                </balloon>
             </left>
             <right>
@@ -1410,11 +1410,11 @@
                   <facing>left</facing>
                </figure>
                <balloon status="speech">
-                  <content>Non riesco a sopportare di sentire questo!</content>
+                  <content>C'est trop fort !</content>
                </balloon>
             </right>
             <setting>government</setting>
-            <below>Alfie sta predicando la rivoluzione nella piazza del governo.</below>
+            <below>Prêcher la révolution dans la place du gouvernement pendant que Betty se couvre les oreilles.</below>
          </panel>
          <panel>
             <left>
@@ -1441,11 +1441,11 @@
                   <facing>left</facing>
                </figure>
                <balloon status="speech">
-                  <content>We need to get out of here!</content>
+                  <content>We have to get out of here!</content>
                </balloon>
             </right>
             <setting>police state</setting>
-            <below>Alfie is throwing a bomb in the government plaza.</below>
+            <below>Throwing a bomb in the government plaza while Betty runs away.</below>
          </panel>
          <panel>
             <left>
@@ -1460,7 +1460,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Per la libertà!</content>
+                  <content>Pour la liberté !</content>
                </balloon>
             </left>
             <right>
@@ -1472,11 +1472,11 @@
                   <facing>left</facing>
                </figure>
                <balloon status="speech">
-                  <content>Dobbiamo uscire di qui!</content>
+                  <content>Nous devons sortir d'ici !</content>
                </balloon>
             </right>
             <setting>police state</setting>
-            <below>Alfie sta lanciando una bomba nella piazza del governo.</below>
+            <below>Lancer une bombe sur la place du gouvernement pendant que Betty s'enfuit.</below>
          </panel>
       </scene>
       <scene>
@@ -1509,7 +1509,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Time to get to work!</content>
+                  <content>Can't be late again!</content>
                </balloon>
             </left>
             <right>
@@ -1521,11 +1521,11 @@
                   <facing>left</facing>
                </figure>
                <balloon status="speech">
-                  <content>Hope I beat the traffic!</content>
+                  <content>This is my lucky day!</content>
                </balloon>
             </right>
             <setting>chemical plant</setting>
-            <below>Alfie is motorcycling to work in the chemical plant while Betty is cycling.</below>
+            <below>Alfie is motorcycling to work while Betty is cycling alongside him.</below>
          </panel>
          <panel>
             <left>
@@ -1540,7 +1540,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>È tempo di mettersi al lavoro!</content>
+                  <content>Je ne peux pas être en retard à nouveau !</content>
                </balloon>
             </left>
             <right>
@@ -1552,11 +1552,11 @@
                   <facing>left</facing>
                </figure>
                <balloon status="speech">
-                  <content>Spero di battere il traffico!</content>
+                  <content>C'est mon jour de chance !</content>
                </balloon>
             </right>
             <setting>chemical plant</setting>
-            <below>Alfie sta andando al lavoro in moto nella fabbrica chimica mentre Betty va in bicicletta.</below>
+            <below>Alfie fait de la moto pour aller au travail pendant que Betty fait du vélo à côté de lui.</below>
          </panel>
          <panel>
             <left>
@@ -1572,7 +1572,7 @@
                   <horizontal>little more</horizontal>
                </figure>
                <balloon status="speech">
-                  <content>Ah, nothing like a good cup of coffee.</content>
+                  <content>Ah, nothing like a good coffee to start the day.</content>
                </balloon>
             </left>
             <middle>
@@ -1594,11 +1594,11 @@
                   <horizontal>little less</horizontal>
                </figure>
                <balloon status="speech">
-                  <content>Gotta light up before starting my shift.</content>
+                  <content>Mind if I light up?</content>
                </balloon>
             </right>
             <setting>school hallway</setting>
-            <below>Alfie is drinking coffee in the break room, with a vending machine in the middle and Betty lighting a cigar.</below>
+            <below>Alfie is in the break room drinking coffee while Betty lights a cigar next to a vending machine.</below>
          </panel>
          <panel>
             <left>
@@ -1614,7 +1614,7 @@
                   <horizontal>little more</horizontal>
                </figure>
                <balloon status="speech">
-                  <content>Ah, niente come una buona tazza di caffè.</content>
+                  <content>Ah, rien de tel qu'un bon café pour commencer la journée.</content>
                </balloon>
             </left>
             <middle>
@@ -1636,11 +1636,11 @@
                   <horizontal>little less</horizontal>
                </figure>
                <balloon status="speech">
-                  <content>Devo accendermi prima di iniziare il mio turno.</content>
+                  <content>Ça te dérange si j'allume ?</content>
                </balloon>
             </right>
             <setting>school hallway</setting>
-            <below>Alfie sta bevendo caffè nella sala break, con un distributore automatico in mezzo e Betty che accende un sigaro.</below>
+            <below>Alfie est dans la salle de repos en train de boire du café pendant que Betty allume un cigare à côté d'un distributeur automatique.</below>
          </panel>
          <panel>
             <left>
@@ -1655,7 +1655,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Careful with those measurements!</content>
+                  <content>Time to get these chemicals mixed perfectly.</content>
                </balloon>
             </left>
             <right>
@@ -1667,11 +1667,11 @@
                   <facing>left</facing>
                </figure>
                <balloon status="speech">
-                  <content>Relax, I’ve got this under control.</content>
+                  <content>This is how I handle stress.</content>
                </balloon>
             </right>
             <setting>laboratory</setting>
-            <below>Alfie is mixing chemicals in the laboratory, while Betty smokes a cigar.</below>
+            <below>Alfie is mixing chemicals in the laboratory while Betty smokes her cigar.</below>
          </panel>
          <panel>
             <left>
@@ -1686,7 +1686,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Attento con quelle misure!</content>
+                  <content>Il est temps de bien mélanger ces produits chimiques.</content>
                </balloon>
             </left>
             <right>
@@ -1698,11 +1698,11 @@
                   <facing>left</facing>
                </figure>
                <balloon status="speech">
-                  <content>Rilassati, ho tutto sotto controllo.</content>
+                  <content>C'est comme ça que je gère le stress.</content>
                </balloon>
             </right>
             <setting>laboratory</setting>
-            <below>Alfie sta mescolando sostanze chimiche in laboratorio, mentre Betty fuma un sigaro.</below>
+            <below>Alfie mélange des produits chimiques dans le laboratoire pendant que Betty fume son cigare.</below>
          </panel>
          <panel>
             <left>
@@ -1717,7 +1717,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Whoa, this reaction is out of control!</content>
+                  <content>Whoa, what was that?</content>
                </balloon>
             </left>
             <right>
@@ -1729,11 +1729,11 @@
                   <facing>left</facing>
                </figure>
                <balloon status="speech">
-                  <content>Get down!</content>
+                  <content>You should have been more careful!</content>
                </balloon>
             </right>
             <setting>laboratory</setting>
-            <below>Alfie is blowing up in the laboratory, as Betty is engulfed in flames.</below>
+            <below>Alfie is about to blow up in the laboratory while Betty is engulfed in flames.</below>
          </panel>
          <panel>
             <left>
@@ -1748,7 +1748,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Wow, questa reazione è fuori controllo!</content>
+                  <content>Ouah, c'était quoi ça ?</content>
                </balloon>
             </left>
             <right>
@@ -1760,11 +1760,11 @@
                   <facing>left</facing>
                </figure>
                <balloon status="speech">
-                  <content>Scendi!</content>
+                  <content>Tu aurais dû être plus prudent !</content>
                </balloon>
             </right>
             <setting>laboratory</setting>
-            <below>Alfie sta esplodendo in laboratorio, mentre Betty è avvolta dalle fiamme.</below>
+            <below>Alfie est sur le point d'exploser dans le laboratoire pendant que Betty est engloutie par les flammes.</below>
          </panel>
          <panel>
             <left>
@@ -1779,7 +1779,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>I didn’t see that coming...</content>
+                  <content>I'm in trouble!</content>
                </balloon>
             </left>
             <right>
@@ -1791,11 +1791,11 @@
                   <facing>left</facing>
                </figure>
                <balloon status="speech">
-                  <content>Is it hot in here or is it just me?</content>
+                  <content>Guess I underestimated the situation.</content>
                </balloon>
             </right>
             <setting>chemical plant</setting>
-            <below>Alfie is all charred in the chemical plant while Betty is still smoldering.</below>
+            <below>Alfie is charred in the chemical plant while Betty is still smoldering nearby.</below>
          </panel>
          <panel>
             <left>
@@ -1810,7 +1810,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Non me l'aspettavo...</content>
+                  <content>J'ai des ennuis !</content>
                </balloon>
             </left>
             <right>
@@ -1822,11 +1822,11 @@
                   <facing>left</facing>
                </figure>
                <balloon status="speech">
-                  <content>Fa caldo qui dentro o sono solo io?</content>
+                  <content>Je suppose que j'ai sous-estimé la situation.</content>
                </balloon>
             </right>
             <setting>chemical plant</setting>
-            <below>Alfie è completamente bruciato nella fabbrica chimica mentre Betty sta ancora fumando.</below>
+            <below>Alfie est carbonisé dans l'usine chimique pendant que Betty fume encore à proximité.</below>
          </panel>
       </scene>
       <scene>
@@ -1856,11 +1856,11 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Look at me go!</content>
+                  <content>I love the feeling of the wind while skating!</content>
                </balloon>
             </left>
             <setting>park bench</setting>
-            <below>Alfie is rollerskating in the park.</below>
+            <below>Alfie is rollerskating in the park, having a great time.</below>
          </panel>
          <panel>
             <left>
@@ -1875,11 +1875,11 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Guarda come vado!</content>
+                  <content>J'adore la sensation du vent en faisant du roller !</content>
                </balloon>
             </left>
             <setting>park bench</setting>
-            <below>Alfie sta pattinando nel parco.</below>
+            <below>Alfie fait du roller dans le parc, s'amusant beaucoup.</below>
          </panel>
          <panel>
             <right>
@@ -1891,11 +1891,11 @@
                   <facing>left</facing>
                </figure>
                <balloon status="speech">
-                  <content>This is so relaxing!</content>
+                  <content>This book is so captivating, I can’t believe I’m cycling!</content>
                </balloon>
             </right>
             <setting>boulevard</setting>
-            <below>Betty is reading while cycling in the boulevard.</below>
+            <below>Betty is reading while cycling in the boulevard, focused on her book.</below>
          </panel>
          <panel>
             <right>
@@ -1907,11 +1907,11 @@
                   <facing>left</facing>
                </figure>
                <balloon status="speech">
-                  <content>Questo è così rilassante!</content>
+                  <content>Ce livre est tellement captivant, je n'arrive pas à croire que je fais du vélo !</content>
                </balloon>
             </right>
             <setting>boulevard</setting>
-            <below>Betty sta leggendo mentre pedala sul boulevard.</below>
+            <below>Betty lit en faisant du vélo sur le boulevard, concentrée sur son livre.</below>
          </panel>
          <panel>
             <left>
@@ -1926,7 +1926,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Whoa, watch out!</content>
+                  <content>Whoa! I didn't see that bump!</content>
                </balloon>
             </left>
             <right>
@@ -1938,11 +1938,11 @@
                   <facing>left</facing>
                </figure>
                <balloon status="speech">
-                  <content>Oh no, not again!</content>
+                  <content>Oh no, I can't believe I hit that pothole!</content>
                </balloon>
             </right>
             <setting>boulevard</setting>
-            <below>Alfie is falling on rollerskates in the boulevard  Betty is falling off her bicycle in the boulevard.</below>
+            <below>Alfie falls on his rollerskates and Betty falls off her bicycle in the boulevard.</below>
          </panel>
          <panel>
             <left>
@@ -1957,7 +1957,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Attenzione!</content>
+                  <content>Ouah ! Je n'ai pas vu ce nid de poule !</content>
                </balloon>
             </left>
             <right>
@@ -1969,11 +1969,11 @@
                   <facing>left</facing>
                </figure>
                <balloon status="speech">
-                  <content>Oh no, di nuovo!</content>
+                  <content>Oh non, je ne peux pas croire que j'ai heurté ce trou !</content>
                </balloon>
             </right>
             <setting>boulevard</setting>
-            <below>Alfie sta cadendo sui pattini nel viale; Betty sta cadendo dalla sua bicicletta nel viale.</below>
+            <below>Alfie tombe sur ses rollers et Betty tombe de son vélo sur le boulevard.</below>
          </panel>
          <panel>
             <left>
@@ -1988,7 +1988,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>At least we both had a wild ride!</content>
+                  <content>These crutches look challenging, but I’ll get used to them.</content>
                </balloon>
             </left>
             <right>
@@ -2000,11 +2000,11 @@
                   <facing>left</facing>
                </figure>
                <balloon status="speech">
-                  <content>Yeah, but this isn't how I imagined our day out!</content>
+                  <content>At least we can keep each other company here!</content>
                </balloon>
             </right>
             <setting>hospital exterior</setting>
-            <below>Alfie is in a wheelchair with two broken legs in the hospital exterior  Betty is on crutches in the hospital exterior.</below>
+            <below>Alfie is in a wheelchair with two broken legs in the hospital exterior and Betty is on crutches outside the hospital.</below>
          </panel>
          <panel>
             <left>
@@ -2019,7 +2019,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Almeno entrambi abbiamo avuto un viaggio folle!</content>
+                  <content>Ces béquilles semblent difficiles, mais je vais m'y habituer.</content>
                </balloon>
             </left>
             <right>
@@ -2031,11 +2031,11 @@
                   <facing>left</facing>
                </figure>
                <balloon status="speech">
-                  <content>Sì, ma non è così che immaginavo la nostra giornata!</content>
+                  <content>Au moins, nous pouvons nous tenir compagnie ici !</content>
                </balloon>
             </right>
             <setting>hospital exterior</setting>
-            <below>Alfie è in sedia a rotelle con due gambe rotte all'esterno dell'ospedale; Betty è con le stampelle all'esterno dell'ospedale.</below>
+            <below>Alfie est en fauteuil roulant avec deux jambes cassées à l'extérieur de l'hôpital et Betty est sur des béquilles devant l'hôpital.</below>
          </panel>
       </scene>
       <scene>
@@ -2068,7 +2068,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>You will obey me now</content>
+                  <content>You will do everything I say</content>
                </balloon>
             </left>
             <right>
@@ -2080,11 +2080,11 @@
                   <facing>left</facing>
                </figure>
                <balloon status="speech">
-                  <content>Yes, Alfie</content>
+                  <content>I will obey you</content>
                </balloon>
             </right>
             <setting>laundrette</setting>
-            <below>Alfie is brainwashing Betty in the laundrette.</below>
+            <below>Alfie is using his powers to influence Betty in the laundrette.</below>
          </panel>
          <panel>
             <left>
@@ -2099,7 +2099,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Ora mi obbedirai</content>
+                  <content>Tu feras tout ce que je dis.</content>
                </balloon>
             </left>
             <right>
@@ -2111,11 +2111,11 @@
                   <facing>left</facing>
                </figure>
                <balloon status="speech">
-                  <content>Sì, Alfie</content>
+                  <content>Je t'obéirai.</content>
                </balloon>
             </right>
             <setting>laundrette</setting>
-            <below>Alfie sta lavando il cervello a Betty nella lavanderia.</below>
+            <below>Alfie utilise ses pouvoirs pour influencer Betty dans la laverie.</below>
          </panel>
          <panel>
             <left>
@@ -2130,7 +2130,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Focus on my words</content>
+                  <content>Think about how powerful we can be together</content>
                </balloon>
             </left>
             <right>
@@ -2142,11 +2142,11 @@
                   <facing>left</facing>
                </figure>
                <balloon status="speech">
-                  <content>I will follow you</content>
+                  <content>I want to be strong</content>
                </balloon>
             </right>
             <setting>laundrette</setting>
-            <below>Alfie is mind controlling Betty in the laundrette.</below>
+            <below>Alfie is convincing Betty of their potential as a team in the laundrette.</below>
          </panel>
          <panel>
             <left>
@@ -2161,7 +2161,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Concentrati sulle mie parole</content>
+                  <content>Pense à quel point nous pouvons être puissants ensemble.</content>
                </balloon>
             </left>
             <right>
@@ -2173,11 +2173,11 @@
                   <facing>left</facing>
                </figure>
                <balloon status="speech">
-                  <content>Ti seguirò</content>
+                  <content>Je veux être fort.</content>
                </balloon>
             </right>
             <setting>laundrette</setting>
-            <below>Alfie sta controllando la mente di Betty nella lavanderia.</below>
+            <below>Alfie convainc Betty de leur potentiel en tant qu'équipe dans la laverie.</below>
          </panel>
          <panel>
             <left>
@@ -2192,7 +2192,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Join us and you’ll gain strength</content>
+                  <content>Follow my lead, and we can change everything</content>
                </balloon>
             </left>
             <right>
@@ -2204,11 +2204,11 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>I want power</content>
+                  <content>I trust you completely</content>
                </balloon>
             </right>
             <setting>laundrette</setting>
-            <below>Alfie is giving orders to Betty in the laundrette.</below>
+            <below>Alfie is asserting control while Betty shows her willingness to follow.</below>
          </panel>
          <panel>
             <left>
@@ -2223,7 +2223,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Unisciti a noi e guadagnerai forza</content>
+                  <content>Suis mon exemple, et nous pouvons tout changer.</content>
                </balloon>
             </left>
             <right>
@@ -2235,11 +2235,11 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Voglio potere</content>
+                  <content>Je te fais entièrement confiance.</content>
                </balloon>
             </right>
             <setting>laundrette</setting>
-            <below>Alfie sta dando ordini a Betty nella lavanderia.</below>
+            <below>Alfie affirme son contrôle tandis que Betty montre sa volonté de suivre.</below>
          </panel>
          <panel>
             <left>
@@ -2254,7 +2254,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Keep it a secret</content>
+                  <content>Just a little more, and you'll see the truth</content>
                </balloon>
             </left>
             <right>
@@ -2266,11 +2266,11 @@
                   <facing>left</facing>
                </figure>
                <balloon status="speech">
-                  <content>I will do anything</content>
+                  <content>I'm ready to do whatever it takes</content>
                </balloon>
             </right>
             <setting>laundrette</setting>
-            <below>Alfie is being sneaky while Betty submits to the influence in the laundrette.</below>
+            <below>Alfie is plotting while Betty is consumed by his influence in the laundrette.</below>
          </panel>
          <panel>
             <left>
@@ -2285,7 +2285,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Tienilo segreto</content>
+                  <content>Juste un peu plus, et tu verras la vérité.</content>
                </balloon>
             </left>
             <right>
@@ -2297,11 +2297,11 @@
                   <facing>left</facing>
                </figure>
                <balloon status="speech">
-                  <content>Farò qualsiasi cosa</content>
+                  <content>Je suis prêt à faire tout ce qu'il faut.</content>
                </balloon>
             </right>
             <setting>laundrette</setting>
-            <below>Alfie è furtivo mentre Betty si sottomette all'influenza nella lavanderia.</below>
+            <below>Alfie manigance tandis que Betty est consumée par son influence dans la laverie.</below>
          </panel>
       </scene>
       <scene>
@@ -2331,7 +2331,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Here it comes!</content>
+                  <content>Hey, watch this!</content>
                </balloon>
             </left>
             <right>
@@ -2343,11 +2343,11 @@
                   <facing>left</facing>
                </figure>
                <balloon status="speech">
-                  <content>I got this!</content>
+                  <content>I'm ready!</content>
                </balloon>
             </right>
             <setting>sports field</setting>
-            <below>Alfie pitches a baseball while Betty prepares to swing a bat.</below>
+            <below>Alfie is pitching a baseball and Betty is preparing to swing the bat in the sports field.</below>
          </panel>
          <panel>
             <left>
@@ -2362,7 +2362,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Arriva!</content>
+                  <content>Hé, regarde ça !</content>
                </balloon>
             </left>
             <right>
@@ -2374,11 +2374,11 @@
                   <facing>left</facing>
                </figure>
                <balloon status="speech">
-                  <content>Ce l'ho fatta!</content>
+                  <content>Je suis prêt(e) !</content>
                </balloon>
             </right>
             <setting>sports field</setting>
-            <below>Alfie lancia una pallina da baseball mentre Betty si prepara a colpire con la mazza.</below>
+            <below>Alfie lance une balle de baseball et Betty se prépare à frapper la batte sur le terrain de sport.</below>
          </panel>
          <panel>
             <left>
@@ -2393,7 +2393,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Oh no!</content>
+                  <content>Uh-oh!</content>
                </balloon>
             </left>
             <right>
@@ -2409,7 +2409,7 @@
                </balloon>
             </right>
             <setting>sports field</setting>
-            <below>Alfie drops the bat as the ball accidentally hits Betty in the head.</below>
+            <below>Alfie drops the bat as Betty gets hit in the head with the ball in the sports field.</below>
          </panel>
          <panel>
             <left>
@@ -2424,7 +2424,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Oh no!</content>
+                  <content>Oh là là !</content>
                </balloon>
             </left>
             <right>
@@ -2436,11 +2436,11 @@
                   <facing>left</facing>
                </figure>
                <balloon status="speech">
-                  <content>Ahi!</content>
+                  <content>Aïe !</content>
                </balloon>
             </right>
             <setting>sports field</setting>
-            <below>Alfie lascia cadere la mazza mentre la pallina colpisce accidentalmente Betty in testa.</below>
+            <below>Alfie laisse tomber la batte tandis que Betty reçoit la balle sur la tête sur le terrain de sport.</below>
          </panel>
          <panel>
             <left>
@@ -2467,11 +2467,11 @@
                   <facing>left</facing>
                </figure>
                <balloon status="speech">
-                  <content>Not really...</content>
+                  <content>I feel dizzy...</content>
                </balloon>
             </right>
             <setting>sports field</setting>
-            <below>Alfie shrugs while Betty looks groggy after getting hit.</below>
+            <below>Alfie shrugs while Betty appears groggy from the injury in the sports field.</below>
          </panel>
          <panel>
             <left>
@@ -2486,7 +2486,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Stai bene?</content>
+                  <content>Ça va ?</content>
                </balloon>
             </left>
             <right>
@@ -2498,11 +2498,11 @@
                   <facing>left</facing>
                </figure>
                <balloon status="speech">
-                  <content>Non proprio...</content>
+                  <content>J'ai des vertiges...</content>
                </balloon>
             </right>
             <setting>sports field</setting>
-            <below>Alfie scrolla le spalle mentre Betty sembra intontita dopo essere stata colpita.</below>
+            <below>Alfie hausse les épaules tandis que Betty semble groggy à cause de la blessure sur le terrain de sport.</below>
          </panel>
          <panel>
             <left>
@@ -2517,7 +2517,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>I'm out of here!</content>
+                  <content>I'm outta here!</content>
                </balloon>
             </left>
             <right>
@@ -2529,11 +2529,11 @@
                   <facing>left</facing>
                </figure>
                <balloon status="speech">
-                  <content>You’re going to pay for that!</content>
+                  <content>Come back here!</content>
                </balloon>
             </right>
             <setting>sports field</setting>
-            <below>Alfie runs away while Betty swings her bat angrily over her head.</below>
+            <below>Alfie runs away while Betty swings the bat angrily over her head in the sports field.</below>
          </panel>
          <panel>
             <left>
@@ -2548,7 +2548,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Me ne vado!</content>
+                  <content>Je m'en vais !</content>
                </balloon>
             </left>
             <right>
@@ -2560,11 +2560,11 @@
                   <facing>left</facing>
                </figure>
                <balloon status="speech">
-                  <content>Pagherai per questo!</content>
+                  <content>Rends-toi ici !</content>
                </balloon>
             </right>
             <setting>sports field</setting>
-            <below>Alfie scappa mentre Betty colpisce la sua mazza con rabbia sopra la testa.</below>
+            <below>Alfie s'enfuit tandis que Betty balance la batte avec colère au-dessus de sa tête sur le terrain de sport.</below>
          </panel>
       </scene>
    </scenes>
