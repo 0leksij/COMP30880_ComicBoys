@@ -290,4 +290,8 @@ public class StoryGenerator {
         }
         return dialogues;
     }
+
+    public static void main(String[] args) {
+
+    }
 }

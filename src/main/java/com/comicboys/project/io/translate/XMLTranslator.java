@@ -21,6 +21,7 @@ public class XMLTranslator {
     public XMLTranslator(ConfigurationFile config, APIClient client, Mappings mappings, String lessonType) {
         this(config, client, mappings, lessonType, "assets/story/");
     }
+
     // constructor with custom file path
     public XMLTranslator(ConfigurationFile config, APIClient client, Mappings mappings, String lessonType, String fileDirectory) {
         this.config = config;
