@@ -1,4 +1,4 @@
-package com.comicboys.project.io;
+package com.comicboys.project.io.config;
 
 
 import com.comicboys.project.data.Mappings;

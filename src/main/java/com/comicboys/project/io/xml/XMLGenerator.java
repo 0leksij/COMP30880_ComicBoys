@@ -1,9 +1,9 @@
-package com.comicboys.project.io;
+package com.comicboys.project.io.xml;
 
 import com.comicboys.project.Main;
-import com.comicboys.project.data.ListEntry;
 import com.comicboys.project.data.Mappings;
 import com.comicboys.project.data.StringEntry;
+import com.comicboys.project.io.translate.TranslationGenerator;
 import com.comicboys.project.utility.XMLFileManager;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -11,7 +11,6 @@ import org.w3c.dom.NodeList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import java.util.ArrayList;
 import java.util.List;
 
 public class XMLGenerator {

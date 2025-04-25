@@ -42,7 +42,17 @@
 
     <build>
         <plugins>
-            <!-- plugin that injects dependencies into jar (fixes classpath issues when running from terminal) -->
+            <!-- Compiler plugin to use Java 22 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
+                <configuration>
+                    <release>22</release>
+                </configuration>
+            </plugin>
+
+            <!-- Existing shade plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
@@ -65,4 +75,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>

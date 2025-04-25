@@ -1,4 +1,4 @@
-package com.comicboys.project.io;
+package com.comicboys.project.io.blueprint;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

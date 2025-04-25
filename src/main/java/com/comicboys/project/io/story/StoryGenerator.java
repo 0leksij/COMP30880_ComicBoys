@@ -1,4 +1,4 @@
-package com.comicboys.project.io;
+package com.comicboys.project.io.story;
 
 import com.comicboys.project.client.APIClient;
 import com.comicboys.project.client.APIResponse;

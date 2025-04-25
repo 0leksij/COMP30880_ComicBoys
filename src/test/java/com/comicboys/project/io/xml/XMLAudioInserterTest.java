@@ -1,4 +1,4 @@
-package com.comicboys.project.io;
+package com.comicboys.project.io.xml;
 
 import com.comicboys.project.utility.XMLFileManager;
 import org.junit.jupiter.api.Test;

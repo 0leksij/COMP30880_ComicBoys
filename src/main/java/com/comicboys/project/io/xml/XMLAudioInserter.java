@@ -1,6 +1,6 @@
-package com.comicboys.project.io;
+package com.comicboys.project.io.xml;
 
-import com.comicboys.project.audio.AudioGenerator;
+import com.comicboys.project.io.blueprint.Blueprint;
 import com.comicboys.project.utility.XMLFileManager;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;

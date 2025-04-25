@@ -1,7 +1,8 @@
-package com.comicboys.project.io;
+package com.comicboys.project.io.translate;
 
 import com.comicboys.project.client.APIClient;
 import com.comicboys.project.data.Mappings;
+import com.comicboys.project.io.config.ConfigurationFile;
 
 import java.io.File;
 import java.io.IOException;

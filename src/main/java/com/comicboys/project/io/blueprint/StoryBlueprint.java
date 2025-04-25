@@ -1,5 +1,6 @@
-package com.comicboys.project.io;
+package com.comicboys.project.io.blueprint;
 
+import com.comicboys.project.io.story.StoryGenerator;
 import com.comicboys.project.utility.XMLFileManager;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;

@@ -1,7 +1,9 @@
-package com.comicboys.project.io;
+package com.comicboys.project.io.translate;
 
 import com.comicboys.project.client.APIClient;
 import com.comicboys.project.data.Mappings;
+import com.comicboys.project.io.config.ConfigurationFile;
+import com.comicboys.project.io.blueprint.TextBlueprint;
 import com.comicboys.project.utility.XMLFileManager;
 import org.w3c.dom.*;
 import java.util.List;

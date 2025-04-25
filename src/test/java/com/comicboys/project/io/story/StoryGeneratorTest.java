@@ -1,7 +1,8 @@
-package com.comicboys.project.io;
+package com.comicboys.project.io.story;
 
 import com.comicboys.project.client.APIClient;
 import com.comicboys.project.client.APIResponse;
+import com.comicboys.project.io.config.ConfigurationFile;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.w3c.dom.*;

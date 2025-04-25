@@ -1,15 +1,16 @@
-package com.comicboys.project.io;
+package com.comicboys.project.io.xml;
 
 import com.comicboys.project.client.APIClient;
 import com.comicboys.project.data.ListEntry;
 import com.comicboys.project.data.Mappings;
 import com.comicboys.project.data.StringEntry;
+import com.comicboys.project.io.config.ConfigurationFile;
+import com.comicboys.project.io.translate.TranslationGenerator;
 import com.comicboys.project.utility.XMLFileManager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 
