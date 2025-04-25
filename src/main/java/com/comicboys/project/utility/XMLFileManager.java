@@ -52,6 +52,36 @@ public interface XMLFileManager extends XMLNodeRemover {
         }
     }
 
+
+
+
+    // if pass in a NodeList, will insert newChild to be before the first child relative to parent of child
+    static void insertChildBeforeFirst(NodeList nodeList, Node newChild) {
+        for (int i = 0; i < nodeList.getLength(); i++) {
+            Node node = nodeList.item(i);
+            if (node.getNodeType() == Node.ELEMENT_NODE) {
+                if (node.getParentNode() != null) {
+                    insertFirstChild(node, newChild);
+                    break;
+                }
+            }
+        }
+    }
+    // inserts newChild to be first element child of current node
+    static void insertFirstChild(Node node, Node newChild) {
+        NodeList children = node.getChildNodes();
+        for (int i = 0; i < children.getLength(); i++) {
+            Node child = children.item(i);
+            if (child.getNodeType() == Node.ELEMENT_NODE) {
+                if (child.getParentNode() != null) {
+                    child.getParentNode().insertBefore(newChild, child);
+                    break;
+                }
+            }
+        }
+    }
+
+
     static void appendScenes(Document doc, Node newScene) {
         trimWhitespace(doc.getDocumentElement());
         NodeList scenesElements = doc.getDocumentElement().getElementsByTagName("scenes");
@@ -68,6 +98,8 @@ public interface XMLFileManager extends XMLNodeRemover {
             }
         }
     }
+
+
 
     static void appendScenes(Document doc, NodeList scenes) {
         trimWhitespace(doc.getDocumentElement());
@@ -224,21 +256,27 @@ public interface XMLFileManager extends XMLNodeRemover {
     }
 
     public static void main(String[] args) {
+
         String sourceFilePath = "assets/story/english-to-italian-story.xml";
         Document doc = XMLFileManager.loadXMLFromFile(sourceFilePath);
         Node randomScene = XMLFileManager.extractRandomSceneElement(doc);
 
-        if (randomScene != null) {
-            System.out.println("Successfully extracted random scene element");
-            // Create a new document to hold just the scene
-            Document newDoc = XMLFileManager.createFile("assets/blueprint/test/temp.xml");
-            appendScene(newDoc, randomScene);
 
-            // Save just the scene
-            XMLFileManager.saveXMLToFile(newDoc, "assets/mappings/test/test_with_random_scene.xml");
-        } else {
-            System.out.println("Failed to extract random scene");
-        }
+//        String sourceFilePath = "assets/story/audio_test/story_two_scenes_mixed_balloons.xml";
+//        Document doc = XMLFileManager.loadXMLFromFile(sourceFilePath);
+//        Node randomScene = XMLFileManager.extractRandomSceneElement(doc);
+//
+//        if (randomScene != null) {
+//            System.out.println("Successfully extracted random scene element");
+//            // Create a new document to hold just the scene
+//            Document newDoc = XMLFileManager.createFile("assets/blueprint/test/temp.xml");
+//            appendScene(newDoc, randomScene);
+//
+//            // Save just the scene
+//            XMLFileManager.saveXMLToFile(newDoc, "assets/mappings/test/test_with_random_scene.xml");
+//        } else {
+//            System.out.println("Failed to extract random scene");
+//        }
     }
 
 
