@@ -51,33 +51,12 @@ public interface XMLFileManager {
             return null;
         }
     }
-
-
-
-//    // DONT THINK THIS IS NEEDED
-//    // if pass in a NodeList, will insert newChild to be before the first child relative to parent of child
-//    static void insertChildBeforeFirst(NodeList nodeList, Node newChild) {
-//        for (int i = 0; i < nodeList.getLength(); i++) {
-//            Node node = nodeList.item(i);
-//            if (node.getNodeType() == Node.ELEMENT_NODE) {
-//                if (node.getParentNode() != null) {
-//                    insertFirstChild(node, newChild);
-//                    break;
-//                }
-//            }
-//        }
-//    }
-    // inserts newChild to be first element child of current node
+    // methods for adding nodes
     static void insertFirstChild(Node node, Node newChild) { XMLNodeInserter.insertFirstChild(node, newChild); }
     static void appendScenes(Document doc, Node newScene) { XMLNodeInserter.appendScenes(doc, newScene); }
     static void appendScenes(Document doc, NodeList scenes) { XMLNodeInserter.appendScenes(doc, scenes); }
     static void appendElement(Document doc, Node node, String tag) { XMLNodeInserter.appendElement(doc, node, tag); }
     static void appendElements(Document doc, NodeList nodeList, String tag) { XMLNodeInserter.appendElements(doc, nodeList, tag); }
-
-    static void appendScene(Document targetDoc, Node scene) {
-        Node importedScene = targetDoc.importNode(scene, true);
-        targetDoc.getDocumentElement().appendChild(importedScene);
-    }
 
     static boolean saveXMLToFile(Document doc, String filePath) {
         try {
