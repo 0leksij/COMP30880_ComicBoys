@@ -199,11 +199,6 @@ public class TranslationGenerator {
         return true;
     }
 
-    public void generateTranslationsFromList(List<String> list){
-        list.remove("");
-
-
-    }
 
     public Map<String, String> getTranslations() {
         return translationFileManager.loadTranslations();

@@ -52,6 +52,23 @@ public interface XMLFileManager extends XMLNodeRemover {
         }
     }
 
+    static void appendScenes(Document doc, Node newScene) {
+        trimWhitespace(doc.getDocumentElement());
+        NodeList scenesElements = doc.getDocumentElement().getElementsByTagName("scenes");
+        // go through all scene nodes
+        for (int i = 0; i < scenesElements.getLength(); i++) {
+            Node scenesNode = scenesElements.item(i);
+            // if is valid scene node, append all scenes in list to this document
+            if (scenesNode.getNodeType() == Node.ELEMENT_NODE) {
+                if (newScene.getNodeType() == Node.ELEMENT_NODE) {
+                    scenesNode.appendChild(doc.adoptNode(newScene));
+                    // only one scenes element to add to, so break
+                    break;
+                }
+            }
+        }
+    }
+
     static void appendScenes(Document doc, NodeList scenes) {
         trimWhitespace(doc.getDocumentElement());
         NodeList scenesElements = doc.getDocumentElement().getElementsByTagName("scenes");
@@ -155,7 +172,12 @@ public interface XMLFileManager extends XMLNodeRemover {
         }
 
         Random random = new Random();
-        int randomIndex = random.nextInt(scenes.getLength());
+        int randomIndex;
+
+        do {
+            randomIndex = random.nextInt(scenes.getLength());
+        }while (scenes.item(randomIndex).getNodeType() != Node.ELEMENT_NODE);
+
         return scenes.item(randomIndex).cloneNode(true);
     }
 
@@ -202,7 +224,7 @@ public interface XMLFileManager extends XMLNodeRemover {
     }
 
     public static void main(String[] args) {
-        String sourceFilePath = "assets/story/audio_test/story_two_scenes_mixed_balloons.xml";
+        String sourceFilePath = "assets/story/english-to-italian-story.xml";
         Document doc = XMLFileManager.loadXMLFromFile(sourceFilePath);
         Node randomScene = XMLFileManager.extractRandomSceneElement(doc);
 

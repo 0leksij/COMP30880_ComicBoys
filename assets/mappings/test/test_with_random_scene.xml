@@ -4,35 +4,17 @@
    <scenes/>
    <scene>
       <panel>
-         <left>
-            <figure>
-               <id>Alfie</id>
-               <name>Alfie</name>
-               <appearance>male</appearance>
-               <skin>light brown</skin>
-               <hair>dark brown</hair>
-               <lips>red</lips>
-               <pose>regaining consciousness</pose>
-               <facing>right</facing>
-            </figure>
-            <balloon status="speech">
-               <content>What happened? Again?</content>
-            </balloon>
-         </left>
-         <right>
+         <middle>
             <figure>
                <id>Betty</id>
                <name>Betty</name>
                <appearance>female</appearance>
-               <pose>throwing water</pose>
-               <facing>left</facing>
+               <pose>seven</pose>
+               <facing>right</facing>
             </figure>
-            <balloon status="speech">
-               <content>You fell off! ...Again!</content>
-            </balloon>
-         </right>
-         <setting>gravel path</setting>
-         <below>Alfie is regaining consciousness in the gravel path. Betty is throwing water on him.</below>
+         </middle>
+         <below>Scene 7</below>
+         <border>white</border>
       </panel>
       <panel>
          <left>
@@ -43,15 +25,190 @@
                <skin>light brown</skin>
                <hair>dark brown</hair>
                <lips>red</lips>
-               <pose>regaining consciousness</pose>
+               <pose>rollerskating</pose>
                <facing>right</facing>
             </figure>
             <balloon status="speech">
-               <content>Oh Betty I actually hate you so very much.</content>
+               <content>Look at me go!</content>
             </balloon>
          </left>
-         <setting>gravel path</setting>
-         <below>Alfie is a gigachad.</below>
+         <setting>park bench</setting>
+         <below>Alfie is roller skating confidently at the park.</below>
+      </panel>
+      <panel>
+         <left>
+            <figure>
+               <id>Alfie</id>
+               <name>Alfie</name>
+               <appearance>male</appearance>
+               <skin>light brown</skin>
+               <hair>dark brown</hair>
+               <lips>red</lips>
+               <pose>rollerskating</pose>
+               <facing>right</facing>
+            </figure>
+            <balloon status="speech">
+               <content>Guarda come vado!</content>
+            </balloon>
+         </left>
+         <setting>park bench</setting>
+         <below>Alfie pattina con sicurezza al parco.</below>
+      </panel>
+      <panel>
+         <right>
+            <figure>
+               <id>Betty</id>
+               <name>Betty</name>
+               <appearance>female</appearance>
+               <pose>reading on bicycle</pose>
+               <facing>left</facing>
+            </figure>
+            <balloon status="speech">
+               <content>This book is so good!</content>
+            </balloon>
+         </right>
+         <setting>boulevard</setting>
+         <below>Betty is reading a book while cycling along the boulevard.</below>
+      </panel>
+      <panel>
+         <right>
+            <figure>
+               <id>Betty</id>
+               <name>Betty</name>
+               <appearance>female</appearance>
+               <pose>reading on bicycle</pose>
+               <facing>left</facing>
+            </figure>
+            <balloon status="speech">
+               <content>Questo libro è così bello!</content>
+            </balloon>
+         </right>
+         <setting>boulevard</setting>
+         <below>Betty sta leggendo un libro mentre pedala lungo il viale.</below>
+      </panel>
+      <panel>
+         <left>
+            <figure>
+               <id>Alfie</id>
+               <name>Alfie</name>
+               <appearance>male</appearance>
+               <skin>light brown</skin>
+               <hair>dark brown</hair>
+               <lips>red</lips>
+               <pose>falling on rollerskates</pose>
+               <facing>right</facing>
+            </figure>
+            <balloon status="speech">
+               <content>Whoa!</content>
+            </balloon>
+         </left>
+         <right>
+            <figure>
+               <id>Betty</id>
+               <name>Betty</name>
+               <appearance>female</appearance>
+               <pose>falling off bicycle</pose>
+               <facing>left</facing>
+            </figure>
+            <balloon status="speech">
+               <content>Oh no!</content>
+            </balloon>
+         </right>
+         <setting>boulevard</setting>
+         <below>Alfie and Betty both fall as they lose balance in the boulevard.</below>
+      </panel>
+      <panel>
+         <left>
+            <figure>
+               <id>Alfie</id>
+               <name>Alfie</name>
+               <appearance>male</appearance>
+               <skin>light brown</skin>
+               <hair>dark brown</hair>
+               <lips>red</lips>
+               <pose>falling on rollerskates</pose>
+               <facing>right</facing>
+            </figure>
+            <balloon status="speech">
+               <content>Wow!</content>
+            </balloon>
+         </left>
+         <right>
+            <figure>
+               <id>Betty</id>
+               <name>Betty</name>
+               <appearance>female</appearance>
+               <pose>falling off bicycle</pose>
+               <facing>left</facing>
+            </figure>
+            <balloon status="speech">
+               <content>Oh no!</content>
+            </balloon>
+         </right>
+         <setting>boulevard</setting>
+         <below>Alfie e Betty cadono entrambi mentre perdono l'equilibrio nel viale.</below>
+      </panel>
+      <panel>
+         <left>
+            <figure>
+               <id>Alfie</id>
+               <name>Alfie</name>
+               <appearance>male</appearance>
+               <skin>light brown</skin>
+               <hair>dark brown</hair>
+               <lips>red</lips>
+               <pose>broken legs</pose>
+               <facing>right</facing>
+            </figure>
+            <balloon status="speech">
+               <content>At least we’re healing together.</content>
+            </balloon>
+         </left>
+         <right>
+            <figure>
+               <id>Betty</id>
+               <name>Betty</name>
+               <appearance>female</appearance>
+               <pose>on crutch</pose>
+               <facing>left</facing>
+            </figure>
+            <balloon status="speech">
+               <content>Yeah, we’ll get through this!</content>
+            </balloon>
+         </right>
+         <setting>hospital exterior</setting>
+         <below>Alfie is in a wheelchair with two broken legs outside the hospital, while Betty is on crutches.</below>
+      </panel>
+      <panel>
+         <left>
+            <figure>
+               <id>Alfie</id>
+               <name>Alfie</name>
+               <appearance>male</appearance>
+               <skin>light brown</skin>
+               <hair>dark brown</hair>
+               <lips>red</lips>
+               <pose>broken legs</pose>
+               <facing>right</facing>
+            </figure>
+            <balloon status="speech">
+               <content>Almeno stiamo guarendo insieme.</content>
+            </balloon>
+         </left>
+         <right>
+            <figure>
+               <id>Betty</id>
+               <name>Betty</name>
+               <appearance>female</appearance>
+               <pose>on crutch</pose>
+               <facing>left</facing>
+            </figure>
+            <balloon status="speech">
+               <content>Sì, ce la faremo!</content>
+            </balloon>
+         </right>
+         <setting>hospital exterior</setting>
+         <below>Alfie è su una sedia a rotelle con due gambe rotte davanti all'ospedale, mentre Betty è su delle stampelle.</below>
       </panel>
    </scene>
 </comic>

@@ -6,7 +6,7 @@
          <panel>
             <left>
                <figure>
-                  <pose>judging</pose>
+                  <pose>sacrificing</pose>
                   <facing>right</facing>
                </figure>
             </left>
@@ -15,24 +15,24 @@
          <panel>
             <left>
                <figure>
-                  <pose>judging</pose>
+                  <pose>sacrificing</pose>
                   <facing>right</facing>
                </figure>
             </left>
             <balloon status="speech">
-               <content>the judgment is important.</content>
+               <content>people perform sacrifices for various reasons.</content>
             </balloon>
             <setting/>
          </panel>
          <panel>
             <left>
                <figure>
-                  <pose>judging</pose>
+                  <pose>sacrificing</pose>
                   <facing>right</facing>
                </figure>
             </left>
             <balloon status="speech">
-               <content>il giudizio è importante.</content>
+               <content>le persone fanno sacrifici per vari motivi.</content>
             </balloon>
             <setting/>
          </panel>
@@ -41,65 +41,704 @@
          <panel>
             <left>
                <figure>
-                  <pose>brainwashed</pose>
+                  <pose>tense</pose>
                   <facing>right</facing>
                </figure>
             </left>
-            <setting>laundrette</setting>
+            <setting>slum</setting>
          </panel>
          <panel>
             <left>
                <figure>
-                  <pose>brainwashed</pose>
+                  <pose>tense</pose>
                   <facing>right</facing>
                </figure>
             </left>
             <balloon status="speech">
-               <content>mind control</content>
+               <content>trembling with fear</content>
             </balloon>
-            <setting>laundrette</setting>
+            <setting>slum</setting>
          </panel>
          <panel>
             <right>
                <figure>
-                  <pose>brainwashing</pose>
+                  <pose>confrontational</pose>
                   <facing>left</facing>
                </figure>
             </right>
-            <setting>laundrette</setting>
+            <setting>slum</setting>
          </panel>
          <panel>
             <right>
                <figure>
-                  <pose>brainwashing</pose>
+                  <pose>confrontational</pose>
                   <facing>left</facing>
                </figure>
             </right>
             <balloon status="speech">
-               <content>controllo mentale</content>
+               <content>tremante di paura</content>
             </balloon>
-            <setting>laundrette</setting>
+            <setting>slum</setting>
          </panel>
          <panel>
             <left>
                <figure>
-                  <pose>brainwashed</pose>
+                  <pose>tense</pose>
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>mind control</content>
+                  <content>trembling with fear</content>
                </balloon>
             </left>
             <right>
                <figure>
-                  <pose>brainwashing</pose>
+                  <pose>confrontational</pose>
                   <facing>left</facing>
                </figure>
                <balloon status="speech">
-                  <content>controllo mentale</content>
+                  <content>tremante di paura</content>
                </balloon>
             </right>
-            <setting>laundrette</setting>
+            <setting>slum</setting>
+         </panel>
+      </scene>
+      <scene>
+         <panel>
+            <middle>
+               <figure>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
+                  <pose>four</pose>
+                  <facing>right</facing>
+               </figure>
+            </middle>
+            <below>Scene 4</below>
+            <border>white</border>
+         </panel>
+         <panel>
+            <left>
+               <figure>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
+                  <pose>riding while whistling</pose>
+                  <facing>right</facing>
+               </figure>
+               <balloon status="speech">
+                  <content>I ride</content>
+               </balloon>
+            </left>
+            <setting>texas</setting>
+         </panel>
+         <panel>
+            <left>
+               <figure>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
+                  <pose>riding while whistling</pose>
+                  <facing>right</facing>
+               </figure>
+               <balloon status="speech">
+                  <content>Vado a cavallo</content>
+               </balloon>
+            </left>
+            <setting>texas</setting>
+         </panel>
+         <panel>
+            <left>
+               <figure>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
+                  <pose>banishing</pose>
+                  <facing>right</facing>
+                  <vertical>little more</vertical>
+               </figure>
+               <balloon status="speech">
+                  <content>You ride</content>
+               </balloon>
+            </left>
+            <right>
+               <figure>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>male</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>riding while lost</pose>
+                  <facing>left</facing>
+               </figure>
+            </right>
+            <setting>gobi desert</setting>
+         </panel>
+         <panel>
+            <left>
+               <figure>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
+                  <pose>banishing</pose>
+                  <facing>right</facing>
+                  <vertical>little more</vertical>
+               </figure>
+               <balloon status="speech">
+                  <content>Vai a cavallo</content>
+               </balloon>
+            </left>
+            <right>
+               <figure>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>male</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>riding while lost</pose>
+                  <facing>left</facing>
+               </figure>
+            </right>
+            <setting>gobi desert</setting>
+         </panel>
+         <panel>
+            <left>
+               <figure>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
+                  <pose>sweating</pose>
+                  <facing>right</facing>
+                  <vertical>little more</vertical>
+               </figure>
+               <balloon status="speech">
+                  <content>He rides</content>
+               </balloon>
+            </left>
+            <right>
+               <figure>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>male</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>riding while blocking sun</pose>
+                  <facing>left</facing>
+               </figure>
+            </right>
+            <setting>egypt</setting>
+         </panel>
+         <panel>
+            <left>
+               <figure>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
+                  <pose>sweating</pose>
+                  <facing>right</facing>
+                  <vertical>little more</vertical>
+               </figure>
+               <balloon status="speech">
+                  <content>Lui monta</content>
+               </balloon>
+            </left>
+            <right>
+               <figure>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>male</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>riding while blocking sun</pose>
+                  <facing>left</facing>
+               </figure>
+            </right>
+            <setting>egypt</setting>
+         </panel>
+         <panel>
+            <left>
+               <figure>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
+                  <pose>holding lamb</pose>
+                  <facing>right</facing>
+               </figure>
+               <balloon status="speech">
+                  <content>She rides</content>
+               </balloon>
+            </left>
+            <right>
+               <figure>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>female</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>droving</pose>
+                  <facing>left</facing>
+               </figure>
+            </right>
+            <setting>ireland</setting>
+         </panel>
+         <panel>
+            <left>
+               <figure>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
+                  <pose>holding lamb</pose>
+                  <facing>right</facing>
+               </figure>
+               <balloon status="speech">
+                  <content>Lei monta</content>
+               </balloon>
+            </left>
+            <right>
+               <figure>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>female</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>droving</pose>
+                  <facing>left</facing>
+               </figure>
+            </right>
+            <setting>ireland</setting>
+         </panel>
+         <panel>
+            <left>
+               <figure>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
+                  <pose>riding</pose>
+                  <facing>right</facing>
+               </figure>
+               <balloon status="speech">
+                  <content>We ride</content>
+               </balloon>
+            </left>
+            <right>
+               <figure>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>male</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>falling off horse</pose>
+                  <facing>left</facing>
+               </figure>
+            </right>
+            <setting>apocalypse closeup</setting>
+         </panel>
+         <panel>
+            <left>
+               <figure>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
+                  <pose>riding</pose>
+                  <facing>right</facing>
+               </figure>
+               <balloon status="speech">
+                  <content>Noi montiamo</content>
+               </balloon>
+            </left>
+            <right>
+               <figure>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>male</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>falling off horse</pose>
+                  <facing>left</facing>
+               </figure>
+            </right>
+            <setting>apocalypse closeup</setting>
+         </panel>
+         <panel>
+            <left>
+               <figure>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
+                  <pose>treating</pose>
+                  <facing>right</facing>
+                  <vertical>little more</vertical>
+                  <horizontal>little more</horizontal>
+               </figure>
+               <balloon status="speech">
+                  <content>You ride (plural)</content>
+               </balloon>
+            </left>
+            <middle>
+               <figure>
+                  <id>Gemma</id>
+                  <name>Gemma</name>
+                  <appearance>female</appearance>
+                  <skin>olive</skin>
+                  <hair>black</hair>
+                  <pose>riding with determination</pose>
+                  <facing>left</facing>
+                  <horizontal>more</horizontal>
+               </figure>
+            </middle>
+            <right>
+               <figure>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>male</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>riding with injuries</pose>
+                  <facing>left</facing>
+                  <horizontal>little less</horizontal>
+               </figure>
+            </right>
+            <setting>marshlands with bodies</setting>
+         </panel>
+         <panel>
+            <left>
+               <figure>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
+                  <pose>treating</pose>
+                  <facing>right</facing>
+                  <vertical>little more</vertical>
+                  <horizontal>little more</horizontal>
+               </figure>
+               <balloon status="speech">
+                  <content>Voi montate</content>
+               </balloon>
+            </left>
+            <middle>
+               <figure>
+                  <id>Gemma</id>
+                  <name>Gemma</name>
+                  <appearance>female</appearance>
+                  <skin>olive</skin>
+                  <hair>black</hair>
+                  <pose>riding with determination</pose>
+                  <facing>left</facing>
+                  <horizontal>more</horizontal>
+               </figure>
+            </middle>
+            <right>
+               <figure>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>male</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>riding with injuries</pose>
+                  <facing>left</facing>
+                  <horizontal>little less</horizontal>
+               </figure>
+            </right>
+            <setting>marshlands with bodies</setting>
+         </panel>
+         <panel>
+            <left>
+               <figure>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
+                  <pose>walking a horse</pose>
+                  <facing>right</facing>
+                  <horizontal>little more</horizontal>
+               </figure>
+               <balloon status="speech">
+                  <content>They ride</content>
+               </balloon>
+            </left>
+            <middle>
+               <figure>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>male</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>riding with gun drawn</pose>
+                  <facing>left</facing>
+                  <horizontal>little more</horizontal>
+               </figure>
+            </middle>
+            <right>
+               <figure>
+                  <id>Gemma</id>
+                  <name>Gemma</name>
+                  <appearance>female</appearance>
+                  <skin>olive</skin>
+                  <hair>black</hair>
+                  <pose>riding while confused</pose>
+                  <facing>left</facing>
+                  <horizontal>little less</horizontal>
+               </figure>
+            </right>
+            <setting>nebraska</setting>
+         </panel>
+         <panel>
+            <left>
+               <figure>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
+                  <pose>walking a horse</pose>
+                  <facing>right</facing>
+                  <horizontal>little more</horizontal>
+               </figure>
+               <balloon status="speech">
+                  <content>Loro montano</content>
+               </balloon>
+            </left>
+            <middle>
+               <figure>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>male</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>riding with gun drawn</pose>
+                  <facing>left</facing>
+                  <horizontal>little more</horizontal>
+               </figure>
+            </middle>
+            <right>
+               <figure>
+                  <id>Gemma</id>
+                  <name>Gemma</name>
+                  <appearance>female</appearance>
+                  <skin>olive</skin>
+                  <hair>black</hair>
+                  <pose>riding while confused</pose>
+                  <facing>left</facing>
+                  <horizontal>little less</horizontal>
+               </figure>
+            </right>
+            <setting>nebraska</setting>
+         </panel>
+      </scene>
+      <scene>
+         <panel>
+            <middle>
+               <figure>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>male</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>zero</pose>
+                  <facing>right</facing>
+               </figure>
+            </middle>
+            <below>Scene 0</below>
+            <border>white</border>
+         </panel>
+         <panel>
+            <middle>
+               <figure>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>male</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>yawning</pose>
+                  <facing>right</facing>
+               </figure>
+               <balloon status="speech">
+                  <content>Time to start the day!</content>
+               </balloon>
+            </middle>
+            <setting>kitchen</setting>
+            <below>Alfie is yawning in the kitchen.</below>
+         </panel>
+         <panel>
+            <middle>
+               <figure>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>male</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>yawning</pose>
+                  <facing>right</facing>
+               </figure>
+               <balloon status="speech">
+                  <content>È ora di iniziare la giornata!</content>
+               </balloon>
+            </middle>
+            <setting>kitchen</setting>
+            <below>Alfie sta sbadigliando in cucina.</below>
+         </panel>
+         <panel>
+            <middle>
+               <figure>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>male</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>breakfasting</pose>
+                  <facing>right</facing>
+               </figure>
+               <balloon status="speech">
+                  <content>Just a quick breakfast.</content>
+               </balloon>
+            </middle>
+            <setting>kitchen</setting>
+            <below>Alfie is pouring a bowl of cereal in the kitchen.</below>
+         </panel>
+         <panel>
+            <middle>
+               <figure>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>male</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>breakfasting</pose>
+                  <facing>right</facing>
+               </figure>
+               <balloon status="speech">
+                  <content>Solo una colazione veloce.</content>
+               </balloon>
+            </middle>
+            <setting>kitchen</setting>
+            <below>Alfie sta versando una ciotola di cereali in cucina.</below>
+         </panel>
+         <panel>
+            <middle>
+               <figure>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>male</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>munching</pose>
+                  <facing>right</facing>
+               </figure>
+               <balloon status="speech">
+                  <content>Yum, this is good!</content>
+               </balloon>
+            </middle>
+            <setting>kitchen</setting>
+            <below>Alfie is munching in the kitchen.</below>
+         </panel>
+         <panel>
+            <middle>
+               <figure>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>male</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>munching</pose>
+                  <facing>right</facing>
+               </figure>
+               <balloon status="speech">
+                  <content>Mmm, questo è buono!</content>
+               </balloon>
+            </middle>
+            <setting>kitchen</setting>
+            <below>Alfie sta masticando in cucina.</below>
+         </panel>
+         <panel>
+            <middle>
+               <figure>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>male</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>strong</pose>
+                  <facing>right</facing>
+               </figure>
+               <balloon status="speech">
+                  <content>I feel like I can take on the world!</content>
+               </balloon>
+            </middle>
+            <setting>kitchen</setting>
+            <below>Alfie is feeling ready for anything in the kitchen.</below>
+         </panel>
+         <panel>
+            <middle>
+               <figure>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>male</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>strong</pose>
+                  <facing>right</facing>
+               </figure>
+               <balloon status="speech">
+                  <content>Sento che posso affrontare il mondo!</content>
+               </balloon>
+            </middle>
+            <setting>kitchen</setting>
+            <below>Alfie si sente pronto per qualsiasi cosa in cucina.</below>
+         </panel>
+         <panel>
+            <left>
+               <figure>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>male</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>high fiving</pose>
+                  <facing>right</facing>
+               </figure>
+               <balloon status="speech">
+                  <content>Bye, everyone!</content>
+               </balloon>
+            </left>
+            <setting>welcome mat</setting>
+            <below>Alfie is waving goodbye in the outside front door.</below>
+         </panel>
+         <panel>
+            <left>
+               <figure>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>male</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>high fiving</pose>
+                  <facing>right</facing>
+               </figure>
+               <balloon status="speech">
+                  <content>Ciao a tutti!</content>
+               </balloon>
+            </left>
+            <setting>welcome mat</setting>
+            <below>Alfie sta salutando dall'uscio di casa.</below>
          </panel>
       </scene>
    </scenes>
