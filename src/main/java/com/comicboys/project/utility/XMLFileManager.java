@@ -18,7 +18,7 @@ import java.io.StringWriter;
 import java.util.List;
 import java.util.Random;
 
-public interface XMLFileManager extends XMLNodeRemover {
+public interface XMLFileManager {
 
 
     // get directory folder is in
@@ -54,70 +54,25 @@ public interface XMLFileManager extends XMLNodeRemover {
 
 
 
-
-    // if pass in a NodeList, will insert newChild to be before the first child relative to parent of child
-    static void insertChildBeforeFirst(NodeList nodeList, Node newChild) {
-        for (int i = 0; i < nodeList.getLength(); i++) {
-            Node node = nodeList.item(i);
-            if (node.getNodeType() == Node.ELEMENT_NODE) {
-                if (node.getParentNode() != null) {
-                    insertFirstChild(node, newChild);
-                    break;
-                }
-            }
-        }
-    }
+//    // DONT THINK THIS IS NEEDED
+//    // if pass in a NodeList, will insert newChild to be before the first child relative to parent of child
+//    static void insertChildBeforeFirst(NodeList nodeList, Node newChild) {
+//        for (int i = 0; i < nodeList.getLength(); i++) {
+//            Node node = nodeList.item(i);
+//            if (node.getNodeType() == Node.ELEMENT_NODE) {
+//                if (node.getParentNode() != null) {
+//                    insertFirstChild(node, newChild);
+//                    break;
+//                }
+//            }
+//        }
+//    }
     // inserts newChild to be first element child of current node
-    static void insertFirstChild(Node node, Node newChild) {
-        NodeList children = node.getChildNodes();
-        for (int i = 0; i < children.getLength(); i++) {
-            Node child = children.item(i);
-            if (child.getNodeType() == Node.ELEMENT_NODE) {
-                if (child.getParentNode() != null) {
-                    child.getParentNode().insertBefore(newChild, child);
-                    break;
-                }
-            }
-        }
-    }
-
-
-    static void appendScenes(Document doc, Node newScene) {
-        trimWhitespace(doc.getDocumentElement());
-        NodeList scenesElements = doc.getDocumentElement().getElementsByTagName("scenes");
-        // go through all scene nodes
-        for (int i = 0; i < scenesElements.getLength(); i++) {
-            Node scenesNode = scenesElements.item(i);
-            // if is valid scene node, append all scenes in list to this document
-            if (scenesNode.getNodeType() == Node.ELEMENT_NODE) {
-                if (newScene.getNodeType() == Node.ELEMENT_NODE) {
-                    scenesNode.appendChild(doc.adoptNode(newScene));
-                    // only one scenes element to add to, so break
-                    break;
-                }
-            }
-        }
-    }
-
-
-
-    static void appendScenes(Document doc, NodeList scenes) {
-        trimWhitespace(doc.getDocumentElement());
-        NodeList scenesElements = doc.getDocumentElement().getElementsByTagName("scenes");
-        // go through all scene nodes
-        for (int i = 0; i < scenesElements.getLength(); i++) {
-            Node scene = scenesElements.item(i);
-            // if is valid scene node, append all scenes in list to this document
-            if (scene.getNodeType() == Node.ELEMENT_NODE) {
-                for (int j = 0; j < scenes.getLength(); j++) {
-                    Node currentScene = scenes.item(j);
-                    scene.appendChild(doc.adoptNode(currentScene));
-                }
-                // only one scenes element to add to, so break
-                break;
-            }
-        }
-    }
+    static void insertFirstChild(Node node, Node newChild) { XMLNodeInserter.insertFirstChild(node, newChild); }
+    static void appendScenes(Document doc, Node newScene) { XMLNodeInserter.appendScenes(doc, newScene); }
+    static void appendScenes(Document doc, NodeList scenes) { XMLNodeInserter.appendScenes(doc, scenes); }
+    static void appendElement(Document doc, Node node, String tag) { XMLNodeInserter.appendElement(doc, node, tag); }
+    static void appendElements(Document doc, NodeList nodeList, String tag) { XMLNodeInserter.appendElements(doc, nodeList, tag); }
 
     static void appendScene(Document targetDoc, Node scene) {
         Node importedScene = targetDoc.importNode(scene, true);
@@ -260,6 +215,20 @@ public interface XMLFileManager extends XMLNodeRemover {
         String sourceFilePath = "assets/story/english-to-italian-story.xml";
         Document doc = XMLFileManager.loadXMLFromFile(sourceFilePath);
         Node randomScene = XMLFileManager.extractRandomSceneElement(doc);
+
+//        // select figure elements
+//        NodeList figureScenes = doc.getElementsByTagName("figure");
+
+        assert doc != null;
+        Element sceneIntroduction = doc.createElement("panel");
+        sceneIntroduction.appendChild(doc.createTextNode("hello my friend"));
+        assert randomScene != null;
+        XMLFileManager.insertFirstChild(randomScene, sceneIntroduction);
+        XMLFileManager.appendScenes(doc, randomScene);
+//        // add group of figure elements selected to the document
+//        XMLFileManager.appendScenes(doc, figureScenes);
+
+        XMLFileManager.saveXMLToFile(doc, "assets/mappings/test/test-insert.xml");
 
 
 //        String sourceFilePath = "assets/story/audio_test/story_two_scenes_mixed_balloons.xml";
