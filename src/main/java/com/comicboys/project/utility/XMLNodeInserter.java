@@ -12,7 +12,8 @@ public interface XMLNodeInserter {
             Node child = children.item(i);
             if (child.getNodeType() == Node.ELEMENT_NODE) {
                 if (child.getParentNode() != null) {
-                    child.getParentNode().insertBefore(newChild, child);
+                    Node importedNewChild = child.getOwnerDocument().importNode(newChild, true);
+                    child.getParentNode().insertBefore(importedNewChild, child);
                     break;
                 }
             }

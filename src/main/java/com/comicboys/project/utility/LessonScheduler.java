@@ -22,20 +22,18 @@ public class LessonScheduler {
 
     public void runLessons(String testPath, String storyPath, String conjugationPath) {
         for (final String currentLesson : lessonSchedule) {
-            // Insert intro panel at the start of each lesson
-            insertIntroPanel(sceneCounter);
 
             switch (currentLesson) {
                 case "left" -> generateLeftTextScene(testPath);
                 case "whole", "combined" -> generateCombinedTextScene(testPath);
-                case "conjugation" -> appendScene(conjugationPath);
-                case "story" -> appendScene(storyPath);
+                case "conjugation" -> generateConjugationScene(conjugationPath);
+                case "story" -> generateStoryScene(storyPath);
                 default -> System.out.printf("\nLesson %s is not a valid lesson\n", currentLesson);
             }
         }
     }
 
-    private void insertIntroPanel(int sceneNumber) {
+    private Node getIntroPanel(int sceneNumber) {
         Element panel = doc.createElement("panel");
 
         Element below = doc.createElement("below");
@@ -46,9 +44,8 @@ public class LessonScheduler {
         border.setTextContent("white");
         panel.appendChild(border);
 
-        XMLFileManager.appendScenes(doc, panel);
-
-        sceneCounter++; // increment after intro panel
+        sceneCounter++;
+        return panel;
     }
 
     private void generateLeftTextScene(String filePath) {
@@ -57,8 +54,7 @@ public class LessonScheduler {
             System.out.println("Unsuccessful generation of left text scene");
             return;
         }
-        XMLFileManager.appendScenes(doc, scenes);
-        sceneCounter += scenes.getLength();
+        generateTextScene(scenes);
     }
 
     private void generateCombinedTextScene(String filePath) {
@@ -67,14 +63,39 @@ public class LessonScheduler {
             System.out.println("Unsuccessful generation of whole text scene");
             return;
         }
-        XMLFileManager.appendScenes(doc, scenes);
-        sceneCounter += scenes.getLength();
+        generateTextScene(scenes);
     }
 
-    private void appendScene(String filePath) {
+    private void generateTextScene(NodeList sceneElements) {
+        Node scene;
+        for (int i = 0; i < sceneElements.getLength(); i++) {
+            Node currentScene = sceneElements.item(i);
+            if (currentScene.getNodeType() == Node.ELEMENT_NODE) {
+                scene = currentScene;
+                Node sceneIntroPanel = getIntroPanel(sceneCounter);
+                XMLFileManager.insertFirstChild(scene, sceneIntroPanel);
+                XMLFileManager.appendScenes(doc, scene);
+                break;
+            }
+        }
+    }
+
+    private void generateConjugationScene(String filePath) {
         Document inputDoc = XMLFileManager.loadXMLFromFile(filePath);
         Node scene = XMLFileManager.extractRandomSceneElement(inputDoc);
+        appendScene(scene);
+    }
+    private void generateStoryScene(String filePath) {
+        Document inputDoc = XMLFileManager.loadXMLFromFile(filePath);
+        Node scene = XMLFileManager.extractRandomSceneElement(inputDoc);
+        // the stories have scene introductions as first panel, so need to remove first
+        XMLFileManager.removeFirstChild(scene);
+        appendScene(scene);
+    }
+
+    private void appendScene(Node scene) {
+        Node sceneIntroPanel = getIntroPanel(sceneCounter);
+        XMLFileManager.insertFirstChild(scene, sceneIntroPanel);
         XMLFileManager.appendScenes(doc, scene);
-        sceneCounter++;
     }
 }
