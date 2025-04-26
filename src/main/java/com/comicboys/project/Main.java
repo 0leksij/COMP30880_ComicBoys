@@ -37,7 +37,7 @@ public class Main {
         LessonScheduler scheduler = new LessonScheduler(doc, xmlGenerator, LESSON_SCHEDULE);
 
         // Add opening scenes
-        scheduler.addOpeningScenes(OPENING_SCENES_PATH);
+//        scheduler.addOpeningScenes(OPENING_SCENES_PATH);
 
         // Generate lesson scenes
         String sourceLang = config.getProperty("SOURCE_LANGUAGE").toLowerCase();

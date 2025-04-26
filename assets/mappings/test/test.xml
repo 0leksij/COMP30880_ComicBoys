@@ -1,139 +1,564 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <comic>
-   <figures/>
+   <figures>
+      <figure>
+         <id>Alfie</id>
+         <name>Alfie</name>
+         <appearance>male</appearance>
+         <skin>light brown</skin>
+         <hair>dark brown</hair>
+         <lips>red</lips>
+         <facing>right</facing>
+      </figure>
+      <figure>
+         <id>Betty</id>
+         <name>Betty</name>
+         <appearance>female</appearance>
+         <facing>right</facing>
+      </figure>
+      <figure>
+         <id>Gemma</id>
+         <name>Gemma</name>
+         <appearance>female</appearance>
+         <skin>olive</skin>
+         <hair>black</hair>
+         <facing>right</facing>
+      </figure>
+   </figures>
    <scenes>
       <scene>
          <panel>
             <left>
                <figure>
-                  <pose>voting against</pose>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>male</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>satirizing</pose>
                   <facing>right</facing>
                </figure>
             </left>
-            <setting>polling station</setting>
+            <setting>comedy club</setting>
          </panel>
          <panel>
             <left>
                <figure>
-                  <pose>voting against</pose>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>male</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>satirizing</pose>
                   <facing>right</facing>
                </figure>
+               <balloon status="speech">
+                  <content>a parody</content>
+               </balloon>
             </left>
-            <balloon status="speech">
-               <content>a skeptic</content>
-            </balloon>
-            <setting>polling station</setting>
+            <setting>comedy club</setting>
          </panel>
          <panel>
             <right>
                <figure>
-                  <pose>campaigning</pose>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
+                  <pose>embarrassed</pose>
                   <facing>left</facing>
                </figure>
             </right>
-            <setting>polling station</setting>
+            <setting>comedy club</setting>
          </panel>
          <panel>
             <right>
                <figure>
-                  <pose>campaigning</pose>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
+                  <pose>embarrassed</pose>
                   <facing>left</facing>
                </figure>
+               <balloon status="speech">
+                  <content>una parodia</content>
+               </balloon>
             </right>
-            <balloon status="speech">
-               <content>uno scettico</content>
-            </balloon>
-            <setting>polling station</setting>
+            <setting>comedy club</setting>
          </panel>
          <panel>
             <left>
                <figure>
-                  <pose>voting against</pose>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>male</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>satirizing</pose>
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>a skeptic</content>
+                  <content>a parody</content>
                </balloon>
             </left>
             <right>
                <figure>
-                  <pose>campaigning</pose>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
+                  <pose>embarrassed</pose>
                   <facing>left</facing>
                </figure>
                <balloon status="speech">
-                  <content>uno scettico</content>
+                  <content>una parodia</content>
                </balloon>
             </right>
-            <setting>polling station</setting>
+            <setting>comedy club</setting>
          </panel>
       </scene>
       <scene>
          <panel>
             <left>
                <figure>
-                  <pose>meditating</pose>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>male</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>exorcised</pose>
                   <facing>right</facing>
                </figure>
             </left>
-            <setting>meditation garden</setting>
+            <setting>graveyard</setting>
          </panel>
          <panel>
             <left>
                <figure>
-                  <pose>meditating</pose>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>male</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>exorcised</pose>
                   <facing>right</facing>
                </figure>
+               <balloon status="speech">
+                  <content>terrified</content>
+               </balloon>
             </left>
-            <balloon status="speech">
-               <content>a meditation garden</content>
-            </balloon>
-            <setting>meditation garden</setting>
+            <setting>graveyard</setting>
          </panel>
          <panel>
             <right>
                <figure>
-                  <pose>meditating</pose>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
+                  <pose>exorcising</pose>
                   <facing>left</facing>
                </figure>
             </right>
-            <setting>meditation garden</setting>
+            <setting>graveyard</setting>
          </panel>
          <panel>
             <right>
                <figure>
-                  <pose>meditating</pose>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
+                  <pose>exorcising</pose>
                   <facing>left</facing>
                </figure>
+               <balloon status="speech">
+                  <content>terrorizzato</content>
+               </balloon>
             </right>
-            <balloon status="speech">
-               <content>un giardino di meditazione</content>
-            </balloon>
-            <setting>meditation garden</setting>
+            <setting>graveyard</setting>
          </panel>
          <panel>
             <left>
                <figure>
-                  <pose>meditating</pose>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>male</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>exorcised</pose>
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>a meditation garden</content>
+                  <content>terrified</content>
                </balloon>
             </left>
             <right>
                <figure>
-                  <pose>meditating</pose>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
+                  <pose>exorcising</pose>
                   <facing>left</facing>
                </figure>
                <balloon status="speech">
-                  <content>un giardino di meditazione</content>
+                  <content>terrorizzato</content>
                </balloon>
             </right>
-            <setting>meditation garden</setting>
+            <setting>graveyard</setting>
          </panel>
       </scene>
-      <scene>
+      <scene number="0">
          <panel>
+            <left>
+               <figure>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
+                  <pose>riding while whistling</pose>
+                  <facing>right</facing>
+               </figure>
+               <balloon status="speech">
+                  <content>I ride</content>
+               </balloon>
+            </left>
+            <setting>texas</setting>
+         </panel>
+         <panel>
+            <left>
+               <figure>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
+                  <pose>riding while whistling</pose>
+                  <facing>right</facing>
+               </figure>
+               <balloon status="speech">
+                  <content>Vado a cavallo</content>
+               </balloon>
+            </left>
+            <setting>texas</setting>
+         </panel>
+         <panel>
+            <left>
+               <figure>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
+                  <pose>banishing</pose>
+                  <facing>right</facing>
+                  <vertical>little more</vertical>
+               </figure>
+               <balloon status="speech">
+                  <content>You ride</content>
+               </balloon>
+            </left>
+            <right>
+               <figure>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>male</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>riding while lost</pose>
+                  <facing>left</facing>
+               </figure>
+            </right>
+            <setting>gobi desert</setting>
+         </panel>
+         <panel>
+            <left>
+               <figure>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
+                  <pose>banishing</pose>
+                  <facing>right</facing>
+                  <vertical>little more</vertical>
+               </figure>
+               <balloon status="speech">
+                  <content>Vai a cavallo</content>
+               </balloon>
+            </left>
+            <right>
+               <figure>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>male</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>riding while lost</pose>
+                  <facing>left</facing>
+               </figure>
+            </right>
+            <setting>gobi desert</setting>
+         </panel>
+         <panel>
+            <left>
+               <figure>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
+                  <pose>sweating</pose>
+                  <facing>right</facing>
+                  <vertical>little more</vertical>
+               </figure>
+               <balloon status="speech">
+                  <content>He rides</content>
+               </balloon>
+            </left>
+            <right>
+               <figure>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>male</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>riding while blocking sun</pose>
+                  <facing>left</facing>
+               </figure>
+            </right>
+            <setting>egypt</setting>
+         </panel>
+         <panel>
+            <left>
+               <figure>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
+                  <pose>sweating</pose>
+                  <facing>right</facing>
+                  <vertical>little more</vertical>
+               </figure>
+               <balloon status="speech">
+                  <content>Lui monta</content>
+               </balloon>
+            </left>
+            <right>
+               <figure>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>male</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>riding while blocking sun</pose>
+                  <facing>left</facing>
+               </figure>
+            </right>
+            <setting>egypt</setting>
+         </panel>
+         <panel>
+            <left>
+               <figure>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
+                  <pose>holding lamb</pose>
+                  <facing>right</facing>
+               </figure>
+               <balloon status="speech">
+                  <content>She rides</content>
+               </balloon>
+            </left>
+            <right>
+               <figure>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>female</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>droving</pose>
+                  <facing>left</facing>
+               </figure>
+            </right>
+            <setting>ireland</setting>
+         </panel>
+         <panel>
+            <left>
+               <figure>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
+                  <pose>holding lamb</pose>
+                  <facing>right</facing>
+               </figure>
+               <balloon status="speech">
+                  <content>Lei monta</content>
+               </balloon>
+            </left>
+            <right>
+               <figure>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>female</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>droving</pose>
+                  <facing>left</facing>
+               </figure>
+            </right>
+            <setting>ireland</setting>
+         </panel>
+         <panel>
+            <left>
+               <figure>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
+                  <pose>riding</pose>
+                  <facing>right</facing>
+               </figure>
+               <balloon status="speech">
+                  <content>We ride</content>
+               </balloon>
+            </left>
+            <right>
+               <figure>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>male</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>falling off horse</pose>
+                  <facing>left</facing>
+               </figure>
+            </right>
+            <setting>apocalypse closeup</setting>
+         </panel>
+         <panel>
+            <left>
+               <figure>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
+                  <pose>riding</pose>
+                  <facing>right</facing>
+               </figure>
+               <balloon status="speech">
+                  <content>Noi montiamo</content>
+               </balloon>
+            </left>
+            <right>
+               <figure>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>male</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>falling off horse</pose>
+                  <facing>left</facing>
+               </figure>
+            </right>
+            <setting>apocalypse closeup</setting>
+         </panel>
+         <panel>
+            <left>
+               <figure>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
+                  <pose>treating</pose>
+                  <facing>right</facing>
+                  <vertical>little more</vertical>
+                  <horizontal>little more</horizontal>
+               </figure>
+               <balloon status="speech">
+                  <content>You ride (plural)</content>
+               </balloon>
+            </left>
+            <middle>
+               <figure>
+                  <id>Gemma</id>
+                  <name>Gemma</name>
+                  <appearance>female</appearance>
+                  <skin>olive</skin>
+                  <hair>black</hair>
+                  <pose>riding with determination</pose>
+                  <facing>left</facing>
+                  <horizontal>more</horizontal>
+               </figure>
+            </middle>
+            <right>
+               <figure>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>male</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>riding with injuries</pose>
+                  <facing>left</facing>
+                  <horizontal>little less</horizontal>
+               </figure>
+            </right>
+            <setting>marshlands with bodies</setting>
+         </panel>
+         <panel>
+            <left>
+               <figure>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
+                  <pose>treating</pose>
+                  <facing>right</facing>
+                  <vertical>little more</vertical>
+                  <horizontal>little more</horizontal>
+               </figure>
+               <balloon status="speech">
+                  <content>Voi montate</content>
+               </balloon>
+            </left>
+            <middle>
+               <figure>
+                  <id>Gemma</id>
+                  <name>Gemma</name>
+                  <appearance>female</appearance>
+                  <skin>olive</skin>
+                  <hair>black</hair>
+                  <pose>riding with determination</pose>
+                  <facing>left</facing>
+                  <horizontal>more</horizontal>
+               </figure>
+            </middle>
+            <right>
+               <figure>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>male</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>riding with injuries</pose>
+                  <facing>left</facing>
+                  <horizontal>little less</horizontal>
+               </figure>
+            </right>
+            <setting>marshlands with bodies</setting>
+         </panel>
+         <panel>
+            <left>
+               <figure>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
+                  <pose>walking a horse</pose>
+                  <facing>right</facing>
+                  <horizontal>little more</horizontal>
+               </figure>
+               <balloon status="speech">
+                  <content>They ride</content>
+               </balloon>
+            </left>
             <middle>
                <figure>
                   <id>Alfie</id>
@@ -142,54 +567,114 @@
                   <skin>light brown</skin>
                   <hair>dark brown</hair>
                   <lips>red</lips>
-                  <pose>five</pose>
+                  <pose>riding with gun drawn</pose>
+                  <facing>left</facing>
+                  <horizontal>little more</horizontal>
+               </figure>
+            </middle>
+            <right>
+               <figure>
+                  <id>Gemma</id>
+                  <name>Gemma</name>
+                  <appearance>female</appearance>
+                  <skin>olive</skin>
+                  <hair>black</hair>
+                  <pose>riding while confused</pose>
+                  <facing>left</facing>
+                  <horizontal>little less</horizontal>
+               </figure>
+            </right>
+            <setting>nebraska</setting>
+         </panel>
+         <panel>
+            <left>
+               <figure>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
+                  <pose>walking a horse</pose>
+                  <facing>right</facing>
+                  <horizontal>little more</horizontal>
+               </figure>
+               <balloon status="speech">
+                  <content>Loro montano</content>
+               </balloon>
+            </left>
+            <middle>
+               <figure>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>male</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>riding with gun drawn</pose>
+                  <facing>left</facing>
+                  <horizontal>little more</horizontal>
+               </figure>
+            </middle>
+            <right>
+               <figure>
+                  <id>Gemma</id>
+                  <name>Gemma</name>
+                  <appearance>female</appearance>
+                  <skin>olive</skin>
+                  <hair>black</hair>
+                  <pose>riding while confused</pose>
+                  <facing>left</facing>
+                  <horizontal>little less</horizontal>
+               </figure>
+            </right>
+            <setting>nebraska</setting>
+         </panel>
+      </scene>
+      <scene number="1">
+         <panel>
+            <middle>
+               <figure>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
+                  <pose>three</pose>
                   <facing>right</facing>
                </figure>
             </middle>
-            <below>Scene 5</below>
+            <below>Scene 3</below>
             <border>white</border>
          </panel>
          <panel>
             <left>
                <figure>
-                  <id>Betty</id>
-                  <name>Betty</name>
-                  <appearance>female</appearance>
-                  <pose>working</pose>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>male</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>sick</pose>
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>I work</content>
+                  <content>Where are you taking me?</content>
                </balloon>
-            </left>
-            <setting>tech office</setting>
-         </panel>
-         <panel>
-            <left>
-               <figure>
-                  <id>Betty</id>
-                  <name>Betty</name>
-                  <appearance>female</appearance>
-                  <pose>working</pose>
-                  <facing>right</facing>
-               </figure>
-               <balloon status="speech">
-                  <content>Io lavoro</content>
-               </balloon>
-            </left>
-            <setting>tech office</setting>
-         </panel>
-         <panel>
-            <left>
-               <figure>
-                  <id>Betty</id>
-                  <name>Betty</name>
-                  <appearance>female</appearance>
-                  <pose>carrying</pose>
-                  <facing>right</facing>
-               </figure>
             </left>
             <right>
+               <figure>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
+                  <pose>evaluating</pose>
+                  <facing>left</facing>
+               </figure>
+               <balloon status="speech">
+                  <content>Don't worry, just a little check-up!</content>
+               </balloon>
+            </right>
+            <setting>hospital</setting>
+            <below>Alfie is in a wheelchair in the hospital interior, Betty is evaluating with a checklist.</below>
+         </panel>
+         <panel>
+            <left>
                <figure>
                   <id>Alfie</id>
                   <name>Alfie</name>
@@ -197,26 +682,30 @@
                   <skin>light brown</skin>
                   <hair>dark brown</hair>
                   <lips>red</lips>
-                  <pose>poking</pose>
-                  <facing>left</facing>
+                  <pose>sick</pose>
+                  <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>You work</content>
+                  <content>Dove mi porti?</content>
                </balloon>
-            </right>
-            <setting>amazon</setting>
-         </panel>
-         <panel>
-            <left>
+            </left>
+            <right>
                <figure>
                   <id>Betty</id>
                   <name>Betty</name>
                   <appearance>female</appearance>
-                  <pose>carrying</pose>
-                  <facing>right</facing>
+                  <pose>evaluating</pose>
+                  <facing>left</facing>
                </figure>
-            </left>
-            <right>
+               <balloon status="speech">
+                  <content>Non preoccuparti, solo un piccolo controllo!</content>
+               </balloon>
+            </right>
+            <setting>hospital</setting>
+            <below>Alfie è in sedia a rotelle nell'interno dell'ospedale, Betty sta valutando con una lista di controllo.</below>
+         </panel>
+         <panel>
+            <left>
                <figure>
                   <id>Alfie</id>
                   <name>Alfie</name>
@@ -224,29 +713,30 @@
                   <skin>light brown</skin>
                   <hair>dark brown</hair>
                   <lips>red</lips>
-                  <pose>poking</pose>
-                  <facing>left</facing>
+                  <pose>sick</pose>
+                  <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Tu lavori</content>
+                  <content>Why are you popping out like that?</content>
                </balloon>
-            </right>
-            <setting>amazon</setting>
-         </panel>
-         <panel>
-            <left>
+            </left>
+            <right>
                <figure>
                   <id>Betty</id>
                   <name>Betty</name>
                   <appearance>female</appearance>
-                  <pose>questioning</pose>
-                  <facing>right</facing>
+                  <pose>dispatched</pose>
+                  <facing>left</facing>
                </figure>
                <balloon status="speech">
-                  <content>He works</content>
+                  <content>Just making sure everything is in order!</content>
                </balloon>
-            </left>
-            <right>
+            </right>
+            <setting>hospital</setting>
+            <below>Alfie is waiting in his wheelchair, Betty is popping out in the hospital interior.</below>
+         </panel>
+         <panel>
+            <left>
                <figure>
                   <id>Alfie</id>
                   <name>Alfie</name>
@@ -254,26 +744,30 @@
                   <skin>light brown</skin>
                   <hair>dark brown</hair>
                   <lips>red</lips>
-                  <pose>calculating</pose>
-                  <facing>left</facing>
+                  <pose>sick</pose>
+                  <facing>right</facing>
                </figure>
-            </right>
-            <setting>office 2</setting>
-         </panel>
-         <panel>
-            <left>
+               <balloon status="speech">
+                  <content>Perché esci in quel modo?</content>
+               </balloon>
+            </left>
+            <right>
                <figure>
                   <id>Betty</id>
                   <name>Betty</name>
                   <appearance>female</appearance>
-                  <pose>questioning</pose>
-                  <facing>right</facing>
+                  <pose>dispatched</pose>
+                  <facing>left</facing>
                </figure>
                <balloon status="speech">
-                  <content>Lui lavora</content>
+                  <content>Sto solo controllando che tutto sia a posto!</content>
                </balloon>
-            </left>
-            <right>
+            </right>
+            <setting>hospital</setting>
+            <below>Alfie sta aspettando nella sua sedia a rotelle, Betty compare nell'interno dell'ospedale.</below>
+         </panel>
+         <panel>
+            <left>
                <figure>
                   <id>Alfie</id>
                   <name>Alfie</name>
@@ -281,146 +775,41 @@
                   <skin>light brown</skin>
                   <hair>dark brown</hair>
                   <lips>red</lips>
-                  <pose>calculating</pose>
-                  <facing>left</facing>
-               </figure>
-            </right>
-            <setting>office 2</setting>
-         </panel>
-         <panel>
-            <left>
-               <figure>
-                  <id>Betty</id>
-                  <name>Betty</name>
-                  <appearance>female</appearance>
-                  <pose>looking in mirror while seated</pose>
-                  <facing>left</facing>
-               </figure>
-               <balloon status="speech">
-                  <content>She works</content>
-               </balloon>
-            </left>
-            <right>
-               <figure>
-                  <id>Alfie</id>
-                  <name>Alfie</name>
-                  <appearance>female</appearance>
-                  <skin>light brown</skin>
-                  <hair>dark brown</hair>
-                  <lips>red</lips>
-                  <pose>cutting hair</pose>
-                  <facing>left</facing>
-               </figure>
-            </right>
-            <setting>salon interior</setting>
-         </panel>
-         <panel>
-            <left>
-               <figure>
-                  <id>Betty</id>
-                  <name>Betty</name>
-                  <appearance>female</appearance>
-                  <pose>looking in mirror while seated</pose>
-                  <facing>left</facing>
-               </figure>
-               <balloon status="speech">
-                  <content>Lei lavora</content>
-               </balloon>
-            </left>
-            <right>
-               <figure>
-                  <id>Alfie</id>
-                  <name>Alfie</name>
-                  <appearance>female</appearance>
-                  <skin>light brown</skin>
-                  <hair>dark brown</hair>
-                  <lips>red</lips>
-                  <pose>cutting hair</pose>
-                  <facing>left</facing>
-               </figure>
-            </right>
-            <setting>salon interior</setting>
-         </panel>
-         <panel>
-            <left>
-               <figure>
-                  <id>Betty</id>
-                  <name>Betty</name>
-                  <appearance>female</appearance>
-                  <pose>building</pose>
-                  <facing>right</facing>
-               </figure>
-               <balloon status="speech">
-                  <content>We work</content>
-               </balloon>
-            </left>
-            <right>
-               <figure>
-                  <id>Alfie</id>
-                  <name>Alfie</name>
-                  <appearance>male</appearance>
-                  <skin>light brown</skin>
-                  <hair>dark brown</hair>
-                  <lips>red</lips>
-                  <pose>carrying bricks</pose>
-                  <facing>left</facing>
-               </figure>
-            </right>
-            <setting>building site</setting>
-         </panel>
-         <panel>
-            <left>
-               <figure>
-                  <id>Betty</id>
-                  <name>Betty</name>
-                  <appearance>female</appearance>
-                  <pose>building</pose>
-                  <facing>right</facing>
-               </figure>
-               <balloon status="speech">
-                  <content>Noi lavoriamo</content>
-               </balloon>
-            </left>
-            <right>
-               <figure>
-                  <id>Alfie</id>
-                  <name>Alfie</name>
-                  <appearance>male</appearance>
-                  <skin>light brown</skin>
-                  <hair>dark brown</hair>
-                  <lips>red</lips>
-                  <pose>carrying bricks</pose>
-                  <facing>left</facing>
-               </figure>
-            </right>
-            <setting>building site</setting>
-         </panel>
-         <panel>
-            <left>
-               <figure>
-                  <id>Betty</id>
-                  <name>Betty</name>
-                  <appearance>female</appearance>
-                  <pose>insisting</pose>
+                  <pose>defensive</pose>
                   <facing>right</facing>
                   <horizontal>little more</horizontal>
                </figure>
                <balloon status="speech">
-                  <content>You work (plural)</content>
+                  <content>Stay away from me!</content>
                </balloon>
             </left>
             <middle>
                <figure>
-                  <id>Gemma</id>
-                  <name>Gemma</name>
-                  <appearance>female</appearance>
-                  <skin>olive</skin>
-                  <hair>black</hair>
-                  <pose>holding mop</pose>
+                  <appearance>default</appearance>
+                  <skin>default</skin>
+                  <hair>default</hair>
+                  <pose>wheelchair prop</pose>
                   <facing>right</facing>
                </figure>
             </middle>
             <right>
+               <figure>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
+                  <pose>operating</pose>
+                  <facing>left</facing>
+                  <horizontal>little less</horizontal>
+               </figure>
+               <balloon status="speech">
+                  <content>Trust me, you won't want to run!</content>
+               </balloon>
+            </right>
+            <setting>hospital</setting>
+            <below>Alfie is defensive in the hospital interior, Betty is returning with a knife and syringe.</below>
+         </panel>
+         <panel>
+            <left>
                <figure>
                   <id>Alfie</id>
                   <name>Alfie</name>
@@ -428,333 +817,38 @@
                   <skin>light brown</skin>
                   <hair>dark brown</hair>
                   <lips>red</lips>
-                  <pose>scrubbing on knees</pose>
-                  <facing>left</facing>
-                  <horizontal>little less</horizontal>
-               </figure>
-            </right>
-            <setting>clean toilet</setting>
-         </panel>
-         <panel>
-            <left>
-               <figure>
-                  <id>Betty</id>
-                  <name>Betty</name>
-                  <appearance>female</appearance>
-                  <pose>insisting</pose>
+                  <pose>defensive</pose>
                   <facing>right</facing>
                   <horizontal>little more</horizontal>
                </figure>
                <balloon status="speech">
-                  <content>Voi lavorate</content>
+                  <content>Stai lontano da me!</content>
                </balloon>
             </left>
             <middle>
                <figure>
-                  <id>Gemma</id>
-                  <name>Gemma</name>
-                  <appearance>female</appearance>
-                  <skin>olive</skin>
-                  <hair>black</hair>
-                  <pose>holding mop</pose>
+                  <appearance>default</appearance>
+                  <skin>default</skin>
+                  <hair>default</hair>
+                  <pose>wheelchair prop</pose>
                   <facing>right</facing>
                </figure>
             </middle>
             <right>
                <figure>
-                  <id>Alfie</id>
-                  <name>Alfie</name>
-                  <appearance>male</appearance>
-                  <skin>light brown</skin>
-                  <hair>dark brown</hair>
-                  <lips>red</lips>
-                  <pose>scrubbing on knees</pose>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
+                  <pose>operating</pose>
                   <facing>left</facing>
                   <horizontal>little less</horizontal>
                </figure>
-            </right>
-            <setting>clean toilet</setting>
-         </panel>
-         <panel>
-            <left>
-               <figure>
-                  <id>Betty</id>
-                  <name>Betty</name>
-                  <appearance>female</appearance>
-                  <pose>posing</pose>
-                  <facing>right</facing>
-                  <horizontal>little more</horizontal>
-               </figure>
                <balloon status="speech">
-                  <content>They work</content>
-               </balloon>
-            </left>
-            <middle>
-               <figure>
-                  <id>Gemma</id>
-                  <name>Gemma</name>
-                  <appearance>female</appearance>
-                  <skin>olive</skin>
-                  <hair>black</hair>
-                  <pose>painting</pose>
-                  <facing>left</facing>
-               </figure>
-            </middle>
-            <right>
-               <figure>
-                  <id>Alfie</id>
-                  <name>Alfie</name>
-                  <appearance>male</appearance>
-                  <skin>light brown</skin>
-                  <hair>dark brown</hair>
-                  <lips>red</lips>
-                  <pose>photographing</pose>
-                  <facing>left</facing>
-                  <horizontal>little less</horizontal>
-               </figure>
-            </right>
-            <setting>art studio</setting>
-         </panel>
-         <panel>
-            <left>
-               <figure>
-                  <id>Betty</id>
-                  <name>Betty</name>
-                  <appearance>female</appearance>
-                  <pose>posing</pose>
-                  <facing>right</facing>
-                  <horizontal>little more</horizontal>
-               </figure>
-               <balloon status="speech">
-                  <content>Loro lavorano</content>
-               </balloon>
-            </left>
-            <middle>
-               <figure>
-                  <id>Gemma</id>
-                  <name>Gemma</name>
-                  <appearance>female</appearance>
-                  <skin>olive</skin>
-                  <hair>black</hair>
-                  <pose>painting</pose>
-                  <facing>left</facing>
-               </figure>
-            </middle>
-            <right>
-               <figure>
-                  <id>Alfie</id>
-                  <name>Alfie</name>
-                  <appearance>male</appearance>
-                  <skin>light brown</skin>
-                  <hair>dark brown</hair>
-                  <lips>red</lips>
-                  <pose>photographing</pose>
-                  <facing>left</facing>
-                  <horizontal>little less</horizontal>
-               </figure>
-            </right>
-            <setting>art studio</setting>
-         </panel>
-      </scene>
-      <scene>
-         <panel>
-            <middle>
-               <figure>
-                  <id>Betty</id>
-                  <name>Betty</name>
-                  <appearance>female</appearance>
-                  <pose>nine</pose>
-                  <facing>right</facing>
-               </figure>
-            </middle>
-            <below>Scene 9</below>
-            <border>white</border>
-         </panel>
-         <panel>
-            <left>
-               <figure>
-                  <id>Alfie</id>
-                  <name>Alfie</name>
-                  <appearance>male</appearance>
-                  <skin>light brown</skin>
-                  <hair>dark brown</hair>
-                  <lips>red</lips>
-                  <pose>pitching</pose>
-                  <facing>right</facing>
-               </figure>
-               <balloon status="speech">
-                  <content>Here it comes!</content>
-               </balloon>
-            </left>
-            <right>
-               <figure>
-                  <id>Betty</id>
-                  <name>Betty</name>
-                  <appearance>female</appearance>
-                  <pose>batting</pose>
-                  <facing>left</facing>
-               </figure>
-               <balloon status="speech">
-                  <content>I got this!</content>
+                  <content>Fidati, non vorrai correre!</content>
                </balloon>
             </right>
-            <setting>sports field</setting>
-            <below>Alfie pitches a baseball while Betty prepares to swing a bat.</below>
-         </panel>
-         <panel>
-            <left>
-               <figure>
-                  <id>Alfie</id>
-                  <name>Alfie</name>
-                  <appearance>male</appearance>
-                  <skin>light brown</skin>
-                  <hair>dark brown</hair>
-                  <lips>red</lips>
-                  <pose>pitching</pose>
-                  <facing>right</facing>
-               </figure>
-               <balloon status="speech">
-                  <content>Arriva!</content>
-               </balloon>
-            </left>
-            <right>
-               <figure>
-                  <id>Betty</id>
-                  <name>Betty</name>
-                  <appearance>female</appearance>
-                  <pose>batting</pose>
-                  <facing>left</facing>
-               </figure>
-               <balloon status="speech">
-                  <content>Ce l'ho fatta!</content>
-               </balloon>
-            </right>
-            <setting>sports field</setting>
-            <below>Alfie lancia una pallina da baseball mentre Betty si prepara a colpire con la mazza.</below>
-         </panel>
-         <panel>
-            <left>
-               <figure>
-                  <id>Alfie</id>
-                  <name>Alfie</name>
-                  <appearance>male</appearance>
-                  <skin>light brown</skin>
-                  <hair>dark brown</hair>
-                  <lips>red</lips>
-                  <pose>dropping bat</pose>
-                  <facing>right</facing>
-               </figure>
-               <balloon status="speech">
-                  <content>Oh no!</content>
-               </balloon>
-            </left>
-            <right>
-               <figure>
-                  <id>Betty</id>
-                  <name>Betty</name>
-                  <appearance>female</appearance>
-                  <pose>hit with ball</pose>
-                  <facing>left</facing>
-               </figure>
-               <balloon status="speech">
-                  <content>Ouch!</content>
-               </balloon>
-            </right>
-            <setting>sports field</setting>
-            <below>Alfie drops the bat as the ball accidentally hits Betty in the head.</below>
-         </panel>
-         <panel>
-            <left>
-               <figure>
-                  <id>Alfie</id>
-                  <name>Alfie</name>
-                  <appearance>male</appearance>
-                  <skin>light brown</skin>
-                  <hair>dark brown</hair>
-                  <lips>red</lips>
-                  <pose>dropping bat</pose>
-                  <facing>right</facing>
-               </figure>
-               <balloon status="speech">
-                  <content>Oh no!</content>
-               </balloon>
-            </left>
-            <right>
-               <figure>
-                  <id>Betty</id>
-                  <name>Betty</name>
-                  <appearance>female</appearance>
-                  <pose>hit with ball</pose>
-                  <facing>left</facing>
-               </figure>
-               <balloon status="speech">
-                  <content>Ahi!</content>
-               </balloon>
-            </right>
-            <setting>sports field</setting>
-            <below>Alfie lascia cadere la mazza mentre la pallina colpisce accidentalmente Betty in testa.</below>
-         </panel>
-         <panel>
-            <left>
-               <figure>
-                  <id>Alfie</id>
-                  <name>Alfie</name>
-                  <appearance>male</appearance>
-                  <skin>light brown</skin>
-                  <hair>dark brown</hair>
-                  <lips>red</lips>
-                  <pose>shrugging</pose>
-                  <facing>right</facing>
-               </figure>
-               <balloon status="speech">
-                  <content>Are you okay?</content>
-               </balloon>
-            </left>
-            <right>
-               <figure>
-                  <id>Betty</id>
-                  <name>Betty</name>
-                  <appearance>female</appearance>
-                  <pose>groggy</pose>
-                  <facing>left</facing>
-               </figure>
-               <balloon status="speech">
-                  <content>Not really...</content>
-               </balloon>
-            </right>
-            <setting>sports field</setting>
-            <below>Alfie shrugs while Betty looks groggy after getting hit.</below>
-         </panel>
-         <panel>
-            <left>
-               <figure>
-                  <id>Alfie</id>
-                  <name>Alfie</name>
-                  <appearance>male</appearance>
-                  <skin>light brown</skin>
-                  <hair>dark brown</hair>
-                  <lips>red</lips>
-                  <pose>shrugging</pose>
-                  <facing>right</facing>
-               </figure>
-               <balloon status="speech">
-                  <content>Stai bene?</content>
-               </balloon>
-            </left>
-            <right>
-               <figure>
-                  <id>Betty</id>
-                  <name>Betty</name>
-                  <appearance>female</appearance>
-                  <pose>groggy</pose>
-                  <facing>left</facing>
-               </figure>
-               <balloon status="speech">
-                  <content>Non proprio...</content>
-               </balloon>
-            </right>
-            <setting>sports field</setting>
-            <below>Alfie scrolla le spalle mentre Betty sembra intontita dopo essere stata colpita.</below>
+            <setting>hospital</setting>
+            <below>Alfie è difensivo nell'interno dell'ospedale, Betty sta tornando con un coltello e una siringa.</below>
          </panel>
          <panel>
             <left>
@@ -767,25 +861,36 @@
                   <lips>red</lips>
                   <pose>running away</pose>
                   <facing>right</facing>
+                  <horizontal>little more</horizontal>
                </figure>
                <balloon status="speech">
-                  <content>I'm out of here!</content>
+                  <content>I have to get out of here!</content>
                </balloon>
             </left>
+            <middle>
+               <figure>
+                  <appearance>default</appearance>
+                  <skin>default</skin>
+                  <hair>default</hair>
+                  <pose>wheelchair prop</pose>
+                  <facing>right</facing>
+               </figure>
+            </middle>
             <right>
                <figure>
                   <id>Betty</id>
                   <name>Betty</name>
                   <appearance>female</appearance>
-                  <pose>swinging bat</pose>
+                  <pose>experimenting</pose>
                   <facing>left</facing>
+                  <horizontal>little less</horizontal>
                </figure>
                <balloon status="speech">
-                  <content>You’re going to pay for that!</content>
+                  <content>You can't escape my little games!</content>
                </balloon>
             </right>
-            <setting>sports field</setting>
-            <below>Alfie runs away while Betty swings her bat angrily over her head.</below>
+            <setting>hospital</setting>
+            <below>Alfie is running away in the hospital interior, Betty is cackling cynically in the background, and there is an empty wheelchair in the middle.</below>
          </panel>
          <panel>
             <left>
@@ -798,25 +903,36 @@
                   <lips>red</lips>
                   <pose>running away</pose>
                   <facing>right</facing>
+                  <horizontal>little more</horizontal>
                </figure>
                <balloon status="speech">
-                  <content>Me ne vado!</content>
+                  <content>Devo uscire di qui!</content>
                </balloon>
             </left>
+            <middle>
+               <figure>
+                  <appearance>default</appearance>
+                  <skin>default</skin>
+                  <hair>default</hair>
+                  <pose>wheelchair prop</pose>
+                  <facing>right</facing>
+               </figure>
+            </middle>
             <right>
                <figure>
                   <id>Betty</id>
                   <name>Betty</name>
                   <appearance>female</appearance>
-                  <pose>swinging bat</pose>
+                  <pose>experimenting</pose>
                   <facing>left</facing>
+                  <horizontal>little less</horizontal>
                </figure>
                <balloon status="speech">
-                  <content>Pagherai per questo!</content>
+                  <content>Non puoi scappare dai miei giochini!</content>
                </balloon>
             </right>
-            <setting>sports field</setting>
-            <below>Alfie scappa mentre Betty colpisce la sua mazza con rabbia sopra la testa.</below>
+            <setting>hospital</setting>
+            <below>Alfie sta scappando nell'interno dell'ospedale, Betty ridacchiando cinicamente sullo sfondo, e c'è una sedia a rotelle vuota in mezzo.</below>
          </panel>
       </scene>
    </scenes>

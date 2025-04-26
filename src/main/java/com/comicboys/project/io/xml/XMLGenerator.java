@@ -47,7 +47,7 @@ public class XMLGenerator {
     public NodeList generateXML(int rowIndex, String filePath) {
         StringEntry selectedRow = mappings.getEntries().get(rowIndex).toStringEntry();
 
-        consistentBackground = selectedRow.getBackgrounds();
+        consistentBackground = selectedRow.getBackgrounds() != null ? selectedRow.getBackgrounds() : "";
         try {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
@@ -129,9 +129,11 @@ public class XMLGenerator {
 
     private Element createPanelWithLeftCharacterAndBalloon(Document doc, String text, String pose) {
         Element panel = doc.createElement("panel");
-        panel.appendChild(createLeftCharacterElement(doc, pose));
-        createBalloon(doc, panel, text);
-//        panel.appendChild(createBalloon(doc, text));
+        Element left = createLeftCharacterElement(doc, pose);
+        if (!text.isEmpty()) {
+            createBalloon(doc, left, text);  // Add balloon to left element
+        }
+        panel.appendChild(left);
         panel.appendChild(createBackgroundSettingElement(doc));
         return panel;
     }
@@ -145,40 +147,78 @@ public class XMLGenerator {
 
     private Element createPanelWithRightCharacterAndBalloon(Document doc, String text, String pose) {
         Element panel = doc.createElement("panel");
-        panel.appendChild(createRightCharacterElement(doc, pose));
-        createBalloon(doc, panel, text);
+        Element right = createRightCharacterElement(doc, pose);
+        if (!text.isEmpty()) {
+            createBalloon(doc, right, text);  // Add balloon to right element
+        }
+        panel.appendChild(right);
         panel.appendChild(createBackgroundSettingElement(doc));
         return panel;
     }
 
-    private Element createPanelWithBothCharacters(Document doc, String leftText, String rightText, String leftPose, String rightPose) {
+    private Element createPanelWithBothCharacters(Document doc, String leftText, String rightText,
+                                                  String leftPose, String rightPose) {
         Element panel = doc.createElement("panel");
-        Element both = doc.createElement("both");
 
-//        both.appendChild(createLeftCharacterElement(doc, null));
+        // Create left character with balloon
         Element left = createLeftCharacterElement(doc, leftPose);
-//        both.appendChild(createRightCharacterElement(doc, null));
-        Element right = createRightCharacterElement(doc, rightPose);
-
-        createBalloon(doc, left, leftText);
-        createBalloon(doc, right, rightText);
-
+        if (!leftText.isEmpty()) {
+            createBalloon(doc, left, leftText);
+        }
         panel.appendChild(left);
+
+        // Create right character with balloon
+        Element right = createRightCharacterElement(doc, rightPose);
+        if (!rightText.isEmpty()) {
+            createBalloon(doc, right, rightText);
+        }
         panel.appendChild(right);
+
+        // Add setting
         panel.appendChild(createBackgroundSettingElement(doc));
+
         return panel;
     }
 
     private Element createLeftCharacterElement(Document doc, String pose) {
         Element left = doc.createElement("left");
         Element leftFigure = doc.createElement("figure");
+
+        // Add character details
+        Element id = doc.createElement("id");
+        id.appendChild(doc.createTextNode("Alfie"));
+        leftFigure.appendChild(id);
+
+        Element name = doc.createElement("name");
+        name.appendChild(doc.createTextNode("Alfie"));
+        leftFigure.appendChild(name);
+
+        Element appearance = doc.createElement("appearance");
+        appearance.appendChild(doc.createTextNode("male"));
+        leftFigure.appendChild(appearance);
+
+        Element skin = doc.createElement("skin");
+        skin.appendChild(doc.createTextNode("light brown"));
+        leftFigure.appendChild(skin);
+
+        Element hair = doc.createElement("hair");
+        hair.appendChild(doc.createTextNode("dark brown"));
+        leftFigure.appendChild(hair);
+
+        Element lips = doc.createElement("lips");
+        lips.appendChild(doc.createTextNode("red"));
+        leftFigure.appendChild(lips);
+
+        // Add pose and facing
         String leftPose = pose != null ? getValidPose(pose) : "default";
         Element leftPoseElement = doc.createElement("pose");
         leftPoseElement.appendChild(doc.createTextNode(leftPose));
         leftFigure.appendChild(leftPoseElement);
+
         Element leftFacing = doc.createElement("facing");
         leftFacing.appendChild(doc.createTextNode("right"));
         leftFigure.appendChild(leftFacing);
+
         left.appendChild(leftFigure);
         return left;
     }
@@ -186,31 +226,50 @@ public class XMLGenerator {
     private Element createRightCharacterElement(Document doc, String pose) {
         Element right = doc.createElement("right");
         Element rightFigure = doc.createElement("figure");
+
+        // Add character details
+        Element id = doc.createElement("id");
+        id.appendChild(doc.createTextNode("Betty"));
+        rightFigure.appendChild(id);
+
+        Element name = doc.createElement("name");
+        name.appendChild(doc.createTextNode("Betty"));
+        rightFigure.appendChild(name);
+
+        Element appearance = doc.createElement("appearance");
+        appearance.appendChild(doc.createTextNode("female"));
+        rightFigure.appendChild(appearance);
+
+        // Add pose and facing
         String rightPose = pose != null ? getValidPose(pose) : "default";
         Element rightPoseElement = doc.createElement("pose");
         rightPoseElement.appendChild(doc.createTextNode(rightPose));
         rightFigure.appendChild(rightPoseElement);
+
         Element rightFacing = doc.createElement("facing");
         rightFacing.appendChild(doc.createTextNode("left"));
         rightFigure.appendChild(rightFacing);
+
         right.appendChild(rightFigure);
         return right;
     }
 
-    void createBalloon(Document doc, Element panel, String text) {
+    void createBalloon(Document doc, Element parentElement, String text) {
         if (!text.isEmpty()) {
             Element balloon = doc.createElement("balloon");
             balloon.setAttribute("status", "speech");
             Element content = doc.createElement("content");
             content.appendChild(doc.createTextNode(text));
             balloon.appendChild(content);
-            panel.appendChild(balloon);
+            parentElement.appendChild(balloon);
         }
     }
 
     Element createBackgroundSettingElement(Document doc) {
         Element setting = doc.createElement("setting");
-        setting.appendChild(doc.createTextNode(consistentBackground));
+        // Use empty string if consistentBackground is null
+        String background = consistentBackground != null ? consistentBackground : "";
+        setting.appendChild(doc.createTextNode(background));
         return setting;
     }
 

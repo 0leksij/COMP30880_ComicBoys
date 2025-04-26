@@ -28,19 +28,6 @@
    <scenes>
       <scene>
          <panel>
-            <middle>
-               <figure>
-                  <id>Betty</id>
-                  <name>Betty</name>
-                  <appearance>female</appearance>
-                  <pose>zero</pose>
-                  <facing>right</facing>
-               </figure>
-            </middle>
-            <below>Scene 0</below>
-            <border>white</border>
-         </panel>
-         <panel>
             <left>
                <figure>
                   <id>Betty</id>
@@ -396,22 +383,6 @@
          </panel>
       </scene>
       <scene>
-         <panel>
-            <middle>
-               <figure>
-                  <id>Alfie</id>
-                  <name>Alfie</name>
-                  <appearance>male</appearance>
-                  <skin>light brown</skin>
-                  <hair>dark brown</hair>
-                  <lips>red</lips>
-                  <pose>one</pose>
-                  <facing>right</facing>
-               </figure>
-            </middle>
-            <below>Scene 1</below>
-            <border>white</border>
-         </panel>
          <panel>
             <middle>
                <figure>
@@ -830,19 +801,6 @@
                   <id>Betty</id>
                   <name>Betty</name>
                   <appearance>female</appearance>
-                  <pose>two</pose>
-                  <facing>right</facing>
-               </figure>
-            </middle>
-            <below>Scene 2</below>
-            <border>white</border>
-         </panel>
-         <panel>
-            <middle>
-               <figure>
-                  <id>Betty</id>
-                  <name>Betty</name>
-                  <appearance>female</appearance>
                   <pose>sipping</pose>
                   <facing>right</facing>
                </figure>
@@ -1247,22 +1205,6 @@
          </panel>
       </scene>
       <scene>
-         <panel>
-            <middle>
-               <figure>
-                  <id>Alfie</id>
-                  <name>Alfie</name>
-                  <appearance>male</appearance>
-                  <skin>light brown</skin>
-                  <hair>dark brown</hair>
-                  <lips>red</lips>
-                  <pose>three</pose>
-                  <facing>right</facing>
-               </figure>
-            </middle>
-            <below>Scene 3</below>
-            <border>white</border>
-         </panel>
          <panel>
             <middle>
                <figure>
@@ -1673,19 +1615,6 @@
          </panel>
       </scene>
       <scene>
-         <panel>
-            <middle>
-               <figure>
-                  <id>Betty</id>
-                  <name>Betty</name>
-                  <appearance>female</appearance>
-                  <pose>four</pose>
-                  <facing>right</facing>
-               </figure>
-            </middle>
-            <below>Scene 4</below>
-            <border>white</border>
-         </panel>
          <panel>
             <left>
                <figure>
@@ -2105,22 +2034,6 @@
       </scene>
       <scene>
          <panel>
-            <middle>
-               <figure>
-                  <id>Alfie</id>
-                  <name>Alfie</name>
-                  <appearance>male</appearance>
-                  <skin>light brown</skin>
-                  <hair>dark brown</hair>
-                  <lips>red</lips>
-                  <pose>five</pose>
-                  <facing>right</facing>
-               </figure>
-            </middle>
-            <below>Scene 5</below>
-            <border>white</border>
-         </panel>
-         <panel>
             <left>
                <figure>
                   <id>Betty</id>
@@ -2528,19 +2441,6 @@
          </panel>
       </scene>
       <scene>
-         <panel>
-            <middle>
-               <figure>
-                  <id>Betty</id>
-                  <name>Betty</name>
-                  <appearance>female</appearance>
-                  <pose>six</pose>
-                  <facing>right</facing>
-               </figure>
-            </middle>
-            <below>Scene 6</below>
-            <border>white</border>
-         </panel>
          <panel>
             <left>
                <figure>

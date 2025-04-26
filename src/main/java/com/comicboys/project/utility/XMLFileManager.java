@@ -30,7 +30,6 @@ public interface XMLFileManager {
     static void separateMultipleSpeechPanels(Document doc) { XMLPanelSplitter.separateMultipleSpeechPanels(doc); }
 
     static Document createFile(String filePath) {
-        // create base file
         try {
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
@@ -41,15 +40,63 @@ public interface XMLFileManager {
 
             Element figuresElement = doc.createElement("figures");
             comicElement.appendChild(figuresElement);
+
+            // Add default figures
+            addDefaultFigure(doc, figuresElement, "Alfie", "male", "light brown", "dark brown", "red");
+            addDefaultFigure(doc, figuresElement, "Betty", "female", null, null, null);
+            addDefaultFigure(doc, figuresElement, "Gemma", "female", "olive", "black", null);
+
             Element scenesElement = doc.createElement("scenes");
             comicElement.appendChild(scenesElement);
 
             return doc;
         } catch (Exception e) {
-            System.out.println("Error: File in path " + filePath + " does not exist or failed to load");
+            System.out.println("Error creating file: " + e.getMessage());
             e.printStackTrace();
             return null;
         }
+    }
+
+    private static void addDefaultFigure(Document doc, Element figuresElement,
+                                         String id, String appearance,
+                                         String skin, String hair, String lips) {
+        Element figure = doc.createElement("figure");
+
+        Element idElement = doc.createElement("id");
+        idElement.appendChild(doc.createTextNode(id));
+        figure.appendChild(idElement);
+
+        Element nameElement = doc.createElement("name");
+        nameElement.appendChild(doc.createTextNode(id)); // Using id as name
+        figure.appendChild(nameElement);
+
+        Element appearanceElement = doc.createElement("appearance");
+        appearanceElement.appendChild(doc.createTextNode(appearance));
+        figure.appendChild(appearanceElement);
+
+        if (skin != null) {
+            Element skinElement = doc.createElement("skin");
+            skinElement.appendChild(doc.createTextNode(skin));
+            figure.appendChild(skinElement);
+        }
+
+        if (hair != null) {
+            Element hairElement = doc.createElement("hair");
+            hairElement.appendChild(doc.createTextNode(hair));
+            figure.appendChild(hairElement);
+        }
+
+        if (lips != null) {
+            Element lipsElement = doc.createElement("lips");
+            lipsElement.appendChild(doc.createTextNode(lips));
+            figure.appendChild(lipsElement);
+        }
+
+        Element facingElement = doc.createElement("facing");
+        facingElement.appendChild(doc.createTextNode("right"));
+        figure.appendChild(facingElement);
+
+        figuresElement.appendChild(figure);
     }
     // methods for adding nodes
     static void insertFirstChild(Node node, Node newChild) { XMLNodeInserter.insertFirstChild(node, newChild); }

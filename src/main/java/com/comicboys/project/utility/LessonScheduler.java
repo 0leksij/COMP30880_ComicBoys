@@ -14,6 +14,55 @@ public class LessonScheduler {
         this.doc = doc;
         this.xmlGenerator = xmlGenerator;
         this.lessonSchedule = lessonSchedule;
+        ensureFiguresExist();
+    }
+
+    private void ensureFiguresExist() {
+        NodeList figuresList = doc.getElementsByTagName("figures");
+        if (figuresList.getLength() == 0 || !figuresList.item(0).hasChildNodes()) {
+            initializeDefaultFigures();
+        }
+    }
+
+    private void initializeDefaultFigures() {
+        Element figuresElement = (Element) doc.getElementsByTagName("figures").item(0);
+        if (figuresElement == null) {
+            figuresElement = doc.createElement("figures");
+            doc.getDocumentElement().insertBefore(figuresElement,
+                    doc.getElementsByTagName("scenes").item(0));
+        }
+
+        // Clear any existing figures
+        while (figuresElement.hasChildNodes()) {
+            figuresElement.removeChild(figuresElement.getFirstChild());
+        }
+
+        // Add default figures
+        addFigure("Alfie", "male", "light brown", "dark brown", "red");
+        addFigure("Betty", "female", null, null, null);
+        addFigure("Gemma", "female", "olive", "black", null);
+    }
+
+    private void addFigure(String id, String appearance, String skin, String hair, String lips) {
+        Element figuresElement = (Element) doc.getElementsByTagName("figures").item(0);
+        Element figure = doc.createElement("figure");
+
+        addTextElement(figure, "id", id);
+        addTextElement(figure, "name", id);
+        addTextElement(figure, "appearance", appearance);
+
+        if (skin != null) addTextElement(figure, "skin", skin);
+        if (hair != null) addTextElement(figure, "hair", hair);
+        if (lips != null) addTextElement(figure, "lips", lips);
+
+        addTextElement(figure, "facing", "right");
+        figuresElement.appendChild(figure);
+    }
+
+    private void addTextElement(Element parent, String tagName, String textContent) {
+        Element element = doc.createElement(tagName);
+        element.appendChild(doc.createTextNode(textContent));
+        parent.appendChild(element);
     }
 
     public void runLessons(String testPath, String storyPath, String conjugationPath) {

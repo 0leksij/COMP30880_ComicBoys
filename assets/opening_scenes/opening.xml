@@ -1,0 +1,15 @@
+<panel>
+    <middle>
+        <figure>
+            <id>Betty</id>
+            <name>Betty</name>
+            <appearance>female</appearance>
+            <pose>zero</pose>
+            <facing>right</facing>
+        </figure>
+    </middle>
+
+    <below>Scene 0</below>
+
+    <border>white</border>
+</panel>
