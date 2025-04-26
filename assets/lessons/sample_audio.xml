@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<comic>
+   <scenes>
+      <scene>
+         <panel>
+            <left>
+               <figure>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>male</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>ten</pose>
+                  <facing>right</facing>
+               </figure>
+            </left>
+            <setting>falling leaves</setting>
+         </panel>
+         <panel>
+            <left>
+               <figure>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>male</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>ten</pose>
+                  <facing>right</facing>
+               </figure>
+               <balloon status="speech">
+                  <content>october</content>
+               </balloon>
+            </left>
+            <setting>falling leaves</setting>
+            <audio>46.mp3</audio>
+         </panel>
+         <panel>
+            <right>
+               <figure>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
+                  <pose>regaining consciousness</pose>
+                  <facing>left</facing>
+               </figure>
+            </right>
+            <setting>falling leaves</setting>
+         </panel>
+         <panel>
+            <right>
+               <figure>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
+                  <pose>prepared</pose>
+                  <facing>left</facing>
+               </figure>
+               <balloon status="speech">
+                  <content>ottobre</content>
+               </balloon>
+            </right>
+            <setting>falling leaves</setting>
+            <audio>47.mp3</audio>
+         </panel>
+         <panel>
+            <left>
+               <figure>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>male</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>ten</pose>
+                  <facing>right</facing>
+               </figure>
+               <balloon status="speech">
+                  <content>october</content>
+               </balloon>
+            </left>
+            <right>
+               <figure>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
+                  <pose>blowing balloon</pose>
+                  <facing>left</facing>
+               </figure>
+            </right>
+            <setting>falling leaves</setting>
+            <audio>46.mp3</audio>
+         </panel>
+         <panel>
+            <left>
+               <figure>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>male</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>ten</pose>
+                  <facing>right</facing>
+               </figure>
+            </left>
+            <right>
+               <figure>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
+                  <pose>blowing balloon</pose>
+                  <facing>left</facing>
+               </figure>
+               <balloon status="speech">
+                  <content>ottobre</content>
+               </balloon>
+            </right>
+            <setting>falling leaves</setting>
+            <audio>47.mp3</audio>
+         </panel>
+      </scene>
+   </scenes>
+</comic>
