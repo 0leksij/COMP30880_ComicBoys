@@ -13,15 +13,10 @@ import org.w3c.dom.Document;
 import java.util.Random;
 
 public class Main {
-
     public static Random random = new Random();
-    private static String[] LESSON_SCHEDULE;
-    private static final String OPENING_SCENES_PATH = "assets/opening_scenes/opening.xml";
-    private static final String TEST_PATH = "assets/mappings/test/test.xml";
 
     public static void main(String[] args) {
-
-        // Load basic configuration and mappings
+        // Creating config and core components
         ConfigurationFile config = new ConfigurationFile();
         MappingsFileReader mappingsFileReader = new MappingsFileReader();
         Mappings mappings = mappingsFileReader.getMappings();
@@ -29,27 +24,20 @@ public class Main {
         TranslationGenerator translationGenerator = new TranslationGenerator(config, client, mappings);
         XMLGenerator xmlGenerator = new XMLGenerator(mappings, translationGenerator);
 
-        // Create the output document
-        Document doc = XMLFileManager.createFile("assets/mappings/test/base.xml");
-
-        // Prepare lesson scheduling
-        LESSON_SCHEDULE = config.getProperty("LESSON_SCHEDULE").split(",");
-        LessonScheduler scheduler = new LessonScheduler(doc, xmlGenerator, LESSON_SCHEDULE);
-
-        // Add opening scenes
-//        scheduler.addOpeningScenes(OPENING_SCENES_PATH);
-
-        // Generate lesson scenes
         String sourceLang = config.getProperty("SOURCE_LANGUAGE").toLowerCase();
         String targetLang = config.getProperty("TARGET_LANGUAGE").toLowerCase();
-        String storyPath = "assets/story/" + sourceLang + "-to-" + targetLang + "-story.xml";
-        String conjugationPath = "assets/conjugations/" + sourceLang + "-to-" + targetLang + "-conjugation.xml";
+        final String testPath = "assets/mappings/test/test.xml";
+        final String storyPath = "assets/story/" + sourceLang + "-to-" + targetLang + "-story.xml";
+        final String conjugationPath = "assets/conjugations/" + sourceLang + "-to-" + targetLang + "-conjugation.xml";
 
-        scheduler.runLessons(TEST_PATH, storyPath, conjugationPath);
+        // Preparing the lesson schedule
+        String[] lessonSchedule = config.getProperty("LESSON_SCHEDULE").split(",");
+        Document doc = XMLFileManager.createFile("assets/mappings/test/base.xml");
 
-        // Save everything into the final XML
-        XMLFileManager.saveXMLToFile(doc, TEST_PATH);
+        LessonScheduler scheduler = new LessonScheduler(doc, xmlGenerator, lessonSchedule);
+        scheduler.runLessons(testPath, storyPath, conjugationPath);
 
-        System.out.println("Generation complete! XML saved to: " + TEST_PATH);
+        // Saving the final result
+        XMLFileManager.saveXMLToFile(doc, testPath);
     }
 }

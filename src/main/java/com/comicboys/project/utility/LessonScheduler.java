@@ -1,72 +1,30 @@
 package com.comicboys.project.utility;
 
 import com.comicboys.project.io.xml.XMLGenerator;
-import org.w3c.dom.*;
+import com.comicboys.project.utility.XMLFileManager;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 public class LessonScheduler {
 
     private final Document doc;
     private final XMLGenerator xmlGenerator;
     private final String[] lessonSchedule;
-    private int currentSceneNumber = 0; // Keep track of scene numbering
+    private int sceneCounter = 0; // Tracks total scenes
 
     public LessonScheduler(Document doc, XMLGenerator xmlGenerator, String[] lessonSchedule) {
         this.doc = doc;
         this.xmlGenerator = xmlGenerator;
         this.lessonSchedule = lessonSchedule;
-        ensureFiguresExist();
-    }
-
-    private void ensureFiguresExist() {
-        NodeList figuresList = doc.getElementsByTagName("figures");
-        if (figuresList.getLength() == 0 || !figuresList.item(0).hasChildNodes()) {
-            initializeDefaultFigures();
-        }
-    }
-
-    private void initializeDefaultFigures() {
-        Element figuresElement = (Element) doc.getElementsByTagName("figures").item(0);
-        if (figuresElement == null) {
-            figuresElement = doc.createElement("figures");
-            doc.getDocumentElement().insertBefore(figuresElement,
-                    doc.getElementsByTagName("scenes").item(0));
-        }
-
-        // Clear any existing figures
-        while (figuresElement.hasChildNodes()) {
-            figuresElement.removeChild(figuresElement.getFirstChild());
-        }
-
-        // Add default figures
-        addFigure("Alfie", "male", "light brown", "dark brown", "red");
-        addFigure("Betty", "female", null, null, null);
-        addFigure("Gemma", "female", "olive", "black", null);
-    }
-
-    private void addFigure(String id, String appearance, String skin, String hair, String lips) {
-        Element figuresElement = (Element) doc.getElementsByTagName("figures").item(0);
-        Element figure = doc.createElement("figure");
-
-        addTextElement(figure, "id", id);
-        addTextElement(figure, "name", id);
-        addTextElement(figure, "appearance", appearance);
-
-        if (skin != null) addTextElement(figure, "skin", skin);
-        if (hair != null) addTextElement(figure, "hair", hair);
-        if (lips != null) addTextElement(figure, "lips", lips);
-
-        addTextElement(figure, "facing", "right");
-        figuresElement.appendChild(figure);
-    }
-
-    private void addTextElement(Element parent, String tagName, String textContent) {
-        Element element = doc.createElement(tagName);
-        element.appendChild(doc.createTextNode(textContent));
-        parent.appendChild(element);
     }
 
     public void runLessons(String testPath, String storyPath, String conjugationPath) {
         for (final String currentLesson : lessonSchedule) {
+            // Insert intro panel at the start of each lesson
+            insertIntroPanel(sceneCounter);
+
             switch (currentLesson) {
                 case "left" -> generateLeftTextScene(testPath);
                 case "whole", "combined" -> generateCombinedTextScene(testPath);
@@ -77,21 +35,20 @@ public class LessonScheduler {
         }
     }
 
-    public void addOpeningScenes(String openingScenesPath) {
-        Document openingDoc = XMLFileManager.loadXMLFromFile(openingScenesPath);
-        NodeList openingScenes = openingDoc.getElementsByTagName("scene");
+    private void insertIntroPanel(int sceneNumber) {
+        Element panel = doc.createElement("panel");
 
-        for (int i = 0; i < openingScenes.getLength(); i++) {
-            Node importedScene = doc.importNode(openingScenes.item(i), true);
+        Element below = doc.createElement("below");
+        below.setTextContent("Scene " + sceneNumber);
+        panel.appendChild(below);
 
-            if (importedScene.getNodeType() == Node.ELEMENT_NODE) {
-                Element sceneElement = (Element) importedScene;
-                // Set or override the scene number
-                sceneElement.setAttribute("number", String.valueOf(currentSceneNumber++));
-            }
+        Element border = doc.createElement("border");
+        border.setTextContent("white");
+        panel.appendChild(border);
 
-            XMLFileManager.appendScenes(doc, importedScene);
-        }
+        XMLFileManager.appendScenes(doc, panel);
+
+        sceneCounter++; // increment after intro panel
     }
 
     private void generateLeftTextScene(String filePath) {
@@ -101,6 +58,7 @@ public class LessonScheduler {
             return;
         }
         XMLFileManager.appendScenes(doc, scenes);
+        sceneCounter += scenes.getLength();
     }
 
     private void generateCombinedTextScene(String filePath) {
@@ -110,17 +68,13 @@ public class LessonScheduler {
             return;
         }
         XMLFileManager.appendScenes(doc, scenes);
+        sceneCounter += scenes.getLength();
     }
 
     private void appendScene(String filePath) {
         Document inputDoc = XMLFileManager.loadXMLFromFile(filePath);
         Node scene = XMLFileManager.extractRandomSceneElement(inputDoc);
-
-        if (scene.getNodeType() == Node.ELEMENT_NODE) {
-            Element sceneElement = (Element) scene;
-            sceneElement.setAttribute("number", String.valueOf(currentSceneNumber++));
-        }
-
         XMLFileManager.appendScenes(doc, scene);
+        sceneCounter++;
     }
 }
