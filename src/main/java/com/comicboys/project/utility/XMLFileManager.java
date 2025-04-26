@@ -130,9 +130,9 @@ public interface XMLFileManager {
             fileWriter.write(xmlContent);
             fileWriter.close();
 
+            System.out.println("XML saved successfully to: " + filePath);
             return true;
 
-//            System.out.println("XML saved successfully to: " + filePath);
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("Error saving XML file.");
