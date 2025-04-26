@@ -26,16 +26,17 @@ public class Main {
         APIClient client = new APIClient(config);
         TranslationGenerator translationGenerator = new TranslationGenerator(config, client, mappings);
         XMLGenerator xmlGenerator = new XMLGenerator(mappings, translationGenerator);
+        String sourceLang = config.getProperty("SOURCE_LANGUAGE").toLowerCase();
+        String targetLang = config.getProperty("TARGET_LANGUAGE").toLowerCase();
         final String testPath = "assets/mappings/test/test.xml";
-        final String storyPath = "assets/story/english-to-italian-story1.xml";
-        final String conjugationPath = "assets/blueprint/english-to-italian-conjugation-lesson.xml";
+        final String storyPath = "assets/story/" + sourceLang + "-to-" + targetLang +"-story.xml";
+        final String conjugationPath = "assets/conjugations/" + sourceLang + "-to-" + targetLang +"-conjugation.xml";
 
         System.out.println(config.getProperty("LESSON_SCHEDULE"));
         LESSON_SCHEDULE = config.getProperty("LESSON_SCHEDULE").split(",");
-        for (int i = 0; i < LESSON_SCHEDULE.length; i++) {
-            final String currentLesson = LESSON_SCHEDULE[i];
+        for (final String currentLesson : LESSON_SCHEDULE) {
             // different possible lessons user can choose
-            switch (currentLesson){
+            switch (currentLesson) {
                 case "left" -> generateLeftTextScene(xmlGenerator, testPath);
                 case "whole", "combined" -> generateCombinedTextScene(xmlGenerator, testPath);
                 case "conjugation" -> appendScene(conjugationPath);
@@ -68,8 +69,6 @@ public class Main {
         Node scene = XMLFileManager.extractRandomSceneElement(inputDoc);
         XMLFileManager.appendScenes(doc,scene);
     }
-
-
 
     private static void appendScenes(NodeList scenes, String filePath) {
         XMLFileManager.appendScenes(doc, scenes);

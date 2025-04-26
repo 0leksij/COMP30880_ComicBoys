@@ -15,11 +15,11 @@ import javax.xml.transform.stream.StreamResult;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.StringWriter;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public interface XMLFileManager {
 
+    static final Set<String> usedSceneHashes = new HashSet<>();
 
     // get directory folder is in
     static String getFileDirectory(String filePath) {
@@ -132,19 +132,55 @@ public interface XMLFileManager {
      * @return The randomly selected scene node, or null if no scenes found
      */
     static Node extractRandomSceneElement(Document doc) {
+
+        Random random = new Random();
         NodeList scenes = selectElements(doc, "scene");
         if (scenes.getLength() == 0) {
             return null;
         }
 
-        Random random = new Random();
-        int randomIndex;
+        // Build list of available (unused) scenes
+        List<Node> availableScenes = new ArrayList<>();
+        for (int i = 0; i < scenes.getLength(); i++) {
+            Node scene = scenes.item(i);
+            if (scene.getNodeType() == Node.ELEMENT_NODE) {
+                String sceneHash = generateSceneHash(scene);
+                if (!usedSceneHashes.contains(sceneHash)) {
+                    availableScenes.add(scene);
+                }
+            }
+        }
 
-        do {
-            randomIndex = random.nextInt(scenes.getLength());
-        }while (scenes.item(randomIndex).getNodeType() != Node.ELEMENT_NODE);
+        if (availableScenes.isEmpty()) {
+            System.out.println("All scenes have been used");
+            return null;
+        }
 
-        return scenes.item(randomIndex).cloneNode(true);
+        // Select random scene from available ones
+        Node selectedScene = availableScenes.get(random.nextInt(availableScenes.size()));
+        usedSceneHashes.add(generateSceneHash(selectedScene));
+
+        return selectedScene.cloneNode(true);
+    }
+
+    private static String generateSceneHash(Node scene) {
+        StringBuilder sb = new StringBuilder();
+        NodeList children = scene.getChildNodes();
+        for (int i = 0; i < children.getLength(); i++) {
+            Node child = children.item(i);
+            if (child.getNodeType() == Node.ELEMENT_NODE) {
+                sb.append(child.getNodeName());
+                sb.append(child.getTextContent());
+            }
+        }
+        return sb.toString();
+    }
+
+    /**
+     * Resets the tracking of used scenes
+     */
+    public static void resetSceneTracking() {
+        usedSceneHashes.clear();
     }
 
 
@@ -191,7 +227,7 @@ public interface XMLFileManager {
 
     public static void main(String[] args) {
 
-        String sourceFilePath = "assets/story/english-to-italian-story.xml";
+        String sourceFilePath = "assets/story/test/test_story.xml";
         Document doc = XMLFileManager.loadXMLFromFile(sourceFilePath);
         Node randomScene = XMLFileManager.extractRandomSceneElement(doc);
 
@@ -204,27 +240,10 @@ public interface XMLFileManager {
         assert randomScene != null;
         XMLFileManager.insertFirstChild(randomScene, sceneIntroduction);
         XMLFileManager.appendScenes(doc, randomScene);
-//        // add group of figure elements selected to the document
-//        XMLFileManager.appendScenes(doc, figureScenes);
 
         XMLFileManager.saveXMLToFile(doc, "assets/mappings/test/test-insert.xml");
 
 
-//        String sourceFilePath = "assets/story/audio_test/story_two_scenes_mixed_balloons.xml";
-//        Document doc = XMLFileManager.loadXMLFromFile(sourceFilePath);
-//        Node randomScene = XMLFileManager.extractRandomSceneElement(doc);
-//
-//        if (randomScene != null) {
-//            System.out.println("Successfully extracted random scene element");
-//            // Create a new document to hold just the scene
-//            Document newDoc = XMLFileManager.createFile("assets/blueprint/test/temp.xml");
-//            appendScene(newDoc, randomScene);
-//
-//            // Save just the scene
-//            XMLFileManager.saveXMLToFile(newDoc, "assets/mappings/test/test_with_random_scene.xml");
-//        } else {
-//            System.out.println("Failed to extract random scene");
-//        }
     }
 
 
