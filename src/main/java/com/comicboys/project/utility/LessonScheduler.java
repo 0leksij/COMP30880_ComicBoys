@@ -5,6 +5,8 @@ import com.comicboys.project.client.APIClient;
 import com.comicboys.project.data.Mappings;
 import com.comicboys.project.io.config.ConfigurationFile;
 import com.comicboys.project.io.config.MappingsFileReader;
+import com.comicboys.project.io.conjugation.ConjugationGenerator;
+import com.comicboys.project.io.story.StoryGenerator;
 import com.comicboys.project.io.translate.TranslationGenerator;
 import com.comicboys.project.io.xml.XMLAudioInserter;
 import com.comicboys.project.io.xml.XMLGenerator;
@@ -14,6 +16,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import java.io.File;
 import java.util.Map;
 import java.util.Objects;
 
@@ -52,17 +55,29 @@ public class LessonScheduler {
     // method that specifies target path (for testing)
     public static void generateCompleteLesson(ConfigurationFile config, String targetPath) {
         try {
-            // 1. Initialize components
+            // 1. Initialize components and ensure conjugations and stories exist
             MappingsFileReader mappingsFileReader = new MappingsFileReader();
             Mappings mappings = mappingsFileReader.getMappings();
             APIClient client = new APIClient(config);
             TranslationGenerator translationGenerator = new TranslationGenerator(config, client, mappings);
             XMLGenerator xmlGenerator = new XMLGenerator(mappings, translationGenerator);
+            ConjugationGenerator conjugationGenerator = new ConjugationGenerator();
+            StoryGenerator storyGenerator = new StoryGenerator(client);
 
             String sourceLang = config.getProperty("SOURCE_LANGUAGE").toLowerCase();
             String targetLang = config.getProperty("TARGET_LANGUAGE").toLowerCase();
+
             String storyPath = "assets/story/" + sourceLang + "-to-" + targetLang + "-story.xml";
             String conjugationPath = "assets/conjugations/" + sourceLang + "-to-" + targetLang + "-conjugation.xml";
+
+            File f;
+
+            f = new File(conjugationPath);
+            if (!f.exists()) conjugationGenerator.generateConjugationLesson();
+
+            f = new File(storyPath);
+            if (!f.exists()) storyGenerator.generateStoryXML();
+
 
             Document doc = XMLFileManager.createFile("assets/mappings/test/base.xml");
             String[] lessonSchedule = config.getProperty("LESSON_SCHEDULE").split(",");
@@ -81,7 +96,7 @@ public class LessonScheduler {
 
 
             // 5. Generate audio (if specified) from our no audio output file
-            if (Objects.equals(config.getProperty("GENERATE_AUDIO"), "true")) {
+            if (Objects.equals(config.getProperty("GENERATE_AUDIO").toLowerCase(), "true")) {
                 AudioGenerator audioGenerator = new AudioGenerator(config);
                 audioGenerator.generateAudioFromXML(doc);
 
