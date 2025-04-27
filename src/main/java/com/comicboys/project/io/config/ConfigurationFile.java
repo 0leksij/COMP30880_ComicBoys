@@ -24,7 +24,19 @@ public class ConfigurationFile {
                     setProperty("LESSON_SCHEDULE", getProperty("LESSON_SCHEDULE").toLowerCase().replace(" ",""));
                 }
             } catch (NullPointerException e) {
-                System.out.println("\nLesson Schedule failed to load");
+                System.out.println("\nLesson Schedule config property failed to load");
+            }
+            try {
+
+                // ensure whether audio is generated is defined or if is set to true
+                if (getProperty("GENERATE_AUDIO") == null || !Objects.equals(getProperty("GENERATE_AUDIO").toLowerCase(), "true")) {
+                    setProperty("GENERATE_AUDIO", "false");
+                } else {
+                    // otherwise make sure is lower-case
+                    setProperty("GENERATE_AUDIO", getProperty("GENERATE_AUDIO").toLowerCase());
+                }
+            } catch (NullPointerException e) {
+                System.out.println("\nGenerate Audio config property failed to load");
             }
         } catch (IOException e) {
             System.out.println("\nFailed to read config file from path: " + configFilePath + "\nCheck if config.properties is missing");

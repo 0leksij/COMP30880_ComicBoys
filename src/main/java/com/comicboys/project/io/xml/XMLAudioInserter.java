@@ -41,7 +41,7 @@ public class XMLAudioInserter extends Blueprint {
         String fileDirectory = XMLFileManager.getFileDirectory(getFilePath());
         String outputFilePath = fileDirectory + outputFileName; // use filename when saving
         XMLFileManager.saveXMLToFile(getFile(), outputFilePath);
-        System.out.println("\nXML with audio tags saved in: " + outputFilePath);
+        System.out.println("\nXML audio insertion completed!");
     }
     // for each scene
     private void addAudioForScenes(NodeList scenes) {

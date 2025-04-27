@@ -15,6 +15,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import java.util.Map;
+import java.util.Objects;
 
 public class LessonScheduler {
 
@@ -64,47 +65,32 @@ public class LessonScheduler {
             LessonScheduler scheduler = new LessonScheduler(doc, xmlGenerator, lessonSchedule);
             scheduler.runLessons(targetPath, storyPath, conjugationPath);
 
-            // 3. Split panels with multiple balloons
-            XMLPanelSplitter.separateMultipleSpeechPanels(doc);
-
-            // 4. Generate audio
-            AudioGenerator audioGenerator = new AudioGenerator(config);
-            audioGenerator.generateAudioFromXML(doc);
-
-            // 5. Insert audio tags into the existing document
-            insertAudioTags(doc, audioGenerator.getMap());
-
-            // 6. Add opening scene (as the final step)
+            // 3. Add opening scene
             scheduler.addOpeningScene();
 
-            // Save final result
+            // 4. Save final result (this one is the no audio version)
             XMLFileManager.saveXMLToFile(doc, targetPath);
+
             System.out.println("Lesson generation completed successfully!");
+
+
+            // 5. Generate audio (if specified) from our no audio output file
+            if (Objects.equals(config.getProperty("GENERATE_AUDIO"), "true")) {
+                AudioGenerator audioGenerator = new AudioGenerator(config);
+                audioGenerator.generateAudioFromXML(doc);
+
+                // 6. Insert generated audio into our new output file (this one has audio)
+                String fileName = sourceLang + "-to-" + targetLang + "-full-lesson-with-audio.xml";
+                XMLAudioInserter audioFile = new XMLAudioInserter(targetPath, audioGenerator.getMap(), fileName);
+                audioFile.insertAudio();
+
+                System.out.println("Lesson with audio generation completed successfully!");
+            }
+
 
         } catch (Exception e) {
             System.err.println("Error generating complete lesson: " + e.getMessage());
             e.printStackTrace();
-        }
-    }
-
-    private static void insertAudioTags(Document doc, Map<String, String> audioFileMap) {
-        NodeList balloons = doc.getElementsByTagName("balloon");
-        for (int i = 0; i < balloons.getLength(); i++) {
-            Node balloon = balloons.item(i);
-            if (balloon.getNodeType() == Node.ELEMENT_NODE) {
-                Node panel = balloon.getParentNode().getParentNode(); // balloon -> figure -> panel
-                if (panel != null) {
-                    String balloonText = balloon.getTextContent().trim();
-                    if (!balloonText.isEmpty()) {
-                        String audioFileName = audioFileMap.get(balloonText);
-                        if (audioFileName != null) {
-                            Element audio = doc.createElement("audio");
-                            audio.setTextContent(audioFileName);
-                            panel.appendChild(audio);
-                        }
-                    }
-                }
-            }
         }
     }
 
