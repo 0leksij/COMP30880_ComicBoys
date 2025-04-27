@@ -71,4 +71,25 @@ class XMLFileManagerTest {
         Node nonExistent = XMLFileManager.validateElement(doc, "non-existent");
         assertNull(nonExistent);
     }
+
+    @Test
+    void testExtractRandomSceneElement() {
+        Document doc = XMLFileManager.loadXMLFromFile("assets/blueprint/specification.xml");
+        assertNotNull(doc, "Document should be loaded");
+
+        XMLFileManager.resetSceneTracking(); // reset in case other tests have modified it
+
+        Node randomScene = XMLFileManager.extractRandomSceneElement(doc);
+        assertNotNull(randomScene, "Should extract a random scene element");
+        assertEquals("scene", randomScene.getNodeName(), "Extracted node should be a <scene>");
+
+        // After extracting once, extracting again many times should eventually return null if scenes are exhausted
+        int safetyLimit = 100; // avoid infinite loops
+        while (randomScene != null && safetyLimit-- > 0) {
+            randomScene = XMLFileManager.extractRandomSceneElement(doc);
+        }
+
+        assertNull(randomScene, "Should return null when all scenes are exhausted");
+    }
+
 }

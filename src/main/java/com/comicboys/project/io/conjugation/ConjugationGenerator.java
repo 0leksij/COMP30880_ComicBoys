@@ -44,7 +44,7 @@ public class ConjugationGenerator {
         }
     }
 
-    private void removeFirstPanelFromEachScene(String filePath) {
+    void removeFirstPanelFromEachScene(String filePath) {
         try {
             Document doc = XMLFileManager.loadXMLFromFile(filePath);
             NodeList scenes = doc.getElementsByTagName("scene");
