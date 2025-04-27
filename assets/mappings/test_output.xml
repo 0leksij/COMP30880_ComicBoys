@@ -5,48 +5,72 @@
          <panel>
             <left>
                <figure>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>male</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
                   <pose>pose1</pose>
                   <facing>right</facing>
                </figure>
             </left>
-            <setting>background2</setting>
+            <setting>background1</setting>
          </panel>
          <panel>
             <left>
                <figure>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>male</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
                   <pose>pose1</pose>
                   <facing>right</facing>
                </figure>
+               <balloon status="speech">
+                  <content>text1</content>
+               </balloon>
             </left>
-            <balloon status="speech">
-               <content>text1</content>
-            </balloon>
-            <setting>background2</setting>
+            <setting>background1</setting>
          </panel>
          <panel>
             <right>
                <figure>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
                   <pose>pose1</pose>
                   <facing>left</facing>
                </figure>
             </right>
-            <setting>background2</setting>
+            <setting>background1</setting>
          </panel>
          <panel>
             <right>
                <figure>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
                   <pose>pose1</pose>
                   <facing>left</facing>
                </figure>
+               <balloon status="speech">
+                  <content>testo1</content>
+               </balloon>
             </right>
-            <balloon status="speech">
-               <content>testo1</content>
-            </balloon>
-            <setting>background2</setting>
+            <setting>background1</setting>
          </panel>
          <panel>
             <left>
                <figure>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>male</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
                   <pose>pose1</pose>
                   <facing>right</facing>
                </figure>
@@ -56,6 +80,9 @@
             </left>
             <right>
                <figure>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
                   <pose>pose1</pose>
                   <facing>left</facing>
                </figure>
@@ -63,7 +90,7 @@
                   <content>testo1</content>
                </balloon>
             </right>
-            <setting>background2</setting>
+            <setting>background1</setting>
          </panel>
       </scene>
    </scenes>

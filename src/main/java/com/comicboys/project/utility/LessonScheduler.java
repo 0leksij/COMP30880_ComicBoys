@@ -42,8 +42,15 @@ public class LessonScheduler {
             }
         }
     }
-
-    public static void generateCompleteLesson(ConfigurationFile config) {
+    /* Static Factory Method:
+     *  every time this method is run, a new instance of LessonScheduler is created, once this method is done,
+     *  that instance is discarded
+     *  very similar to singleton, there is only at most one instance of LessonScheduler at any given time,
+     *  but in our case that instance is re-created each time generateCompleteLesson is called again, and it
+     *  only lasts the lifetime of the method call, where after it is discarded by Java GC (garbage collector)
+     */
+    // method that specifies target path (for testing)
+    public static void generateCompleteLesson(ConfigurationFile config, String targetPath) {
         try {
             // 1. Initialize components
             MappingsFileReader mappingsFileReader = new MappingsFileReader();
@@ -54,7 +61,6 @@ public class LessonScheduler {
 
             String sourceLang = config.getProperty("SOURCE_LANGUAGE").toLowerCase();
             String targetLang = config.getProperty("TARGET_LANGUAGE").toLowerCase();
-            String targetPath = "assets/lessons/" + sourceLang + "-to-" + targetLang + "-full-lesson.xml";
             String storyPath = "assets/story/" + sourceLang + "-to-" + targetLang + "-story.xml";
             String conjugationPath = "assets/conjugations/" + sourceLang + "-to-" + targetLang + "-conjugation.xml";
 
@@ -93,14 +99,26 @@ public class LessonScheduler {
             e.printStackTrace();
         }
     }
+    // method that defaults target path
+    public static void generateCompleteLesson(ConfigurationFile config) {
+        try {
+            String sourceLang = config.getProperty("SOURCE_LANGUAGE").toLowerCase();
+            String targetLang = config.getProperty("TARGET_LANGUAGE").toLowerCase();
+            String targetPath = "assets/lessons/" + sourceLang + "-to-" + targetLang + "-full-lesson.xml";
+            generateCompleteLesson(config, targetPath);
+        } catch (Exception e) {
+            System.err.println("Error generating complete lesson: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
 
     private void addOpeningScene() {
         try {
             // Create opening scene
             Element openingScene = doc.createElement("scene");
 
-            // Create special opening panel (scene number -1 for identification)
-            Node openingPanel = createOpeningPanel(-1);
+            // Create special opening panel
+            Node openingPanel = createOpeningPanel();
             openingScene.appendChild(openingPanel);
 
             // Insert the opening scene at the beginning
@@ -115,7 +133,7 @@ public class LessonScheduler {
         }
     }
 
-    private Node createOpeningPanel(int sceneNumber) {
+    private Node createOpeningPanel() {
         Element panel = doc.createElement("panel");
 
         // Create middle panel with both characters

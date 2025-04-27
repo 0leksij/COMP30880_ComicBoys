@@ -19,7 +19,7 @@ public interface XMLNodeInserter {
             }
         }
     }
-    // removes node from one document and appends a node to the end of child list of another node
+    // removes node from one document and appends a node to the end of child list of the first node of a particular tag
     static void appendElement(Document doc, Node newNode, String tag) {
         Node node = validateElement(doc, tag);
         if (node == null) {
@@ -28,7 +28,7 @@ public interface XMLNodeInserter {
         }
         node.appendChild(doc.adoptNode(newNode));
     }
-    // removes list of nodes from one document and appends all nodes in a list to the end of the child list of another node
+    // same as above method but instead of just appending removing and appending one node, removes and appends a list
     static void appendElements(Document doc, NodeList newNodes, String tag) {
         Node node = validateElement(doc, tag);
         if (node == null) {
@@ -47,20 +47,6 @@ public interface XMLNodeInserter {
     static void appendScenes(Document doc, NodeList newScenes) {
         appendElements(doc, newScenes, "scenes");
     }
-    // boilerplate code to ensure element we are appending to is valid
-    static Node validateElement(Document doc, String tag) {
-        NodeList tagElements = doc.getDocumentElement().getElementsByTagName("scenes");
-        // go through all scene nodes
-        for (int i = 0; i < tagElements.getLength(); i++) {
-            Node node = tagElements.item(i);
-            // if is valid scene node, append all scenes in list to this document
-            if (node.getNodeType() == Node.ELEMENT_NODE) {
-                return node;
-            }
-        }
-        return null;
-    }
-    static Node validateScenes(Document doc) {
-        return validateElement(doc, "scenes");
-    }
+    // boilerplate code to ensure an element of this tag exists, and returns first one it finds
+    static Node validateElement(Document doc, String tag) { return XMLFileManager.validateElement(doc, tag); }
 }

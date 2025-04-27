@@ -105,6 +105,24 @@ public interface XMLFileManager {
     static void appendElement(Document doc, Node node, String tag) { XMLNodeInserter.appendElement(doc, node, tag); }
     static void appendElements(Document doc, NodeList nodeList, String tag) { XMLNodeInserter.appendElements(doc, nodeList, tag); }
 
+    // validating particular elements
+    static Node validateScenes(Document doc) {
+        return validateElement(doc, "scenes");
+    }
+    // boilerplate code to ensure an element of this tag exists, and returns first one it finds
+    static Node validateElement(Document doc, String tag) {
+        NodeList tagElements = doc.getDocumentElement().getElementsByTagName(tag);
+        // go through all scene nodes
+        for (int i = 0; i < tagElements.getLength(); i++) {
+            Node node = tagElements.item(i);
+            // if is valid scene node, append all scenes in list to this document
+            if (node.getNodeType() == Node.ELEMENT_NODE) {
+                return node;
+            }
+        }
+        return null;
+    }
+
     static boolean saveXMLToFile(Document doc, String filePath) {
         try {
             trimWhitespace(doc.getDocumentElement());
@@ -289,8 +307,6 @@ public interface XMLFileManager {
         XMLFileManager.appendScenes(doc, randomScene);
 
         XMLFileManager.saveXMLToFile(doc, "assets/mappings/test/test-insert.xml");
-
-
     }
 
 

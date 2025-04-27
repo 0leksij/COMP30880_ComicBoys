@@ -61,4 +61,14 @@ class XMLFileManagerTest {
         String resultDirectory = XMLFileManager.getFileDirectory(exampleFilePath);
         assertEquals("random/", resultDirectory);
     }
+
+    @Test
+    void testValidateElement() {
+        Document doc = XMLFileManager.loadXMLFromFile("assets/blueprint/test/specification_test.xml");
+        assertNotNull(doc);
+        Node scenes = XMLFileManager.validateElement(doc, "scenes");
+        assertNotNull(scenes);
+        Node nonExistent = XMLFileManager.validateElement(doc, "non-existent");
+        assertNull(nonExistent);
+    }
 }
