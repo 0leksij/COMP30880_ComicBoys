@@ -73,27 +73,11 @@
                   <skin>light brown</skin>
                   <hair>dark brown</hair>
                   <lips>red</lips>
-                  <pose>pitching</pose>
+                  <pose>holding globe</pose>
                   <facing>right</facing>
                </figure>
-               <balloon status="speech">
-                  <content>Here it comes!</content>
-               </balloon>
             </left>
-            <right>
-               <figure>
-                  <id>Betty</id>
-                  <name>Betty</name>
-                  <appearance>female</appearance>
-                  <pose>batting</pose>
-                  <facing>left</facing>
-               </figure>
-               <balloon status="speech">
-                  <content>I got this!</content>
-               </balloon>
-            </right>
-            <setting>sports field</setting>
-            <below>Alfie pitches a baseball while Betty prepares to swing a bat.</below>
+            <setting>planetarium</setting>
          </panel>
          <panel>
             <left>
@@ -104,27 +88,41 @@
                   <skin>light brown</skin>
                   <hair>dark brown</hair>
                   <lips>red</lips>
-                  <pose>pitching</pose>
+                  <pose>holding globe</pose>
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Arriva!</content>
+                  <content>mars</content>
                </balloon>
             </left>
+            <setting>planetarium</setting>
+         </panel>
+         <panel>
             <right>
                <figure>
                   <id>Betty</id>
                   <name>Betty</name>
                   <appearance>female</appearance>
-                  <pose>batting</pose>
+                  <pose>holding globe</pose>
+                  <facing>left</facing>
+               </figure>
+            </right>
+            <setting>planetarium</setting>
+         </panel>
+         <panel>
+            <right>
+               <figure>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
+                  <pose>holding globe</pose>
                   <facing>left</facing>
                </figure>
                <balloon status="speech">
-                  <content>Ce l'ho fatta!</content>
+                  <content>Marte</content>
                </balloon>
             </right>
-            <setting>sports field</setting>
-            <below>Alfie lancia una pallina da baseball mentre Betty si prepara a colpire con la mazza.</below>
+            <setting>planetarium</setting>
          </panel>
          <panel>
             <left>
@@ -135,11 +133,11 @@
                   <skin>light brown</skin>
                   <hair>dark brown</hair>
                   <lips>red</lips>
-                  <pose>dropping bat</pose>
+                  <pose>holding globe</pose>
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Oh no!</content>
+                  <content>mars</content>
                </balloon>
             </left>
             <right>
@@ -147,170 +145,14 @@
                   <id>Betty</id>
                   <name>Betty</name>
                   <appearance>female</appearance>
-                  <pose>hit with ball</pose>
+                  <pose>holding globe</pose>
                   <facing>left</facing>
                </figure>
                <balloon status="speech">
-                  <content>Ouch!</content>
+                  <content>Marte</content>
                </balloon>
             </right>
-            <setting>sports field</setting>
-            <below>Alfie drops the bat as the ball accidentally hits Betty in the head.</below>
-         </panel>
-         <panel>
-            <left>
-               <figure>
-                  <id>Alfie</id>
-                  <name>Alfie</name>
-                  <appearance>male</appearance>
-                  <skin>light brown</skin>
-                  <hair>dark brown</hair>
-                  <lips>red</lips>
-                  <pose>dropping bat</pose>
-                  <facing>right</facing>
-               </figure>
-               <balloon status="speech">
-                  <content>Oh no!</content>
-               </balloon>
-            </left>
-            <right>
-               <figure>
-                  <id>Betty</id>
-                  <name>Betty</name>
-                  <appearance>female</appearance>
-                  <pose>hit with ball</pose>
-                  <facing>left</facing>
-               </figure>
-               <balloon status="speech">
-                  <content>Ahi!</content>
-               </balloon>
-            </right>
-            <setting>sports field</setting>
-            <below>Alfie lascia cadere la mazza mentre la pallina colpisce accidentalmente Betty in testa.</below>
-         </panel>
-         <panel>
-            <left>
-               <figure>
-                  <id>Alfie</id>
-                  <name>Alfie</name>
-                  <appearance>male</appearance>
-                  <skin>light brown</skin>
-                  <hair>dark brown</hair>
-                  <lips>red</lips>
-                  <pose>shrugging</pose>
-                  <facing>right</facing>
-               </figure>
-               <balloon status="speech">
-                  <content>Are you okay?</content>
-               </balloon>
-            </left>
-            <right>
-               <figure>
-                  <id>Betty</id>
-                  <name>Betty</name>
-                  <appearance>female</appearance>
-                  <pose>groggy</pose>
-                  <facing>left</facing>
-               </figure>
-               <balloon status="speech">
-                  <content>Not really...</content>
-               </balloon>
-            </right>
-            <setting>sports field</setting>
-            <below>Alfie shrugs while Betty looks groggy after getting hit.</below>
-         </panel>
-         <panel>
-            <left>
-               <figure>
-                  <id>Alfie</id>
-                  <name>Alfie</name>
-                  <appearance>male</appearance>
-                  <skin>light brown</skin>
-                  <hair>dark brown</hair>
-                  <lips>red</lips>
-                  <pose>shrugging</pose>
-                  <facing>right</facing>
-               </figure>
-               <balloon status="speech">
-                  <content>Stai bene?</content>
-               </balloon>
-            </left>
-            <right>
-               <figure>
-                  <id>Betty</id>
-                  <name>Betty</name>
-                  <appearance>female</appearance>
-                  <pose>groggy</pose>
-                  <facing>left</facing>
-               </figure>
-               <balloon status="speech">
-                  <content>Non proprio...</content>
-               </balloon>
-            </right>
-            <setting>sports field</setting>
-            <below>Alfie scrolla le spalle mentre Betty sembra intontita dopo essere stata colpita.</below>
-         </panel>
-         <panel>
-            <left>
-               <figure>
-                  <id>Alfie</id>
-                  <name>Alfie</name>
-                  <appearance>male</appearance>
-                  <skin>light brown</skin>
-                  <hair>dark brown</hair>
-                  <lips>red</lips>
-                  <pose>running away</pose>
-                  <facing>right</facing>
-               </figure>
-               <balloon status="speech">
-                  <content>I'm out of here!</content>
-               </balloon>
-            </left>
-            <right>
-               <figure>
-                  <id>Betty</id>
-                  <name>Betty</name>
-                  <appearance>female</appearance>
-                  <pose>swinging bat</pose>
-                  <facing>left</facing>
-               </figure>
-               <balloon status="speech">
-                  <content>You’re going to pay for that!</content>
-               </balloon>
-            </right>
-            <setting>sports field</setting>
-            <below>Alfie runs away while Betty swings her bat angrily over her head.</below>
-         </panel>
-         <panel>
-            <left>
-               <figure>
-                  <id>Alfie</id>
-                  <name>Alfie</name>
-                  <appearance>male</appearance>
-                  <skin>light brown</skin>
-                  <hair>dark brown</hair>
-                  <lips>red</lips>
-                  <pose>running away</pose>
-                  <facing>right</facing>
-               </figure>
-               <balloon status="speech">
-                  <content>Me ne vado!</content>
-               </balloon>
-            </left>
-            <right>
-               <figure>
-                  <id>Betty</id>
-                  <name>Betty</name>
-                  <appearance>female</appearance>
-                  <pose>swinging bat</pose>
-                  <facing>left</facing>
-               </figure>
-               <balloon status="speech">
-                  <content>Pagherai per questo!</content>
-               </balloon>
-            </right>
-            <setting>sports field</setting>
-            <below>Alfie scappa mentre Betty colpisce la sua mazza con rabbia sopra la testa.</below>
+            <setting>planetarium</setting>
          </panel>
       </scene>
    </scenes>

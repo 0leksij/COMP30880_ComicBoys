@@ -289,25 +289,4 @@ public interface XMLFileManager {
             throw new RuntimeException("Failed to parse XML from string", e);
         }
     }
-
-    public static void main(String[] args) {
-
-        String sourceFilePath = "assets/story/test/test_story.xml";
-        Document doc = XMLFileManager.loadXMLFromFile(sourceFilePath);
-        Node randomScene = XMLFileManager.extractRandomSceneElement(doc);
-
-//        // select figure elements
-//        NodeList figureScenes = doc.getElementsByTagName("figure");
-
-        assert doc != null;
-        Element sceneIntroduction = doc.createElement("panel");
-        sceneIntroduction.appendChild(doc.createTextNode("hello my friend"));
-        assert randomScene != null;
-        XMLFileManager.insertFirstChild(randomScene, sceneIntroduction);
-        XMLFileManager.appendScenes(doc, randomScene);
-
-        XMLFileManager.saveXMLToFile(doc, "assets/mappings/test/test-insert.xml");
-    }
-
-
 }

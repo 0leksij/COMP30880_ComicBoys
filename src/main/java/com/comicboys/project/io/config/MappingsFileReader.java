@@ -1,7 +1,6 @@
 package com.comicboys.project.io.config;
 
 import com.comicboys.project.data.Mappings;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;

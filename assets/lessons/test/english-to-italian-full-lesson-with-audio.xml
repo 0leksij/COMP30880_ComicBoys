@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<comic>
+   <figures>
+      <figure>
+         <id>Alfie</id>
+         <name>Alfie</name>
+         <appearance>male</appearance>
+         <skin>light brown</skin>
+         <hair>dark brown</hair>
+         <lips>red</lips>
+         <facing>right</facing>
+      </figure>
+      <figure>
+         <id>Betty</id>
+         <name>Betty</name>
+         <appearance>female</appearance>
+         <facing>right</facing>
+      </figure>
+      <figure>
+         <id>Gemma</id>
+         <name>Gemma</name>
+         <appearance>female</appearance>
+         <skin>olive</skin>
+         <hair>black</hair>
+         <facing>right</facing>
+      </figure>
+   </figures>
+   <scenes>
+      <scene>
+         <panel>
+            <middle>
+               <figure>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>male</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>waving</pose>
+                  <facing>right</facing>
+               </figure>
+               <figure>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
+                  <pose>waving</pose>
+                  <facing>left</facing>
+               </figure>
+            </middle>
+            <border>white</border>
+         </panel>
+      </scene>
+      <scene>
+         <panel>
+            <middle>
+               <figure>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
+                  <pose>zero</pose>
+                  <facing>right</facing>
+               </figure>
+            </middle>
+            <below>Scene 0</below>
+            <border>white</border>
+         </panel>
+         <panel>
+            <left>
+               <figure>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>male</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>holding globe</pose>
+                  <facing>right</facing>
+               </figure>
+            </left>
+            <setting>planetarium</setting>
+         </panel>
+         <panel>
+            <left>
+               <figure>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>male</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>holding globe</pose>
+                  <facing>right</facing>
+               </figure>
+               <balloon status="speech">
+                  <content>mars</content>
+               </balloon>
+            </left>
+            <setting>planetarium</setting>
+            <audio>277.mp3</audio>
+         </panel>
+         <panel>
+            <right>
+               <figure>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
+                  <pose>holding globe</pose>
+                  <facing>left</facing>
+               </figure>
+            </right>
+            <setting>planetarium</setting>
+         </panel>
+         <panel>
+            <right>
+               <figure>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
+                  <pose>holding globe</pose>
+                  <facing>left</facing>
+               </figure>
+               <balloon status="speech">
+                  <content>Marte</content>
+               </balloon>
+            </right>
+            <setting>planetarium</setting>
+            <audio>278.mp3</audio>
+         </panel>
+         <panel>
+            <left>
+               <figure>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>male</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>holding globe</pose>
+                  <facing>right</facing>
+               </figure>
+               <balloon status="speech">
+                  <content>mars</content>
+               </balloon>
+            </left>
+            <right>
+               <figure>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
+                  <pose>holding globe</pose>
+                  <facing>left</facing>
+               </figure>
+            </right>
+            <setting>planetarium</setting>
+            <audio>277.mp3</audio>
+         </panel>
+         <panel>
+            <left>
+               <figure>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>male</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>holding globe</pose>
+                  <facing>right</facing>
+               </figure>
+            </left>
+            <right>
+               <figure>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
+                  <pose>holding globe</pose>
+                  <facing>left</facing>
+               </figure>
+               <balloon status="speech">
+                  <content>Marte</content>
+               </balloon>
+            </right>
+            <setting>planetarium</setting>
+            <audio>278.mp3</audio>
+         </panel>
+      </scene>
+   </scenes>
+</comic>

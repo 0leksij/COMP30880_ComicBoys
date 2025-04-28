@@ -10,14 +10,11 @@ import com.comicboys.project.io.story.StoryGenerator;
 import com.comicboys.project.io.translate.TranslationGenerator;
 import com.comicboys.project.io.xml.XMLAudioInserter;
 import com.comicboys.project.io.xml.XMLGenerator;
-import com.comicboys.project.utility.XMLFileManager;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import java.io.File;
-import java.util.Map;
 import java.util.Objects;
 
 public class LessonScheduler {
@@ -55,29 +52,31 @@ public class LessonScheduler {
     // method that specifies target path (for testing)
     public static void generateCompleteLesson(ConfigurationFile config, String targetPath) {
         try {
-            // 1. Initialize components and ensure conjugations and stories exist
+            // 1. Initialize components
             MappingsFileReader mappingsFileReader = new MappingsFileReader();
             Mappings mappings = mappingsFileReader.getMappings();
             APIClient client = new APIClient(config);
             TranslationGenerator translationGenerator = new TranslationGenerator(config, client, mappings);
             XMLGenerator xmlGenerator = new XMLGenerator(mappings, translationGenerator);
-            ConjugationGenerator conjugationGenerator = new ConjugationGenerator();
-            StoryGenerator storyGenerator = new StoryGenerator(client);
 
             String sourceLang = config.getProperty("SOURCE_LANGUAGE").toLowerCase();
             String targetLang = config.getProperty("TARGET_LANGUAGE").toLowerCase();
-
             String storyPath = "assets/story/" + sourceLang + "-to-" + targetLang + "-story.xml";
+            Document storiesCheck = XMLFileManager.loadXMLFromFile(storyPath);
+            if (storiesCheck == null) {
+                System.out.println("Stories for target language do not exist, generating...");
+                config = new ConfigurationFile();
+                client = new APIClient(config);
+                StoryGenerator sg = new StoryGenerator(client);
+                sg.generateStoryXML();
+            }
             String conjugationPath = "assets/conjugations/" + sourceLang + "-to-" + targetLang + "-conjugation.xml";
-
-            File f;
-
-            f = new File(conjugationPath);
-            if (!f.exists()) conjugationGenerator.generateConjugationLesson();
-
-            f = new File(storyPath);
-            if (!f.exists()) storyGenerator.generateStoryXML();
-
+            Document conjugationCheck = XMLFileManager.loadXMLFromFile(conjugationPath);
+            if (conjugationCheck == null) {
+                System.out.println("Conjugations for target language do not exist, generating...");
+                ConjugationGenerator generator = new ConjugationGenerator();
+                generator.generateConjugationLesson();
+            }
 
             Document doc = XMLFileManager.createFile("assets/mappings/test/base.xml");
             String[] lessonSchedule = config.getProperty("LESSON_SCHEDULE").split(",");
@@ -96,7 +95,7 @@ public class LessonScheduler {
 
 
             // 5. Generate audio (if specified) from our no audio output file
-            if (Objects.equals(config.getProperty("GENERATE_AUDIO").toLowerCase(), "true")) {
+            if (Objects.equals(config.getProperty("GENERATE_AUDIO"), "true")) {
                 AudioGenerator audioGenerator = new AudioGenerator(config);
                 audioGenerator.generateAudioFromXML(doc);
 
@@ -273,9 +272,7 @@ public class LessonScheduler {
             Node currentScene = sceneElements.item(i);
             if (currentScene.getNodeType() == Node.ELEMENT_NODE) {
                 scene = currentScene;
-                Node sceneIntroPanel = getIntroPanel(sceneCounter);
-                XMLFileManager.insertFirstChild(scene, sceneIntroPanel);
-                XMLFileManager.appendScenes(doc, scene);
+                appendScene(scene);
                 break;
             }
         }

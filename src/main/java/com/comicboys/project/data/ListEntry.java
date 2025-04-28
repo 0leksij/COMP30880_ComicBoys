@@ -1,7 +1,6 @@
 package com.comicboys.project.data;
 
 import com.comicboys.project.Main;
-
 import java.util.List;
 
 // each row has 5 columns, all of which contain a list of strings

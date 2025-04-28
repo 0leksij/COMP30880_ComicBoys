@@ -73,7 +73,7 @@
                   <skin>light brown</skin>
                   <hair>dark brown</hair>
                   <lips>red</lips>
-                  <pose>divided</pose>
+                  <pose>monitoring</pose>
                   <facing>right</facing>
                </figure>
             </left>
@@ -88,11 +88,11 @@
                   <skin>light brown</skin>
                   <hair>dark brown</hair>
                   <lips>red</lips>
-                  <pose>divided</pose>
+                  <pose>monitoring</pose>
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>one option is on the left.</content>
+                  <content>the person is curious about what they see.</content>
                </balloon>
             </left>
             <setting/>
@@ -106,11 +106,11 @@
                   <skin>light brown</skin>
                   <hair>dark brown</hair>
                   <lips>red</lips>
-                  <pose>divided</pose>
+                  <pose>monitoring</pose>
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>una opción está a la izquierda.</content>
+                  <content>la persona tiene curiosidad sobre lo que ve.</content>
                </balloon>
             </left>
             <setting/>
@@ -139,11 +139,11 @@
                   <skin>light brown</skin>
                   <hair>dark brown</hair>
                   <lips>red</lips>
-                  <pose>sprinting</pose>
+                  <pose>spreading</pose>
                   <facing>right</facing>
                </figure>
             </left>
-            <setting>obstacle course</setting>
+            <setting>netherlands</setting>
          </panel>
          <panel>
             <left>
@@ -154,14 +154,14 @@
                   <skin>light brown</skin>
                   <hair>dark brown</hair>
                   <lips>red</lips>
-                  <pose>sprinting</pose>
+                  <pose>spreading</pose>
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>an obstacle course</content>
+                  <content>a windmill</content>
                </balloon>
             </left>
-            <setting>obstacle course</setting>
+            <setting>netherlands</setting>
          </panel>
          <panel>
             <right>
@@ -169,11 +169,11 @@
                   <id>Betty</id>
                   <name>Betty</name>
                   <appearance>female</appearance>
-                  <pose>sprinting</pose>
+                  <pose>spreading</pose>
                   <facing>left</facing>
                </figure>
             </right>
-            <setting>obstacle course</setting>
+            <setting>netherlands</setting>
          </panel>
          <panel>
             <right>
@@ -181,14 +181,14 @@
                   <id>Betty</id>
                   <name>Betty</name>
                   <appearance>female</appearance>
-                  <pose>sprinting</pose>
+                  <pose>spreading</pose>
                   <facing>left</facing>
                </figure>
                <balloon status="speech">
-                  <content>un circuito de obstáculos</content>
+                  <content>un molino de viento</content>
                </balloon>
             </right>
-            <setting>obstacle course</setting>
+            <setting>netherlands</setting>
          </panel>
          <panel>
             <left>
@@ -199,11 +199,11 @@
                   <skin>light brown</skin>
                   <hair>dark brown</hair>
                   <lips>red</lips>
-                  <pose>sprinting</pose>
+                  <pose>spreading</pose>
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>an obstacle course</content>
+                  <content>a windmill</content>
                </balloon>
             </left>
             <right>
@@ -211,14 +211,14 @@
                   <id>Betty</id>
                   <name>Betty</name>
                   <appearance>female</appearance>
-                  <pose>sprinting</pose>
+                  <pose>spreading</pose>
                   <facing>left</facing>
                </figure>
                <balloon status="speech">
-                  <content>un circuito de obstáculos</content>
+                  <content>un molino de viento</content>
                </balloon>
             </right>
-            <setting>obstacle course</setting>
+            <setting>netherlands</setting>
          </panel>
       </scene>
       <scene>
@@ -241,14 +241,14 @@
                   <id>Betty</id>
                   <name>Betty</name>
                   <appearance>female</appearance>
-                  <pose>breakfasting</pose>
+                  <pose>sipping</pose>
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>I eat</content>
+                  <content>I drink</content>
                </balloon>
             </middle>
-            <setting>kitchen</setting>
+            <setting>bar</setting>
          </panel>
          <panel>
             <middle>
@@ -256,14 +256,14 @@
                   <id>Betty</id>
                   <name>Betty</name>
                   <appearance>female</appearance>
-                  <pose>breakfasting</pose>
+                  <pose>sipping</pose>
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Como</content>
+                  <content>Bebo</content>
                </balloon>
             </middle>
-            <setting>kitchen</setting>
+            <setting>bar</setting>
          </panel>
          <panel>
             <left>
@@ -271,11 +271,11 @@
                   <id>Betty</id>
                   <name>Betty</name>
                   <appearance>female</appearance>
-                  <pose>serving dinner</pose>
+                  <pose>catering</pose>
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>You eat</content>
+                  <content>You drink</content>
                </balloon>
             </left>
             <right>
@@ -286,11 +286,11 @@
                   <skin>light brown</skin>
                   <hair>dark brown</hair>
                   <lips>red</lips>
-                  <pose>snacking</pose>
+                  <pose>sipping martini with olive</pose>
                   <facing>left</facing>
                </figure>
             </right>
-            <setting>restaurant</setting>
+            <setting>charity event</setting>
          </panel>
          <panel>
             <left>
@@ -298,11 +298,11 @@
                   <id>Betty</id>
                   <name>Betty</name>
                   <appearance>female</appearance>
-                  <pose>serving dinner</pose>
+                  <pose>catering</pose>
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Comes</content>
+                  <content>Bebes</content>
                </balloon>
             </left>
             <right>
@@ -313,11 +313,65 @@
                   <skin>light brown</skin>
                   <hair>dark brown</hair>
                   <lips>red</lips>
-                  <pose>snacking</pose>
+                  <pose>sipping martini with olive</pose>
                   <facing>left</facing>
                </figure>
             </right>
-            <setting>restaurant</setting>
+            <setting>charity event</setting>
+         </panel>
+         <panel>
+            <left>
+               <figure>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
+                  <pose>carrying tray</pose>
+                  <facing>right</facing>
+               </figure>
+               <balloon status="speech">
+                  <content>He drinks</content>
+               </balloon>
+            </left>
+            <right>
+               <figure>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>male</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>slurping</pose>
+                  <facing>left</facing>
+               </figure>
+            </right>
+            <setting>sports bar</setting>
+         </panel>
+         <panel>
+            <left>
+               <figure>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
+                  <pose>carrying tray</pose>
+                  <facing>right</facing>
+               </figure>
+               <balloon status="speech">
+                  <content>Bebe</content>
+               </balloon>
+            </left>
+            <right>
+               <figure>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>male</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>slurping</pose>
+                  <facing>left</facing>
+               </figure>
+            </right>
+            <setting>sports bar</setting>
          </panel>
          <panel>
             <left>
@@ -329,22 +383,22 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>He eats</content>
+                  <content>She drinks</content>
                </balloon>
             </left>
             <right>
                <figure>
                   <id>Alfie</id>
                   <name>Alfie</name>
-                  <appearance>male</appearance>
+                  <appearance>female</appearance>
                   <skin>light brown</skin>
                   <hair>dark brown</hair>
                   <lips>red</lips>
-                  <pose>eating</pose>
+                  <pose>drinking from bottle</pose>
                   <facing>left</facing>
                </figure>
             </right>
-            <setting>food truck</setting>
+            <setting>living room</setting>
          </panel>
          <panel>
             <left>
@@ -356,7 +410,34 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Come</content>
+                  <content>Bebe</content>
+               </balloon>
+            </left>
+            <right>
+               <figure>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>female</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>drinking from bottle</pose>
+                  <facing>left</facing>
+               </figure>
+            </right>
+            <setting>living room</setting>
+         </panel>
+         <panel>
+            <left>
+               <figure>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
+                  <pose>drinking concoction</pose>
+                  <facing>right</facing>
+               </figure>
+               <balloon status="speech">
+                  <content>We drink</content>
                </balloon>
             </left>
             <right>
@@ -367,11 +448,11 @@
                   <skin>light brown</skin>
                   <hair>dark brown</hair>
                   <lips>red</lips>
-                  <pose>eating</pose>
+                  <pose>transforming</pose>
                   <facing>left</facing>
                </figure>
             </right>
-            <setting>food truck</setting>
+            <setting>laboratory window</setting>
          </panel>
          <panel>
             <left>
@@ -379,65 +460,11 @@
                   <id>Betty</id>
                   <name>Betty</name>
                   <appearance>female</appearance>
-                  <pose>watering</pose>
+                  <pose>drinking concoction</pose>
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>She eats</content>
-               </balloon>
-            </left>
-            <right>
-               <figure>
-                  <id>Alfie</id>
-                  <name>Alfie</name>
-                  <appearance>female</appearance>
-                  <skin>light brown</skin>
-                  <hair>dark brown</hair>
-                  <lips>red</lips>
-                  <pose>chewing carrots</pose>
-                  <facing>left</facing>
-               </figure>
-            </right>
-            <setting>farm</setting>
-         </panel>
-         <panel>
-            <left>
-               <figure>
-                  <id>Betty</id>
-                  <name>Betty</name>
-                  <appearance>female</appearance>
-                  <pose>watering</pose>
-                  <facing>right</facing>
-               </figure>
-               <balloon status="speech">
-                  <content>Come</content>
-               </balloon>
-            </left>
-            <right>
-               <figure>
-                  <id>Alfie</id>
-                  <name>Alfie</name>
-                  <appearance>female</appearance>
-                  <skin>light brown</skin>
-                  <hair>dark brown</hair>
-                  <lips>red</lips>
-                  <pose>chewing carrots</pose>
-                  <facing>left</facing>
-               </figure>
-            </right>
-            <setting>farm</setting>
-         </panel>
-         <panel>
-            <left>
-               <figure>
-                  <id>Betty</id>
-                  <name>Betty</name>
-                  <appearance>female</appearance>
-                  <pose>sweet</pose>
-                  <facing>right</facing>
-               </figure>
-               <balloon status="speech">
-                  <content>We eat</content>
+                  <content>Bebemos</content>
                </balloon>
             </left>
             <right>
@@ -448,11 +475,11 @@
                   <skin>light brown</skin>
                   <hair>dark brown</hair>
                   <lips>red</lips>
-                  <pose>enticing</pose>
+                  <pose>transforming</pose>
                   <facing>left</facing>
                </figure>
             </right>
-            <setting>cafeteria</setting>
+            <setting>laboratory window</setting>
          </panel>
          <panel>
             <left>
@@ -460,67 +487,39 @@
                   <id>Betty</id>
                   <name>Betty</name>
                   <appearance>female</appearance>
-                  <pose>sweet</pose>
-                  <facing>right</facing>
-               </figure>
-               <balloon status="speech">
-                  <content>Comemos</content>
-               </balloon>
-            </left>
-            <right>
-               <figure>
-                  <id>Alfie</id>
-                  <name>Alfie</name>
-                  <appearance>male</appearance>
-                  <skin>light brown</skin>
-                  <hair>dark brown</hair>
-                  <lips>red</lips>
-                  <pose>enticing</pose>
-                  <facing>left</facing>
-               </figure>
-            </right>
-            <setting>cafeteria</setting>
-         </panel>
-         <panel>
-            <left>
-               <figure>
-                  <id>Betty</id>
-                  <name>Betty</name>
-                  <appearance>female</appearance>
-                  <pose>greeting</pose>
+                  <pose>catering</pose>
                   <facing>right</facing>
                   <horizontal>little more</horizontal>
                </figure>
                <balloon status="speech">
-                  <content>You eat (plural)</content>
+                  <content>You drink (plural)</content>
                </balloon>
             </left>
             <middle>
+               <figure>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>male</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>slurping</pose>
+                  <facing>left</facing>
+               </figure>
+            </middle>
+            <right>
                <figure>
                   <id>Gemma</id>
                   <name>Gemma</name>
                   <appearance>female</appearance>
                   <skin>olive</skin>
                   <hair>black</hair>
-                  <pose>munching</pose>
-                  <facing>left</facing>
-                  <horizontal>little more</horizontal>
-               </figure>
-            </middle>
-            <right>
-               <figure>
-                  <id>Alfie</id>
-                  <name>Alfie</name>
-                  <appearance>male</appearance>
-                  <skin>light brown</skin>
-                  <hair>dark brown</hair>
-                  <lips>red</lips>
-                  <pose>swallowing</pose>
+                  <pose>drinking</pose>
                   <facing>left</facing>
                   <horizontal>little less</horizontal>
                </figure>
             </right>
-            <setting>dining room</setting>
+            <setting>bar</setting>
          </panel>
          <panel>
             <left>
@@ -528,40 +527,39 @@
                   <id>Betty</id>
                   <name>Betty</name>
                   <appearance>female</appearance>
-                  <pose>greeting</pose>
+                  <pose>catering</pose>
                   <facing>right</facing>
                   <horizontal>little more</horizontal>
                </figure>
                <balloon status="speech">
-                  <content>Comen</content>
+                  <content>Beben</content>
                </balloon>
             </left>
             <middle>
+               <figure>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>male</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>slurping</pose>
+                  <facing>left</facing>
+               </figure>
+            </middle>
+            <right>
                <figure>
                   <id>Gemma</id>
                   <name>Gemma</name>
                   <appearance>female</appearance>
                   <skin>olive</skin>
                   <hair>black</hair>
-                  <pose>munching</pose>
-                  <facing>left</facing>
-                  <horizontal>little more</horizontal>
-               </figure>
-            </middle>
-            <right>
-               <figure>
-                  <id>Alfie</id>
-                  <name>Alfie</name>
-                  <appearance>male</appearance>
-                  <skin>light brown</skin>
-                  <hair>dark brown</hair>
-                  <lips>red</lips>
-                  <pose>swallowing</pose>
+                  <pose>drinking</pose>
                   <facing>left</facing>
                   <horizontal>little less</horizontal>
                </figure>
             </right>
-            <setting>dining room</setting>
+            <setting>bar</setting>
          </panel>
          <panel>
             <left>
@@ -569,12 +567,12 @@
                   <id>Betty</id>
                   <name>Betty</name>
                   <appearance>female</appearance>
-                  <pose>cutting the cheese</pose>
+                  <pose>pouring coffee</pose>
                   <facing>right</facing>
                   <horizontal>little more</horizontal>
                </figure>
                <balloon status="speech">
-                  <content>They eat</content>
+                  <content>They drink</content>
                </balloon>
             </left>
             <middle>
@@ -585,7 +583,7 @@
                   <skin>light brown</skin>
                   <hair>dark brown</hair>
                   <lips>red</lips>
-                  <pose>eating</pose>
+                  <pose>drinking coffee</pose>
                   <facing>left</facing>
                   <horizontal>little more</horizontal>
                </figure>
@@ -597,12 +595,12 @@
                   <appearance>female</appearance>
                   <skin>olive</skin>
                   <hair>black</hair>
-                  <pose>snacking</pose>
+                  <pose>spilling coffee</pose>
                   <facing>left</facing>
                   <horizontal>little less</horizontal>
                </figure>
             </right>
-            <setting>barbecue</setting>
+            <setting>coffee shop</setting>
          </panel>
          <panel>
             <left>
@@ -610,12 +608,12 @@
                   <id>Betty</id>
                   <name>Betty</name>
                   <appearance>female</appearance>
-                  <pose>cutting the cheese</pose>
+                  <pose>pouring coffee</pose>
                   <facing>right</facing>
                   <horizontal>little more</horizontal>
                </figure>
                <balloon status="speech">
-                  <content>Comen</content>
+                  <content>Ellos beben</content>
                </balloon>
             </left>
             <middle>
@@ -626,7 +624,7 @@
                   <skin>light brown</skin>
                   <hair>dark brown</hair>
                   <lips>red</lips>
-                  <pose>eating</pose>
+                  <pose>drinking coffee</pose>
                   <facing>left</facing>
                   <horizontal>little more</horizontal>
                </figure>
@@ -638,12 +636,12 @@
                   <appearance>female</appearance>
                   <skin>olive</skin>
                   <hair>black</hair>
-                  <pose>snacking</pose>
+                  <pose>spilling coffee</pose>
                   <facing>left</facing>
                   <horizontal>little less</horizontal>
                </figure>
             </right>
-            <setting>barbecue</setting>
+            <setting>coffee shop</setting>
          </panel>
       </scene>
       <scene>
@@ -669,11 +667,11 @@
                   <skin>light brown</skin>
                   <hair>dark brown</hair>
                   <lips>red</lips>
-                  <pose>brainwashing</pose>
+                  <pose>motorcycling</pose>
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>You will obey me!</content>
+                  <content>Another day at the plant!</content>
                </balloon>
             </left>
             <right>
@@ -681,15 +679,15 @@
                   <id>Betty</id>
                   <name>Betty</name>
                   <appearance>female</appearance>
-                  <pose>charmed</pose>
+                  <pose>cycling</pose>
                   <facing>left</facing>
                </figure>
                <balloon status="speech">
-                  <content>I must follow your command!</content>
+                  <content>Let's hope we don't have any incidents today.</content>
                </balloon>
             </right>
-            <setting>laundrette</setting>
-            <below>Alfie stands confidently with a focused expression, while Betty appears entranced and compliant.</below>
+            <setting>chemical plant</setting>
+            <below>Alfie is motorcycling to work while Betty cycles beside him.</below>
          </panel>
          <panel>
             <left>
@@ -700,11 +698,11 @@
                   <skin>light brown</skin>
                   <hair>dark brown</hair>
                   <lips>red</lips>
-                  <pose>brainwashing</pose>
+                  <pose>motorcycling</pose>
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>¡Me obedecerás!</content>
+                  <content>¡Otro día en la planta!</content>
                </balloon>
             </left>
             <right>
@@ -712,15 +710,15 @@
                   <id>Betty</id>
                   <name>Betty</name>
                   <appearance>female</appearance>
-                  <pose>charmed</pose>
+                  <pose>cycling</pose>
                   <facing>left</facing>
                </figure>
                <balloon status="speech">
-                  <content>¡Debo seguir tu mando!</content>
+                  <content>Esperemos que no tengamos ningún incidente hoy.</content>
                </balloon>
             </right>
-            <setting>laundrette</setting>
-            <below>Alfie está de pie con confianza y una expresión concentrada, mientras Betty parece hipnotizada y sumisa.</below>
+            <setting>chemical plant</setting>
+            <below>Alfie está yendo en motocicleta al trabajo mientras Betty pedalear al lado de él.</below>
          </panel>
          <panel>
             <left>
@@ -731,11 +729,95 @@
                   <skin>light brown</skin>
                   <hair>dark brown</hair>
                   <lips>red</lips>
-                  <pose>attracting</pose>
+                  <pose>drinking coffee</pose>
+                  <facing>right</facing>
+                  <horizontal>little more</horizontal>
+               </figure>
+               <balloon status="speech">
+                  <content>Got my coffee fixed, ready to tackle the day.</content>
+               </balloon>
+            </left>
+            <middle>
+               <figure>
+                  <appearance>default</appearance>
+                  <skin>default</skin>
+                  <hair>default</hair>
+                  <pose>vending machine prop</pose>
+                  <facing>right</facing>
+               </figure>
+            </middle>
+            <right>
+               <figure>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
+                  <pose>lighting cigar</pose>
+                  <facing>left</facing>
+                  <horizontal>little less</horizontal>
+               </figure>
+               <balloon status="speech">
+                  <content>Lighting up to keep my spirits high.</content>
+               </balloon>
+            </right>
+            <setting>school hallway</setting>
+            <below>Alfie is drinking coffee in the break room; Betty is lighting a cigar.</below>
+         </panel>
+         <panel>
+            <left>
+               <figure>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>male</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>drinking coffee</pose>
+                  <facing>right</facing>
+                  <horizontal>little more</horizontal>
+               </figure>
+               <balloon status="speech">
+                  <content>Tengo mi café listo, listo para enfrentar el día.</content>
+               </balloon>
+            </left>
+            <middle>
+               <figure>
+                  <appearance>default</appearance>
+                  <skin>default</skin>
+                  <hair>default</hair>
+                  <pose>vending machine prop</pose>
+                  <facing>right</facing>
+               </figure>
+            </middle>
+            <right>
+               <figure>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
+                  <pose>lighting cigar</pose>
+                  <facing>left</facing>
+                  <horizontal>little less</horizontal>
+               </figure>
+               <balloon status="speech">
+                  <content>Encendiendo para mantener mi ánimo alto.</content>
+               </balloon>
+            </right>
+            <setting>school hallway</setting>
+            <below>Alfie está bebiendo café en la sala de descanso; Betty está encendiendo un cigarro.</below>
+         </panel>
+         <panel>
+            <left>
+               <figure>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>male</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>reacting</pose>
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Let go of your doubts and trust me.</content>
+                  <content>Mixing these chemicals carefully, can't afford a mistake.</content>
                </balloon>
             </left>
             <right>
@@ -743,15 +825,15 @@
                   <id>Betty</id>
                   <name>Betty</name>
                   <appearance>female</appearance>
-                  <pose>brainwashed</pose>
+                  <pose>smoking cigar</pose>
                   <facing>left</facing>
                </figure>
                <balloon status="speech">
-                  <content>I trust you completely!</content>
+                  <content>Just enjoying my cigar while you work.</content>
                </balloon>
             </right>
-            <setting>laundrette</setting>
-            <below>Alfie leans closer, speaking earnestly, while Betty's eyes are glazed over, clearly under his influence.</below>
+            <setting>laboratory</setting>
+            <below>Alfie is mixing chemicals in the laboratory; Betty is smoking a cigar.</below>
          </panel>
          <panel>
             <left>
@@ -762,11 +844,11 @@
                   <skin>light brown</skin>
                   <hair>dark brown</hair>
                   <lips>red</lips>
-                  <pose>attracting</pose>
+                  <pose>reacting</pose>
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Suelta tus dudas y confía en mí.</content>
+                  <content>Mezclando estos químicos con cuidado, no puedo permitirme un error.</content>
                </balloon>
             </left>
             <right>
@@ -774,15 +856,15 @@
                   <id>Betty</id>
                   <name>Betty</name>
                   <appearance>female</appearance>
-                  <pose>brainwashed</pose>
+                  <pose>smoking cigar</pose>
                   <facing>left</facing>
                </figure>
                <balloon status="speech">
-                  <content>¡Confío en ti completamente!</content>
+                  <content>Solo disfrutando de mi cigarro mientras trabajas.</content>
                </balloon>
             </right>
-            <setting>laundrette</setting>
-            <below>Alfie se inclina más cerca, hablando con sinceridad, mientras los ojos de Betty están vidriosos, claramente bajo su influencia.</below>
+            <setting>laboratory</setting>
+            <below>Alfie está mezclando productos químicos en el laboratorio; Betty está fumando un cigarro.</below>
          </panel>
          <panel>
             <left>
@@ -793,11 +875,11 @@
                   <skin>light brown</skin>
                   <hair>dark brown</hair>
                   <lips>red</lips>
-                  <pose>commanding</pose>
+                  <pose>exploding</pose>
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Embrace the cause! It’s our only path!</content>
+                  <content>Uh-oh, something feels off!</content>
                </balloon>
             </left>
             <right>
@@ -805,77 +887,15 @@
                   <id>Betty</id>
                   <name>Betty</name>
                   <appearance>female</appearance>
-                  <pose>brainwashed</pose>
-                  <facing>right</facing>
-               </figure>
-               <balloon status="speech">
-                  <content>I will join your mission!</content>
-               </balloon>
-            </right>
-            <setting>laundrette</setting>
-            <below>Alfie gestures passionately as Betty nods vigorously, showing determination.</below>
-         </panel>
-         <panel>
-            <left>
-               <figure>
-                  <id>Alfie</id>
-                  <name>Alfie</name>
-                  <appearance>male</appearance>
-                  <skin>light brown</skin>
-                  <hair>dark brown</hair>
-                  <lips>red</lips>
-                  <pose>commanding</pose>
-                  <facing>right</facing>
-               </figure>
-               <balloon status="speech">
-                  <content>¡Abraza la causa! ¡Es nuestro único camino!</content>
-               </balloon>
-            </left>
-            <right>
-               <figure>
-                  <id>Betty</id>
-                  <name>Betty</name>
-                  <appearance>female</appearance>
-                  <pose>brainwashed</pose>
-                  <facing>right</facing>
-               </figure>
-               <balloon status="speech">
-                  <content>¡Me uniré a tu misión!</content>
-               </balloon>
-            </right>
-            <setting>laundrette</setting>
-            <below>Alfie hace gestos apasionadamente mientras Betty asiente con entusiasmo, mostrando determinación.</below>
-         </panel>
-         <panel>
-            <left>
-               <figure>
-                  <id>Alfie</id>
-                  <name>Alfie</name>
-                  <appearance>male</appearance>
-                  <skin>light brown</skin>
-                  <hair>dark brown</hair>
-                  <lips>red</lips>
-                  <pose>sneaky</pose>
-                  <facing>right</facing>
-               </figure>
-               <balloon status="speech">
-                  <content>This is our secret, remember that.</content>
-               </balloon>
-            </left>
-            <right>
-               <figure>
-                  <id>Betty</id>
-                  <name>Betty</name>
-                  <appearance>female</appearance>
-                  <pose>killing for</pose>
+                  <pose>on fire</pose>
                   <facing>left</facing>
                </figure>
                <balloon status="speech">
-                  <content>I won't tell anyone!</content>
+                  <content>What's happening?!</content>
                </balloon>
             </right>
-            <setting>laundrette</setting>
-            <below>Alfie smirks slyly while Betty looks around nervously, as if ensuring no one is watching.</below>
+            <setting>laboratory</setting>
+            <below>Alfie is about to blow up in the laboratory while Betty is caught by surprise as flames engulf her.</below>
          </panel>
          <panel>
             <left>
@@ -886,11 +906,11 @@
                   <skin>light brown</skin>
                   <hair>dark brown</hair>
                   <lips>red</lips>
-                  <pose>sneaky</pose>
+                  <pose>exploding</pose>
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Este es nuestro secreto, recuérdalo.</content>
+                  <content>¡Ay, algo se siente mal!</content>
                </balloon>
             </left>
             <right>
@@ -898,15 +918,77 @@
                   <id>Betty</id>
                   <name>Betty</name>
                   <appearance>female</appearance>
-                  <pose>killing for</pose>
+                  <pose>on fire</pose>
                   <facing>left</facing>
                </figure>
                <balloon status="speech">
-                  <content>¡No se lo diré a nadie!</content>
+                  <content>¿¡Qué está pasando!?</content>
                </balloon>
             </right>
-            <setting>laundrette</setting>
-            <below>Alfie sonríe astutamente mientras Betty mira a su alrededor nerviosamente, como si se asegurara de que nadie esté mirando.</below>
+            <setting>laboratory</setting>
+            <below>Alfie está a punto de explotar en el laboratorio mientras Betty es sorprendida por las llamas que la envuelven.</below>
+         </panel>
+         <panel>
+            <left>
+               <figure>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>male</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>burnt</pose>
+                  <facing>right</facing>
+               </figure>
+               <balloon status="speech">
+                  <content>This didn’t go as planned…</content>
+               </balloon>
+            </left>
+            <right>
+               <figure>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
+                  <pose>burnt</pose>
+                  <facing>left</facing>
+               </figure>
+               <balloon status="speech">
+                  <content>I can't believe this happened!</content>
+               </balloon>
+            </right>
+            <setting>chemical plant</setting>
+            <below>Alfie is all charred in the chemical plant, and Betty is still smoldering nearby.</below>
+         </panel>
+         <panel>
+            <left>
+               <figure>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>male</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>burnt</pose>
+                  <facing>right</facing>
+               </figure>
+               <balloon status="speech">
+                  <content>Esto no salió como estaba planeado...</content>
+               </balloon>
+            </left>
+            <right>
+               <figure>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
+                  <pose>burnt</pose>
+                  <facing>left</facing>
+               </figure>
+               <balloon status="speech">
+                  <content>¡No puedo creer que esto haya pasado!</content>
+               </balloon>
+            </right>
+            <setting>chemical plant</setting>
+            <below>Alfie está todo carbonizado en la planta química, y Betty aún está humeando cerca.</below>
          </panel>
       </scene>
    </scenes>

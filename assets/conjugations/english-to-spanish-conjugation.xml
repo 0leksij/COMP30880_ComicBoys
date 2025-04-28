@@ -2410,7 +2410,7 @@
                   <horizontal>little more</horizontal>
                </figure>
                <balloon status="speech">
-                  <content>Ellos/Ellas trabajan</content>
+                  <content>Ellos trabajan</content>
                </balloon>
             </left>
             <middle>
@@ -2694,7 +2694,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Nosotros/Nosotras hablamos</content>
+                  <content>Nosotros hablamos</content>
                </balloon>
             </left>
             <right>
@@ -2817,7 +2817,7 @@
                   <horizontal>little more</horizontal>
                </figure>
                <balloon status="speech">
-                  <content>Ellos/Ellas hablan</content>
+                  <content>Ellos hablan</content>
                </balloon>
             </left>
             <middle>

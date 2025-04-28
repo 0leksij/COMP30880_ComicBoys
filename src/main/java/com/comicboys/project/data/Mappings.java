@@ -81,7 +81,6 @@ public class Mappings {
     public Set<String> getCombinedText(){return getAllTextFragments(true);}
     public Set<String> getLeftText(){return getAllTextFragments(false);}
 
-    ///////////////
     public List<String> getAllLeftPoses() {
         Set<String> leftPoses = new HashSet<>();
         for (ListEntry entry : mappings) {
@@ -97,6 +96,5 @@ public class Mappings {
         }
         return new ArrayList<>(backgrounds);
     }
-    //////////////////////
 
 }

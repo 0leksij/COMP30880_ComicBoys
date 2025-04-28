@@ -73,7 +73,7 @@
                   <skin>light brown</skin>
                   <hair>dark brown</hair>
                   <lips>red</lips>
-                  <pose>vomiting</pose>
+                  <pose>resolute</pose>
                   <facing>right</facing>
                </figure>
             </left>
@@ -88,11 +88,11 @@
                   <skin>light brown</skin>
                   <hair>dark brown</hair>
                   <lips>red</lips>
-                  <pose>vomiting</pose>
+                  <pose>resolute</pose>
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>it seems they are about to throw up.</content>
+                  <content>they are prepared for any challenge.</content>
                </balloon>
             </left>
             <setting/>
@@ -106,11 +106,11 @@
                   <skin>light brown</skin>
                   <hair>dark brown</hair>
                   <lips>red</lips>
-                  <pose>vomiting</pose>
+                  <pose>resolute</pose>
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>sembra che siano sul punto di vomitare.</content>
+                  <content>sono pronti per qualsiasi sfida.</content>
                </balloon>
             </left>
             <setting/>
@@ -139,11 +139,11 @@
                   <skin>light brown</skin>
                   <hair>dark brown</hair>
                   <lips>red</lips>
-                  <pose>silencing</pose>
+                  <pose>reading</pose>
                   <facing>right</facing>
                </figure>
             </left>
-            <setting>red square</setting>
+            <setting>oxford</setting>
          </panel>
          <panel>
             <left>
@@ -154,14 +154,14 @@
                   <skin>light brown</skin>
                   <hair>dark brown</hair>
                   <lips>red</lips>
-                  <pose>silencing</pose>
+                  <pose>reading</pose>
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>to silence</content>
+                  <content>a university town</content>
                </balloon>
             </left>
-            <setting>red square</setting>
+            <setting>oxford</setting>
          </panel>
          <panel>
             <right>
@@ -169,11 +169,11 @@
                   <id>Betty</id>
                   <name>Betty</name>
                   <appearance>female</appearance>
-                  <pose>put out</pose>
+                  <pose>reading</pose>
                   <facing>left</facing>
                </figure>
             </right>
-            <setting>red square</setting>
+            <setting>oxford</setting>
          </panel>
          <panel>
             <right>
@@ -181,14 +181,14 @@
                   <id>Betty</id>
                   <name>Betty</name>
                   <appearance>female</appearance>
-                  <pose>put out</pose>
+                  <pose>reading</pose>
                   <facing>left</facing>
                </figure>
                <balloon status="speech">
-                  <content>silenziare</content>
+                  <content>una città universitaria</content>
                </balloon>
             </right>
-            <setting>red square</setting>
+            <setting>oxford</setting>
          </panel>
          <panel>
             <left>
@@ -199,11 +199,11 @@
                   <skin>light brown</skin>
                   <hair>dark brown</hair>
                   <lips>red</lips>
-                  <pose>silencing</pose>
+                  <pose>reading</pose>
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>to silence</content>
+                  <content>a university town</content>
                </balloon>
             </left>
             <right>
@@ -211,14 +211,14 @@
                   <id>Betty</id>
                   <name>Betty</name>
                   <appearance>female</appearance>
-                  <pose>put out</pose>
+                  <pose>reading</pose>
                   <facing>left</facing>
                </figure>
                <balloon status="speech">
-                  <content>silenziare</content>
+                  <content>una città universitaria</content>
                </balloon>
             </right>
-            <setting>red square</setting>
+            <setting>oxford</setting>
          </panel>
       </scene>
       <scene>
@@ -236,19 +236,34 @@
             <border>white</border>
          </panel>
          <panel>
-            <left>
+            <middle>
                <figure>
                   <id>Betty</id>
                   <name>Betty</name>
                   <appearance>female</appearance>
-                  <pose>working</pose>
+                  <pose>sipping</pose>
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>I work</content>
+                  <content>I drink</content>
                </balloon>
-            </left>
-            <setting>tech office</setting>
+            </middle>
+            <setting>bar</setting>
+         </panel>
+         <panel>
+            <middle>
+               <figure>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
+                  <pose>sipping</pose>
+                  <facing>right</facing>
+               </figure>
+               <balloon status="speech">
+                  <content>Io bevo</content>
+               </balloon>
+            </middle>
+            <setting>bar</setting>
          </panel>
          <panel>
             <left>
@@ -256,80 +271,11 @@
                   <id>Betty</id>
                   <name>Betty</name>
                   <appearance>female</appearance>
-                  <pose>working</pose>
+                  <pose>catering</pose>
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Io lavoro</content>
-               </balloon>
-            </left>
-            <setting>tech office</setting>
-         </panel>
-         <panel>
-            <left>
-               <figure>
-                  <id>Betty</id>
-                  <name>Betty</name>
-                  <appearance>female</appearance>
-                  <pose>carrying</pose>
-                  <facing>right</facing>
-               </figure>
-            </left>
-            <right>
-               <figure>
-                  <id>Alfie</id>
-                  <name>Alfie</name>
-                  <appearance>male</appearance>
-                  <skin>light brown</skin>
-                  <hair>dark brown</hair>
-                  <lips>red</lips>
-                  <pose>poking</pose>
-                  <facing>left</facing>
-               </figure>
-               <balloon status="speech">
-                  <content>You work</content>
-               </balloon>
-            </right>
-            <setting>amazon</setting>
-         </panel>
-         <panel>
-            <left>
-               <figure>
-                  <id>Betty</id>
-                  <name>Betty</name>
-                  <appearance>female</appearance>
-                  <pose>carrying</pose>
-                  <facing>right</facing>
-               </figure>
-            </left>
-            <right>
-               <figure>
-                  <id>Alfie</id>
-                  <name>Alfie</name>
-                  <appearance>male</appearance>
-                  <skin>light brown</skin>
-                  <hair>dark brown</hair>
-                  <lips>red</lips>
-                  <pose>poking</pose>
-                  <facing>left</facing>
-               </figure>
-               <balloon status="speech">
-                  <content>Tu lavori</content>
-               </balloon>
-            </right>
-            <setting>amazon</setting>
-         </panel>
-         <panel>
-            <left>
-               <figure>
-                  <id>Betty</id>
-                  <name>Betty</name>
-                  <appearance>female</appearance>
-                  <pose>questioning</pose>
-                  <facing>right</facing>
-               </figure>
-               <balloon status="speech">
-                  <content>He works</content>
+                  <content>You drink</content>
                </balloon>
             </left>
             <right>
@@ -340,11 +286,11 @@
                   <skin>light brown</skin>
                   <hair>dark brown</hair>
                   <lips>red</lips>
-                  <pose>calculating</pose>
+                  <pose>sipping martini with olive</pose>
                   <facing>left</facing>
                </figure>
             </right>
-            <setting>office 2</setting>
+            <setting>charity event</setting>
          </panel>
          <panel>
             <left>
@@ -352,11 +298,11 @@
                   <id>Betty</id>
                   <name>Betty</name>
                   <appearance>female</appearance>
-                  <pose>questioning</pose>
+                  <pose>catering</pose>
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Lui lavora</content>
+                  <content>Tu bevi</content>
                </balloon>
             </left>
             <right>
@@ -367,11 +313,11 @@
                   <skin>light brown</skin>
                   <hair>dark brown</hair>
                   <lips>red</lips>
-                  <pose>calculating</pose>
+                  <pose>sipping martini with olive</pose>
                   <facing>left</facing>
                </figure>
             </right>
-            <setting>office 2</setting>
+            <setting>charity event</setting>
          </panel>
          <panel>
             <left>
@@ -379,65 +325,11 @@
                   <id>Betty</id>
                   <name>Betty</name>
                   <appearance>female</appearance>
-                  <pose>looking in mirror while seated</pose>
-                  <facing>left</facing>
-               </figure>
-               <balloon status="speech">
-                  <content>She works</content>
-               </balloon>
-            </left>
-            <right>
-               <figure>
-                  <id>Alfie</id>
-                  <name>Alfie</name>
-                  <appearance>female</appearance>
-                  <skin>light brown</skin>
-                  <hair>dark brown</hair>
-                  <lips>red</lips>
-                  <pose>cutting hair</pose>
-                  <facing>left</facing>
-               </figure>
-            </right>
-            <setting>salon interior</setting>
-         </panel>
-         <panel>
-            <left>
-               <figure>
-                  <id>Betty</id>
-                  <name>Betty</name>
-                  <appearance>female</appearance>
-                  <pose>looking in mirror while seated</pose>
-                  <facing>left</facing>
-               </figure>
-               <balloon status="speech">
-                  <content>Lei lavora</content>
-               </balloon>
-            </left>
-            <right>
-               <figure>
-                  <id>Alfie</id>
-                  <name>Alfie</name>
-                  <appearance>female</appearance>
-                  <skin>light brown</skin>
-                  <hair>dark brown</hair>
-                  <lips>red</lips>
-                  <pose>cutting hair</pose>
-                  <facing>left</facing>
-               </figure>
-            </right>
-            <setting>salon interior</setting>
-         </panel>
-         <panel>
-            <left>
-               <figure>
-                  <id>Betty</id>
-                  <name>Betty</name>
-                  <appearance>female</appearance>
-                  <pose>building</pose>
+                  <pose>carrying tray</pose>
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>We work</content>
+                  <content>He drinks</content>
                </balloon>
             </left>
             <right>
@@ -448,11 +340,11 @@
                   <skin>light brown</skin>
                   <hair>dark brown</hair>
                   <lips>red</lips>
-                  <pose>carrying bricks</pose>
+                  <pose>slurping</pose>
                   <facing>left</facing>
                </figure>
             </right>
-            <setting>building site</setting>
+            <setting>sports bar</setting>
          </panel>
          <panel>
             <left>
@@ -460,11 +352,11 @@
                   <id>Betty</id>
                   <name>Betty</name>
                   <appearance>female</appearance>
-                  <pose>building</pose>
+                  <pose>carrying tray</pose>
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Noi lavoriamo</content>
+                  <content>Lui beve</content>
                </balloon>
             </left>
             <right>
@@ -475,11 +367,11 @@
                   <skin>light brown</skin>
                   <hair>dark brown</hair>
                   <lips>red</lips>
-                  <pose>carrying bricks</pose>
+                  <pose>slurping</pose>
                   <facing>left</facing>
                </figure>
             </right>
-            <setting>building site</setting>
+            <setting>sports bar</setting>
          </panel>
          <panel>
             <left>
@@ -487,39 +379,147 @@
                   <id>Betty</id>
                   <name>Betty</name>
                   <appearance>female</appearance>
-                  <pose>insisting</pose>
+                  <pose>gossiping about</pose>
+                  <facing>right</facing>
+               </figure>
+               <balloon status="speech">
+                  <content>She drinks</content>
+               </balloon>
+            </left>
+            <right>
+               <figure>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>female</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>drinking from bottle</pose>
+                  <facing>left</facing>
+               </figure>
+            </right>
+            <setting>living room</setting>
+         </panel>
+         <panel>
+            <left>
+               <figure>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
+                  <pose>gossiping about</pose>
+                  <facing>right</facing>
+               </figure>
+               <balloon status="speech">
+                  <content>Lei beve</content>
+               </balloon>
+            </left>
+            <right>
+               <figure>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>female</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>drinking from bottle</pose>
+                  <facing>left</facing>
+               </figure>
+            </right>
+            <setting>living room</setting>
+         </panel>
+         <panel>
+            <left>
+               <figure>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
+                  <pose>drinking concoction</pose>
+                  <facing>right</facing>
+               </figure>
+               <balloon status="speech">
+                  <content>We drink</content>
+               </balloon>
+            </left>
+            <right>
+               <figure>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>male</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>transforming</pose>
+                  <facing>left</facing>
+               </figure>
+            </right>
+            <setting>laboratory window</setting>
+         </panel>
+         <panel>
+            <left>
+               <figure>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
+                  <pose>drinking concoction</pose>
+                  <facing>right</facing>
+               </figure>
+               <balloon status="speech">
+                  <content>Noi beviamo</content>
+               </balloon>
+            </left>
+            <right>
+               <figure>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>male</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>transforming</pose>
+                  <facing>left</facing>
+               </figure>
+            </right>
+            <setting>laboratory window</setting>
+         </panel>
+         <panel>
+            <left>
+               <figure>
+                  <id>Betty</id>
+                  <name>Betty</name>
+                  <appearance>female</appearance>
+                  <pose>catering</pose>
                   <facing>right</facing>
                   <horizontal>little more</horizontal>
                </figure>
                <balloon status="speech">
-                  <content>You work (plural)</content>
+                  <content>You drink (plural)</content>
                </balloon>
             </left>
             <middle>
+               <figure>
+                  <id>Alfie</id>
+                  <name>Alfie</name>
+                  <appearance>male</appearance>
+                  <skin>light brown</skin>
+                  <hair>dark brown</hair>
+                  <lips>red</lips>
+                  <pose>slurping</pose>
+                  <facing>left</facing>
+               </figure>
+            </middle>
+            <right>
                <figure>
                   <id>Gemma</id>
                   <name>Gemma</name>
                   <appearance>female</appearance>
                   <skin>olive</skin>
                   <hair>black</hair>
-                  <pose>holding mop</pose>
-                  <facing>right</facing>
-               </figure>
-            </middle>
-            <right>
-               <figure>
-                  <id>Alfie</id>
-                  <name>Alfie</name>
-                  <appearance>male</appearance>
-                  <skin>light brown</skin>
-                  <hair>dark brown</hair>
-                  <lips>red</lips>
-                  <pose>scrubbing on knees</pose>
+                  <pose>drinking</pose>
                   <facing>left</facing>
                   <horizontal>little less</horizontal>
                </figure>
             </right>
-            <setting>clean toilet</setting>
+            <setting>bar</setting>
          </panel>
          <panel>
             <left>
@@ -527,26 +527,15 @@
                   <id>Betty</id>
                   <name>Betty</name>
                   <appearance>female</appearance>
-                  <pose>insisting</pose>
+                  <pose>catering</pose>
                   <facing>right</facing>
                   <horizontal>little more</horizontal>
                </figure>
                <balloon status="speech">
-                  <content>Voi lavorate</content>
+                  <content>Voi bevete</content>
                </balloon>
             </left>
             <middle>
-               <figure>
-                  <id>Gemma</id>
-                  <name>Gemma</name>
-                  <appearance>female</appearance>
-                  <skin>olive</skin>
-                  <hair>black</hair>
-                  <pose>holding mop</pose>
-                  <facing>right</facing>
-               </figure>
-            </middle>
-            <right>
                <figure>
                   <id>Alfie</id>
                   <name>Alfie</name>
@@ -554,12 +543,23 @@
                   <skin>light brown</skin>
                   <hair>dark brown</hair>
                   <lips>red</lips>
-                  <pose>scrubbing on knees</pose>
+                  <pose>slurping</pose>
+                  <facing>left</facing>
+               </figure>
+            </middle>
+            <right>
+               <figure>
+                  <id>Gemma</id>
+                  <name>Gemma</name>
+                  <appearance>female</appearance>
+                  <skin>olive</skin>
+                  <hair>black</hair>
+                  <pose>drinking</pose>
                   <facing>left</facing>
                   <horizontal>little less</horizontal>
                </figure>
             </right>
-            <setting>clean toilet</setting>
+            <setting>bar</setting>
          </panel>
          <panel>
             <left>
@@ -567,26 +567,15 @@
                   <id>Betty</id>
                   <name>Betty</name>
                   <appearance>female</appearance>
-                  <pose>posing</pose>
+                  <pose>pouring coffee</pose>
                   <facing>right</facing>
                   <horizontal>little more</horizontal>
                </figure>
                <balloon status="speech">
-                  <content>They work</content>
+                  <content>They drink</content>
                </balloon>
             </left>
             <middle>
-               <figure>
-                  <id>Gemma</id>
-                  <name>Gemma</name>
-                  <appearance>female</appearance>
-                  <skin>olive</skin>
-                  <hair>black</hair>
-                  <pose>painting</pose>
-                  <facing>left</facing>
-               </figure>
-            </middle>
-            <right>
                <figure>
                   <id>Alfie</id>
                   <name>Alfie</name>
@@ -594,12 +583,24 @@
                   <skin>light brown</skin>
                   <hair>dark brown</hair>
                   <lips>red</lips>
-                  <pose>photographing</pose>
+                  <pose>drinking coffee</pose>
+                  <facing>left</facing>
+                  <horizontal>little more</horizontal>
+               </figure>
+            </middle>
+            <right>
+               <figure>
+                  <id>Gemma</id>
+                  <name>Gemma</name>
+                  <appearance>female</appearance>
+                  <skin>olive</skin>
+                  <hair>black</hair>
+                  <pose>spilling coffee</pose>
                   <facing>left</facing>
                   <horizontal>little less</horizontal>
                </figure>
             </right>
-            <setting>art studio</setting>
+            <setting>coffee shop</setting>
          </panel>
          <panel>
             <left>
@@ -607,26 +608,15 @@
                   <id>Betty</id>
                   <name>Betty</name>
                   <appearance>female</appearance>
-                  <pose>posing</pose>
+                  <pose>pouring coffee</pose>
                   <facing>right</facing>
                   <horizontal>little more</horizontal>
                </figure>
                <balloon status="speech">
-                  <content>Loro lavorano</content>
+                  <content>Loro bevono</content>
                </balloon>
             </left>
             <middle>
-               <figure>
-                  <id>Gemma</id>
-                  <name>Gemma</name>
-                  <appearance>female</appearance>
-                  <skin>olive</skin>
-                  <hair>black</hair>
-                  <pose>painting</pose>
-                  <facing>left</facing>
-               </figure>
-            </middle>
-            <right>
                <figure>
                   <id>Alfie</id>
                   <name>Alfie</name>
@@ -634,12 +624,24 @@
                   <skin>light brown</skin>
                   <hair>dark brown</hair>
                   <lips>red</lips>
-                  <pose>photographing</pose>
+                  <pose>drinking coffee</pose>
+                  <facing>left</facing>
+                  <horizontal>little more</horizontal>
+               </figure>
+            </middle>
+            <right>
+               <figure>
+                  <id>Gemma</id>
+                  <name>Gemma</name>
+                  <appearance>female</appearance>
+                  <skin>olive</skin>
+                  <hair>black</hair>
+                  <pose>spilling coffee</pose>
                   <facing>left</facing>
                   <horizontal>little less</horizontal>
                </figure>
             </right>
-            <setting>art studio</setting>
+            <setting>coffee shop</setting>
          </panel>
       </scene>
       <scene>
@@ -669,11 +671,11 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Time to wake up!</content>
+                  <content>I can't believe I slept in</content>
                </balloon>
             </middle>
-            <setting>kitchen</setting>
-            <below>Alfie is yawning in the kitchen.</below>
+            <setting>bedroom</setting>
+            <below>Alfie is waking up in the bedroom.</below>
          </panel>
          <panel>
             <middle>
@@ -688,11 +690,11 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>È ora di svegliarsi!</content>
+                  <content>Non posso credere di aver dormito troppo!</content>
                </balloon>
             </middle>
-            <setting>kitchen</setting>
-            <below>Alfie sta sbadigliando in cucina.</below>
+            <setting>bedroom</setting>
+            <below>Alfie si sta svegliando in camera da letto.</below>
          </panel>
          <panel>
             <middle>
@@ -707,7 +709,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Let's get some cereal!</content>
+                  <content>Time for breakfast!</content>
                </balloon>
             </middle>
             <setting>kitchen</setting>
@@ -726,7 +728,7 @@
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Prendiamo un po' di cereali!</content>
+                  <content>È ora di fare colazione!</content>
                </balloon>
             </middle>
             <setting>kitchen</setting>
@@ -741,15 +743,15 @@
                   <skin>light brown</skin>
                   <hair>dark brown</hair>
                   <lips>red</lips>
-                  <pose>munching</pose>
+                  <pose>swallowing</pose>
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Delicious! Just what I needed.</content>
+                  <content>Ugh, what is this?</content>
                </balloon>
             </middle>
             <setting>kitchen</setting>
-            <below>Alfie is munching in the kitchen.</below>
+            <below>Alfie is tasting something unpleasant in the kitchen.</below>
          </panel>
          <panel>
             <middle>
@@ -760,15 +762,15 @@
                   <skin>light brown</skin>
                   <hair>dark brown</hair>
                   <lips>red</lips>
-                  <pose>munching</pose>
+                  <pose>swallowing</pose>
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Delizioso! Proprio quello di cui avevo bisogno.</content>
+                  <content>Ugh, cos'è questo?</content>
                </balloon>
             </middle>
             <setting>kitchen</setting>
-            <below>Alfie sta masticando in cucina.</below>
+            <below>Alfie sta assaggiando qualcosa di sgradevole in cucina.</below>
          </panel>
          <panel>
             <middle>
@@ -779,15 +781,15 @@
                   <skin>light brown</skin>
                   <hair>dark brown</hair>
                   <lips>red</lips>
-                  <pose>strong</pose>
+                  <pose>rumbling</pose>
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>I'm ready for anything today!</content>
+                  <content>I don't feel so good...</content>
                </balloon>
             </middle>
             <setting>kitchen</setting>
-            <below>Alfie is feeling ready for anything in the kitchen.</below>
+            <below>Alfie is feeling unwell in the kitchen.</below>
          </panel>
          <panel>
             <middle>
@@ -798,18 +800,18 @@
                   <skin>light brown</skin>
                   <hair>dark brown</hair>
                   <lips>red</lips>
-                  <pose>strong</pose>
+                  <pose>rumbling</pose>
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>Sono pronto per qualsiasi cosa oggi!</content>
+                  <content>Non mi sento tanto bene...</content>
                </balloon>
             </middle>
             <setting>kitchen</setting>
-            <below>Alfie si sente pronto per qualsiasi cosa in cucina.</below>
+            <below>Alfie si sente male in cucina.</below>
          </panel>
          <panel>
-            <left>
+            <middle>
                <figure>
                   <id>Alfie</id>
                   <name>Alfie</name>
@@ -817,18 +819,18 @@
                   <skin>light brown</skin>
                   <hair>dark brown</hair>
                   <lips>red</lips>
-                  <pose>high fiving</pose>
+                  <pose>vomiting</pose>
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>See you later, Betty!</content>
+                  <content>I need to go!</content>
                </balloon>
-            </left>
-            <setting>welcome mat</setting>
-            <below>Alfie is waving goodbye in the outside front door.</below>
+            </middle>
+            <setting>kitchen</setting>
+            <below>Alfie is vomiting in the kitchen.</below>
          </panel>
          <panel>
-            <left>
+            <middle>
                <figure>
                   <id>Alfie</id>
                   <name>Alfie</name>
@@ -836,15 +838,15 @@
                   <skin>light brown</skin>
                   <hair>dark brown</hair>
                   <lips>red</lips>
-                  <pose>high fiving</pose>
+                  <pose>vomiting</pose>
                   <facing>right</facing>
                </figure>
                <balloon status="speech">
-                  <content>A dopo, Betty!</content>
+                  <content>Devo andare!</content>
                </balloon>
-            </left>
-            <setting>welcome mat</setting>
-            <below>Alfie sta salutando dall'uscio di casa.</below>
+            </middle>
+            <setting>kitchen</setting>
+            <below>Alfie sta vomitando in cucina.</below>
          </panel>
       </scene>
    </scenes>
